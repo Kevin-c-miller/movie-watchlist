@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_02_24_175149) do
+ActiveRecord::Schema[7.0].define(version: 2022_02_24_215200) do
   create_table "movies", force: :cascade do |t|
     t.string "title"
     t.text "poster"
@@ -21,11 +21,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_02_24_175149) do
     t.integer "release_year"
     t.string "runtime"
     t.integer "user_id", null: false
-    t.integer "watch_list_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_movies_on_user_id"
-    t.index ["watch_list_id"], name: "index_movies_on_watch_list_id"
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -48,17 +46,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_02_24_175149) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "watch_lists", force: :cascade do |t|
-    t.boolean "movie_watched"
-    t.integer "user_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_watch_lists_on_user_id"
-  end
-
   add_foreign_key "movies", "users"
-  add_foreign_key "movies", "watch_lists"
   add_foreign_key "reviews", "movies"
   add_foreign_key "reviews", "users"
-  add_foreign_key "watch_lists", "users"
 end

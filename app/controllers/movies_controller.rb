@@ -5,7 +5,7 @@ class MoviesController < ApplicationController
   def index
     @movies = Movie.all
 
-    render json: @movies, inclue: :reviews
+    render json: @movies, include: :reviews
   end
 
   #  GET /users/:user_id/movies
@@ -22,7 +22,7 @@ class MoviesController < ApplicationController
   # POST /movies
   def create
     @movie = Movie.new(movie_params)
-    @movie.user = @current_user
+
 
     if @movie.save
       render json: @movie, status: :created, location: @movie
@@ -55,6 +55,6 @@ class MoviesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def movie_params
-      params.require(:movie).permit(:title, :poster, :rating, :synopsis, :director, :starring, :release_year, :runtime, :user_id, :watch_list_id)
+      params.require(:movie).permit(:title, :poster, :rating, :synopsis, :director, :starring, :release_year, :runtime, :user_id)
     end
 end

@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
 
-  resources :users 
-  resources :watch_lists   
-
+  resources :users   
 
   resources :movies do
     resources :reviews
