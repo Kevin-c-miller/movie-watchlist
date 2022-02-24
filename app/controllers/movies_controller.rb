@@ -5,7 +5,13 @@ class MoviesController < ApplicationController
   def index
     @movies = Movie.all
 
-    render json: @movies
+    render json: @movies, inclue: :reviews
+  end
+
+  #  GET /users/:user_id/movies
+  def get_user_movies
+    @user = User.find(params[:user_id])
+    render json: @user.movies
   end
 
   # GET /movies/1
@@ -16,6 +22,7 @@ class MoviesController < ApplicationController
   # POST /movies
   def create
     @movie = Movie.new(movie_params)
+    @movie.user = @current_user
 
     if @movie.save
       render json: @movie, status: :created, location: @movie
@@ -36,6 +43,8 @@ class MoviesController < ApplicationController
   # DELETE /movies/1
   def destroy
     @movie.destroy
+
+    render json: @movie
   end
 
   private

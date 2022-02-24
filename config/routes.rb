@@ -1,8 +1,20 @@
 Rails.application.routes.draw do
-  resources :reviews
-  resources :movies
-  resources :watch_lists
-  resources :users
+
+  resources :users 
+  resources :watch_lists   
+
+
+  resources :movies do
+    resources :reviews
+  end
+
+  get '/users/:user_id/movies', to: 'movies#get_user_movies'
+  get '/reviews', to: 'reviews#get_all_reviews'
+
+  post '/auth/login', to: 'authentications#login'
+  get '/auth/verify', to: 'authentications#verify'
+
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")

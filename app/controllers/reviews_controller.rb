@@ -3,9 +3,10 @@ class ReviewsController < ApplicationController
 
   # GET /reviews
   def index
-    @reviews = Review.all
+    @movie = Movie.find(params[:movie_id])
+    @reviews = @movie.reviews
 
-    render json: @reviews
+    render json: @reviews, include: :user
   end
 
   # GET /reviews/1
@@ -16,6 +17,8 @@ class ReviewsController < ApplicationController
   # POST /reviews
   def create
     @review = Review.new(review_params)
+    @review.user = @current_user
+    @review.movie_id = params[:movie_id]
 
     if @review.save
       render json: @review, status: :created, location: @review
@@ -36,6 +39,8 @@ class ReviewsController < ApplicationController
   # DELETE /reviews/1
   def destroy
     @review.destroy
+
+    render json: @review
   end
 
   private
@@ -46,6 +51,6 @@ class ReviewsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def review_params
-      params.require(:review).permit(:rating, :review, :user_id, :movie_id)
+      params.require(:review).permit(:title, :rating, :review, :user_id, :movie_id)
     end
 end
