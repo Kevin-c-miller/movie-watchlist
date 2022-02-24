@@ -1,14 +1,15 @@
 Rails.application.routes.draw do
 
-  resources :users do
-    resources :watch_lists
-  end
+  resources :users 
+  resources :watch_lists   
+
 
   resources :movies do
     resources :reviews
-
   end
 
+  get '/users/:user_id/movies', to: 'movies#get_user_movies'
+  get '/reviews', to: 'reviews#get_all_reviews'
 
   post '/auth/login', to: 'authentications#login'
   get '/auth/verify', to: 'authentications#verify'
