@@ -3,9 +3,10 @@ class ReviewsController < ApplicationController
 
   # GET /reviews
   def index
-    @reviews = Review.all
+    @movie = Movie.find(params[:movie_id])
+    @reviews = @movie.reviews
 
-    render json: @reviews
+    render json: @reviews, include: :user
   end
 
   # GET /reviews/1
