@@ -2,8 +2,8 @@
 Student project for General Assembly. 
 
 ### Description
-Create a list of movies that you want to watch. Omce you watch the movie, you can add a reivew of the movie
-API that stores all of the movies that you want to watch and have watched and review them. This will let you keep track of your watch history. 
+Create a list of movies that you want to watch/have seen. Once you have seen a movie, you can add a review.
+Uses an API that stores all of the movies that you want to watch/have watched and the reviews. This will let you keep track of your watch history. 
 
 ## MVP
 - Create API using Ruby/Rails 
@@ -11,8 +11,8 @@ API that stores all of the movies that you want to watch and have watched and re
 - Frontend will be a react app and that will consume Rails API 
 - React app will allow users to sign up to have ability to create a list of movies they want to watch and review the movies they have seen
 - Ability to add new movies into the database
-- Users will have the ability to edit reviews and movies that they had entered
-- Guest option to check out app without creating account
+- Users will have the ability to edit/delete reviews and movies that they created
+- Guest option to browse the app without creating account/logging in
 
 ## Libraries and Dependencies
 
@@ -25,11 +25,12 @@ API that stores all of the movies that you want to watch and have watched and re
 ## Wireframe
 https://www.figma.com/file/MaPjfN4xEectl1jpSYmlVJ/Movie-WatchList?node-id=0%3A1
 
+
 ## Component Hierarchy
 https://www.figma.com/file/H6UT9Syjpxe26L5vuEcjQB/movie-watchlist-component-hierarchy
 
-## Time Estimates
 
+## Time Estimates
 
 | Component                                 | Priority | Estimated Time | Time Invested | Actual Time |
 | ----------------------------------------- | :------: | :------------: | :-----------: | :---------: |
@@ -61,6 +62,8 @@ https://www.figma.com/file/H6UT9Syjpxe26L5vuEcjQB/movie-watchlist-component-hier
 
 
 ## ERD
+![image](https://user-images.githubusercontent.com/80793283/155444235-921134ad-5fae-478b-8012-70760bea6f4f.png)
+
 
 
 ## Post-MVP
