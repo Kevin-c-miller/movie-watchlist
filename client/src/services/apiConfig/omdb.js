@@ -1,15 +1,45 @@
 import axios from 'axios';
-
 const KEY = process.env.REACT_APP_OMDB_KEY;
-console.log(KEY);
-
 const url = `http://www.omdbapi.com/?apikey=${KEY}`;
 
-const randomYear = Math.floor(Math.random() * (2021 - 1975 + 1) + 1975);
-console.log(randomYear);
+const terms = [
+  'there',
+  'thunder',
+  'mile',
+  'car',
+  'world',
+  'down',
+  'young',
+  'love',
+  'doctor',
+  'president',
+  'america',
+  'death',
+  'house',
+  'party',
+  'ghost',
+  'affair',
+  'black',
+  'time',
+  'hell',
+  'west',
+  'country',
+  'king',
+  'adventures',
+  'island',
+  'return',
+  'one',
+  'little',
+  'big',
+  'night',
+];
+
+const randomWord = terms[Math.floor(Math.random() * terms.length)];
+// console.log(randomWord);
 
 export const getMovieList = async () => {
-  const res = await axios.get(`${url}&s=th &y=${randomYear}`);
+  let page = 1;
+  const res = await axios.get(`${url}&s=${randomWord}&type=movie&page=${page}`);
   return res.data;
 };
 

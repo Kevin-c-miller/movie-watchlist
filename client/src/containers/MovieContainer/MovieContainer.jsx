@@ -17,6 +17,8 @@ export default function MovieContainer(props) {
     const getMovieRequest = async () => {
       const movies = await getMovieList();
       console.log(movies);
+      console.log(movies.Search);
+      setMovies(movies.Search);
     };
     getMovieRequest();
   }, []);
@@ -24,7 +26,16 @@ export default function MovieContainer(props) {
   return (
     <div>
       <Routes>
-        <Route path="/" element={<Movies currentUser={props.currentUser} />} />
+        <Route
+          path="/"
+          element={
+            <Movies
+              movies={movies}
+              currentUser={props.currentUser}
+              setSearchValue={setSearchValue}
+            />
+          }
+        />
       </Routes>
     </div>
   );
