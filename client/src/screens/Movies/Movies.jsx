@@ -11,7 +11,7 @@ export default function Movies(props) {
       <SearchBox searchValue={searchValue} setSearchValue={setSearchValue} />
 
       <div className="all-movies">
-        {movies.map((movie, index) => (
+        {movies?.map((movie, index) => (
           <div className="image-container" key={index}>
             <Link to="/movie-info">
               <img src={movie?.Poster} alt={movie?.Title} />

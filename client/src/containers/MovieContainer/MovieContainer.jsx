@@ -20,12 +20,17 @@ export default function MovieContainer(props) {
   };
 
   useEffect(() => {
+    getMovieRequest();
+  }, []);
+
+  useEffect(() => {
     const movieSearch = async () => {
       const res = await searchMovie(searchValue);
       console.log(res.Search);
       if (res.Search) {
         setMovies(res.Search);
       }
+      console.log(movies);
     };
     movieSearch();
   }, [searchValue]);
