@@ -20,12 +20,12 @@ function App() {
       console.log(user);
       setCurrentUser(user);
     };
-    // getUser();
+    getUser();
   }, []);
 
   return (
     <div className="App">
-      <Nav />
+      <Nav setCurrentUser={setCurrentUser} />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route

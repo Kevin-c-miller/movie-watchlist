@@ -1,6 +1,11 @@
 import { NavLink } from 'react-router-dom';
 
-export default function Nav() {
+export default function Nav(props) {
+  const logOutUser = () => {
+    localStorage.removeItem('authToken');
+    props.setCurrentUser(null);
+  };
+
   return (
     <div>
       <nav style={{ borderBottom: '1px solid black', margin: '5px' }}>
@@ -16,7 +21,7 @@ export default function Nav() {
         <NavLink to="/Register" style={{ padding: '3px', margin: '0 5px' }}>
           Register
         </NavLink>
-        <button>Logout</button>
+        <button onClick={logOutUser}>Logout</button>
       </nav>
     </div>
   );
