@@ -1,5 +1,6 @@
 class ReviewsController < ApplicationController
   before_action :set_review, only: %i[ show update destroy ]
+  # before_action :authorize_request, only: [:create, :update, :destroy]
 
   # GET /reviews
   def index
@@ -8,6 +9,13 @@ class ReviewsController < ApplicationController
 
     render json: @reviews, include: :user
   end
+
+  # Get /reviews all
+  def get_all_reviews
+    @user = User.find([params[:user_id]])
+    render json: @user.reviews
+  end
+
 
   # GET /reviews/1
   def show
