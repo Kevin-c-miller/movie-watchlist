@@ -23,6 +23,7 @@ export default function Signup(props) {
     const user = {
       username,
       password,
+      email,
     };
     const res = await createUser(user);
     props.setCurrentUser(res);
@@ -41,6 +42,8 @@ export default function Signup(props) {
         username={username}
         toggleShowPassword={toggleShowPassword}
         hidePassword={hidePassword}
+        email={email}
+        setEmail={setEmail}
       />
     </div>
   );

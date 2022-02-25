@@ -11,6 +11,8 @@ export default function RegisterForm(props) {
     setEmail,
     setPassword,
     setUsername,
+    hidePassword,
+    toggleShowPassword,
   } = props;
 
   return (
@@ -34,13 +36,18 @@ export default function RegisterForm(props) {
         />
 
         <Form.Control
-          type="text"
-          placeholder="username"
+          type={hidePassword}
+          placeholder="password"
           value={password}
           required
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button>Register</button>
+        <Form.Check
+          type="switch"
+          label="Show Password"
+          onClick={(e) => toggleShowPassword(e)}
+        />
+        <button className="register-btn">Register</button>
       </Form>
     </div>
   );
