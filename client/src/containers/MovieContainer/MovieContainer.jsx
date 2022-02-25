@@ -13,15 +13,22 @@ export default function MovieContainer(props) {
   const [movies, setMovies] = useState([]);
   const [searchValue, setSearchValue] = useState('');
 
+  const getMovieRequest = async () => {
+    const movies = await getMovieList();
+    console.log(movies);
+    setMovies(movies.Search);
+  };
+
   useEffect(() => {
-    const getMovieRequest = async () => {
-      const movies = await getMovieList();
-      console.log(movies);
-      console.log(movies.Search);
-      setMovies(movies.Search);
+    const movieSearch = async () => {
+      const res = await searchMovie(searchValue);
+      console.log(res.Search);
+      if (res.Search) {
+        setMovies(res.Search);
+      }
     };
-    getMovieRequest();
-  }, []);
+    movieSearch();
+  }, [searchValue]);
 
   return (
     <div>
@@ -32,6 +39,7 @@ export default function MovieContainer(props) {
             <Movies
               movies={movies}
               currentUser={props.currentUser}
+              searchValue={searchValue}
               setSearchValue={setSearchValue}
             />
           }

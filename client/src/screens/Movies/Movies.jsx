@@ -1,22 +1,15 @@
 import { Link } from 'react-router-dom';
+import SearchBox from '../../components/SearchBox/SearchBox';
 import './Movies.css';
 
 export default function Movies(props) {
-  const { currentUser, movies, setSearchValue } = props;
+  const { currentUser, movies, setSearchValue, searchValue } = props;
 
   return (
     <div className="movies-page">
       <h2>Search and find movies here!</h2>
-      {/* add form to add movie not found */}
-      {/* search bar */}
-      <div className="col col-sm-4 search">
-        <input
-          className="form-control"
-          placeholder="Type to search.."
-          value={props.value}
-          onChange={(e) => setSearchValue(e.target.value)}
-        />
-      </div>
+      <SearchBox searchValue={searchValue} setSearchValue={setSearchValue} />
+
       <div className="all-movies">
         {movies.map((movie, index) => (
           <div className="image-container" key={index}>
