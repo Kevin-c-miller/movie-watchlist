@@ -28,8 +28,14 @@ function App() {
       <Nav />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Signup />} />
+        <Route
+          path="/login"
+          element={<Login setCurrentUser={setCurrentUser} />}
+        />
+        <Route
+          path="/register"
+          element={<Signup setCurrentUser={setCurrentUser} />}
+        />
         <Route path="/movies/*" element={<MovieContainer />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>

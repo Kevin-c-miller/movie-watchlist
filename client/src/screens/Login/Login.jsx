@@ -34,7 +34,7 @@ export default function Login(props) {
     <div className="login-page">
       <h2>Login</h2>
       <LoginForm
-        handleLoginsubmit={handleLoginSubmit}
+        handleLoginSubmit={handleLoginSubmit}
         setUsername={setUsername}
         setPassword={setPassword}
         password={password}

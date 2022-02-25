@@ -16,6 +16,7 @@ export default function Nav() {
         <NavLink to="/Register" style={{ padding: '3px', margin: '0 5px' }}>
           Register
         </NavLink>
+        <button>Logout</button>
       </nav>
     </div>
   );
