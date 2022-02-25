@@ -7,8 +7,16 @@ import './Login.css';
 export default function Login(props) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [hidePassword, setHidePassword] = useState('password');
+  const [showPassword, setShowPassword] = useState('text');
 
   const navigate = useNavigate('/movies');
+
+  const toggleShowPassword = (e) => {
+    let x = hidePassword;
+    setHidePassword(showPassword);
+    setShowPassword(x);
+  };
 
   const handleLoginSubmit = async (e) => {
     e.preventDefault();
@@ -31,6 +39,8 @@ export default function Login(props) {
         setPassword={setPassword}
         password={password}
         username={username}
+        toggleShowPassword={toggleShowPassword}
+        hidePassword={hidePassword}
       />
     </div>
   );

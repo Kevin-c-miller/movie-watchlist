@@ -1,26 +1,42 @@
 import React from 'react';
+import { Form } from 'react-bootstrap';
 import './LoginForm.css';
 
 export default function LoginForm(props) {
+  const {
+    handleLoginSubmit,
+    setUsername,
+    setPassword,
+    username,
+    password,
+    toggleShowPassword,
+    hidePassword,
+  } = props;
+
   return (
-    <form className="login-form" onSubmit={props.handleLoginSubmit}>
-      <input
+    <Form className="login-form" onSubmit={handleLoginSubmit}>
+      <Form.Control
         type="text"
         placeholder="username"
-        value={props.username}
+        value={username}
         autoFocus
         required
-        onChange={(e) => props.setUsername(e.target.value)}
+        onChange={(e) => setUsername(e.target.value)}
       />
-      <input
-        type="password"
+      <Form.Control
+        type={hidePassword}
+        value={password}
         placeholder="password"
-        value={props.password}
         required
-        onChange={(e) => props.setPassword(e.target.value)}
+        onChange={(e) => setPassword(e.target.value)}
+      />
+      <Form.Check
+        type="switch"
+        label="Show Password"
+        onClick={(e) => toggleShowPassword(e)}
       />
       {/* show password button toggle */}
       <button className="login-btn">Login</button>
-    </form>
+    </Form>
   );
 }
