@@ -15,7 +15,7 @@ export const createReview = async (movie_id, reviewData) => {
 };
 
 //  Update Review
-export const editReview = async (movie_id, review_id, reviewData) => {
+export const updateReview = async (movie_id, review_id, reviewData) => {
   const res = await api.put(`/movies/${movie_id}/reviews/${review_id}`, {
     review: reviewData,
   });
