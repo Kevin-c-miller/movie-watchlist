@@ -1,4 +1,5 @@
 import React from 'react';
+import { getMovieList, searchMovie } from '../../services/apiConfig/omdb';
 
 export default function Movies() {
   return (

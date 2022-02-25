@@ -35,7 +35,7 @@ export default function LoginForm(props) {
         label="Show Password"
         onClick={(e) => toggleShowPassword(e)}
       />
-      {/* show password button toggle */}
+
       <button className="login-btn">Login</button>
     </Form>
   );

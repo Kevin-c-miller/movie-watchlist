@@ -1,13 +1,13 @@
 import { Routes, Route } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { verifyUser } from './services/apiConfig/users';
-import MovieContainer from './containers/MovieContainer';
+import MovieContainer from './containers/MovieContainer/MovieContainer';
 import Home from './screens/Home/Home';
 import Login from './screens/Login/Login';
 import Signup from './screens/Register/Signup';
 import PageNotFound from './screens/404/PageNotFound';
-import Nav from './components/Nav';
-import Footer from './components/Footer';
+import Nav from './components/Navbar/Nav';
+import Footer from './components/Footer/Footer';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
@@ -36,7 +36,10 @@ function App() {
           path="/register"
           element={<Signup setCurrentUser={setCurrentUser} />}
         />
-        <Route path="/movies/*" element={<MovieContainer />} />
+        <Route
+          path="/movies/*"
+          element={<MovieContainer currentUser={currentUser} />}
+        />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
       {/* <Footer /> */}

@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { createUser } from '../../services/apiConfig/users';
 import RegisterForm from '../../components/RegisterForm/RegisterForm';
+import './Signup.css';
 
 export default function Signup(props) {
   const [username, setUsername] = useState('');

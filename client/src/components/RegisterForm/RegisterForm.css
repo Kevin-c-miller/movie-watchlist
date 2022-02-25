@@ -1,11 +1,11 @@
-.Register-form {
+.register-form {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-.Register-form input {
+.register-form input {
   padding: 10px;
   margin: 10px;
   border-radius: 10px;
