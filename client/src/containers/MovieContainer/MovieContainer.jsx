@@ -13,6 +13,7 @@ import {
 } from '../../services/apiConfig/omdb';
 import Movies from '../../screens/Movies/Movies';
 import MovieDetails from '../../screens/MovieDetail/MovieDetails';
+import UserMovieList from '../../screens/UserMovieList/UserMovieList';
 
 export default function MovieContainer(props) {
   const [movies, setMovies] = useState([]);
@@ -62,6 +63,7 @@ export default function MovieContainer(props) {
           }
         />
         <Route path="/:title" element={<MovieDetails movie={movie} />} />
+        <Route path="/users/:id/movielist" element={<UserMovieList />} />
       </Routes>
     </div>
   );
