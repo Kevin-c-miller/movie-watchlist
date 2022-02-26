@@ -3,7 +3,16 @@ import SearchBox from '../../components/SearchBox/SearchBox';
 import './Movies.css';
 
 export default function Movies(props) {
-  const { fetchMovie, movies, setSearchValue, searchValue } = props;
+  const {
+    fetchMovie,
+    movies,
+    setSearchValue,
+    searchValue,
+    previousPage,
+    nextPage,
+    currentPage,
+    setCurrentPage,
+  } = props;
 
   return (
     <div className="movies-page">
@@ -27,6 +36,25 @@ export default function Movies(props) {
           </div>
         ))}
       </div>
+      {/* Links - previous, next page */}
+      <span>
+        <h5>Page: {currentPage}</h5>
+        <button
+          onClick={() =>
+            previousPage(setCurrentPage((prevPage) => prevPage - 1))
+          }
+          className="movie-page-btn"
+        >
+          Previous
+        </button>{' '}
+        |{' '}
+        <button
+          onClick={() => nextPage(setCurrentPage((prevPage) => prevPage + 1))}
+          className="movie-page-btn"
+        >
+          Next
+        </button>
+      </span>
     </div>
   );
 }

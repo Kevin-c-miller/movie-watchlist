@@ -25,14 +25,22 @@ export default function Nav(props) {
         </NavLink>
 
         {props.currentUser && (
-          <NavLink
-            to={`users/${props.currentUser?.id}/my-account`}
-            style={{ padding: '3px', margin: '0 5px' }}
-          >
-            My Account
-          </NavLink>
+          <>
+            <NavLink
+              to={`users/${props.currentUser?.id}/my-account`}
+              style={{ padding: '3px', margin: '0 5px' }}
+            >
+              My Account
+            </NavLink>
+            <NavLink
+              to={`/movies/users/${props.currentUser?.username}/movielist`}
+            >
+              My Watch List
+            </NavLink>
+
+            <button onClick={logOutUser}>Logout</button>
+          </>
         )}
-        <button onClick={logOutUser}>Logout</button>
       </nav>
     </div>
   );
