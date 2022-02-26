@@ -25,17 +25,30 @@ const terms = [
   'west',
   'country',
   'king',
-  'adventures',
+  'adventure',
   'island',
   'return',
   'one',
   'little',
   'big',
   'night',
+  'fall',
+  'ugly',
+  'one',
+  'beach',
+  'vacation',
+  'plane',
+  'blue',
+  'father',
+  'good',
+  'fast',
+  'house',
+  'lost',
+  'red',
 ];
 
 const randomWord = terms[Math.floor(Math.random() * terms.length)];
-// console.log(randomWord);
+console.log(randomWord);
 
 export const getMovieList = async () => {
   let page = 1;
