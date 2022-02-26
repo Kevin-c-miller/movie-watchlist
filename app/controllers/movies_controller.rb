@@ -1,28 +1,48 @@
 class MoviesController < ApplicationController
   before_action :set_movie, only: %i[ show update destroy ]
 
+  #  GET /users/:user_id/movies
+  # def get_user_movies
+  #   @user = User.find(params[:user_id])
+  #   render json: @user.movies
+  # end
+
+  # POST /users/:user_id/movies
+    # def post_user_movies
+    #   @user = User.find(params[:user_id])
+    #   @movie = Movie.new(movie_params)
+    #   @movie.user = @current_user
+  
+    #   if @movie.save
+    #     render json: @movie, status: :created, location: @movie
+    #   else
+    #     render json: @movie.errors, status: :unprocessable_entity
+    #   end
+    # end
+
+
   # GET /movies
   def index
+    @user = User.find(params[:user_id])
     @movies = Movie.all
 
-    render json: @movies, include: :reviews
+    render json: @user.movies, include: :reviews
   end
 
-  #  GET /users/:user_id/movies
-  def get_user_movies
-    @user = User.find(params[:user_id])
-    render json: @user.movies
-  end
 
   # GET /movies/1
   def show
     render json: @movie
   end
 
+
   # POST /movies
   def create
+    @user = User.find(params[:user_id])
     @movie = Movie.new(movie_params)
-
+    @movie.user = @current_user
+    
+    puts movie.user
 
     if @movie.save
       render json: @movie, status: :created, location: @movie

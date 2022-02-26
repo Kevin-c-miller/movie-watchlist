@@ -1,19 +1,11 @@
-import { useState } from 'react';
+import { useParams } from 'react-router-dom';
 import './MovieDetails.css';
 
 export default function MovieDetails(props) {
-  const [addMovie, setAddMovie] = useState({
-    title: '',
-    poster: '',
-    rating: '',
-    synopsis: '',
-    director: '',
-    starring: '',
-    release_year: 0,
-    runtime: '',
-  });
   const { movie } = props;
-  console.log(movie);
+
+  console.log(movie, props.currentUser?.id);
+
   return (
     <div className="movie-details">
       <h2>{movie.Title}</h2>
@@ -49,30 +41,27 @@ export default function MovieDetails(props) {
       <h6>
         <b>Awards:</b> {movie.Awards}
       </h6>
-      {/* map thru ratings so app doesnt break */}
-      {/* <h6>
-        <b>{movie.Ratings[0].Source}</b>: {movie.Ratings[0].Value}
-        <br /> <b>{movie.Ratings[1].Source}</b>: {movie.Ratings[1].Value}
-      </h6> */}
 
-      <button
-        onClick={() => {
-          // e.preventDefault();
-          const addedMovie = {
-            title: movie.Title,
-            poster: movie.Poster,
-            rating: movie.Rated,
-            synopsis: movie.Plot,
-            director: movie.Director,
-            starring: movie.Actors,
-            release_year: movie.Released,
-            runtime: movie.Runtime,
-          };
-          props.addMovieToWatchList(addedMovie);
-        }}
-      >
-        Add Movie to watch list
-      </button>
+      {props.currentUser && (
+        <button
+          onClick={() => {
+            const addedMovie = {
+              title: movie.Title,
+              poster: movie.Poster,
+              rating: movie.Rated,
+              synopsis: movie.Plot,
+              director: movie.Director,
+              starring: movie.Actors,
+              release_year: parseInt(movie.Year),
+              runtime: movie.Runtime,
+              user_id: props.currentUser.id,
+            };
+            props.addMovieToWatchList(props.currentUser.id, addedMovie);
+          }}
+        >
+          Add Movie to watch list
+        </button>
+      )}
     </div>
   );
 }

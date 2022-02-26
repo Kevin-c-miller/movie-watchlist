@@ -32,9 +32,7 @@ export default function Nav(props) {
             >
               My Account
             </NavLink>
-            <NavLink
-              to={`/movies/users/${props.currentUser?.username}/movielist`}
-            >
+            <NavLink to={`/users/${props.currentUser?.id}/movies`}>
               My Watch List
             </NavLink>
 
