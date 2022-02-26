@@ -47,3 +47,8 @@ export const searchMovie = async (searchValue) => {
   const res = await axios.get(`${url}&s=${searchValue}`);
   return res.data;
 };
+
+export const getMovie = async (movieTitle) => {
+  const res = await axios.get(`${url}&t=${movieTitle}`);
+  return res.data;
+};
