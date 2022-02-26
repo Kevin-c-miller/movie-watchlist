@@ -1,4 +1,4 @@
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { verifyUser } from './services/apiConfig/users';
 import MovieContainer from './containers/MovieContainer/MovieContainer';
@@ -7,6 +7,7 @@ import Login from './screens/Login/Login';
 import Signup from './screens/Register/Signup';
 import PageNotFound from './screens/404/PageNotFound';
 import Nav from './components/Navbar/Nav';
+import UserAccount from './screens/UserAccount/UserAccount';
 import Footer from './components/Footer/Footer';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
@@ -25,7 +26,7 @@ function App() {
 
   return (
     <div className="App">
-      <Nav setCurrentUser={setCurrentUser} />
+      <Nav setCurrentUser={setCurrentUser} currentUser={currentUser} />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route
@@ -35,6 +36,10 @@ function App() {
         <Route
           path="/register"
           element={<Signup setCurrentUser={setCurrentUser} />}
+        />
+        <Route
+          path="/users/:id/my-account"
+          element={<UserAccount currentUser={currentUser} />}
         />
         <Route
           path="/movies/*"

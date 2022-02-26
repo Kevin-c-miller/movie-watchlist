@@ -57,13 +57,17 @@ const terms = [
   'fire',
   'heat',
   'river',
+  'captain',
+  'school',
+  'car',
+  'hot',
+  'money',
 ];
 
 const randomWord = terms[Math.floor(Math.random() * terms.length)];
 console.log(randomWord);
 
-export const getMovieList = async () => {
-  let page = 1;
+export const getMovieList = async (page) => {
   const res = await axios.get(`${url}&s=${randomWord}&type=movie&page=${page}`);
   return res.data;
 };

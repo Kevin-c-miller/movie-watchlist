@@ -1,7 +1,17 @@
-import React from 'react';
+import { useState } from 'react';
 import './MovieDetails.css';
 
 export default function MovieDetails(props) {
+  const [addMovie, setAddMovie] = useState({
+    title: '',
+    poster: '',
+    rating: '',
+    synopsis: '',
+    director: '',
+    starring: '',
+    release_year: 0,
+    runtime: '',
+  });
   const { movie } = props;
   console.log(movie);
   return (
@@ -45,7 +55,24 @@ export default function MovieDetails(props) {
         <br /> <b>{movie.Ratings[1].Source}</b>: {movie.Ratings[1].Value}
       </h6> */}
 
-      <button>Add to watch list</button>
+      <button
+        onClick={() => {
+          // e.preventDefault();
+          const addedMovie = {
+            title: movie.Title,
+            poster: movie.Poster,
+            rating: movie.Rated,
+            synopsis: movie.Plot,
+            director: movie.Director,
+            starring: movie.Actors,
+            release_year: movie.Released,
+            runtime: movie.Runtime,
+          };
+          props.addMovieToWatchList(addedMovie);
+        }}
+      >
+        Add Movie to watch list
+      </button>
     </div>
   );
 }
