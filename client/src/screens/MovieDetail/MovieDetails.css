@@ -1,0 +1,11 @@
+.movie-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.movie-poster img {
+  height: 350px;
+  width: 250px;
+}
