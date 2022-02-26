@@ -45,6 +45,18 @@ const terms = [
   'house',
   'lost',
   'red',
+  'guys',
+  'before',
+  'years',
+  'times',
+  'kill',
+  'games',
+  'life',
+  'amazing',
+  'dark',
+  'fire',
+  'heat',
+  'river',
 ];
 
 const randomWord = terms[Math.floor(Math.random() * terms.length)];
