@@ -39,6 +39,10 @@ export default function MovieDetails(props) {
       <h6>
         <b>Awards:</b> {movie.Awards}
       </h6>
+      <h6>
+        <b>{movie.Ratings[0].Source}</b>: {movie.Ratings[0].Value}
+        <br /> <b>{movie.Ratings[1].Source}</b>: {movie.Ratings[1].Value}
+      </h6>
 
       <button>Add to watch list</button>
     </div>
