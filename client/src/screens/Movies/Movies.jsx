@@ -18,11 +18,12 @@ export default function Movies(props) {
               onClick={() => fetchMovie(movie.Title)}
             >
               <img src={movie?.Poster} alt={movie?.Title} />
+
+              <div className="overlay" key={index}>
+                <h6>{movie?.Title}</h6>
+                <h6>Year: {movie?.Year}</h6>
+              </div>
             </Link>
-            <div className="overlay" key={index}>
-              <h6>{movie?.Title}</h6>
-              <h6>Year: {movie?.Year}</h6>
-            </div>
           </div>
         ))}
       </div>
