@@ -57,6 +57,11 @@ const terms = [
   'fire',
   'heat',
   'river',
+  'captain',
+  'school',
+  'car',
+  'hot',
+  'money',
 ];
 
 const randomWord = terms[Math.floor(Math.random() * terms.length)];

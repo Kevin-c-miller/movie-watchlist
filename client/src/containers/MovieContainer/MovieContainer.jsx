@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Routes, Route, useNavigate } from 'react-router-dom';
+import { Routes, Route, useNavigate, useParams } from 'react-router-dom';
 import {
   getAllMovies,
   createMovie,
@@ -20,6 +20,9 @@ export default function MovieContainer(props) {
   const [searchValue, setSearchValue] = useState('');
   const [movie, setMovie] = useState({});
 
+  const navigate = useNavigate();
+  const { username } = useParams();
+
   const getMovieRequest = async () => {
     const movies = await getMovieList();
     console.log(movies);
@@ -32,8 +35,14 @@ export default function MovieContainer(props) {
     setMovie(selectedMovie);
   };
 
+  const addMovieToWatchList = async (movieData) => {
+    const addedMovie = await createMovie(movieData);
+    navigate('/');
+  };
+
   useEffect(() => {
     getMovieRequest();
+    // getMovieRequest();
   }, []);
 
   useEffect(() => {
@@ -63,7 +72,7 @@ export default function MovieContainer(props) {
           }
         />
         <Route path="/:title" element={<MovieDetails movie={movie} />} />
-        <Route path="/users/:id/movielist" element={<UserMovieList />} />
+        <Route path="/users/:username/movielist" element={<UserMovieList />} />
       </Routes>
     </div>
   );
