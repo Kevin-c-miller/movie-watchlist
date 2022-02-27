@@ -16,13 +16,13 @@ export default function UserMovieList(props) {
       <h2>{currentUser?.username}'s movie list</h2>
 
       <div className="all-movies">
-        {userMovies.map((movie, index) => (
-          <div className="image-container" key={movie?.id}>
+        {userMovies.map((movie) => (
+          <div className="image-container">
             <h5>id:{movie.id}</h5>
             <Link
               to={`/users/${currentUser?.id}/movies/${movie.id}`}
               onClick={() =>
-                fetchSelectedMovie(`${currentUser?.id}, ${movie?.id}`)
+                fetchSelectedMovie(`${currentUser?.id}, ${movie.id}`)
               }
             >
               <img src={movie?.poster} alt={movie?.title} />

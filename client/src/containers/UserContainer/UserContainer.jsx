@@ -21,7 +21,7 @@ export default function UserContainer(props) {
     setUserMovies(userList);
   };
 
-  //   get selected movie
+  //  Get selected movie from user clicking on a movie
   const fetchSelectedMovie = async (user_id, movie_id) => {
     const selectedMovie = await getOneMovie(user_id, movie_id);
     console.log(selectedMovie);

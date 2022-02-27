@@ -1,25 +1,6 @@
 class MoviesController < ApplicationController
-  before_action :set_movie, only: %i[ show update destroy ]
+  before_action :set_movie, only: %i[  update destroy ]
   before_action :get_user
-
-  #  GET /users/:user_id/movies
-  # def get_user_movies
-  #   @user = User.find(params[:user_id])
-  #   render json: @user.movies
-  # end
-
-  # POST /users/:user_id/movies
-    # def post_user_movies
-    #   @user = User.find(params[:user_id])
-    #   @movie = Movie.new(movie_params)
-    #   @movie.user = @current_user
-  
-    #   if @movie.save
-    #     render json: @movie, status: :created, location: @movie
-    #   else
-    #     render json: @movie.errors, status: :unprocessable_entity
-    #   end
-    # end
 
 
   # GET /movies
@@ -31,7 +12,9 @@ class MoviesController < ApplicationController
 
   # GET /movies/1
   def show
-    # render json: @movie
+    @user = User.find(params[:user_id])
+    @movie = @user.movie.find(params[:movie_id])
+    render json: @movie
   end
 
   # GET /movies/new
@@ -80,7 +63,8 @@ class MoviesController < ApplicationController
     end
 
     def set_movie
-      @movie = @user.movie.find(params[:id])
+      # @movie = @user.movie.find(params[:id])
+      # @movie = Movie.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
