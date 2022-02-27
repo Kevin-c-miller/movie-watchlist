@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import '../Movies/Movies.css';
+import './UserMovies.css';
 
 export default function UserMovieList(props) {
   const {
@@ -19,20 +20,23 @@ export default function UserMovieList(props) {
   }, [toggle]);
 
   return (
-    <div>
+    <div className="user-movie-list">
       <h2>{currentUser?.username}'s movie list</h2>
 
       <div className="all-movies">
         {userMovies.map((movie, index) => (
-          <div className="image-container" key={index}>
-            <h5>id:{movie.id}</h5>
+          <div className="movies-image-container" key={index}>
             <Link
               to={`/users/${currentUser?.id}/movies/${movie.id}`}
               onClick={() =>
                 fetchSelectedMovie(`${currentUser?.id}, ${movie.id}`)
               }
             >
-              <img src={movie?.poster} alt={movie?.title} />
+              <img
+                src={movie?.poster}
+                alt={movie?.title}
+                className="movie-page-img"
+              />
 
               <div className="overlay" key={index}>
                 <h6>{movie?.title}</h6>
