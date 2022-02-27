@@ -38,9 +38,7 @@ export default function LoginForm(props) {
           onClick={(e) => toggleShowPassword(e)}
         />
 
-        <Button variant="primary" className="login-btn">
-          Login
-        </Button>
+        <button className="login-btn">Login</button>
 
         <div className="register-link">
           <h6>

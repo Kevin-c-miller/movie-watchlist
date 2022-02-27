@@ -51,9 +51,7 @@ export default function RegisterForm(props) {
           onClick={(e) => toggleShowPassword(e)}
         />
 
-        <Button variant="primary" className="register-btn">
-          Register
-        </Button>
+        <button className="register-btn">Register</button>
 
         <div className="login-link">
           <h6>
