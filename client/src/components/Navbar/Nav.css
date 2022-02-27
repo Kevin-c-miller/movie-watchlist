@@ -9,13 +9,15 @@
 }
 
 .navbar-brand {
-  font-size: 32px !important;
+  font-size: 2rem !important;
   font-family: 'Space Mono', 'Times New Roman', Times, serif;
 }
 
 .Nav-header {
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
     border-color 0.15s ease-in-out;
+  width: 300px;
+  display: inline-block !important;
 }
 
 .navbar-header {
