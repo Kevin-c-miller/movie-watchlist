@@ -1,4 +1,4 @@
-import React from 'react';
+import { Link } from 'react-router-dom';
 import { Form, Button } from 'react-bootstrap';
 import './LoginForm.css';
 
@@ -41,6 +41,12 @@ export default function LoginForm(props) {
         <Button variant="primary" className="login-btn">
           Login
         </Button>
+
+        <div className="register-link">
+          <h6>
+            Already have an account? Login <Link to="/login">Here</Link>
+          </h6>
+        </div>
       </Form>
     </div>
   );
