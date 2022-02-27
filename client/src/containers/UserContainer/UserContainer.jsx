@@ -13,6 +13,7 @@ import {
 export default function UserContainer(props) {
   const [userMovies, setUserMovies] = useState([]);
   const [userMovie, setUserMovie] = useState({});
+  const [toggle, setToggle] = useState(false);
 
   // Get User Movies
   const fetchUserMovieList = async (user_id) => {
@@ -35,10 +36,11 @@ export default function UserContainer(props) {
           path="/:id/movies"
           element={
             <UserMovieList
-              fetchUserMovies={fetchUserMovieList}
+              fetchUserMovieList={fetchUserMovieList}
               currentUser={props.currentUser}
               userMovies={userMovies}
               fetchSelectedMovie={fetchSelectedMovie}
+              toggle={toggle}
             />
           }
         />

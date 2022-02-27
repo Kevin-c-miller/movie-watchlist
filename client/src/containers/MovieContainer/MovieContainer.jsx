@@ -14,7 +14,8 @@ export default function MovieContainer(props) {
   const [searchValue, setSearchValue] = useState('');
   const [movie, setMovie] = useState({});
   const [currentPage, setCurrentPage] = useState(1);
-  const [hideButton, setHideButton] = useState(false);
+  const [toggle, setToggle] = useState(false);
+  // const [hideButton, setHideButton] = useState(false);
 
   const navigate = useNavigate();
   const { id } = useParams();
@@ -36,14 +37,15 @@ export default function MovieContainer(props) {
   // add movie to a user movie watchlist
   const addMovieToWatchList = async (user_id, movieData) => {
     const newMovie = await createMovie(user_id, movieData);
+    setToggle((prevToggle) => !prevToggle);
     navigate(`/users/${id}/movies`);
     console.log(newMovie);
   };
 
   // render movies on page load
   useEffect(() => {
-    getMovieRequest(currentPage);
-  }, [currentPage]);
+    getMovieRequest();
+  }, []);
 
   // render movies by user search
   useEffect(() => {
@@ -62,7 +64,7 @@ export default function MovieContainer(props) {
     let next = page + 1;
     getMovieRequest(next);
     if (!next) {
-      setHideButton(true);
+      // setHideButton(true);
     }
   };
 
@@ -70,10 +72,10 @@ export default function MovieContainer(props) {
   const previousPage = (page) => {
     let previous = page--;
     if (page <= 1) {
-      setHideButton(true);
+      // setHideButton(true);
     } else {
       getMovieRequest(previous);
-      setHideButton(false);
+      // setHideButton(false);
     }
   };
 
