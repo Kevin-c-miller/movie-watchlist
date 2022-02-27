@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom';
-import Guest from '../../components/Guest/Guest';
 import { Button } from 'react-bootstrap';
+import Guest from '../../components/Guest/Guest';
 import { netflix2 } from '../../assets/index.js';
-import Signup from '../Register/Signup';
+
 import './Home.css';
 
 export default function Home() {
@@ -21,12 +21,17 @@ export default function Home() {
               Create a list of movies on your 'To Watch' list!
               <br />
               <br />
-              Once you marked, completed, you can leave a review, and rating!
+              Once you watch a movie, you can leave a review and rating!
             </h4>
           </div>
-          <div className="register-guest">
-            <div className="register">
-              <Signup />
+          <div className="home-links">
+            <div className="button-links">
+              <Button variant="outline-light" className="home-btns">
+                Login
+              </Button>
+              <Button variant="outline-light" className="home-btns">
+                Signup
+              </Button>
             </div>
 
             <div className="guest">
