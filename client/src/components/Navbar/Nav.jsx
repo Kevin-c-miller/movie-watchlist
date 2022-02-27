@@ -45,9 +45,7 @@ export default function Nav(props) {
                   {props.currentUser?.username}'s Movie List
                 </ReactBootStrap.Nav.Link>
                 <p>|</p>
-                <ReactBootStrap.Nav.Link
-                  href={`users/${props.currentUser?.id}/my-account`}
-                >
+                <ReactBootStrap.Nav.Link href={`users/${id}/my-account`}>
                   My Account
                 </ReactBootStrap.Nav.Link>
                 <p>|</p>
