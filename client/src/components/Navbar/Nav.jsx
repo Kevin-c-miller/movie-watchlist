@@ -28,7 +28,7 @@ export default function Nav(props) {
           <ReactBootStrap.Container>
             <ReactBootStrap.Navbar.Brand href="/" className="Nav-header">
               <img src={movieticket} alt="movie ticket icon" />
-              Movie Watch-List
+              <h5 className="navbar-header">Movie Watch-List</h5>
             </ReactBootStrap.Navbar.Brand>
             <ReactBootStrap.Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <ReactBootStrap.Navbar.Collapse id="responsive-navbar-nav">

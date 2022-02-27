@@ -15,7 +15,7 @@ export default function PreLoginNav(props) {
         <ReactBootStrap.Container>
           <ReactBootStrap.Navbar.Brand href="/" className="Nav-header">
             <img src={movieticket} alt="movie ticket icon" />
-            Movie Watch-List
+            <span className="navbar-header">Movie Watch-List</span>
           </ReactBootStrap.Navbar.Brand>
           <ReactBootStrap.Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <ReactBootStrap.Navbar.Collapse id="responsive-navbar-nav">

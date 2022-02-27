@@ -1,5 +1,6 @@
 import React from 'react';
-import { Form } from 'react-bootstrap';
+import { Form, Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import './RegisterForm.css';
 
 export default function RegisterForm(props) {
@@ -47,7 +48,15 @@ export default function RegisterForm(props) {
         onClick={(e) => toggleShowPassword(e)}
       />
 
-      <button className="register-btn">Register</button>
+      <Button variant="primary" className="register-btn">
+        Register
+      </Button>
+
+      <div className="login-link">
+        <h6>
+          Already have an account? Login <Link to="/login">Here</Link>
+        </h6>
+      </div>
     </Form>
   );
 }
