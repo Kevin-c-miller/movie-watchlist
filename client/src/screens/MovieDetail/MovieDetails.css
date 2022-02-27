@@ -3,9 +3,54 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background: url('../../assets/images/curtains.jpg') no-repeat center
+    center/cover;
+  min-height: 100vh;
+}
+
+.movie-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  width: 55%;
+  margin: 4rem 0;
+  color: #fff;
+}
+
+.movie-container h2 {
+  padding: 10px;
+  text-decoration: underline;
+}
+
+.movie-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.movie-info h5,
+h6 {
+  padding: 10px;
 }
 
 .movie-poster img {
   height: 350px;
   width: 250px;
+  border: 3px solid #fff;
+  border-radius: 8px;
+}
+
+.add-movie-btn {
+  padding: 5px;
+  margin: 0.8rem;
+  border-radius: 10px;
+  background: lightblue;
+}
+
+.add-movie-btn:hover {
+  opacity: 0.8;
 }
