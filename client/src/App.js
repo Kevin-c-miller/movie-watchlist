@@ -2,6 +2,7 @@ import { Routes, Route, useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { verifyUser } from './services/apiConfig/users';
 import MovieContainer from './containers/MovieContainer/MovieContainer';
+import UserContainer from './containers/UserContainer/UserContainer';
 import Home from './screens/Home/Home';
 import Login from './screens/Login/Login';
 import Signup from './screens/Register/Signup';
@@ -44,6 +45,10 @@ function App() {
         <Route
           path="/movies/*"
           element={<MovieContainer currentUser={currentUser} />}
+        />
+        <Route
+          path="/users/*"
+          element={<UserContainer currentUser={currentUser} />}
         />
         <Route path="*" element={<PageNotFound />} />
       </Routes>

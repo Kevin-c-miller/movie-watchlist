@@ -1,11 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Routes, Route, useNavigate, useParams } from 'react-router-dom';
-import {
-  getAllMovies,
-  createMovie,
-  updateMovie,
-  deleteMovie,
-} from '../../services/apiConfig/movies';
+import { createMovie } from '../../services/apiConfig/movies';
 import {
   getMovieList,
   searchMovie,
@@ -13,7 +8,6 @@ import {
 } from '../../services/apiConfig/omdb';
 import Movies from '../../screens/Movies/Movies';
 import MovieDetails from '../../screens/MovieDetail/MovieDetails';
-import UserMovieList from '../../screens/UserMovieList/UserMovieList';
 
 export default function MovieContainer(props) {
   const [movies, setMovies] = useState([]);
@@ -23,7 +17,7 @@ export default function MovieContainer(props) {
   const [hideButton, setHideButton] = useState(false);
 
   const navigate = useNavigate();
-  const { username } = useParams();
+  const { id } = useParams();
 
   // get movies from omdb api
   const getMovieRequest = async () => {
@@ -40,9 +34,10 @@ export default function MovieContainer(props) {
   };
 
   // add movie to a user movie watchlist
-  const addMovieToWatchList = async (movieData) => {
-    await createMovie(movieData);
-    navigate(`/users/${username}/movielist`);
+  const addMovieToWatchList = async (user_id, movieData) => {
+    const newMovie = await createMovie(user_id, movieData);
+    navigate(`/users/${id}/movies`);
+    console.log(newMovie);
   };
 
   // render movies on page load
@@ -105,12 +100,12 @@ export default function MovieContainer(props) {
           path="/:title"
           element={
             <MovieDetails
+              currentUser={props.currentUser}
               movie={movie}
               addMovieToWatchList={addMovieToWatchList}
             />
           }
         />
-        <Route path="/users/:username/movielist" element={<UserMovieList />} />
       </Routes>
     </div>
   );
