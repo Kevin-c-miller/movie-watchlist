@@ -1,23 +1,30 @@
 import { useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import '../Movies/Movies.css';
 
 export default function UserMovieList(props) {
-  const { fetchUserMovies, currentUser, userMovies, fetchSelectedMovie } =
-    props;
+  const {
+    fetchUserMovieList,
+    currentUser,
+    userMovies,
+    fetchSelectedMovie,
+    toggle,
+  } = props;
   console.log(currentUser?.id);
 
+  const { id } = useParams();
+  console.log(id);
   useEffect(() => {
-    fetchUserMovies(currentUser?.id);
-  }, []);
+    fetchUserMovieList(id);
+  }, [toggle]);
 
   return (
     <div>
       <h2>{currentUser?.username}'s movie list</h2>
 
       <div className="all-movies">
-        {userMovies.map((movie) => (
-          <div className="image-container">
+        {userMovies.map((movie, index) => (
+          <div className="image-container" key={index}>
             <h5>id:{movie.id}</h5>
             <Link
               to={`/users/${currentUser?.id}/movies/${movie.id}`}
@@ -27,7 +34,7 @@ export default function UserMovieList(props) {
             >
               <img src={movie?.poster} alt={movie?.title} />
 
-              <div className="overlay" key={movie?.id}>
+              <div className="overlay" key={index}>
                 <h6>{movie?.title}</h6>
                 <h6>Year: {movie?.release_year}</h6>
               </div>

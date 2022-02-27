@@ -1,19 +1,23 @@
 class MoviesController < ApplicationController
-  before_action :set_movie, only: %i[  update destroy ]
   before_action :get_user
+  before_action :set_movie, only: %i[ show update destroy ]
 
 
   # GET /movies
   def index
-    @movies = @user.movies
+    @movies = Movie.all
+    @user = User.find(params[:user_id])
+    @movie = @user.movies
 
-    render json: @movies, include: :reviews
+    render json: @movie, include: :reviews
   end
 
   # GET /movies/1
   def show
     @user = User.find(params[:user_id])
-    @movie = @user.movie.find(params[:movie_id])
+    @movie = @user.movies.find(params[:id])
+    # @movie = @user.movie(params[:movie_id])
+
     render json: @movie
   end
 
@@ -27,11 +31,6 @@ class MoviesController < ApplicationController
   def create
 
     @movie = @user.movies.build(movie_params)
-
-    # @movie = Movie.new(movie_params)
-    # @movie.user = @current_user
-    # @movie.user_id = params[:user_id]
-    
     
     if @movie.save
       render json: @movie, status: :created, location: @movie
@@ -60,10 +59,11 @@ class MoviesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def get_user
       @user = User.find(params[:user_id])
+
     end
 
     def set_movie
-      # @movie = @user.movie.find(params[:id])
+      @movie = @user.movies.find(params[:id])
       # @movie = Movie.find(params[:id])
     end
 
@@ -71,4 +71,5 @@ class MoviesController < ApplicationController
     def movie_params
       params.require(:movie).permit(:title, :poster, :rating, :synopsis, :director, :starring, :release_year, :runtime, :user_id)
     end
+
 end

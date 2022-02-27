@@ -37,7 +37,7 @@ export default function Movies(props) {
         ))}
       </div>
       {/* Links - previous, next page */}
-      <span>
+      {/* <span>
         <h5>Page: {currentPage}</h5>
         <button
           onClick={() =>
@@ -54,7 +54,7 @@ export default function Movies(props) {
         >
           Next
         </button>
-      </span>
+      </span> */}
     </div>
   );
 }
