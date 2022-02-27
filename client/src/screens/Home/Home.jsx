@@ -26,12 +26,16 @@ export default function Home() {
           </div>
           <div className="home-links">
             <div className="button-links">
-              <Button variant="outline-light" className="home-btns">
-                Login
-              </Button>
-              <Button variant="outline-light" className="home-btns">
-                Signup
-              </Button>
+              <Link to="/login">
+                <Button variant="outline-light" className="home-btns">
+                  Login
+                </Button>
+              </Link>
+              <Link to="/register">
+                <Button variant="outline-light" className="home-btns">
+                  Signup
+                </Button>
+              </Link>
             </div>
 
             <div className="guest">
