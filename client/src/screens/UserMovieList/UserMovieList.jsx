@@ -3,7 +3,9 @@ import { Link } from 'react-router-dom';
 import '../Movies/Movies.css';
 
 export default function UserMovieList(props) {
-  const { fetchUserMovies, currentUser, userMovies } = props;
+  const { fetchUserMovies, currentUser, userMovies, fetchSelectedMovie } =
+    props;
+  console.log(currentUser?.id);
 
   useEffect(() => {
     fetchUserMovies(currentUser?.id);
@@ -11,18 +13,21 @@ export default function UserMovieList(props) {
 
   return (
     <div>
-      <h2>Username's movie list</h2>
+      <h2>{currentUser?.username}'s movie list</h2>
+
       <div className="all-movies">
-        {/* if usermovies not empty */}
         {userMovies.map((movie, index) => (
-          <div className="image-container" key={index}>
+          <div className="image-container" key={movie?.id}>
+            <h5>id:{movie.id}</h5>
             <Link
-              to={`/user/${currentUser?.id}/movies/${movie.id}`}
-              // onClick={() => fetch movie}
+              to={`/users/${currentUser?.id}/movies/${movie.id}`}
+              onClick={() =>
+                fetchSelectedMovie(`${currentUser?.id}, ${movie?.id}`)
+              }
             >
               <img src={movie?.poster} alt={movie?.title} />
 
-              <div className="overlay" key={index}>
+              <div className="overlay" key={movie?.id}>
                 <h6>{movie?.title}</h6>
                 <h6>Year: {movie?.release_year}</h6>
               </div>
@@ -30,6 +35,7 @@ export default function UserMovieList(props) {
           </div>
         ))}
       </div>
+
       {/* add watch as a checkbox and add to db */}
     </div>
   );
