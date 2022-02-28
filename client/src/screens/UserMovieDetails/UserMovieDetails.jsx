@@ -24,15 +24,15 @@ export default function UserMovieDetails(props) {
     // Get Reviews
     const fetchReviews = async () => {
       console.log(userMovie?.id);
-      const movieReviews = await getMovieReviews(userMovie?.id);
+      const movieReviews = await getMovieReviews(id, userMovie?.id);
       setReviews(movieReviews);
     };
     fetchReviews();
-  }, [toggle]);
+  }, [toggle, userMovie?.id]);
 
   // Create Review
   const addReview = async (reviewData) => {
-    await createReview(id, reviewData);
+    await createReview(id, userMovie?.id, reviewData);
     setToggle((prevToggle) => !prevToggle);
   };
 
@@ -101,7 +101,12 @@ export default function UserMovieDetails(props) {
 
       <div className="review-container">
         <AddReviewForm addReview={addReview} />
-        <Reviews />
+        <Reviews
+          reviews={reviews}
+          currentUser={currentUser}
+          removeReview={removeReview}
+          editReview={editReview}
+        />
       </div>
     </div>
   );
