@@ -37,7 +37,7 @@ class ReviewsController < ApplicationController
     @review.movie_id = params[:movie_id]
 
     if @review.save
-      render json: @review, status: :created, location: @review
+      render json: @review, status: :created
     else
       render json: @review.errors, status: :unprocessable_entity
     end

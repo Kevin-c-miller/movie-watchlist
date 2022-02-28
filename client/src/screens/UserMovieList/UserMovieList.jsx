@@ -38,8 +38,8 @@ export default function UserMovieList(props) {
               />
 
               <div className="overlay" key={index}>
-                <h6>Year: {movie?.release_year}</h6>
-                <h6>{movie?.title}</h6>
+                <h6 className="overlay-text">Year: {movie?.release_year}</h6>
+                <h6 className="overlay-text">{movie?.title}</h6>
               </div>
             </Link>
           </div>

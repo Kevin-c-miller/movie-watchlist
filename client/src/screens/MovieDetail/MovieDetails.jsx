@@ -4,7 +4,7 @@ import './MovieDetails.css';
 export default function MovieDetails(props) {
   const { movie } = props;
 
-  console.log(movie, props.currentUser?.id);
+  console.log(props.currentUser?.id);
 
   return (
     <div className="movie-details">
@@ -19,16 +19,16 @@ export default function MovieDetails(props) {
             <h5 className="movie-details-h5">Starring: {movie.Actors}</h5>
 
             <h6 className="type">{movie.Genre}</h6>
-            <h6>
+            <h6 className="type">
               <b>Rated:</b> {movie.Rated}
             </h6>
-            <h6>
+            <h6 className="type">
               <b>Box Office:</b> {movie.BoxOffice}
             </h6>
-            <h6>
+            <h6 className="type">
               <b>Written By:</b> {movie.Writer}
             </h6>
-            <h6>
+            <h6 className="type">
               <b>Awards:</b> {movie.Awards}
             </h6>
           </div>
