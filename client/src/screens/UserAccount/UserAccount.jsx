@@ -1,39 +1,19 @@
 import { useState, useEffect } from 'react';
+import { useParams, Link } from 'react-router-dom';
 import DeleteButton from '../../components/Delete/Delete';
-import { deleteUser } from '../../services/apiConfig/users';
-import { toast } from 'react-toastify';
-import { useNavigate } from 'react-router-dom';
+import { Button } from 'react-bootstrap';
 import './UserAccount.css';
 
 export default function UserAccount(props) {
   // const [user, setUser] = useState('');
-  const { currentUser } = props;
-
-  const navigate = useNavigate();
-
-  // remove token from local storage
-  const removeToken = () => {
-    localStorage.removeItem('authToken');
-  };
+  const { currentUser, deleteAccount } = props;
 
   const dateFormat = () => {
     const date = currentUser.created_at;
     console.log(date);
   };
   //   dateFormat();
-
-  // delete account
-  const deleteAccount = async () => {
-    await deleteUser(currentUser.id);
-
-    removeToken();
-    toast.success('User Deleted');
-
-    setTimeout(() => {
-      window.location.reload();
-    }, 3000);
-    navigate('/');
-  };
+  console.log(currentUser);
 
   return (
     <div className="user-account">
@@ -50,8 +30,12 @@ export default function UserAccount(props) {
             <b>email:</b> {currentUser?.email}
           </h4>
         </div>
-
-        <DeleteButton currentUser={currentUser} delete={deleteAccount} />
+        <div className="account-btn">
+          <Link to={`/users/${currentUser?.id}/edit`}>
+            <Button variant="secondary">Update User Info.</Button>
+          </Link>
+          <DeleteButton delete={deleteAccount} />
+        </div>
       </div>
     </div>
   );

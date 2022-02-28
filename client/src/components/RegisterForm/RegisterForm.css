@@ -9,7 +9,8 @@
   max-width: 500px;
 }
 
-.register-form {
+.register-form,
+.update-form {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -22,7 +23,8 @@
   width: 100%;
 }
 
-.register-form input {
+.register-form,
+.update-form input {
   padding: 0.8rem;
   margin: 2rem;
   border-radius: 10px;
@@ -40,4 +42,15 @@
 
 .login-link {
   margin: 0.5rem;
+}
+
+.register-btn {
+  padding: 8px;
+  background: lightcyan;
+  border-radius: 10px;
+  width: 5.5rem;
+}
+
+.register-btn:hover {
+  opacity: 0.8;
 }

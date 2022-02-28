@@ -5,6 +5,7 @@ import { toast } from 'react-toastify';
 import UserMovieList from '../../screens/UserMovieList/UserMovieList';
 import UserMovieDetails from '../../screens/UserMovieDetails/UserMovieDetails';
 import UserAccount from '../../screens/UserAccount/UserAccount';
+import UpdateUserForm from '../../components/UpdateUserForm/UpdateUserForm';
 import {
   getUserMovies,
   getOneMovie,
@@ -40,8 +41,13 @@ export default function UserContainer(props) {
   };
 
   // UpdateUser
-  const editUser = async (updateData) => {
-    const updatedUser = await updateUser(props.currentUser.id, updateData);
+  const editUser = async (user_id, updateData) => {
+    const updatedUser = await updateUser(user_id, updateData);
+    console.log(updatedUser);
+
+    toast.success('User Information Updated');
+
+    navigate(`/movies`);
   };
 
   // delete account
@@ -77,9 +83,21 @@ export default function UserContainer(props) {
           element={<UserMovieDetails userMovie={userMovie} />}
         />
         <Route
-          path="/users/:id/my-account"
+          path="/:id/"
           element={
-            <UserAccount editUser={editUser} deleteAccount={deleteAccount} />
+            <UserAccount
+              deleteAccount={deleteAccount}
+              currentUser={props.currentUser}
+            />
+          }
+        />
+        <Route
+          path="/:id/edit"
+          element={
+            <UpdateUserForm
+              editUser={editUser}
+              currentUser={props.currentUser}
+            />
           }
         />
       </Routes>
