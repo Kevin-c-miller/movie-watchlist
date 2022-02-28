@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
 import Guest from '../../components/Guest/Guest';
-import { netflix2 } from '../../assets/index.js';
+import { netflix3 } from '../../assets/index.js';
 
 import './Home.css';
 
@@ -13,7 +13,11 @@ export default function Home() {
       </div>
       <div className="flex-container">
         <div className="image-container">
-          <img src={netflix2} alt="netflix app on laptop" />
+          <img
+            src={netflix3}
+            alt="netflix app on laptop"
+            className="home-img"
+          />
         </div>
         <div className="subcontainer">
           <div className="home-subheader">

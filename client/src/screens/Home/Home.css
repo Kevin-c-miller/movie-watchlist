@@ -31,6 +31,7 @@
   margin: 1rem 2rem;
   padding: 2rem;
   max-width: 1500px;
+  max-height: 1200px;
 }
 
 .image-container,
@@ -49,12 +50,13 @@
   align-items: center;
 }
 
-.image-container img {
+.image-container .home-img {
   height: 90%;
   width: 100%;
   object-fit: cover;
   border: 5px solid #fff;
   border-radius: 50%;
+  max-height: 700px;
 }
 
 .home-subheader {
