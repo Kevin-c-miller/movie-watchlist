@@ -1,13 +1,22 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
+import { X } from '../../assets/index.js';
 import '../MovieDetail/MovieDetails.css';
+import '../UserMovieList/UserMovies.css';
 
 export default function UserMovieDetails(props) {
-  const { userMovie } = props;
+  const { userMovie, removeMovie, currentUser } = props;
 
   return (
     <div className="movie-details">
       <div className="movie-card">
+        <div className="remove-movie">
+          <img
+            src={X}
+            alt="x icon"
+            onClick={() => removeMovie(currentUser?.id, userMovie?.id)}
+          />
+        </div>
         <div className="info-section">
           <div className="movie-header">
             <h1>{userMovie?.title}</h1>

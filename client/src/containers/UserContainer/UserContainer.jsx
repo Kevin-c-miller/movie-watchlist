@@ -42,8 +42,11 @@ export default function UserContainer(props) {
 
   //  Delete moovie from user list
   const removeMovieFromList = async (user_id, movie_id) => {
-    const deletedMovie = await deleteMovie(user_id, movie_id);
-    console.log(deletedMovie);
+    await deleteMovie(user_id, movie_id);
+
+    toast.success('Movie was removed from your list');
+
+    navigate(`/users/${props.currentUser?.id}/movies`);
   };
 
   // UpdateUser
@@ -86,7 +89,13 @@ export default function UserContainer(props) {
         />
         <Route
           path="/:id/movies/:id"
-          element={<UserMovieDetails userMovie={userMovie} />}
+          element={
+            <UserMovieDetails
+              userMovie={userMovie}
+              removeMovie={removeMovieFromList}
+              currentUser={props.currentUser}
+            />
+          }
         />
         <Route
           path="/:id/"

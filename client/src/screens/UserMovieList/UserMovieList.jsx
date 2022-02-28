@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
-import { Link, useParams } from 'react-router-dom';
-import { X } from '../../assets/index.js';
+import { Link } from 'react-router-dom';
+
 import '../Movies/Movies.css';
 import './UserMovies.css';
 
@@ -14,8 +14,6 @@ export default function UserMovieList(props) {
   } = props;
   console.log(currentUser?.id);
 
-  // const { id } = useParams();
-  // console.log(id);
   useEffect(() => {
     if (currentUser?.id) {
       fetchUserMovieList(currentUser?.id);
@@ -42,7 +40,6 @@ export default function UserMovieList(props) {
               <div className="overlay" key={index}>
                 <h6>Year: {movie?.release_year}</h6>
                 <h6>{movie?.title}</h6>
-                <img src={X} alt="x icon" />
               </div>
             </Link>
           </div>
