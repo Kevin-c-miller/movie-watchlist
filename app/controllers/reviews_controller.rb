@@ -66,7 +66,7 @@ class ReviewsController < ApplicationController
     end
 
     def set_review
-      @review = movie.reviews.find(params[:id])
+      @review = @movie.reviews.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
