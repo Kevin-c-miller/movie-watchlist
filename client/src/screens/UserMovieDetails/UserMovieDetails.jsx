@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { X } from '../../assets/index.js';
+import { toast } from 'react-toastify';
 import {
   deleteReview,
   getMovieReviews,
@@ -11,6 +12,7 @@ import AddReviewForm from '../../components/ReviewForm/AddReviewForm';
 import Reviews from '../../components/ReviewList/Reviews.jsx';
 import '../MovieDetail/MovieDetails.css';
 import '../UserMovieList/UserMovies.css';
+import '../../components/ReviewForm/ReviewForm.css';
 
 export default function UserMovieDetails(props) {
   const [reviews, setReviews] = useState([]);
@@ -28,7 +30,7 @@ export default function UserMovieDetails(props) {
       setReviews(movieReviews);
     };
     fetchReviews();
-  }, [toggle, userMovie?.id]);
+  }, [toggle, userMovie?.id, id]);
 
   // Create Review
   const addReview = async (reviewData) => {
@@ -44,8 +46,9 @@ export default function UserMovieDetails(props) {
 
   // Delete Review
   const removeReview = async (review_id) => {
-    await deleteReview(id, review_id);
+    await deleteReview(id, userMovie?.id, review_id);
     setToggle((prevToggle) => !prevToggle);
+    toast.success('Review Deleted');
   };
 
   return (

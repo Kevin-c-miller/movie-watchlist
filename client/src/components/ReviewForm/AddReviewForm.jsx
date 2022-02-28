@@ -9,6 +9,7 @@ export default function AddReviewForm({ addReview }) {
   return (
     <div className="review-form-page">
       <h2>Leave a review</h2>
+
       <form
         className="review-form"
         onSubmit={(e) => {
@@ -27,6 +28,7 @@ export default function AddReviewForm({ addReview }) {
           value={title}
           onChange={(e) => setTitle(e.target.value)}
         />
+
         <input
           type="number"
           step="0.1"
@@ -35,6 +37,7 @@ export default function AddReviewForm({ addReview }) {
           value={rating}
           onChange={(e) => setRating(e.target.value)}
         />
+
         <input
           type="text"
           placeholder="Leave review here..."

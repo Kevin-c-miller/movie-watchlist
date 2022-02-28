@@ -1,3 +1,11 @@
+.review-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
 .review-form-page {
   background: lightgray;
   display: flex;
@@ -5,16 +13,96 @@
   align-items: center;
   justify-content: center;
   width: 100%;
+  padding: 2rem;
 }
 
 .review-form-page h2 {
-  color: #fff;
+  color: #000;
 }
 
 .review-form {
   display: flex;
-
-  /* flex-direction: column; */
   align-items: center;
   justify-content: center;
+}
+
+.review-form input {
+  padding: 5px;
+  margin: 3px 10px;
+}
+
+.reviews {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.review-page-header {
+  background: lightgray;
+}
+
+.reviews h3 {
+  margin: 10px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.review-list {
+  width: 75%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.movie-reviews {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  border-bottom: 2px solid #fff;
+  border-radius: 10px;
+  background: lightgray;
+  margin: 10px auto;
+}
+
+.review-flex-left,
+.review-flex-right {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 5px 10px;
+  width: 50%;
+  padding: 10px;
+}
+
+.review-flex-right {
+  border-left: 1px solid #000;
+}
+
+.movie-reviews h5,
+h6,
+p {
+  color: #000;
+}
+
+.review-delete-btn {
+  background: red;
+  border-radius: 10px;
+  padding: 5px;
+  margin: 0 10px;
+}
+
+.review-delete-btn:hover {
+  opacity: 0.8;
+}
+
+.review-delete-icon {
+  height: 20px;
+  width: 20px;
 }
