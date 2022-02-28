@@ -78,7 +78,7 @@ export default function UserMovieDetails(props) {
             </h5>
 
             {/* <h6 className="type">{userMovie.genre}</h6> */}
-            <h6>
+            <h6 className="type">
               <b>Rated:</b> {userMovie?.rating}
             </h6>
             {/* <h6>
