@@ -62,6 +62,16 @@ const terms = [
   'car',
   'hot',
   'money',
+  'spider',
+  'one',
+  'window',
+  'hello',
+  'national',
+  'treasure',
+  'incredible',
+  'day',
+  'show',
+  'super',
 ];
 
 const randomWord = terms[Math.floor(Math.random() * terms.length)];
