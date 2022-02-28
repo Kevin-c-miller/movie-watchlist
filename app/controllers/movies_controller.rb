@@ -1,6 +1,6 @@
 class MoviesController < ApplicationController
   before_action :get_user
-  before_action :set_movie, only: %i[  update destroy ]
+  before_action :set_movie, only: %i[ update destroy ]
 
 
   # GET /movies
@@ -33,7 +33,7 @@ class MoviesController < ApplicationController
     @movie = @user.movies.build(movie_params)
     
     if @movie.save
-      render json: @movie, status: :created, location: @movie
+      render json: @movie, status: :created
     else
       render json: @movie.errors, status: :unprocessable_entity
     end

@@ -29,3 +29,7 @@
   border-radius: 50%;
   border: 1px solid #ff0800;
 }
+
+.overlay-text {
+  color: #fff;
+}
