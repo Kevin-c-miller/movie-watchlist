@@ -15,3 +15,17 @@
   height: 15px;
   width: 15px;
 }
+
+.remove-movie {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  height: 35px;
+}
+.remove-movie img {
+  height: 30px;
+  width: 30px;
+  background: #ff0800;
+  border-radius: 50%;
+  border: 1px solid #ff0800;
+}

@@ -1,33 +1,107 @@
-import React from 'react';
-import { useParams } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
+import { X } from '../../assets/index.js';
+import {
+  deleteReview,
+  getMovieReviews,
+  createReview,
+  updateReview,
+} from '../../services/apiConfig/reviews.js';
+import AddReviewForm from '../../components/ReviewForm/AddReviewForm';
+import Reviews from '../../components/ReviewList/Reviews.jsx';
 import '../MovieDetail/MovieDetails.css';
+import '../UserMovieList/UserMovies.css';
 
 export default function UserMovieDetails(props) {
-  const { userMovie } = props;
+  const [reviews, setReviews] = useState([]);
+  const [toggle, setToggle] = useState(false);
+
+  const { userMovie, removeMovie, currentUser } = props;
+  const id = currentUser?.id;
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    // Get Reviews
+    const fetchReviews = async () => {
+      console.log(userMovie?.id);
+      const movieReviews = await getMovieReviews(userMovie?.id);
+      setReviews(movieReviews);
+    };
+    fetchReviews();
+  }, [toggle]);
+
+  // Create Review
+  const addReview = async (reviewData) => {
+    await createReview(id, reviewData);
+    setToggle((prevToggle) => !prevToggle);
+  };
+
+  // Edit Review
+  const editReview = async (review_id, reviewData) => {
+    const updatedReview = await updateReview(id, review_id, reviewData);
+    console.log(updatedReview);
+  };
+
+  // Delete Review
+  const removeReview = async (review_id) => {
+    await deleteReview(id, review_id);
+    setToggle((prevToggle) => !prevToggle);
+  };
 
   return (
     <div className="movie-details">
-      <h2>{userMovie?.title}</h2>
-      <div className="movie-poster">
-        <img src={userMovie?.poster} alt={userMovie?.title} />
+      <div className="back-btn">
+        <button onClick={() => navigate(`/users/${currentUser?.id}/movies`)}>
+          Back to my movie list
+        </button>
       </div>
-      <h4>Director: {userMovie?.director}</h4>
-      <h5>Starring: {userMovie?.starring}</h5>
-      <h6>
-        <b>Rated:</b> {userMovie?.rating}
-      </h6>
-      <h6>
-        <b>Released:</b> {userMovie?.release_year}
-      </h6>
-      <h6>
-        <b>Runtime: </b>
-        {userMovie?.runtime}
-      </h6>
+      <div className="movie-card">
+        <div className="remove-movie">
+          <img
+            src={X}
+            alt="x icon"
+            onClick={() => removeMovie(currentUser?.id, userMovie?.id)}
+          />
+        </div>
+        <div className="info-section">
+          <div className="movie-header">
+            <h1>{userMovie?.title}</h1>
+            <h4>
+              {userMovie?.release_year}, {userMovie?.director}
+            </h4>
+            <h6 className="minutes"> {userMovie?.runtime}</h6>
+            <h5 className="movie-details-h5">
+              Starring: {userMovie?.starring}
+            </h5>
 
-      <div className="plot">
-        <p>
-          <b>Plot:</b> {userMovie?.synopsis}
-        </p>
+            {/* <h6 className="type">{userMovie.genre}</h6> */}
+            <h6>
+              <b>Rated:</b> {userMovie?.rating}
+            </h6>
+            {/* <h6>
+              <b>Box Office:</b> {movie.BoxOffice}
+            </h6> */}
+            {/* <h6>
+              <b>Written By:</b> {movie.Writer}
+            </h6> */}
+            {/* <h6>
+              <b>Awards:</b> {movie.Awards}
+            </h6> */}
+          </div>
+          <div className="movie-desc">
+            <h5>Synopsis:</h5>
+            <p className="text"> {userMovie?.synopsis}</p>
+          </div>
+        </div>
+
+        <div className="blur-back">
+          <img src={userMovie?.poster} alt={userMovie?.title} />
+        </div>
+      </div>
+
+      <div className="review-container">
+        <AddReviewForm addReview={addReview} />
+        <Reviews />
       </div>
     </div>
   );

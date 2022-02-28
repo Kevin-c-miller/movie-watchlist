@@ -46,7 +46,7 @@ export default function Nav(props) {
                 </ReactBootStrap.Nav.Link>
                 <p>|</p>
                 <ReactBootStrap.Nav.Link
-                  href={`users/${props.currentUser?.id}/`}
+                  href={`/users/${props.currentUser?.id}`}
                 >
                   My Account
                 </ReactBootStrap.Nav.Link>
