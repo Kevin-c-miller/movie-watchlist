@@ -7,27 +7,41 @@ export default function UserMovieDetails(props) {
 
   return (
     <div className="movie-details">
-      <h2>{userMovie?.title}</h2>
-      <div className="movie-poster">
-        <img src={userMovie?.poster} alt={userMovie?.title} />
-      </div>
-      <h4>Director: {userMovie?.director}</h4>
-      <h5>Starring: {userMovie?.starring}</h5>
-      <h6>
-        <b>Rated:</b> {userMovie?.rating}
-      </h6>
-      <h6>
-        <b>Released:</b> {userMovie?.release_year}
-      </h6>
-      <h6>
-        <b>Runtime: </b>
-        {userMovie?.runtime}
-      </h6>
+      <div className="movie-card">
+        <div className="info-section">
+          <div className="movie-header">
+            <h1>{userMovie?.title}</h1>
+            <h4>
+              {userMovie?.release_year}, {userMovie?.director}
+            </h4>
+            <h6 className="minutes"> {userMovie?.runtime}</h6>
+            <h5 className="movie-details-h5">
+              Starring: {userMovie?.starring}
+            </h5>
 
-      <div className="plot">
-        <p>
-          <b>Plot:</b> {userMovie?.synopsis}
-        </p>
+            {/* <h6 className="type">{userMovie.genre}</h6> */}
+            <h6>
+              <b>Rated:</b> {userMovie?.rating}
+            </h6>
+            {/* <h6>
+              <b>Box Office:</b> {movie.BoxOffice}
+            </h6> */}
+            {/* <h6>
+              <b>Written By:</b> {movie.Writer}
+            </h6> */}
+            {/* <h6>
+              <b>Awards:</b> {movie.Awards}
+            </h6> */}
+          </div>
+          <div className="movie-desc">
+            <h5>Synopsis:</h5>
+            <p className="text"> {userMovie?.synopsis}</p>
+          </div>
+        </div>
+
+        <div className="blur-back">
+          <img src={userMovie?.poster} alt={userMovie?.title} />
+        </div>
       </div>
     </div>
   );

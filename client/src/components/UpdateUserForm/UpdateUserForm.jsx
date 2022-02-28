@@ -68,6 +68,7 @@ export default function UpdateUserForm(props) {
             required
             onChange={(e) => setPassword(e.target.value)}
           />
+
           <Form.Check
             type="switch"
             label="Show Password"

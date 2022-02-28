@@ -4,7 +4,7 @@
   align-items: center;
   justify-content: flex-start;
   flex-wrap: wrap;
-  background: url('../../assets/images/popcorn.jpg') no-repeat center
+  background: url('../../assets/images/movie-collage.jpg') no-repeat center
     center/cover;
   min-height: 100vh;
 }
@@ -49,11 +49,11 @@ h4 {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: url('../../assets/images/movie-collage.jpg') no-repeat center
+  background: url('../../assets/images/popcorn.jpg') no-repeat center
     center/cover;
   min-height: 100vh;
 }
 
 .edit-user-info h2 {
-  color: #fff;
+  color: #000;
 }
