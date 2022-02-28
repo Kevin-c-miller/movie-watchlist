@@ -7,3 +7,4 @@ export const cinema = require('./images/cinema.jpg');
 export const popcorn = require('./images/popcorn.jpg');
 export const homebackground = require('./images/foggybckgrnd.jpg');
 export const director = require('./images/director.jpg');
+export const trash = require('./images/trash.png');

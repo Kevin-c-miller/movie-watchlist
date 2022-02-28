@@ -9,12 +9,6 @@ export default function UserAccount(props) {
   // const [user, setUser] = useState('');
   const { currentUser } = props;
 
-  // useEffect(() => {
-  //   setUser(currentUser?.id);
-  // }, []);
-
-  // console.log(currentUser?.id);
-
   const navigate = useNavigate();
 
   // remove token from local storage

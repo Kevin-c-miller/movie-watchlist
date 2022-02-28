@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Modal, Button } from 'react-bootstrap';
+import { trash } from '../../assets/index.js';
 
 export default function DeleteButton(props) {
   const [show, setShow] = useState(false);
@@ -11,6 +12,12 @@ export default function DeleteButton(props) {
   return (
     <div>
       <Button variant="danger" onClick={() => handleModal()}>
+        <img
+          src={trash}
+          alt="trashcan icon"
+          style={{ height: '20px', width: '20px' }}
+        />
+        {'  '}
         Delete
       </Button>
       <Modal
@@ -37,6 +44,11 @@ export default function DeleteButton(props) {
             Cancel
           </Button>
           <Button variant="danger" onClick={props.delete}>
+            <img
+              src={trash}
+              alt="trashcan icon"
+              style={{ height: '20px', width: '20px' }}
+            />{' '}
             Delete
           </Button>
         </Modal.Footer>
