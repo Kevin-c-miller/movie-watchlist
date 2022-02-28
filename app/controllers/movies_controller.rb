@@ -1,6 +1,6 @@
 class MoviesController < ApplicationController
   before_action :get_user
-  before_action :set_movie, only: %i[ show update destroy ]
+  before_action :set_movie, only: %i[  update destroy ]
 
 
   # GET /movies

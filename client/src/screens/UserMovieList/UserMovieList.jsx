@@ -17,8 +17,10 @@ export default function UserMovieList(props) {
   // const { id } = useParams();
   // console.log(id);
   useEffect(() => {
-    fetchUserMovieList(currentUser?.id);
-  }, []);
+    if (currentUser?.id) {
+      fetchUserMovieList(currentUser?.id);
+    }
+  }, [currentUser?.id]);
 
   return (
     <div className="user-movie-list">
@@ -29,9 +31,7 @@ export default function UserMovieList(props) {
           <div className="movies-image-container" key={index}>
             <Link
               to={`/users/${currentUser?.id}/movies/${movie.id}`}
-              onClick={() =>
-                fetchSelectedMovie(`${currentUser?.id}, ${movie.id}`)
-              }
+              onClick={() => fetchSelectedMovie(currentUser?.id, movie.id)}
             >
               <img
                 src={movie?.poster}
