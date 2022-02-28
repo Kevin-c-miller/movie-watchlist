@@ -1,6 +1,7 @@
 class ReviewsController < ApplicationController
+  before_action :set_movie
   before_action :set_review, only: %i[ show update destroy ]
-  # before_action :authorize_request, only: [:create, :update, :destroy]
+  before_action :authorize_request, only: [:create, :update, :destroy]
 
   # GET /reviews
   def index
@@ -10,11 +11,11 @@ class ReviewsController < ApplicationController
     render json: @reviews, include: :user
   end
 
-  # Get /reviews all
-  def get_all_reviews
-    @user = User.find([params[:user_id]])
-    render json: @user.reviews
-  end
+  # # Get /reviews all
+  # def get_all_reviews
+  #   @user = User.find([params[:user_id]])
+  #   render json: @user.reviews
+  # end
 
 
   # GET /reviews/1
@@ -22,9 +23,16 @@ class ReviewsController < ApplicationController
     render json: @review
   end
 
+  # GET /reviews/new
+  def new
+    @review = @movie.reviews.build
+    @review.user = current_user
+
+  end
+
   # POST /reviews
   def create
-    @review = Review.new(review_params)
+    @review = @movie.reviews.build(review_params)
     @review.user = @current_user
     @review.movie_id = params[:movie_id]
 
@@ -53,8 +61,12 @@ class ReviewsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
+    def set_movie 
+      @movie = Movie.find(params[:movie_id])
+    end
+
     def set_review
-      @review = Review.find(params[:id])
+      @review = movie.reviews.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
