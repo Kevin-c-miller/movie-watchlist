@@ -40,6 +40,12 @@ export default function UserContainer(props) {
     setUserMovie(selectedMovie);
   };
 
+  //  Delete moovie from user list
+  const removeMovieFromList = async (user_id, movie_id) => {
+    const deletedMovie = await deleteMovie(user_id, movie_id);
+    console.log(deletedMovie);
+  };
+
   // UpdateUser
   const editUser = async (user_id, updateData) => {
     const updatedUser = await updateUser(user_id, updateData);

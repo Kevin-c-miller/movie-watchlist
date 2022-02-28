@@ -8,3 +8,6 @@ export const popcorn = require('./images/popcorn.jpg');
 export const homebackground = require('./images/foggybckgrnd.jpg');
 export const director = require('./images/director.jpg');
 export const trash = require('./images/trash.png');
+export const X = require('./images/x-icon.png');
+export const github = require('./images/github.png');
+export const linkedin = require('./images/linkedin.png');
