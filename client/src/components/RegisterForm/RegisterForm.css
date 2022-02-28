@@ -1,18 +1,43 @@
+.form {
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: fit-content;
+  width: 65%;
+  max-width: 500px;
+}
+
 .register-form {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  border: 2px solid #000;
+  padding: 2rem;
+  height: 50%;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  width: 100%;
 }
 
 .register-form input {
-  padding: 10px;
-  margin: 10px;
+  padding: 0.8rem;
+  margin: 2rem;
   border-radius: 10px;
 }
 
-.register-btn {
-  padding: 5px;
-  width: 5rem;
-  border-radius: 10px;
+.form-check {
+  display: flex !important;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.form-check-label {
+  font-weight: bold;
+}
+
+.login-link {
+  margin: 0.5rem;
 }

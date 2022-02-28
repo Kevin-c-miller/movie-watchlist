@@ -27,6 +27,7 @@ export default function Signup(props) {
       email,
     };
     const res = await createUser(user);
+    console.log(res);
     props.setCurrentUser(res);
 
     navigate('/movies');
@@ -34,7 +35,6 @@ export default function Signup(props) {
 
   return (
     <div className="register-page">
-      <h2>Register</h2>
       <RegisterForm
         handleRegisterSubmit={handleRegisterSubmit}
         setUsername={setUsername}

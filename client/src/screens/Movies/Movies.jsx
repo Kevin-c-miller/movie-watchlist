@@ -21,12 +21,16 @@ export default function Movies(props) {
 
       <div className="all-movies">
         {movies?.map((movie, index) => (
-          <div className="image-container" key={index}>
+          <div className="movies-image-container" key={index}>
             <Link
               to={`/movies/${movie.Title}`}
               onClick={() => fetchMovie(movie.Title)}
             >
-              <img src={movie?.Poster} alt={movie?.Title} />
+              <img
+                src={movie?.Poster}
+                alt={movie?.Title}
+                className="movie-page-img"
+              />
 
               <div className="overlay" key={index}>
                 <h6>{movie?.Title}</h6>

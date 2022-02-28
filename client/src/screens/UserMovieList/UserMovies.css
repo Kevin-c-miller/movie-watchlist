@@ -1,0 +1,11 @@
+.user-movie-list {
+  min-height: 100vh;
+  background: url('../../assets/images/film.jpg') no-repeat center center/cover;
+}
+
+.user-movie-list h2 {
+  text-align: center;
+  color: #fff;
+  font-weight: bold;
+  padding: 1rem;
+}
