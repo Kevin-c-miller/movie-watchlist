@@ -1,14 +1,60 @@
-import React from 'react';
-import { useParams } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
 import { X } from '../../assets/index.js';
+import {
+  deleteReview,
+  getMovieReviews,
+  createReview,
+  updateReview,
+} from '../../services/apiConfig/reviews.js';
+import AddReviewForm from '../../components/ReviewForm/AddReviewForm';
+import Reviews from '../../components/ReviewList/Reviews.jsx';
 import '../MovieDetail/MovieDetails.css';
 import '../UserMovieList/UserMovies.css';
 
 export default function UserMovieDetails(props) {
+  const [reviews, setReviews] = useState([]);
+  const [toggle, setToggle] = useState(false);
+
   const { userMovie, removeMovie, currentUser } = props;
+  const id = currentUser?.id;
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    // Get Reviews
+    const fetchReviews = async () => {
+      console.log(userMovie?.id);
+      const movieReviews = await getMovieReviews(userMovie?.id);
+      setReviews(movieReviews);
+    };
+    fetchReviews();
+  }, [toggle]);
+
+  // Create Review
+  const addReview = async (reviewData) => {
+    await createReview(id, reviewData);
+    setToggle((prevToggle) => !prevToggle);
+  };
+
+  // Edit Review
+  const editReview = async (review_id, reviewData) => {
+    const updatedReview = await updateReview(id, review_id, reviewData);
+    console.log(updatedReview);
+  };
+
+  // Delete Review
+  const removeReview = async (review_id) => {
+    await deleteReview(id, review_id);
+    setToggle((prevToggle) => !prevToggle);
+  };
 
   return (
     <div className="movie-details">
+      <div className="back-btn">
+        <button onClick={() => navigate(`/users/${currentUser?.id}/movies`)}>
+          Back to my movie list
+        </button>
+      </div>
       <div className="movie-card">
         <div className="remove-movie">
           <img
@@ -51,6 +97,11 @@ export default function UserMovieDetails(props) {
         <div className="blur-back">
           <img src={userMovie?.poster} alt={userMovie?.title} />
         </div>
+      </div>
+
+      <div className="review-container">
+        <AddReviewForm addReview={addReview} />
+        <Reviews />
       </div>
     </div>
   );
