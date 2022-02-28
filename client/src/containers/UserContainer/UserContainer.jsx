@@ -1,7 +1,11 @@
 import { useState, useEffect } from 'react';
 import { Routes, Route, useNavigate, useParams } from 'react-router-dom';
+import { deleteUser, updateUser } from '../../services/apiConfig/users';
+import { toast } from 'react-toastify';
 import UserMovieList from '../../screens/UserMovieList/UserMovieList';
 import UserMovieDetails from '../../screens/UserMovieDetails/UserMovieDetails';
+import UserAccount from '../../screens/UserAccount/UserAccount';
+import UpdateUserForm from '../../components/UpdateUserForm/UpdateUserForm';
 import {
   getUserMovies,
   getOneMovie,
@@ -15,6 +19,13 @@ export default function UserContainer(props) {
   const [userMovie, setUserMovie] = useState({});
   const [toggle, setToggle] = useState(false);
 
+  const navigate = useNavigate();
+
+  // remove token from local storage
+  const removeToken = () => {
+    localStorage.removeItem('authToken');
+  };
+
   // Get User Movies
   const fetchUserMovieList = async (user_id) => {
     const userList = await getUserMovies(user_id);
@@ -27,6 +38,29 @@ export default function UserContainer(props) {
     const selectedMovie = await getOneMovie(user_id, movie_id);
     console.log(selectedMovie);
     setUserMovie(selectedMovie);
+  };
+
+  // UpdateUser
+  const editUser = async (user_id, updateData) => {
+    const updatedUser = await updateUser(user_id, updateData);
+    console.log(updatedUser);
+
+    toast.success('User Information Updated');
+
+    navigate(`/movies`);
+  };
+
+  // delete account
+  const deleteAccount = async () => {
+    await deleteUser(props.currentUser.id);
+
+    removeToken();
+    toast.success('User Deleted');
+
+    setTimeout(() => {
+      window.location.reload();
+    }, 3000);
+    navigate('/');
   };
 
   return (
@@ -47,6 +81,24 @@ export default function UserContainer(props) {
         <Route
           path="/:id/movies/:id"
           element={<UserMovieDetails userMovie={userMovie} />}
+        />
+        <Route
+          path="/:id/"
+          element={
+            <UserAccount
+              deleteAccount={deleteAccount}
+              currentUser={props.currentUser}
+            />
+          }
+        />
+        <Route
+          path="/:id/edit"
+          element={
+            <UpdateUserForm
+              editUser={editUser}
+              currentUser={props.currentUser}
+            />
+          }
         />
       </Routes>
     </div>

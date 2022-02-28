@@ -34,3 +34,26 @@
 h4 {
   padding: 1rem;
 }
+
+.account-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.account-btn a {
+  margin: 0 15px;
+}
+
+.edit-user-info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: url('../../assets/images/movie-collage.jpg') no-repeat center
+    center/cover;
+  min-height: 100vh;
+}
+
+.edit-user-info h2 {
+  color: #fff;
+}

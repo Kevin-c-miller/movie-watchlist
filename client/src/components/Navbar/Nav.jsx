@@ -11,8 +11,6 @@ export default function Nav(props) {
   };
   const authToken = localStorage.getItem('authToken');
 
-  const { id } = useParams();
-
   if (!authToken) {
     return <PreLoginNav currentUser={props.currentUser} />;
   } else {
@@ -47,7 +45,9 @@ export default function Nav(props) {
                   {props.currentUser?.username}'s Movie List
                 </ReactBootStrap.Nav.Link>
                 <p>|</p>
-                <ReactBootStrap.Nav.Link href={`users/${id}/my-account`}>
+                <ReactBootStrap.Nav.Link
+                  href={`users/${props.currentUser?.id}/`}
+                >
                   My Account
                 </ReactBootStrap.Nav.Link>
                 <p>|</p>
