@@ -15,9 +15,3 @@
   height: 15px;
   width: 15px;
 }
-
-.overlay-flex {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
