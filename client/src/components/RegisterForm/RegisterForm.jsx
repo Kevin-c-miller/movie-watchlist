@@ -1,4 +1,3 @@
-import React from 'react';
 import { Form } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import './RegisterForm.css';
@@ -19,7 +18,6 @@ export default function RegisterForm(props) {
   return (
     <div className="form">
       <h2>Register</h2>
-
       <Form className="register-form" onSubmit={handleRegisterSubmit}>
         <Form.Control
           type="text"
