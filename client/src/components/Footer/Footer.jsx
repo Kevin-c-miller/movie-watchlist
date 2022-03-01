@@ -1,6 +1,6 @@
 import React from 'react';
 import { MDBFooter, MDBContainer, MDBIcon } from 'mdb-react-ui-kit';
-import { github, linkedin, google } from '../../assets/index.js';
+import { github, linkedin, google, omdb } from '../../assets/index.js';
 import './Footer.css';
 
 export default function Footer() {
@@ -45,15 +45,26 @@ export default function Footer() {
         </section>
       </MDBContainer>
 
-      <div
-        className="text-center p-3"
-        style={{ backgroundColor: 'rgba(0, 0, 0, 0.2)' }}
-      >
-        © 2020 Copyright:{' '}
-        <a className="text-white" href="#">
-          {/* placeholder for portfolio link */}
-          Kevin Miller
-        </a>
+      <div className="footer-bottom">
+        <div
+          className="text-center p-3 footer-name"
+          style={{ backgroundColor: 'rgba(0, 0, 0, 0.2)' }}
+        >
+          © 2020 Copyright:{' '}
+          <a className="text-white portfolio-link" href="#">
+            {/* placeholder for portfolio link */}
+            Kevin Miller
+          </a>
+        </div>
+        <div className="logos">
+          <a
+            href="http://omdbapi.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img src={omdb} alt="omdb api logo" />
+          </a>
+        </div>
       </div>
     </MDBFooter>
   );
