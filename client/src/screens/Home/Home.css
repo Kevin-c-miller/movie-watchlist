@@ -111,12 +111,9 @@ h5 {
   color: #fff;
 }
 .background-credit {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  align-items: flex-end;
-  margin-top: 20vh;
-  width: 98%;
+  position: absolute;
+  bottom: 0;
+  right: 0;
 }
 .background-credit a {
   color: rgb(73, 73, 73);
