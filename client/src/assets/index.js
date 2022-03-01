@@ -15,3 +15,4 @@ export const review = require('./images/review.png');
 export const google = require('./images/google.png');
 export const red_blue = require('./images/red-blue-pill.jpeg');
 export const omdb = require('./images/omdb.png');
+export const burger = require('./images/hamburger.png');
