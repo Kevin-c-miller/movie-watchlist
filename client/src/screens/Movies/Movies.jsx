@@ -33,8 +33,8 @@ export default function Movies(props) {
               />
 
               <div className="overlay" key={index}>
-                <h6>{movie?.Title}</h6>
-                <h6>Year: {movie?.Year}</h6>
+                <h6 className="overlay-text">{movie?.Title}</h6>
+                <h6 className="overlay-text">Year: {movie?.Year}</h6>
               </div>
             </Link>
           </div>

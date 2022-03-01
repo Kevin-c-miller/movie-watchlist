@@ -43,7 +43,7 @@ export default function Home() {
             </div>
 
             <div className="guest">
-              <h6>
+              <h6 className="guest-link">
                 Not ready for an account? Check out the site as a{' '}
                 <Link to="/movies">Guest</Link>
               </h6>

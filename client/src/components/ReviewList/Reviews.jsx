@@ -1,6 +1,7 @@
 import React from 'react';
 import DeleteModal from '../Delete/Delete';
-import { trash } from '../../assets/index.js';
+import { trash, review } from '../../assets/index.js';
+import { Card, Button } from 'react-bootstrap';
 
 export default function Reviews(props) {
   const { currentUser, reviews, removeReview, editReview } = props;
@@ -8,40 +9,32 @@ export default function Reviews(props) {
   return (
     <div className="reviews">
       <div className="review-page-header">
-        <h3>Reviews</h3>
+        <img src={review} alt="reviews" className="review-img" />
       </div>
 
       <div className="review-list">
-        {reviews.map((review, index) => (
-          <div className="movie-reviews" key={index}>
-            <div className="review-flex-left">
-              <h5>
-                <b>{review.title}</b>
-              </h5>
-              <h6>
-                <b>Review By:</b> {review.user.username}
-              </h6>
-              <h6>
-                <b>Movie Rating:</b> {review.rating}
-              </h6>
-            </div>
-            <div className="review-flex-right">
-              <p>
-                <b>Review:</b>
-                <br /> {review.review}
-              </p>
-            </div>
-            <button
-              onClick={() => removeReview(review.id)}
-              className="review-delete-btn"
-            >
-              <img
-                src={trash}
-                alt="trash icon"
-                className="review-delete-icon"
-              />
-            </button>
-          </div>
+        {reviews.map((review) => (
+          <Card style={{ width: '18rem' }} key={review.id}>
+            <Card.Body>
+              <Card.Title>{review.title}</Card.Title>
+              <Card.Subtitle className="mb-2 text-muted">
+                <b>Review By:</b> {review.user.username} <br /> {review.rating}
+                /10
+              </Card.Subtitle>
+              <Card.Text>{review.review}</Card.Text>
+              <Button
+                variant="danger"
+                onClick={() => removeReview(review.id)}
+                className="review-delete-btn"
+              >
+                <img
+                  src={trash}
+                  alt="trash icon"
+                  className="review-delete-icon"
+                />
+              </Button>
+            </Card.Body>
+          </Card>
         ))}
       </div>
     </div>

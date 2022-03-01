@@ -7,17 +7,18 @@
 }
 
 .review-form-page {
-  background: lightgray;
+  background: #28282b;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   width: 100%;
   padding: 2rem;
+  border: 3px solid #fff;
 }
 
 .review-form-page h2 {
-  color: #000;
+  color: #fff;
 }
 
 .review-form {
@@ -26,9 +27,17 @@
   justify-content: center;
 }
 
+.input-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 .review-form input {
   padding: 5px;
   margin: 3px 10px;
+  border: 2px solid #fff;
 }
 
 .reviews {
@@ -39,7 +48,19 @@
   justify-content: center;
 }
 .review-page-header {
-  background: lightgray;
+  margin: 1.5rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.review-img {
+  width: 35%;
+  min-width: 400px;
+  height: 200px;
+  border-radius: 50px;
+  border: 5px solid #000;
 }
 
 .reviews h3 {
@@ -52,50 +73,38 @@
 .review-list {
   width: 75%;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 
-.movie-reviews {
+.review-btn {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 100%;
-  border-bottom: 2px solid #fff;
+  margin-top: 1.8rem;
+  background: #40caf0;
   border-radius: 10px;
-  background: lightgray;
-  margin: 10px auto;
+  padding: 3px;
+  border: 2px solid #fff;
 }
 
-.review-flex-left,
-.review-flex-right {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  margin: 5px 10px;
-  width: 50%;
-  padding: 10px;
+.review-btn:hover {
+  opacity: 0.8;
 }
 
-.review-flex-right {
-  border-left: 1px solid #000;
-}
-
-.movie-reviews h5,
-h6,
-p {
-  color: #000;
+.card {
+  margin: 10px !important;
+  width: 100%;
+  min-height: 275px;
+  border-radius: 50px !important;
+  border: 5px solid #000 !important;
 }
 
 .review-delete-btn {
   background: red;
   border-radius: 10px;
-  padding: 5px;
-  margin: 0 10px;
+  padding: 2px !important;
 }
 
 .review-delete-btn:hover {

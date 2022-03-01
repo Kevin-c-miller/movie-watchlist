@@ -20,31 +20,42 @@ export default function AddReviewForm({ addReview }) {
             review,
           };
           addReview(newReview);
+          setTitle('');
+          setRating(0);
+          setReview('');
         }}
       >
-        <input
-          type="text"
-          placeholder="Review title.."
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-        />
+        <div className="input-div">
+          <label>Title</label>
+          <input
+            type="text"
+            placeholder="Review title.."
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+          />
+        </div>
+        <div className="input-div">
+          <label>Rating</label>
+          <input
+            type="number"
+            step="0.1"
+            min="0"
+            max="10"
+            value={rating}
+            onChange={(e) => setRating(e.target.value)}
+          />
+        </div>
+        <div className="input-div">
+          <label>Review Content</label>
+          <input
+            type="text"
+            placeholder="Leave review here..."
+            value={review}
+            onChange={(e) => setReview(e.target.value)}
+          />
+        </div>
 
-        <input
-          type="number"
-          step="0.1"
-          min="0"
-          max="10"
-          value={rating}
-          onChange={(e) => setRating(e.target.value)}
-        />
-
-        <input
-          type="text"
-          placeholder="Leave review here..."
-          value={review}
-          onChange={(e) => setReview(e.target.value)}
-        />
-        <button>Post Review</button>
+        <button className="review-btn">Post Review</button>
       </form>
     </div>
   );

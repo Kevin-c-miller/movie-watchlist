@@ -106,3 +106,7 @@ h5 {
   border-bottom: 2px solid #fff;
   font-weight: bold;
 }
+
+.guest-link {
+  color: #fff;
+}

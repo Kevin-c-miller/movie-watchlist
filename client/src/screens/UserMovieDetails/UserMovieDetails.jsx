@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { X } from '../../assets/index.js';
 import { toast } from 'react-toastify';
+import { Button } from 'react-bootstrap';
 import {
   deleteReview,
   getMovieReviews,
@@ -36,6 +37,7 @@ export default function UserMovieDetails(props) {
   const addReview = async (reviewData) => {
     await createReview(id, userMovie?.id, reviewData);
     setToggle((prevToggle) => !prevToggle);
+    toast.success('Review Added!');
   };
 
   // Edit Review
@@ -54,9 +56,12 @@ export default function UserMovieDetails(props) {
   return (
     <div className="movie-details">
       <div className="back-btn">
-        <button onClick={() => navigate(`/users/${currentUser?.id}/movies`)}>
+        <Button
+          variant="secondary"
+          onClick={() => navigate(`/users/${currentUser?.id}/movies`)}
+        >
           Back to my movie list
-        </button>
+        </Button>
       </div>
       <div className="movie-card">
         <div className="remove-movie">
@@ -78,7 +83,7 @@ export default function UserMovieDetails(props) {
             </h5>
 
             {/* <h6 className="type">{userMovie.genre}</h6> */}
-            <h6>
+            <h6 className="type">
               <b>Rated:</b> {userMovie?.rating}
             </h6>
             {/* <h6>

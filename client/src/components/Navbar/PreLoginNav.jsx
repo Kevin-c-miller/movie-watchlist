@@ -28,6 +28,10 @@ export default function PreLoginNav(props) {
               <ReactBootStrap.Nav.Link eventKey={2} href="/register">
                 Register
               </ReactBootStrap.Nav.Link>
+              <p>|</p>
+              <ReactBootStrap.Nav.Link eventKey={3} href="/movies">
+                Browse Movies
+              </ReactBootStrap.Nav.Link>
             </ReactBootStrap.Nav>
           </ReactBootStrap.Navbar.Collapse>
         </ReactBootStrap.Container>

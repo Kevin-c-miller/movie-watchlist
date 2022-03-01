@@ -11,3 +11,4 @@ export const trash = require('./images/trash.png');
 export const X = require('./images/x-icon.png');
 export const github = require('./images/github.png');
 export const linkedin = require('./images/linkedin.png');
+export const review = require('./images/review.png');

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Routes, Route, useNavigate, useParams } from 'react-router-dom';
-import { createMovie } from '../../services/apiConfig/movies';
+import { createMovie, getUserMovies } from '../../services/apiConfig/movies';
 import {
   getMovieList,
   searchMovie,
@@ -14,6 +14,7 @@ export default function MovieContainer(props) {
   const [searchValue, setSearchValue] = useState('');
   const [movie, setMovie] = useState({});
   const [currentPage, setCurrentPage] = useState(1);
+  const [userMovies, setUserMovies] = useState([]);
   const [toggle, setToggle] = useState(false);
   // const [hideButton, setHideButton] = useState(false);
 
@@ -34,6 +35,12 @@ export default function MovieContainer(props) {
     setMovie(selectedMovie);
   };
 
+  //  get user movies list
+  const fetchUserMovieList = async () => {
+    const userMovieList = await getUserMovies(props.currentUser?.id);
+    setUserMovies(userMovieList);
+  };
+
   // add movie to a user movie watchlist
   const addMovieToWatchList = async (user_id, movieData) => {
     const newMovie = await createMovie(user_id, movieData);
@@ -45,7 +52,9 @@ export default function MovieContainer(props) {
   // render movies on page load
   useEffect(() => {
     getMovieRequest();
+    fetchUserMovieList();
   }, []);
+  console.log(userMovies);
 
   // render movies by user search
   useEffect(() => {
@@ -105,6 +114,7 @@ export default function MovieContainer(props) {
               currentUser={props.currentUser}
               movie={movie}
               addMovieToWatchList={addMovieToWatchList}
+              userMovies={userMovies}
             />
           }
         />
