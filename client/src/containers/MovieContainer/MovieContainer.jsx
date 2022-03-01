@@ -19,7 +19,7 @@ export default function MovieContainer(props) {
   // const [hideButton, setHideButton] = useState(false);
 
   const navigate = useNavigate();
-  const { id } = useParams();
+  const { id, title } = useParams();
 
   // get movies from omdb api
   const getMovieRequest = async () => {
@@ -29,9 +29,9 @@ export default function MovieContainer(props) {
   };
 
   // get single movie based on a user clicking on a movie
-  const fetchMovie = async (movieTitle) => {
-    const selectedMovie = await getMovie(movieTitle);
-    console.log(selectedMovie);
+  const fetchMovie = async (title) => {
+    const selectedMovie = await getMovie(title);
+    console.log(selectedMovie, title);
     setMovie(selectedMovie);
   };
 
@@ -99,7 +99,6 @@ export default function MovieContainer(props) {
               currentUser={props.currentUser}
               searchValue={searchValue}
               setSearchValue={setSearchValue}
-              fetchMovie={fetchMovie}
               previousPage={previousPage}
               nextPage={nextPage}
               currentPage={currentPage}
@@ -115,6 +114,7 @@ export default function MovieContainer(props) {
               movie={movie}
               addMovieToWatchList={addMovieToWatchList}
               userMovies={userMovies}
+              fetchMovie={fetchMovie}
             />
           }
         />

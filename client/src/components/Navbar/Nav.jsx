@@ -1,6 +1,6 @@
-import { NavLink, useParams, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import * as ReactBootStrap from 'react-bootstrap';
-import { movieticket } from '../../assets/index.js';
+import { movieticket, hamburger } from '../../assets/index.js';
 import { toast } from 'react-toastify';
 import PreLoginNav from './PreLoginNav.jsx';
 import './Nav.css';
