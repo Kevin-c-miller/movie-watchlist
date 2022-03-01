@@ -1,0 +1,22 @@
+.page-footer {
+  background: #212529;
+}
+
+.footer-copyright {
+  color: #fff;
+}
+
+.social-icon {
+  height: 30px;
+  width: 30px;
+  border-radius: 10px;
+  background: #fff;
+}
+
+.btn-floating:hover {
+  opacity: 0.8;
+  transform: scale(1.1);
+}
+.background-credit {
+  color: rgb(59, 59, 59);
+}
