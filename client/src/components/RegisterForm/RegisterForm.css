@@ -54,3 +54,11 @@
 .register-btn:hover {
   opacity: 0.8;
 }
+
+@media screen and (max-width: 600px) {
+  .login-link h6 {
+    font-size: 10px;
+    color: #000;
+    margin-top: 10px;
+  }
+}
