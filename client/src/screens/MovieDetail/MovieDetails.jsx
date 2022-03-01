@@ -1,5 +1,6 @@
 import { useParams, useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
+import { Card } from 'react-bootstrap';
 import './MovieDetails.css';
 
 export default function MovieDetails(props) {
@@ -23,40 +24,43 @@ export default function MovieDetails(props) {
               Back to my movie list
             </button>
           </div>
-          <div className="movie-card">
-            <div className="info-section">
-              <div className="movie-header">
-                <h1>{movie.Title}</h1>
-                <h4>
-                  {movie.Year}, {movie.Director}
-                </h4>
-                <h6 className="minutes">{movie.Runtime}</h6>
-                <h5 className="movie-details-h5">Starring: {movie.Actors}</h5>
-
-                <h6 className="type">{movie.Genre}</h6>
-                <h6 className="type">
+          <>
+            <Card style={{ width: '30rem' }} className="movie-details-card">
+              <Card.Img
+                variant="top"
+                src={movie.Poster}
+                alt={movie.Title}
+                style={{
+                  height: '600px',
+                  width: '473px',
+                  borderRadius: '35px',
+                  border: '2px solid #000',
+                }}
+              />
+              <Card.Body>
+                <Card.Title>{movie.Title}</Card.Title>
+                <Card.Text>
+                  {movie.Year}, <b> {movie.Director}</b>
+                  <br />
+                  <b> {movie.Runtime}</b>
+                  <br />
+                  <b>Starring: </b> {movie.Actors}
+                  <br />
+                  <b>Genre: </b> {movie.Genre}
+                  <br />
                   <b>Rated:</b> {movie.Rated}
-                </h6>
-                <h6 className="type">
+                  <br />
                   <b>Box Office:</b> {movie.BoxOffice}
-                </h6>
-                <h6 className="type">
+                  <br />
                   <b>Written By:</b> {movie.Writer}
-                </h6>
-                <h6 className="type">
+                  <br />
                   <b>Awards:</b> {movie.Awards}
-                </h6>
-              </div>
-              <div className="movie-desc">
-                <h5>Synopsis:</h5>
-                <p className="text"> {movie.Plot}</p>
-              </div>
-            </div>
-
-            <div className="blur-back">
-              <img src={movie.Poster} alt={movie.Title} className="movie-img" />
-            </div>
-          </div>
+                  <br />
+                  <b> Synopsis:</b> {movie.Plot}
+                </Card.Text>
+              </Card.Body>
+            </Card>
+          </>
           <div className="add-movie-btn">
             {props.currentUser && (
               <button
@@ -85,3 +89,11 @@ export default function MovieDetails(props) {
     </>
   );
 }
+
+// <div className="movie-card">
+//             <div className="info-section">
+
+//             <div className="blur-back">
+//               <img src={movie.Poster} alt={movie.Title} className="movie-img" />
+//             </div>
+//           </div>
