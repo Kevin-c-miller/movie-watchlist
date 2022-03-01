@@ -51,8 +51,11 @@ export default function Home() {
           </div>
         </div>
       </div>
+      <div className="background-credit">
+        <a href="https://www.freepik.com/photos/foggy">
+          Foggy photo created by kjpargeter - www.freepik.com
+        </a>
+      </div>
     </div>
   );
 }
-
-// background - <a href="https://www.freepik.com/photos/foggy">Foggy photo created by kjpargeter - www.freepik.com</a>

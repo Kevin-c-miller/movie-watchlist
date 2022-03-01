@@ -110,3 +110,17 @@ h5 {
 .guest-link {
   color: #fff;
 }
+.background-credit {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-end;
+  margin-top: 20vh;
+  width: 98%;
+}
+.background-credit a {
+  color: rgb(73, 73, 73);
+}
+.background-credit a:hover {
+  color: rgb(129, 129, 129);
+}
