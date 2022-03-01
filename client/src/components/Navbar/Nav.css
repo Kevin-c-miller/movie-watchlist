@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
+
+.navbar {
+  color: white;
+}
+
+.Nav-header img {
+  margin: 0 15px 0 0 !important;
+}
+
+.navbar-brand {
+  font-size: 2rem !important;
+  font-family: 'Space Mono', 'Times New Roman', Times, serif;
+}
+
+.Nav-header {
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out;
+  width: 300px;
+  display: inline-block !important;
+}
+
+.navbar-header {
+  font-family: 'Permanent Marker', cursive !important;
+}
+
+.Nav-header:hover {
+  border-bottom: 2px solid #2d839a;
+}
+.navbar-nav {
+  background: #212529;
+  align-items: center;
+  font-family: 'Space Mono', 'Times New Roman', Times, serif;
+}
+
+.nav-link {
+  display: flex;
+  color: #fff !important;
+}
+
+.nav-link:hover {
+  border-bottom: 2px solid #2d839a;
+}
+
+.navbar-nav p {
+  margin: 0;
+  color: #fff;
+}
+
+.btn {
+  margin-left: 10px !important;
+}
+
+@media screen and (max-width: 1199px) {
+  .navbar-nav p {
+    display: none;
+  }
+  .btn {
+    margin: 10px 0 20px !important;
+  }
+
+  .navbar-toggler {
+    border: 2px solid #fff !important;
+  }
+
+  .navbar-dark .navbar-toggler-icon {
+    background: url('data:image/svg+xml,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 30 30%27%3e%3cpath stroke=%27rgba%28255, 255, 255, 0.55%29%27 stroke-linecap=%27round%27 stroke-miterlimit=%2710%27 stroke-width=%272%27 d=%27M4 7h22M4 15h22M4 23h22%27/%3e%3c/svg%3e')
+      no-repeat center !important;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .Nav-header {
+    font-size: 20px !important;
+  }
+  .btn {
+    margin: 10px 0 20px !important;
+  }
+}

@@ -1,0 +1,117 @@
+.review-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.review-form-page {
+  background: #28282b;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 2rem;
+  border: 3px solid #fff;
+}
+
+.review-form-page h2 {
+  color: #fff;
+}
+
+.review-form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.input-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.review-form input {
+  padding: 5px;
+  margin: 3px 10px;
+  border: 2px solid #fff;
+}
+
+.reviews {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.review-page-header {
+  margin: 1.5rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.review-img {
+  width: 35%;
+  min-width: 400px;
+  height: 200px;
+  border-radius: 50px;
+  border: 5px solid #000;
+}
+
+.reviews h3 {
+  margin: 10px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.review-list {
+  width: 75%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.review-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1.8rem;
+  background: #40caf0;
+  border-radius: 10px;
+  padding: 3px;
+  border: 2px solid #fff;
+}
+
+.review-btn:hover {
+  opacity: 0.8;
+}
+
+.card {
+  margin: 10px !important;
+  width: 100%;
+  min-height: 275px;
+  border-radius: 50px !important;
+  border: 5px solid #000 !important;
+}
+
+.review-delete-btn {
+  background: red;
+  border-radius: 10px;
+  padding: 2px !important;
+}
+
+.review-delete-btn:hover {
+  opacity: 0.8;
+}
+
+.review-delete-icon {
+  height: 20px;
+  width: 20px;
+}

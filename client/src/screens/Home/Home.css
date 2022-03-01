@@ -1,0 +1,123 @@
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
+
+.homepage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  background: url('../../assets//images/foggybckgrnd.jpg') no-repeat center
+    center/cover;
+  color: #fff;
+}
+.homepage-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0.5rem;
+  text-align: center;
+}
+
+.homepage-header h1 {
+  font-family: 'Permanent Marker', cursive;
+  margin: 2rem;
+}
+
+.flex-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 1rem 2rem;
+  padding: 2rem;
+  max-width: 1500px;
+  max-height: 1200px;
+}
+
+.image-container,
+.sub-container {
+  width: 50%;
+  height: 100%;
+}
+
+.subcontainer {
+  padding: 0 1rem;
+}
+
+.image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.image-container .home-img {
+  height: 90%;
+  width: 100%;
+  object-fit: cover;
+  border: 5px solid #fff;
+  border-radius: 50%;
+  max-height: 700px;
+}
+
+.home-subheader {
+  text-align: center;
+  margin: 1rem;
+  padding: 1rem;
+}
+
+.home-subheader h4,
+h5 {
+  font-family: Verdana, Geneva, sans-serif;
+  margin: 10px;
+}
+
+.home-links {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-top: 1px solid #fff;
+}
+
+.button-links {
+  margin: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.button-links .home-btns {
+  margin: 1rem 10px !important;
+}
+
+.guest {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.guest a {
+  color: rgb(149, 221, 245);
+}
+
+.guest {
+  border-bottom: 2px solid #fff;
+  font-weight: bold;
+}
+
+.guest-link {
+  color: #fff;
+}
+.background-credit {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+.background-credit a {
+  color: rgb(73, 73, 73);
+}
+.background-credit a:hover {
+  color: rgb(129, 129, 129);
+}

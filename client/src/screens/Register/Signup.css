@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
+
+.register-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: url('../../assets/images/popcorn.jpg') no-repeat center
+    center/cover;
+  min-height: 100vh;
+}
+
+.register-page h2 {
+  font-family: 'Permanent Marker', cursive;
+  font-size: 3rem;
+}
