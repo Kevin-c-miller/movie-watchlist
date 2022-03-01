@@ -34,8 +34,8 @@ export default function UserContainer(props) {
   };
 
   //  Get selected movie from user clicking on a movie
-  const fetchSelectedMovie = async (user_id, movie_id) => {
-    const selectedMovie = await getOneMovie(user_id, movie_id);
+  const fetchSelectedMovie = async (movie_id) => {
+    const selectedMovie = await getOneMovie(props.currentUser?.id, movie_id);
     console.log(selectedMovie);
     setUserMovie(selectedMovie);
   };
@@ -82,7 +82,6 @@ export default function UserContainer(props) {
               fetchUserMovieList={fetchUserMovieList}
               currentUser={props.currentUser}
               userMovies={userMovies}
-              fetchSelectedMovie={fetchSelectedMovie}
               toggle={toggle}
             />
           }
@@ -92,6 +91,7 @@ export default function UserContainer(props) {
           element={
             <UserMovieDetails
               userMovie={userMovie}
+              fetchSelectedMovie={fetchSelectedMovie}
               removeMovie={removeMovieFromList}
               currentUser={props.currentUser}
             />

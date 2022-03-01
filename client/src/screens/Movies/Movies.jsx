@@ -24,15 +24,15 @@ export default function Movies(props) {
 
       <div className="all-movies">
         {movies?.map((movie) => (
-          <div className="movies-image-container" key={movie.Title}>
-            <Link to={`/movies/${movie.Title}`}>
+          <div className="movies-image-container" key={movie?.Title}>
+            <Link to={`/movies/${movie?.Title}`}>
               <img
                 src={movie?.Poster}
                 alt={movie?.Title}
                 className="movie-page-img"
               />
 
-              <div className="overlay" key={movie.Title}>
+              <div className="overlay" key={movie?.Title}>
                 <h6 className="overlay-text">{movie?.Title}</h6>
                 <h6 className="overlay-text">Year: {movie?.Year}</h6>
               </div>

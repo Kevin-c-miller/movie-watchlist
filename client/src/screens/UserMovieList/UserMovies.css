@@ -37,3 +37,13 @@
 .back-btn {
   margin: 2rem;
 }
+
+.movie-back-btn {
+  background: #28282b;
+  color: #fff;
+  padding: 6px;
+  border-radius: 10px;
+}
+.movie-back-btn:hover {
+  opacity: 0.7;
+}

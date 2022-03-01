@@ -18,20 +18,27 @@ import '../../components/ReviewForm/ReviewForm.css';
 export default function UserMovieDetails(props) {
   const [reviews, setReviews] = useState([]);
   const [toggle, setToggle] = useState(false);
+  const { userMovie, removeMovie, currentUser, fetchSelectedMovie } = props;
 
-  const { userMovie, removeMovie, currentUser } = props;
-  const id = currentUser?.id;
   const navigate = useNavigate();
+  const { id } = useParams();
+
+  useEffect(() => {
+    fetchSelectedMovie(id);
+    console.log(id, userMovie.id);
+  }, [currentUser?.id]);
 
   useEffect(() => {
     // Get Reviews
     const fetchReviews = async () => {
-      console.log(userMovie?.id);
-      const movieReviews = await getMovieReviews(id, userMovie?.id);
+      console.log(id);
+      const movieReviews = await getMovieReviews(currentUser?.id, id);
       setReviews(movieReviews);
     };
     fetchReviews();
-  }, [toggle, userMovie?.id, id]);
+  }, [toggle]);
+
+  // onClick={() => fetchSelectedMovie(currentUser?.id, movie.id)}
 
   // Create Review
   const addReview = async (reviewData) => {
@@ -56,12 +63,12 @@ export default function UserMovieDetails(props) {
   return (
     <div className="movie-details">
       <div className="back-btn">
-        <Button
-          variant="secondary"
+        <button
+          className="movie-back-btn"
           onClick={() => navigate(`/users/${currentUser?.id}/movies`)}
         >
           Back to my movie list
-        </Button>
+        </button>
       </div>
       <div className="movie-card">
         <div className="remove-movie">

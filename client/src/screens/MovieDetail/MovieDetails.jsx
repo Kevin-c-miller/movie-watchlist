@@ -1,10 +1,11 @@
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import './MovieDetails.css';
 
 export default function MovieDetails(props) {
   const { movie, fetchMovie } = props;
   const { title } = useParams();
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchMovie(title);
@@ -14,6 +15,14 @@ export default function MovieDetails(props) {
     <>
       {title && (
         <div className="movie-details">
+          <div className="back-btn">
+            <button
+              className="movie-back-btn"
+              onClick={() => navigate(`/movies/`)}
+            >
+              Back to my movie list
+            </button>
+          </div>
           <div className="movie-card">
             <div className="info-section">
               <div className="movie-header">
