@@ -8,9 +8,12 @@
   min-height: 100vh;
 }
 
+.add-movie-btn-div {
+  margin: 1rem auto 3.5rem;
+}
+
 .add-movie-btn {
   padding: 5px;
-  /* margin: 0.8rem; */
   border-radius: 10px;
   border: none;
   background: lightblue;
@@ -18,6 +21,16 @@
 
 .add-movie-btn:hover {
   opacity: 0.8;
+}
+
+.card-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-title h2 {
+  width: 60%;
 }
 
 @media screen and (max-width: 600px) {

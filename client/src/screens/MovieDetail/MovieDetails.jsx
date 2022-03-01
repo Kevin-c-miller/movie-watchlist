@@ -21,7 +21,7 @@ export default function MovieDetails(props) {
               className="movie-back-btn"
               onClick={() => navigate(`/movies/`)}
             >
-              Back to my movie list
+              Back to movie list
             </button>
           </div>
           <>
@@ -32,13 +32,17 @@ export default function MovieDetails(props) {
                 alt={movie.Title}
                 style={{
                   height: '600px',
-                  width: '473px',
+                  width: '29.5',
                   borderRadius: '35px',
-                  border: '2px solid #000',
+                  border: '5px solid #000',
                 }}
               />
               <Card.Body>
-                <Card.Title>{movie.Title}</Card.Title>
+                <Card.Title>
+                  <h2>
+                    <b>{movie.Title} </b>
+                  </h2>
+                </Card.Title>
                 <Card.Text>
                   {movie.Year}, <b> {movie.Director}</b>
                   <br />
@@ -61,7 +65,7 @@ export default function MovieDetails(props) {
               </Card.Body>
             </Card>
           </>
-          <div className="add-movie-btn">
+          <div className="add-movie-btn-div">
             {props.currentUser && (
               <button
                 className="add-movie-btn"
