@@ -1,6 +1,6 @@
 import axios from 'axios';
 const KEY = process.env.REACT_APP_OMDB_KEY;
-const url = `http://www.omdbapi.com/?apikey=${KEY}`;
+const url = `https://www.omdbapi.com/?apikey=${KEY}`;
 
 const terms = [
   'there',
