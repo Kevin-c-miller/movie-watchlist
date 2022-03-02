@@ -23,10 +23,14 @@
   width: 100%;
 }
 
-.register-form,
+.form-floating > label {
+  padding: 1.5rem !important;
+}
+
+.register-form input,
 .update-form input {
   padding: 0.8rem;
-  margin: 2rem;
+  margin: 1rem;
   border-radius: 10px;
 }
 
@@ -53,4 +57,12 @@
 
 .register-btn:hover {
   opacity: 0.8;
+}
+
+@media screen and (max-width: 600px) {
+  .login-link h6 {
+    font-size: 10px;
+    color: #000;
+    margin-top: 10px;
+  }
 }

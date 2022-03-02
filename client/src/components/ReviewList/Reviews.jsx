@@ -1,6 +1,6 @@
 import React from 'react';
 import DeleteModal from '../Delete/Delete';
-import { trash, review } from '../../assets/index.js';
+import { trash } from '../../assets/index.js';
 import { Card, Button } from 'react-bootstrap';
 
 export default function Reviews(props) {
@@ -9,12 +9,24 @@ export default function Reviews(props) {
   return (
     <div className="reviews">
       <div className="review-page-header">
-        <img src={review} alt="reviews" className="review-img" />
+        <h3
+          style={{
+            fontFamily: 'Permanent Marker, cursive',
+            fontSize: '3rem',
+            color: '#fff',
+          }}
+        >
+          Reviews
+        </h3>
       </div>
 
       <div className="review-list">
         {reviews.map((review) => (
-          <Card style={{ width: '18rem' }} key={review.id}>
+          <Card
+            style={{ width: '18rem' }}
+            key={review.id}
+            className="review-card"
+          >
             <Card.Body>
               <Card.Title>{review.title}</Card.Title>
               <Card.Subtitle className="mb-2 text-muted">

@@ -13,7 +13,6 @@ import Footer from './components/Footer/Footer';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import 'mdb-react-ui-kit/dist/css/mdb.min.css';
 import './App.css';
 
 function App() {

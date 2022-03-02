@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import { Form, FloatingLabel } from 'react-bootstrap';
+
 import './ReviewForm.css';
 
 export default function AddReviewForm({ addReview }) {
@@ -25,35 +27,42 @@ export default function AddReviewForm({ addReview }) {
           setReview('');
         }}
       >
-        <div className="input-div">
-          <label>Title</label>
-          <input
+        <FloatingLabel controlId="floatingInput" label="Title" className="mb-3">
+          <Form.Control
             type="text"
-            placeholder="Review title.."
+            placeholder="title"
             value={title}
+            required
             onChange={(e) => setTitle(e.target.value)}
           />
-        </div>
-        <div className="input-div">
-          <label>Rating</label>
+        </FloatingLabel>
+
+        <div className="review-rating">
           <input
             type="number"
             step="0.1"
             min="0"
             max="10"
             value={rating}
+            placeholder="Rating (0-10)"
+            required
             onChange={(e) => setRating(e.target.value)}
           />
         </div>
-        <div className="input-div">
-          <label>Review Content</label>
-          <input
-            type="text"
-            placeholder="Leave review here..."
+
+        <FloatingLabel
+          controlId="floatingInput"
+          label="Review"
+          className="mb-3"
+        >
+          <Form.Control
+            as="textarea"
+            rows={5}
             value={review}
+            required
             onChange={(e) => setReview(e.target.value)}
           />
-        </div>
+        </FloatingLabel>
 
         <button className="review-btn">Post Review</button>
       </form>
