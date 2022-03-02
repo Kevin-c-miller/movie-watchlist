@@ -75,7 +75,6 @@ const terms = [
 ];
 
 const randomWord = terms[Math.floor(Math.random() * terms.length)];
-console.log(randomWord);
 
 export const getMovieList = async () => {
   // const res = await axios.get(`${url}&s=${randomWord}&type=movie&page=${page}`);

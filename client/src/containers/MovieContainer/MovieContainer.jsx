@@ -13,25 +13,23 @@ export default function MovieContainer(props) {
   const [movies, setMovies] = useState([]);
   const [searchValue, setSearchValue] = useState('');
   const [movie, setMovie] = useState({});
-  const [currentPage, setCurrentPage] = useState(1);
   const [userMovies, setUserMovies] = useState([]);
   const [toggle, setToggle] = useState(false);
+  // const [currentPage, setCurrentPage] = useState(1);
   // const [hideButton, setHideButton] = useState(false);
 
   const navigate = useNavigate();
-  const { id, title } = useParams();
+  const { id } = useParams();
 
   // get movies from omdb api
   const getMovieRequest = async () => {
     const movies = await getMovieList();
-    console.log(movies);
     setMovies(movies.Search);
   };
 
   // get single movie based on a user clicking on a movie
   const fetchMovie = async (title) => {
     const selectedMovie = await getMovie(title);
-    console.log(selectedMovie, title);
     setMovie(selectedMovie);
   };
 
@@ -46,7 +44,6 @@ export default function MovieContainer(props) {
     const newMovie = await createMovie(user_id, movieData);
     setToggle((prevToggle) => !prevToggle);
     navigate(`/users/${id}/movies`);
-    console.log(newMovie);
   };
 
   // render movies on page load
@@ -54,7 +51,6 @@ export default function MovieContainer(props) {
     getMovieRequest();
     fetchUserMovieList();
   }, []);
-  console.log(userMovies);
 
   // render movies by user search
   useEffect(() => {
@@ -68,25 +64,25 @@ export default function MovieContainer(props) {
     movieSearch();
   }, [searchValue]);
 
-  // show next page of movie results
-  const nextPage = (page) => {
-    let next = page + 1;
-    getMovieRequest(next);
-    if (!next) {
-      // setHideButton(true);
-    }
-  };
+  // // show next page of movie results
+  // const nextPage = (page) => {
+  //   let next = page + 1;
+  //   getMovieRequest(next);
+  //   if (!next) {
+  //     // setHideButton(true);
+  //   }
+  // };
 
-  // show previous page of movie results
-  const previousPage = (page) => {
-    let previous = page--;
-    if (page <= 1) {
-      // setHideButton(true);
-    } else {
-      getMovieRequest(previous);
-      // setHideButton(false);
-    }
-  };
+  // // show previous page of movie results
+  // const previousPage = (page) => {
+  //   let previous = page--;
+  //   if (page <= 1) {
+  //     // setHideButton(true);
+  //   } else {
+  //     getMovieRequest(previous);
+  //     // setHideButton(false);
+  //   }
+  // };
 
   return (
     <div>
@@ -99,10 +95,6 @@ export default function MovieContainer(props) {
               currentUser={props.currentUser}
               searchValue={searchValue}
               setSearchValue={setSearchValue}
-              previousPage={previousPage}
-              nextPage={nextPage}
-              currentPage={currentPage}
-              setCurrentPage={setCurrentPage}
             />
           }
         />
