@@ -4,8 +4,6 @@ import { github, linkedin, google, omdb } from '../../assets/index.js';
 import './Footer.css';
 
 export default function Footer() {
-  const email = 'kevinmiller3791@gmail.com';
-
   return (
     <MDBFooter className="bg-dark text-center text-white">
       <MDBContainer className="p-4 pb-0">
@@ -23,7 +21,7 @@ export default function Footer() {
 
           <a
             className="btn btn-outline-light btn-floating m-1"
-            href={email}
+            href="https://www.linkedin.com/in/kevin-c-miller/"
             role="button"
             target="_blank"
             rel="noopener noreferrer"

@@ -34,7 +34,7 @@ export default function LoginForm(props) {
 
         <FloatingLabel
           controlId="floatingInput"
-          label="Email address"
+          label="Password"
           className="mb-3"
         >
           <Form.Control
