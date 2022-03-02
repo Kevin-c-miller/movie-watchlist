@@ -18,6 +18,7 @@ import '../../components/ReviewForm/ReviewForm.css';
 export default function UserMovieDetails(props) {
   const [reviews, setReviews] = useState([]);
   const [toggle, setToggle] = useState(false);
+
   const { userMovie, removeMovie, currentUser, fetchSelectedMovie } = props;
 
   const navigate = useNavigate();
@@ -25,6 +26,7 @@ export default function UserMovieDetails(props) {
 
   useEffect(() => {
     fetchSelectedMovie(id);
+
     console.log(id, userMovie.id);
   }, [currentUser?.id]);
 
@@ -37,8 +39,6 @@ export default function UserMovieDetails(props) {
     };
     fetchReviews();
   }, [toggle]);
-
-  // onClick={() => fetchSelectedMovie(currentUser?.id, movie.id)}
 
   // Create Review
   const addReview = async (reviewData) => {
@@ -59,6 +59,17 @@ export default function UserMovieDetails(props) {
     setToggle((prevToggle) => !prevToggle);
     toast.success('Review Deleted');
   };
+
+  if (!userMovie) {
+    return (
+      <div>
+        <img
+          src="https://media.giphy.com/media/N256GFy1u6M6Y/giphy.gif"
+          alt="loading"
+        />
+      </div>
+    );
+  }
 
   return (
     <div className="movie-details">
@@ -134,40 +145,3 @@ export default function UserMovieDetails(props) {
     </div>
   );
 }
-
-// {/* <div className="movie-card">
-//         <div className="info-section">
-//           <div className="movie-header">
-//             <h1>{userMovie?.title}</h1>
-//             <h4>
-//               {userMovie?.release_year}, {userMovie?.director}
-//             </h4>
-//             <h6 className="minutes"> {userMovie?.runtime}</h6>
-//             <h5 className="movie-details-h5">
-//               Starring: {userMovie?.starring}
-//             </h5>
-
-//             {/* <h6 className="type">{userMovie.genre}</h6> */}
-//             <h6 className="type">
-//               <b>Rated:</b> {userMovie?.rating}
-//             </h6>
-//             {/* <h6>
-//               <b>Box Office:</b> {movie.BoxOffice}
-//             </h6> */}
-//             {/* <h6>
-//               <b>Written By:</b> {movie.Writer}
-//             </h6> */}
-//             {/* <h6>
-//               <b>Awards:</b> {movie.Awards}
-//             </h6> */}
-//           </div>
-//           <div className="movie-desc">
-//             <h5>Synopsis:</h5>
-//             <p className="text"> {userMovie?.synopsis}</p>
-//           </div>
-//         </div>
-
-//         <div className="blur-back">
-//           <img src={userMovie?.poster} alt={userMovie?.title} />
-//         </div>
-//       </div> */}

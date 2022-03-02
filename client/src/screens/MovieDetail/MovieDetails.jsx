@@ -12,6 +12,17 @@ export default function MovieDetails(props) {
     fetchMovie(title);
   }, []);
 
+  if (!title) {
+    return (
+      <div>
+        <img
+          src="https://media.giphy.com/media/N256GFy1u6M6Y/giphy.gif"
+          alt="loading"
+        />
+      </div>
+    );
+  }
+
   return (
     <>
       {title && (

@@ -22,6 +22,10 @@
   width: 100%;
 }
 
+.form-floating > label {
+  padding: 1.5rem !important;
+}
+
 .login-form input {
   padding: 0.8rem;
   margin: 1rem;
