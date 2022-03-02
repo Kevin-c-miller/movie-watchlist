@@ -7,10 +7,11 @@
 }
 
 .social-icon {
-  height: 30px;
-  width: 30px;
-  border-radius: 10px;
+  height: 35px;
+  width: 35px;
+  border-radius: 20px;
   background: #fff;
+  border: 2px solid #fff;
 }
 
 .btn-floating:hover {

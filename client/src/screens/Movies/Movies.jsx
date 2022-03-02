@@ -3,19 +3,9 @@ import SearchBox from '../../components/SearchBox/SearchBox';
 import './Movies.css';
 
 export default function Movies(props) {
-  const {
-    fetchMovie,
-    movies,
-    setSearchValue,
-    searchValue,
-    previousPage,
-    nextPage,
-    currentPage,
-    setCurrentPage,
-  } = props;
+  const { movies, setSearchValue, searchValue } = props;
 
   const { title } = useParams();
-  console.log(title);
 
   return (
     <div className="movies-page">

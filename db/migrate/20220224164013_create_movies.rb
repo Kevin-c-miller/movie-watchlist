@@ -10,7 +10,7 @@ class CreateMovies < ActiveRecord::Migration[7.0]
       t.integer :release_year
       t.string :runtime
       t.references :user, null: false, foreign_key: true
-      t.references :watch_list, null: false, foreign_key: true
+  
 
       t.timestamps
     end

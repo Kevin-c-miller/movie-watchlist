@@ -21,7 +21,6 @@ function App() {
   useEffect(() => {
     const getUser = async () => {
       const user = await verifyUser();
-      console.log(user);
       setCurrentUser(user);
     };
     getUser();
