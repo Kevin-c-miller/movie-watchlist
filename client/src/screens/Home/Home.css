@@ -110,6 +110,7 @@ h5 {
 .guest-link {
   color: #fff;
 }
+
 .background-credit {
   position: absolute;
   bottom: 0;
@@ -120,4 +121,39 @@ h5 {
 }
 .background-credit a:hover {
   color: rgb(129, 129, 129);
+}
+
+@media screen and (max-width: 600px) {
+  .flex-container {
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    /* margin: 1rem 2rem; */
+    padding: 0 1rem;
+    max-width: 1500px;
+    max-height: 1200px;
+  }
+
+  .image-container {
+    display: none;
+  }
+
+  .home-subheader {
+    margin: 0.5rem;
+    padding: 0.5rem;
+  }
+
+  .home-subheader h4,
+  h5 {
+    font-size: 18px;
+  }
+
+  .button-links {
+    margin: 0.5rem;
+  }
+  .guest-link {
+    margin-bottom: 2rem;
+  }
 }
