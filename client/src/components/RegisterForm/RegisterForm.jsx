@@ -1,5 +1,4 @@
-import React from 'react';
-import { Form } from 'react-bootstrap';
+import { Form, FloatingLabel } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import './RegisterForm.css';
 
@@ -19,32 +18,50 @@ export default function RegisterForm(props) {
   return (
     <div className="form">
       <h2>Register</h2>
-
       <Form className="register-form" onSubmit={handleRegisterSubmit}>
-        <Form.Control
-          type="text"
-          placeholder="username"
-          value={username}
-          required
-          autoFocus
-          onChange={(e) => setUsername(e.target.value)}
-        />
+        <FloatingLabel
+          controlId="floatingInput"
+          label="Username"
+          className="mb-3"
+        >
+          <Form.Control
+            type="text"
+            placeholder="username"
+            value={username}
+            required
+            autoFocus
+            onChange={(e) => setUsername(e.target.value)}
+          />
+        </FloatingLabel>
 
-        <Form.Control
-          type="email"
-          placeholder="email"
-          value={email}
-          required
-          onChange={(e) => setEmail(e.target.value)}
-        />
+        <FloatingLabel
+          controlId="floatingInput"
+          label="Email address"
+          className="mb-3"
+        >
+          <Form.Control
+            type="email"
+            placeholder="email"
+            value={email}
+            required
+            onChange={(e) => setEmail(e.target.value)}
+          />
+        </FloatingLabel>
 
-        <Form.Control
-          type={hidePassword}
-          placeholder="password"
-          value={password}
-          required
-          onChange={(e) => setPassword(e.target.value)}
-        />
+        <FloatingLabel
+          controlId="floatingInput"
+          label="Password"
+          className="mb-3"
+        >
+          <Form.Control
+            type={hidePassword}
+            placeholder="password"
+            value={password}
+            required
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </FloatingLabel>
+
         <Form.Check
           type="switch"
           label="Show Password"

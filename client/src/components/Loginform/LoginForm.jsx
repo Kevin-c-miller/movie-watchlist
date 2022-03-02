@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Form, Button } from 'react-bootstrap';
+import { Form, FloatingLabel } from 'react-bootstrap';
 import './LoginForm.css';
 
 export default function LoginForm(props) {
@@ -17,21 +17,35 @@ export default function LoginForm(props) {
     <div className="form">
       <h2>Login</h2>
       <Form className="login-form" onSubmit={handleLoginSubmit}>
-        <Form.Control
-          type="text"
-          placeholder="username"
-          value={username}
-          autoFocus
-          required
-          onChange={(e) => setUsername(e.target.value)}
-        />
-        <Form.Control
-          type={hidePassword}
-          value={password}
-          placeholder="password"
-          required
-          onChange={(e) => setPassword(e.target.value)}
-        />
+        <FloatingLabel
+          controlId="floatingInput"
+          label="Username"
+          className="mb-3"
+        >
+          <Form.Control
+            type="text"
+            placeholder="username"
+            value={username}
+            autoFocus
+            required
+            onChange={(e) => setUsername(e.target.value)}
+          />
+        </FloatingLabel>
+
+        <FloatingLabel
+          controlId="floatingInput"
+          label="Email address"
+          className="mb-3"
+        >
+          <Form.Control
+            type={hidePassword}
+            value={password}
+            placeholder="password"
+            required
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </FloatingLabel>
+
         <Form.Check
           type="switch"
           label="Show Password"
@@ -42,7 +56,7 @@ export default function LoginForm(props) {
 
         <div className="register-link">
           <h6>
-            Already have an account? Login <Link to="/login">Here</Link>
+            Already have an account? Login <Link to="/register">Here</Link>
           </h6>
         </div>
       </Form>

@@ -22,9 +22,13 @@
   width: 100%;
 }
 
+.form-floating > label {
+  padding: 1.5rem !important;
+}
+
 .login-form input {
   padding: 0.8rem;
-  margin: 2rem;
+  margin: 1rem;
   border-radius: 10px;
 }
 
@@ -47,4 +51,12 @@
 
 .register-link {
   margin: 0.5rem;
+}
+
+@media screen and (max-width: 600px) {
+  .register-link h6 {
+    font-size: 10px;
+    color: #000;
+    margin-top: 10px;
+  }
 }
