@@ -62,7 +62,7 @@ https://www.figma.com/file/H6UT9Syjpxe26L5vuEcjQB/movie-watchlist-component-hier
 
 
 ## ERD
-![image](https://user-images.githubusercontent.com/80793283/155444235-921134ad-5fae-478b-8012-70760bea6f4f.png)
+![image](https://user-images.githubusercontent.com/80793283/156278298-6fa8c376-9ecf-4fb5-ba81-25834af2b7d3.png)
 
 
 
