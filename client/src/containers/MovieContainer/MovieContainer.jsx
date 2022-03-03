@@ -41,7 +41,7 @@ export default function MovieContainer(props) {
 
   // add movie to a user movie watchlist
   const addMovieToWatchList = async (user_id, movieData) => {
-    const newMovie = await createMovie(user_id, movieData);
+    await createMovie(user_id, movieData);
     setToggle((prevToggle) => !prevToggle);
     navigate(`/users/${id}/movies`);
   };
@@ -50,6 +50,7 @@ export default function MovieContainer(props) {
   useEffect(() => {
     getMovieRequest();
     fetchUserMovieList();
+    // eslint-disable-next-line
   }, []);
 
   // render movies by user search

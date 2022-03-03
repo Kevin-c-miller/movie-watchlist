@@ -1,5 +1,4 @@
-import { useState, useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import DeleteButton from '../../components/Delete/Delete';
 import { Button } from 'react-bootstrap';
 import './UserAccount.css';
@@ -7,13 +6,6 @@ import './UserAccount.css';
 export default function UserAccount(props) {
   // const [user, setUser] = useState('');
   const { currentUser, deleteAccount } = props;
-
-  const dateFormat = () => {
-    const date = currentUser.created_at;
-    console.log(date);
-  };
-  //   dateFormat();
-  console.log(currentUser);
 
   return (
     <div className="user-account">

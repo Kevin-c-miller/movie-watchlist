@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
-import Guest from '../../components/Guest/Guest';
 import { netflix3 } from '../../assets/index.js';
 
 import './Home.css';

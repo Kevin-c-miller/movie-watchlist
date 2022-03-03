@@ -55,7 +55,10 @@ export default function Footer() {
             target="_blank"
             rel="noopener noreferrer"
           >
+<<<<<<< HEAD
             {/* placeholder for portfolio link */}
+=======
+>>>>>>> edab054fe49df654b5ea7a2559077e7466135c67
             Kevin Miller
           </a>
         </div>
@@ -72,4 +75,3 @@ export default function Footer() {
     </MDBFooter>
   );
 }
-// background -

@@ -1,4 +1,4 @@
-import { api } from './index';
+import { api } from './index.js';
 
 // Get All Movies
 export const getUserMovies = async (user_id) => {

@@ -15,7 +15,8 @@ export default function UserMovieList(props) {
     if (currentUser?.id) {
       fetchUserMovieList(currentUser?.id);
     }
-  }, [currentUser?.id]);
+    // eslint-disable-next-line
+  }, []);
 
   return (
     <div className="user-movie-list">
