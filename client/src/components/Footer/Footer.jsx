@@ -49,8 +49,12 @@ export default function Footer() {
           style={{ backgroundColor: 'rgba(0, 0, 0, 0.2)' }}
         >
           © 2020 Copyright:{' '}
-          <a className="text-white portfolio-link" href="#">
-            {/* placeholder for portfolio link */}
+          <a
+            className="text-white portfolio-link"
+            href="https://kevin-c-miller.netlify.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             Kevin Miller
           </a>
         </div>
