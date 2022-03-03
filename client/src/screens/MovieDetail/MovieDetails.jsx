@@ -12,6 +12,8 @@ export default function MovieDetails(props) {
     fetchMovie(title);
   }, []);
 
+  console.log(movie);
+
   if (!title) {
     return (
       <div>
