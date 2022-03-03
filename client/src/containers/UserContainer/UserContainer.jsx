@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
-import { Routes, Route, useNavigate, useParams } from 'react-router-dom';
+import { useState } from 'react';
+import { Routes, Route, useNavigate } from 'react-router-dom';
 import { deleteUser, updateUser } from '../../services/apiConfig/users';
 import { toast } from 'react-toastify';
 import UserMovieList from '../../screens/UserMovieList/UserMovieList';
@@ -9,15 +9,14 @@ import UpdateUserForm from '../../components/UpdateUserForm/UpdateUserForm';
 import {
   getUserMovies,
   getOneMovie,
-  createMovie,
-  updateMovie,
+  // createMovie,
+  // updateMovie,
   deleteMovie,
 } from '../../services/apiConfig/movies';
 
 export default function UserContainer(props) {
   const [userMovies, setUserMovies] = useState([]);
   const [userMovie, setUserMovie] = useState({});
-  const [toggle, setToggle] = useState(false);
 
   const navigate = useNavigate();
 
@@ -36,11 +35,10 @@ export default function UserContainer(props) {
   //  Get selected movie from user clicking on a movie
   const fetchSelectedMovie = async (movie_id) => {
     const selectedMovie = await getOneMovie(props.currentUser?.id, movie_id);
-    console.log(selectedMovie);
     setUserMovie(selectedMovie);
   };
 
-  //  Delete moovie from user list
+  //  Delete movie from user list
   const removeMovieFromList = async (user_id, movie_id) => {
     await deleteMovie(user_id, movie_id);
 
@@ -82,7 +80,6 @@ export default function UserContainer(props) {
               fetchUserMovieList={fetchUserMovieList}
               currentUser={props.currentUser}
               userMovies={userMovies}
-              toggle={toggle}
             />
           }
         />

@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { X } from '../../assets/index.js';
 import { toast } from 'react-toastify';
-import { Button, Card } from 'react-bootstrap';
+import { Card } from 'react-bootstrap';
 import {
   deleteReview,
   getMovieReviews,
@@ -27,18 +27,17 @@ export default function UserMovieDetails(props) {
   useEffect(() => {
     fetchSelectedMovie(id);
 
-    console.log(id, userMovie.id);
-  }, [currentUser?.id]);
+    // eslint-disable-next-line
+  }, []);
 
   useEffect(() => {
     // Get Reviews
     const fetchReviews = async () => {
-      console.log(id);
       const movieReviews = await getMovieReviews(currentUser?.id, id);
       setReviews(movieReviews);
     };
     fetchReviews();
-  }, [toggle]);
+  }, [toggle, currentUser?.id, id]);
 
   // Create Review
   const addReview = async (reviewData) => {

@@ -10,6 +10,7 @@ export default function MovieDetails(props) {
 
   useEffect(() => {
     fetchMovie(title);
+    // eslint-disable-next-line
   }, []);
 
   if (!title) {
@@ -104,11 +105,3 @@ export default function MovieDetails(props) {
     </>
   );
 }
-
-// <div className="movie-card">
-//             <div className="info-section">
-
-//             <div className="blur-back">
-//               <img src={movie.Poster} alt={movie.Title} className="movie-img" />
-//             </div>
-//           </div>
