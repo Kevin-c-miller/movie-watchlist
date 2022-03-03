@@ -1,10 +1,9 @@
 import React from 'react';
-import DeleteModal from '../Delete/Delete';
 import { trash } from '../../assets/index.js';
 import { Card, Button } from 'react-bootstrap';
 
 export default function Reviews(props) {
-  const { currentUser, reviews, removeReview, editReview } = props;
+  const { reviews, removeReview } = props;
 
   if (reviews.length === 0) {
     return (
