@@ -15,7 +15,7 @@ export default function UserMovieList(props) {
     if (currentUser?.id) {
       fetchUserMovieList(currentUser?.id);
     }
-  }, []);
+  }, [currentUser?.id]);
 
   return (
     <div className="user-movie-list">
