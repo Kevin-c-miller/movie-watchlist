@@ -40,7 +40,7 @@ export default function UserMovieList(props) {
         ))}
       </div>
 
-      {/* add watch as a checkbox and add to db */}
+      {/* add watched as a checkbox and add to db */}
     </div>
   );
 }
