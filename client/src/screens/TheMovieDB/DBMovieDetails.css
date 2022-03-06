@@ -64,15 +64,58 @@
 
 .castAndCrew {
   margin: 20px 10px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* flex-wrap: wrap; */
 }
 .castHeader,
-.actors,
-.writers {
+.actors-header {
   margin: 10px;
   text-align: center;
   font-weight: bold;
 }
+
+.actors {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  /* align-items: center; */
+  /* flex-wrap: wrap; */
+  overflow: auto;
+  padding: 5px;
+}
+
+.actor-map {
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* border: 1px solid #000; */
+  padding: 10px;
+}
+
+.actor-map > h6 {
+  font-weight: 800;
+}
 .actorHeadShot {
   height: 80px;
   width: 55px;
+  border-radius: 50%;
+  border: 3px solid #000;
+}
+
+.similarHeader {
+  text-align: center;
+}
+
+.similar-movies {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  overflow-x: auto;
 }

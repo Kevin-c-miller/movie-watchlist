@@ -10,6 +10,7 @@ import {
   getMovieDBDetails,
   getSteamingProviders,
   getMovieCredits,
+  getSimilarMovies,
 } from '../../services/apiConfig/theMovieDb';
 import Movies from '../../screens/Movies/Movies';
 import MovieDetails from '../../screens/MovieDetail/MovieDetails';
@@ -25,6 +26,7 @@ export default function MovieContainer(props) {
   const [dbMovie, setDbMovie] = useState({});
   const [streaming, setStreaming] = useState({});
   const [movieCredits, setMovieCredits] = useState({});
+  const [similarMovies, setSimilarMovies] = useState({});
 
   const navigate = useNavigate();
   const { id } = useParams();
@@ -72,11 +74,23 @@ export default function MovieContainer(props) {
     setMovieCredits(credits);
   };
 
+  // get similar movies
+  const fetchSimilarMovies = async (movie_id) => {
+    const similarFilms = await getSimilarMovies(movie_id);
+    setSimilarMovies(similarFilms);
+  };
+
   // render movies on page load
   useEffect(() => {
-    getMovieRequest();
-    fetchUserMovieList();
-    // fetchMovieCredits(496243);
+    let didCancel = false;
+    if (!didCancel) {
+      getMovieRequest();
+      fetchUserMovieList();
+    }
+    return () => {
+      didCancel = true;
+    };
+
     // eslint-disable-next-line
   }, []);
 
@@ -128,7 +142,9 @@ export default function MovieContainer(props) {
               streaming={streaming}
               fetchStreamingProviders={fetchStreamingProviders}
               fetchMovieCredits={fetchMovieCredits}
-              credits={movieCredits}
+              movieCredits={movieCredits}
+              similarMovies={similarMovies}
+              fetchSimilarMovies={fetchSimilarMovies}
             />
           }
         />
