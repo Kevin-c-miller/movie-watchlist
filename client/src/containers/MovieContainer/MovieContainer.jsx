@@ -65,11 +65,7 @@ export default function MovieContainer(props) {
     movieSearch();
   }, [searchValue]);
 
-<<<<<<< HEAD
   // show next page of movie results
-=======
-  // // show next page of movie results
->>>>>>> 07591e779948bd3bc2f0ba6f07c81547b00c4e0d
   // const nextPage = (page) => {
   //   let next = page + 1;
   //   getMovieRequest(next);
@@ -100,8 +96,8 @@ export default function MovieContainer(props) {
               currentUser={props.currentUser}
               searchValue={searchValue}
               setSearchValue={setSearchValue}
-              currentPage={currentPage}
-              setCurrentPage={setCurrentPage}
+              // currentPage={currentPage}
+              // setCurrentPage={setCurrentPage}
               // previousPage={previousPage}
               // nextPage={nextPage}
             />
