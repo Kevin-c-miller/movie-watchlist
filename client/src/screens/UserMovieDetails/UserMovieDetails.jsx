@@ -100,6 +100,11 @@ export default function UserMovieDetails(props) {
               <h2>
                 <b>{userMovie.title}</b>
               </h2>
+              {/* TODO: Add column on movie table for 'movie-watched' */}
+              {/* <div className="movieWatched" style={{ display: 'inline-block' }}>
+                <label style={{ fontSize: '16px' }}> Seen it? </label>
+                <input type="checkbox" />
+              </div> */}
               <img
                 src={X}
                 alt="x icon"
