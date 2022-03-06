@@ -10,6 +10,7 @@ export default function MovieDetails(props) {
 
   useEffect(() => {
     fetchMovie(title);
+
     // eslint-disable-next-line
   }, []);
 
@@ -40,7 +41,7 @@ export default function MovieDetails(props) {
             <Card style={{ width: '30rem' }} className="movie-details-card">
               <Card.Img
                 variant="top"
-                src={movie.Poster}
+                src={movie?.Poster}
                 alt={movie.Title}
                 style={{
                   height: '600px',

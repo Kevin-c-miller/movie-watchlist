@@ -6,8 +6,15 @@ import {
   searchMovie,
   getMovie,
 } from '../../services/apiConfig/omdb';
+import {
+  getMovieDBDetails,
+  getSteamingProviders,
+  getMovieCredits,
+} from '../../services/apiConfig/theMovieDb';
 import Movies from '../../screens/Movies/Movies';
 import MovieDetails from '../../screens/MovieDetail/MovieDetails';
+import AllMovies from '../../screens/TheMovieDB/AllMovies';
+import DBMovieDetails from '../../screens/TheMovieDB/DBMovieDetails';
 
 export default function MovieContainer(props) {
   const [movies, setMovies] = useState([]);
@@ -15,8 +22,9 @@ export default function MovieContainer(props) {
   const [movie, setMovie] = useState({});
   const [userMovies, setUserMovies] = useState([]);
   const [toggle, setToggle] = useState(false);
-  // const [currentPage, setCurrentPage] = useState(1);
-  // const [hideButton, setHideButton] = useState(false);
+  const [dbMovie, setDbMovie] = useState({});
+  const [streaming, setStreaming] = useState({});
+  const [movieCredits, setMovieCredits] = useState({});
 
   const navigate = useNavigate();
   const { id } = useParams();
@@ -46,10 +54,29 @@ export default function MovieContainer(props) {
     navigate(`/users/${id}/movies`);
   };
 
+  // movie details from theMovieDB api
+  const fetchDBMovieDetails = async (movie_id) => {
+    const movieInfo = await getMovieDBDetails(movie_id);
+    setDbMovie(movieInfo);
+  };
+
+  // get streaming providers
+  const fetchStreamingProviders = async (movie_id) => {
+    const streamingProvider = await getSteamingProviders(movie_id);
+    setStreaming(streamingProvider);
+  };
+
+  // get movie credits
+  const fetchMovieCredits = async (movie_id) => {
+    const credits = await getMovieCredits(movie_id);
+    setMovieCredits(credits);
+  };
+
   // render movies on page load
   useEffect(() => {
     getMovieRequest();
     fetchUserMovieList();
+    fetchMovieCredits(496243);
     // eslint-disable-next-line
   }, []);
 
@@ -64,26 +91,6 @@ export default function MovieContainer(props) {
     };
     movieSearch();
   }, [searchValue]);
-
-  // // show next page of movie results
-  // const nextPage = (page) => {
-  //   let next = page + 1;
-  //   getMovieRequest(next);
-  //   if (!next) {
-  //     // setHideButton(true);
-  //   }
-  // };
-
-  // // show previous page of movie results
-  // const previousPage = (page) => {
-  //   let previous = page--;
-  //   if (page <= 1) {
-  //     // setHideButton(true);
-  //   } else {
-  //     getMovieRequest(previous);
-  //     // setHideButton(false);
-  //   }
-  // };
 
   return (
     <div>
@@ -108,6 +115,22 @@ export default function MovieContainer(props) {
               addMovieToWatchList={addMovieToWatchList}
               userMovies={userMovies}
               fetchMovie={fetchMovie}
+              // dbMovie={dbMovie}
+              // fetchDBMovieDetails={fetchDBMovieDetails}
+            />
+          }
+        />
+        <Route path="/all-movies" element={<AllMovies />} />
+        <Route
+          path="/all-movies/:id"
+          element={
+            <DBMovieDetails
+              dbMovie={dbMovie}
+              fetchDBMovieDetails={fetchDBMovieDetails}
+              streaming={streaming}
+              fetchStreamingProviders={fetchStreamingProviders}
+              fetchMovieCredits={fetchMovieCredits}
+              credits={movieCredits}
             />
           }
         />

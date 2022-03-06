@@ -1,0 +1,63 @@
+* {
+  /* border: 1px solid #000; */
+}
+
+.movieDetails {
+  min-height: 100vh;
+  margin: 1rem;
+}
+
+.movieTitle {
+  text-align: center;
+  padding: 10px;
+}
+
+.movieDetailsBody {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.movieDetailsCard,
+.movieDetailsOther {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 1.5rem;
+  width: 50%;
+}
+
+.movieDetailsOther .streamAvailability {
+  text-align: center;
+  font-weight: bold;
+}
+
+.streaming {
+  display: flex;
+  flex-direction: column;
+}
+
+.streaming > h6 {
+  text-align: center;
+  padding: 5px;
+}
+
+.streamingOptions {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  margin: 0 auto 10px;
+}
+
+.streamingIcons {
+  border-radius: 50%;
+  margin: 2px;
+}
+
+.streamingIcons:hover {
+  opacity: 0.8;
+  transform: scale(1.1);
+}

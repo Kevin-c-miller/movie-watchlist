@@ -1,6 +1,6 @@
 import React from 'react';
 import { MDBFooter, MDBContainer, MDBIcon } from 'mdb-react-ui-kit';
-import { github, linkedin, google, omdb } from '../../assets/index.js';
+import { github, linkedin, google, omdb, tmdb } from '../../assets/index.js';
 import './Footer.css';
 
 export default function Footer() {

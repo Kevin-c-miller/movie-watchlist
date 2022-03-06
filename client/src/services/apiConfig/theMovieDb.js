@@ -4,7 +4,7 @@ const url = `https://api.themoviedb.org/3`;
 
 export const getTopRatedMovies = async () => {
   const res = await axios.get(`${url}/movie/top_rated?api_key=${KEY}`);
-  return res.data;
+  return res.data.results;
 };
 
 export const getMovieDBDetails = async (movie_id) => {
@@ -16,22 +16,29 @@ export const getSimilarMovies = async (movie_id) => {
   const res = await axios.get(
     `${url}/movie/${movie_id}/similar?api_key=${KEY}`
   );
-  return res.data;
+  return res.data.results;
 };
 
 export const getSteamingProviders = async (movie_id) => {
   const res = await axios.get(
     `${url}/movie/${movie_id}/watch/providers?api_key=${KEY}`
   );
-  return res.data;
+  return res.data.results.US;
 };
 
 export const getNowPlayingMovies = async () => {
   const res = await axios.get(`${url}/movie/now_playing?api_key=${KEY}`);
-  return res.data;
+  return res.data.results;
 };
 
 export const getUpcomingMovies = async () => {
   const res = await axios.get(`${url}/movie/upcoming?api_key=${KEY}`);
+  return res.data.results;
+};
+
+export const getMovieCredits = async (movie_id) => {
+  const res = await axios.get(
+    `${url}/movie/${movie_id}/credits?api_key=${KEY}`
+  );
   return res.data;
 };
