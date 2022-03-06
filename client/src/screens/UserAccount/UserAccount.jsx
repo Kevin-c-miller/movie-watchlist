@@ -8,12 +8,12 @@ export default function UserAccount(props) {
   // const [user, setUser] = useState('');
   const { currentUser, deleteAccount } = props;
 
-  const dateFormat = () => {
-    const date = currentUser.created_at;
-    console.log(date);
-  };
+  // converting date format from waht is provided from backend
+  // const dateFormat = () => {
+  //   const date = currentUser.created_at;
+  //   console.log(date);
+  // };
   //   dateFormat();
-  console.log(currentUser);
 
   return (
     <div className="user-account">

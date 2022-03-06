@@ -25,6 +25,7 @@ export default function UserMovieDetails(props) {
   const { id } = useParams();
 
   useEffect(() => {
+    // selected movie details
     fetchSelectedMovie(id);
 
     console.log(id, userMovie.id);

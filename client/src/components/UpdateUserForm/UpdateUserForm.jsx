@@ -20,6 +20,7 @@ export default function UpdateUserForm(props) {
   const { id } = useParams();
 
   useEffect(() => {
+    // checking for token in localstorage
     if (props.currentUser) {
       setUsername(props.currentUser.username);
       setEmail(props.currentUser.email);

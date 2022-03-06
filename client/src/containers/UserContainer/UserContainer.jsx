@@ -9,8 +9,6 @@ import UpdateUserForm from '../../components/UpdateUserForm/UpdateUserForm';
 import {
   getUserMovies,
   getOneMovie,
-  createMovie,
-  updateMovie,
   deleteMovie,
 } from '../../services/apiConfig/movies';
 

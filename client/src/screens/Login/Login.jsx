@@ -12,6 +12,7 @@ export default function Login(props) {
 
   const navigate = useNavigate('/movies');
 
+  // show/hide password on logon/register forms
   const toggleShowPassword = (e) => {
     let x = hidePassword;
     setHidePassword(showPassword);

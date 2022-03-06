@@ -69,24 +69,24 @@ export default function MovieContainer(props) {
   }, [searchValue]);
 
   // show next page of movie results
-  const nextPage = (page) => {
-    let next = page + 1;
-    getMovieRequest(next);
-    if (!next) {
-      // setHideButton(true);
-    }
-  };
+  // const nextPage = (page) => {
+  //   let next = page + 1;
+  //   getMovieRequest(next);
+  //   if (!next) {
+  //     // setHideButton(true);
+  //   }
+  // };
 
   // show previous page of movie results
-  const previousPage = (page) => {
-    let previous = page--;
-    if (page <= 1) {
-      // setHideButton(true);
-    } else {
-      getMovieRequest(previous);
-      // setHideButton(false);
-    }
-  };
+  // const previousPage = (page) => {
+  //   let previous = page--;
+  //   if (page <= 1) {
+  //     // setHideButton(true);
+  //   } else {
+  //     getMovieRequest(previous);
+  //     // setHideButton(false);
+  //   }
+  // };
 
   return (
     <div>
@@ -99,10 +99,10 @@ export default function MovieContainer(props) {
               currentUser={props.currentUser}
               searchValue={searchValue}
               setSearchValue={setSearchValue}
-              previousPage={previousPage}
-              nextPage={nextPage}
               currentPage={currentPage}
               setCurrentPage={setCurrentPage}
+              // previousPage={previousPage}
+              // nextPage={nextPage}
             />
           }
         />

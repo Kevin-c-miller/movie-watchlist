@@ -9,6 +9,7 @@ export default function MovieDetails(props) {
   const navigate = useNavigate();
 
   useEffect(() => {
+    // getting movie that was selected
     fetchMovie(title);
   }, []);
 
