@@ -76,7 +76,7 @@ export default function MovieContainer(props) {
   useEffect(() => {
     getMovieRequest();
     fetchUserMovieList();
-    fetchMovieCredits(496243);
+    // fetchMovieCredits(496243);
     // eslint-disable-next-line
   }, []);
 
@@ -115,8 +115,6 @@ export default function MovieContainer(props) {
               addMovieToWatchList={addMovieToWatchList}
               userMovies={userMovies}
               fetchMovie={fetchMovie}
-              // dbMovie={dbMovie}
-              // fetchDBMovieDetails={fetchDBMovieDetails}
             />
           }
         />
