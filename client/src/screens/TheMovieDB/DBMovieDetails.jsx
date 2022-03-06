@@ -33,6 +33,7 @@ export default function DBMovieDetails(props) {
 
   return (
     <div className="movieDetails">
+      {/* TODO: add button back to all movies page */}
       <h2 className="movieTitle">{dbMovie.title}</h2>
       <div className="movieDetailsBody">
         <div className="movieDetailsCard">
