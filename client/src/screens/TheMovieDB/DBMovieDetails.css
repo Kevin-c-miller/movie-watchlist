@@ -61,3 +61,18 @@
   opacity: 0.8;
   transform: scale(1.1);
 }
+
+.castAndCrew {
+  margin: 20px 10px;
+}
+.castHeader,
+.actors,
+.writers {
+  margin: 10px;
+  text-align: center;
+  font-weight: bold;
+}
+.actorHeadShot {
+  height: 80px;
+  width: 55px;
+}
