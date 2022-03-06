@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
 import { Form } from 'react-bootstrap';
 import '../RegisterForm/RegisterForm';
 import '../../screens/UserAccount/UserAccount.css';
@@ -16,8 +15,6 @@ export default function UpdateUserForm(props) {
     setHidePassword(showPassword);
     setShowPassword(x);
   };
-
-  const { id } = useParams();
 
   useEffect(() => {
     // checking for token in localstorage

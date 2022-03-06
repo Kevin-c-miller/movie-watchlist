@@ -34,7 +34,7 @@ export default function LoginForm(props) {
 
         <FloatingLabel
           controlId="floatingInput"
-          label="Email address"
+          label="Password"
           className="mb-3"
         >
           <Form.Control
@@ -56,7 +56,7 @@ export default function LoginForm(props) {
 
         <div className="register-link">
           <h6>
-            Already have an account? Login <Link to="/register">Here</Link>
+            Already have an account? Register <Link to="/register">Here</Link>
           </h6>
         </div>
       </Form>

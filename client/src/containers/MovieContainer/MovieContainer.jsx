@@ -13,25 +13,23 @@ export default function MovieContainer(props) {
   const [movies, setMovies] = useState([]);
   const [searchValue, setSearchValue] = useState('');
   const [movie, setMovie] = useState({});
-  const [currentPage, setCurrentPage] = useState(1);
   const [userMovies, setUserMovies] = useState([]);
   const [toggle, setToggle] = useState(false);
+  // const [currentPage, setCurrentPage] = useState(1);
   // const [hideButton, setHideButton] = useState(false);
 
   const navigate = useNavigate();
-  const { id, title } = useParams();
+  const { id } = useParams();
 
   // get movies from omdb api
   const getMovieRequest = async () => {
     const movies = await getMovieList();
-    console.log(movies);
     setMovies(movies.Search);
   };
 
   // get single movie based on a user clicking on a movie
   const fetchMovie = async (title) => {
     const selectedMovie = await getMovie(title);
-    console.log(selectedMovie, title);
     setMovie(selectedMovie);
   };
 
@@ -43,18 +41,17 @@ export default function MovieContainer(props) {
 
   // add movie to a user movie watchlist
   const addMovieToWatchList = async (user_id, movieData) => {
-    const newMovie = await createMovie(user_id, movieData);
+    await createMovie(user_id, movieData);
     setToggle((prevToggle) => !prevToggle);
     navigate(`/users/${id}/movies`);
-    console.log(newMovie);
   };
 
   // render movies on page load
   useEffect(() => {
     getMovieRequest();
     fetchUserMovieList();
+    // eslint-disable-next-line
   }, []);
-  console.log(userMovies);
 
   // render movies by user search
   useEffect(() => {
@@ -68,7 +65,11 @@ export default function MovieContainer(props) {
     movieSearch();
   }, [searchValue]);
 
+<<<<<<< HEAD
   // show next page of movie results
+=======
+  // // show next page of movie results
+>>>>>>> 07591e779948bd3bc2f0ba6f07c81547b00c4e0d
   // const nextPage = (page) => {
   //   let next = page + 1;
   //   getMovieRequest(next);

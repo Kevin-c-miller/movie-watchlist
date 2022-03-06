@@ -68,5 +68,6 @@ https://www.figma.com/file/H6UT9Syjpxe26L5vuEcjQB/movie-watchlist-component-hier
 
 ## Post-MVP
 - Sort movies by rating, runtime, director, actors, release year
-- Use OMDB API or another movie API for ease of adding movies to watchlists
 - Add ability to "follow" other users to see the movies/reviews they leave
+- user image option
+- second external api for streaming availability

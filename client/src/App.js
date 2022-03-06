@@ -1,4 +1,4 @@
-import { Routes, Route, useParams } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { verifyUser } from './services/apiConfig/users';
 import MovieContainer from './containers/MovieContainer/MovieContainer';
@@ -8,7 +8,6 @@ import Login from './screens/Login/Login';
 import Signup from './screens/Register/Signup';
 import PageNotFound from './screens/404/PageNotFound';
 import Nav from './components/Navbar/Nav';
-import UserAccount from './screens/UserAccount/UserAccount';
 import Footer from './components/Footer/Footer';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -21,7 +20,6 @@ function App() {
   useEffect(() => {
     const getUser = async () => {
       const user = await verifyUser();
-      console.log(user);
       setCurrentUser(user);
     };
     getUser();
