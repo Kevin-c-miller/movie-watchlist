@@ -52,7 +52,13 @@ export default function DBMovieDetails(props) {
     } catch (error) {
       console.log(error);
     }
-  }, []);
+  }, [
+    fetchDBMovieDetails,
+    fetchMovieCredits,
+    fetchSimilarMovies,
+    fetchStreamingProviders,
+    id,
+  ]);
 
   useEffect(() => {
     try {
@@ -61,7 +67,7 @@ export default function DBMovieDetails(props) {
     } catch (error) {
       console.log(error);
     }
-  }, []);
+  }, [director, stars]);
 
   console.log(dbMovie, streaming);
   console.log(movieCredits, stars, director);
