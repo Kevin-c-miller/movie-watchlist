@@ -25,23 +25,9 @@ export default function UserMovieDetails(props) {
   const navigate = useNavigate();
   const { id, movie_id } = useParams();
 
-  const getMovieCycle = () => {
-    const { currentUser } = props;
-    console.log(id);
-    if (currentUser) {
-      fetchSelectedMovie(id, movie_id);
-    } else {
-      setTimeout(() => {
-        getMovieCycle();
-      }, 501);
-    }
-  };
-
   useEffect(() => {
     // selected movie details
-    console.log(props);
     fetchSelectedMovie(id, movie_id);
-    // fetchSelectedMovie(movie_id);
 
     // eslint-disable-next-line
   }, []);
