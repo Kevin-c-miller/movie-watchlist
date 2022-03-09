@@ -23,11 +23,25 @@ export default function UserMovieDetails(props) {
   const { userMovie, removeMovie, currentUser, fetchSelectedMovie } = props;
 
   const navigate = useNavigate();
-  const { id } = useParams();
+  const { id, movie_id } = useParams();
+
+  const getMovieCycle = () => {
+    const { currentUser } = props;
+    console.log(id);
+    if (currentUser) {
+      fetchSelectedMovie(id, movie_id);
+    } else {
+      setTimeout(() => {
+        getMovieCycle();
+      }, 501);
+    }
+  };
 
   useEffect(() => {
     // selected movie details
-    fetchSelectedMovie(id);
+    console.log(props);
+    fetchSelectedMovie(id, movie_id);
+    // fetchSelectedMovie(movie_id);
 
     // eslint-disable-next-line
   }, []);
@@ -35,28 +49,28 @@ export default function UserMovieDetails(props) {
   useEffect(() => {
     // Get Reviews
     const fetchReviews = async () => {
-      const movieReviews = await getMovieReviews(currentUser?.id, id);
+      const movieReviews = await getMovieReviews(currentUser?.id, movie_id);
       setReviews(movieReviews);
     };
     fetchReviews();
-  }, [toggle, currentUser?.id, id]);
+  }, [toggle, currentUser?.id, movie_id]);
 
   // Create Review
   const addReview = async (reviewData) => {
-    await createReview(id, userMovie?.id, reviewData);
+    await createReview(movie_id, userMovie?.id, reviewData);
     setToggle((prevToggle) => !prevToggle);
     toast.success('Review Added!');
   };
 
   // Edit Review
   const editReview = async (review_id, reviewData) => {
-    const updatedReview = await updateReview(id, review_id, reviewData);
+    const updatedReview = await updateReview(movie_id, review_id, reviewData);
     console.log(updatedReview);
   };
 
   // Delete Review
   const removeReview = async (review_id) => {
-    await deleteReview(id, userMovie?.id, review_id);
+    await deleteReview(movie_id, userMovie?.id, review_id);
     setToggle((prevToggle) => !prevToggle);
     toast.success('Review Deleted');
   };
