@@ -12,6 +12,7 @@ export default function UserMovieList(props) {
   console.log(id);
 
   useEffect(() => {
+    // checking for token for current user to display their movie list
     if (currentUser?.id) {
       fetchUserMovieList(currentUser?.id);
     }

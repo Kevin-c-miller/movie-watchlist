@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import * as ReactBootStrap from 'react-bootstrap';
-import { movieticket, hamburger } from '../../assets/index.js';
+import { movieticket } from '../../assets/index.js';
 import { toast } from 'react-toastify';
 import PreLoginNav from './PreLoginNav.jsx';
 import './Nav.css';
@@ -8,6 +8,7 @@ import './Nav.css';
 export default function Nav(props) {
   const navigate = useNavigate();
 
+  // logging user out and removing token from local storage
   const logOutUser = () => {
     localStorage.removeItem('authToken');
     props.setCurrentUser(null);
@@ -17,9 +18,11 @@ export default function Nav(props) {
   };
   const authToken = localStorage.getItem('authToken');
 
+  // show this navbar if no toek in local storage
   if (!authToken) {
     return <PreLoginNav currentUser={props.currentUser} />;
   } else {
+    // show this navbar if there is a token in local storage
     return (
       <div>
         <ReactBootStrap.Navbar

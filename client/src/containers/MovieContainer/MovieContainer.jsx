@@ -41,7 +41,7 @@ export default function MovieContainer(props) {
 
   // add movie to a user movie watchlist
   const addMovieToWatchList = async (user_id, movieData) => {
-    const newMovie = await createMovie(user_id, movieData);
+    await createMovie(user_id, movieData);
     setToggle((prevToggle) => !prevToggle);
     navigate(`/users/${id}/movies`);
   };
@@ -50,6 +50,7 @@ export default function MovieContainer(props) {
   useEffect(() => {
     getMovieRequest();
     fetchUserMovieList();
+    // eslint-disable-next-line
   }, []);
 
   // render movies by user search
@@ -64,7 +65,7 @@ export default function MovieContainer(props) {
     movieSearch();
   }, [searchValue]);
 
-  // // show next page of movie results
+  // show next page of movie results
   // const nextPage = (page) => {
   //   let next = page + 1;
   //   getMovieRequest(next);
@@ -73,7 +74,7 @@ export default function MovieContainer(props) {
   //   }
   // };
 
-  // // show previous page of movie results
+  // show previous page of movie results
   // const previousPage = (page) => {
   //   let previous = page--;
   //   if (page <= 1) {
@@ -95,6 +96,10 @@ export default function MovieContainer(props) {
               currentUser={props.currentUser}
               searchValue={searchValue}
               setSearchValue={setSearchValue}
+              // currentPage={currentPage}
+              // setCurrentPage={setCurrentPage}
+              // previousPage={previousPage}
+              // nextPage={nextPage}
             />
           }
         />

@@ -1,31 +1,9 @@
 import React from 'react';
-import DeleteModal from '../Delete/Delete';
 import { trash } from '../../assets/index.js';
 import { Card, Button } from 'react-bootstrap';
 
 export default function Reviews(props) {
-  const { currentUser, reviews, removeReview, editReview } = props;
-
-  if (reviews.length === 0) {
-    return (
-      <div className="reviews">
-        <div className="review-page-header">
-          <h3
-            style={{
-              fontFamily: 'Permanent Marker, cursive',
-              fontSize: '3rem',
-              color: '#fff',
-            }}
-          >
-            Reviews
-          </h3>
-        </div>
-        <h5 style={{ color: '#fff', textAlign: 'center', margin: '1rem' }}>
-          No reviews for this movie yet
-        </h5>
-      </div>
-    );
-  }
+  const { currentUser, reviews, removeReview } = props;
 
   return (
     <div className="reviews">

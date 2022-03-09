@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
 import { Form } from 'react-bootstrap';
 import '../RegisterForm/RegisterForm';
 import '../../screens/UserAccount/UserAccount.css';
@@ -17,9 +16,8 @@ export default function UpdateUserForm(props) {
     setShowPassword(x);
   };
 
-  const { id } = useParams();
-
   useEffect(() => {
+    // checking for token in localstorage
     if (props.currentUser) {
       setUsername(props.currentUser.username);
       setEmail(props.currentUser.email);
