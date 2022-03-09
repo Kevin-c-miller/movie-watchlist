@@ -1,5 +1,5 @@
 # movie-watchlist
-Student project for General Assembly. 
+
 
 ### Description
 Create a list of movies that you want to watch/have seen. Once you have seen a movie, you can add a review.
@@ -7,10 +7,9 @@ Uses an API that stores all of the movies that you want to watch/have watched an
 
 ## MVP
 - Create API using Ruby/Rails 
-- API will consist of Users, Movies, Reviews, and Watch Lists
+- API will consist of Users, Movies, Reviews
 - Frontend will be a react app and that will consume Rails API 
 - React app will allow users to sign up to have ability to create a list of movies they want to watch and review the movies they have seen
-- Ability to add new movies into the database
 - Users will have the ability to edit/delete reviews and movies that they created
 - Guest option to browse the app without creating account/logging in
 
@@ -19,7 +18,7 @@ Uses an API that stores all of the movies that you want to watch/have watched an
 - Axios             | API Calls
 - React-Router-Dom  | Routing
 - Bootstrap         | Styling
-- React-toastify.   | Styling animation
+- React-toastify   | Styling animation
 
 
 ## Wireframe
@@ -29,7 +28,7 @@ https://www.figma.com/file/MaPjfN4xEectl1jpSYmlVJ/Movie-WatchList?node-id=0%3A1
 ## Component Hierarchy
 https://www.figma.com/file/H6UT9Syjpxe26L5vuEcjQB/movie-watchlist-component-hierarchy
 
-
+<!-- 
 ## Time Estimates
 
 | Component                                 | Priority | Estimated Time | Time Invested | Actual Time |
@@ -59,15 +58,16 @@ https://www.figma.com/file/H6UT9Syjpxe26L5vuEcjQB/movie-watchlist-component-hier
 | misc. media queries                       |    H     |      2hrs      |     --        |    --       |
 | debugging                                 |    H     |      4hrs      |     --        |    --       |
 | Total                                     |    H     |     52hrs      |     --        |    --       |
-
+ -->
 
 ## ERD
 ![image](https://user-images.githubusercontent.com/80793283/156278298-6fa8c376-9ecf-4fb5-ba81-25834af2b7d3.png)
 
 
 
-## Post-MVP
+<!-- ## Post-MVP
 - Sort movies by rating, runtime, director, actors, release year
 - Add ability to "follow" other users to see the movies/reviews they leave
 - user image option
 - second external api for streaming availability
+ -->
