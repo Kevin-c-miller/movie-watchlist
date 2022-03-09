@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Card } from 'react-bootstrap';
 import Streaming from './Streaming';
-import CastAndCrew from './CastAndCrew';
+// import CastAndCrew from './CastAndCrew';
 import SimilarMovies from './SimilarMovies';
 import './DBMovieDetails.css';
 
@@ -43,22 +43,25 @@ export default function DBMovieDetails(props) {
     setStars(actors);
   };
 
-  useEffect(() => {
-    try {
-      fetchDBMovieDetails(id);
-      fetchStreamingProviders(id);
-      fetchMovieCredits(id);
-      fetchSimilarMovies(id);
-    } catch (error) {
-      console.log(error);
-    }
-  }, [
-    fetchDBMovieDetails,
-    fetchMovieCredits,
-    fetchSimilarMovies,
-    fetchStreamingProviders,
-    id,
-  ]);
+  useEffect(
+    () => {
+      try {
+        fetchDBMovieDetails(id);
+        fetchStreamingProviders(id);
+        fetchMovieCredits(id);
+        fetchSimilarMovies(id);
+      } catch (error) {
+        console.log(error);
+      }
+    },
+    [
+      // fetchDBMovieDetails,
+      // fetchMovieCredits,
+      // fetchSimilarMovies,
+      // fetchStreamingProviders,
+      // id,
+    ]
+  );
 
   useEffect(() => {
     try {
@@ -67,7 +70,7 @@ export default function DBMovieDetails(props) {
     } catch (error) {
       console.log(error);
     }
-  }, [director, stars]);
+  }, []);
 
   console.log(dbMovie, streaming);
   console.log(movieCredits, stars, director);

@@ -9,7 +9,7 @@ export default function CastAndCrew({ movieCredits }) {
     <>
       {id && (
         <div className="castAndCrew">
-          <h5 className="castHeader">Cast and Crew</h5>
+          {/* <h5 className="castHeader">Cast and Crew</h5>
           <h5>
             <b>Directed By:</b> {director?.original_name}
           </h5>
@@ -26,7 +26,7 @@ export default function CastAndCrew({ movieCredits }) {
                 alt={actor?.original_name}
               />
             </div>
-          ))}
+          ))} */}
         </div>
       )}
     </>

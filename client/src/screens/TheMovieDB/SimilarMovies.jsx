@@ -2,13 +2,14 @@ import { Link } from 'react-router-dom';
 
 export default function SimilarMovies(props) {
   const { similarMovies } = props;
+  console.log(similarMovies);
   return (
     <>
       <h4 className="similarHeader">Similar Movies</h4>
       <div className="similar-movies">
-        {similarMovies.map((movie) => (
+        {similarMovies?.map((movie) => (
           <div className="movies-image-container" key={movie?.id}>
-            <Link to={`/movies/sll-movies/${movie?.id}`}>
+            <Link to={`/movies/all-movies/${movie?.id}`}>
               <img
                 src={`https://image.tmdb.org/t/p/original${movie?.poster_path}`}
                 alt={movie?.title}
