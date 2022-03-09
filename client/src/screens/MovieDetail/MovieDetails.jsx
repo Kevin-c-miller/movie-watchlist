@@ -46,8 +46,8 @@ export default function MovieDetails(props) {
                     src={movie.Poster}
                     alt={movie.Title}
                     style={{
-                      height: '635px',
-                      width: '27rem',
+                      height: '675px',
+                      width: '30rem',
                       borderRadius: '35px',
                       border: '5px solid #000',
                     }}
@@ -58,9 +58,9 @@ export default function MovieDetails(props) {
                 <div className="content">
                   <Card.Body>
                     <Card.Title>
-                      <h2>
+                      <h3>
                         <b>{movie.Title} </b>
-                      </h2>
+                      </h3>
                     </Card.Title>
                     <h6>
                       {movie.Year}, <b> {movie.Director}</b>
