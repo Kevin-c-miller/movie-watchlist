@@ -18,6 +18,7 @@ import '../../components/ReviewForm/ReviewForm.css';
 export default function UserMovieDetails(props) {
   const [reviews, setReviews] = useState([]);
   const [toggle, setToggle] = useState(false);
+  const [show, setShow] = useState(false);
 
   const { userMovie, removeMovie, currentUser, fetchSelectedMovie } = props;
 
@@ -60,6 +61,11 @@ export default function UserMovieDetails(props) {
     toast.success('Review Deleted');
   };
 
+  //  show review form
+  const showReviewForm = () => {
+    setShow((prevShow) => !prevShow);
+  };
+
   if (!userMovie) {
     return (
       <div>
@@ -82,71 +88,83 @@ export default function UserMovieDetails(props) {
         </button>
       </div>
 
-      <>
-        <Card style={{ width: '30rem' }} className="movie-details-card">
-          <Card.Img
-            variant="top"
-            src={userMovie.poster}
-            alt={userMovie?.title}
-            style={{
-              height: '600px',
-              width: '29.5rem',
-              borderRadius: '35px',
-              border: '5px solid #000',
-            }}
-          />
-          <Card.Body>
-            <Card.Title>
-              <h2>
-                <b>{userMovie.title}</b>
-              </h2>
-              {/* TODO: Add column on movie table for 'movie-watched' */}
-              {/* <div className="movieWatched" style={{ display: 'inline-block' }}>
-                <label style={{ fontSize: '16px' }}> Seen it? </label>
-                <input type="checkbox" />
-              </div> */}
-              <img
-                src={X}
-                alt="x icon"
+      <div className="movieCard-container">
+        <Card className="movie-details-card">
+          <div className="face face1">
+            <div className="content">
+              <Card.Img
+                variant="top"
+                src={userMovie?.poster}
+                alt={userMovie?.title}
                 style={{
-                  height: '25px',
-                  width: '25px',
-                  background: 'red',
-                  borderRadius: '10px',
+                  height: '600px',
+                  width: '27rem',
+                  borderRadius: '35px',
+                  border: '5px solid #000',
                 }}
-                onClick={() => removeMovie(currentUser?.id, userMovie?.id)}
               />
-            </Card.Title>
-            <Card.Text>
-              {userMovie?.release_year}, <b> {userMovie?.director}</b>
-              <br />
-              <b> {userMovie?.runtime}</b>
-              <br />
-              <b>Starring: </b> {userMovie?.starring}
-              <br />
-              <b>Rated:</b> {userMovie?.rating}
-              <br />
-              <br />
-              <b> Synopsis:</b> {userMovie?.synopsis}
-              {/* TODO: add these in once columns added to DB */}
-              {/* <b>Genre: </b> {userMovie?.Genre} */}
-              {/* <b>Box Office:</b> {userMovie?.BoxOffice} */}
-              {/* <b>Written By:</b> {userMovie?.Writer} */}
-              {/* <b>Awards:</b> {userMovie?.Awards} */}
-            </Card.Text>
-          </Card.Body>
-        </Card>
-      </>
+            </div>
+          </div>
+          <div className="face face2">
+            <div className="content">
+              <Card.Body>
+                <Card.Title>
+                  <h2>
+                    <b>{userMovie?.title}</b>
+                  </h2>
+                  {/* TODO: Add column on movie table for 'movie-watched' */}
 
-      <div className="review-container">
-        <AddReviewForm addReview={addReview} />
-        <Reviews
-          reviews={reviews}
-          currentUser={currentUser}
-          removeReview={removeReview}
-          editReview={editReview}
-        />
+                  <img
+                    src={X}
+                    alt="x icon"
+                    style={{
+                      height: '25px',
+                      width: '25px',
+                      background: 'red',
+                      borderRadius: '10px',
+                    }}
+                    onClick={() => removeMovie(currentUser?.id, userMovie?.id)}
+                  />
+                </Card.Title>
+                <h6>
+                  {userMovie?.release_year}, <b> {userMovie?.director}</b>
+                </h6>
+                <Card.Text>
+                  <br />
+                  <b> {userMovie?.runtime}</b>
+                  <br />
+                  <b>Starring: </b> {userMovie?.starring}
+                  <br />
+                  <b>Rated:</b> {userMovie?.rating}
+                  <br />
+                  <br />
+                  <b> Synopsis:</b> {userMovie?.synopsis}
+                </Card.Text>
+              </Card.Body>
+            </div>
+          </div>
+        </Card>
       </div>
+      {show && (
+        <div className="review-container">
+          <AddReviewForm addReview={addReview} />
+          <Reviews
+            reviews={reviews}
+            currentUser={currentUser}
+            removeReview={removeReview}
+            editReview={editReview}
+          />
+        </div>
+      )}
+      {!show && (
+        <button
+          className="movie-back-btn"
+          onClick={showReviewForm}
+          style={{ marginBottom: '3rem' }}
+        >
+          Leave a review!
+        </button>
+      )}
     </div>
   );
 }
