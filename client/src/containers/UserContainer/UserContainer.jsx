@@ -31,8 +31,8 @@ export default function UserContainer(props) {
   };
 
   //  Get selected movie from user clicking on a movie
-  const fetchSelectedMovie = async (movie_id) => {
-    const selectedMovie = await getOneMovie(props.currentUser?.id, movie_id);
+  const fetchSelectedMovie = async (user_id, movie_id) => {
+    const selectedMovie = await getOneMovie(user_id, movie_id);
     setUserMovie(selectedMovie);
   };
 
@@ -82,7 +82,7 @@ export default function UserContainer(props) {
           }
         />
         <Route
-          path="/:id/movies/:id"
+          path="/:id/movies/:movie_id"
           element={
             <UserMovieDetails
               userMovie={userMovie}
