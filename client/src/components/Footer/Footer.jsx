@@ -29,17 +29,6 @@ export default function Footer() {
             <MDBIcon fab icon="linkedin" />
             <img src={linkedin} alt="linkedin icon" className="social-icon" />
           </a>
-
-          <a
-            className="btn btn-outline-light btn-floating m-1"
-            href="mailto:kevinmiller3791@gmail.com"
-            role="button"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <MDBIcon fab icon="google" />
-            <img src={google} alt="google icon" className="social-icon" />
-          </a>
         </section>
       </MDBContainer>
 
