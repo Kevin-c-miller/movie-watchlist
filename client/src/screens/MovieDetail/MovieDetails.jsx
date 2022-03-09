@@ -46,7 +46,7 @@ export default function MovieDetails(props) {
                     src={movie.Poster}
                     alt={movie.Title}
                     style={{
-                      height: '600px',
+                      height: '635px',
                       width: '27rem',
                       borderRadius: '35px',
                       border: '5px solid #000',
