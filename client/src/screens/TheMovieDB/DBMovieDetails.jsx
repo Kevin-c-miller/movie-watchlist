@@ -81,7 +81,7 @@ export default function DBMovieDetails(props) {
         <h2 className="movieTitle">{dbMovie.title}</h2>
         <div className="movieDetailsBody">
           <div className="movieDetailsCard">
-            {/* TODO: turn this card into its own component */}
+            {/* TODO: break these sections down into their own component */}
             <Card style={{ width: '30rem' }} className="movie-details-card">
               <Card.Img
                 variant="top"
