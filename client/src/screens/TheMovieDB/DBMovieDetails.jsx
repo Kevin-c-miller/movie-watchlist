@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Card } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import Streaming from './Streaming';
 // import CastAndCrew from './CastAndCrew';
 import SimilarMovies from './SimilarMovies';
@@ -27,7 +28,6 @@ export default function DBMovieDetails(props) {
 
   const { id } = useParams();
   const navigate = useNavigate();
-  console.log(id);
 
   const getOfficialTrailer = () => {
     const movieTrailer = trailers?.filter(
@@ -35,8 +35,6 @@ export default function DBMovieDetails(props) {
     );
     setOfficialTrailer(movieTrailer);
   };
-
-  console.log(officialTrailer);
 
   // currency format for budget/revenue
   const currencyFormat = (num) => {
@@ -89,7 +87,7 @@ export default function DBMovieDetails(props) {
   }, []);
 
   console.log(dbMovie, streaming);
-  console.log(movieCredits, stars, director);
+  // console.log(movieCredits, stars, director);
   // console.log(similarMovies);
 
   return (
@@ -125,20 +123,18 @@ export default function DBMovieDetails(props) {
                   <i>"{dbMovie?.tagline}"</i>
                   <br />
                   {dbMovie?.release_date}
-                  {/* <b> {dbMovie?.director}</b> */}
                   <br />
                   <b> {dbMovie?.runtime} min.</b>
                   <br />
-                  {/* <b>Budget: </b> {currencyFormat(dbMovie?.budget)} */}
                   <br />
-                  {/* <b>Revenue:</b> {currencyFormat(dbMovie?.revenue)} */}
+                  <b>Budget: </b> {currencyFormat(dbMovie?.budget)}
+                  <br />
+                  <b>Revenue:</b> {currencyFormat(dbMovie?.revenue)}
+                  <br />
                   <br />
                   <b>Genre:</b>{' '}
                   {dbMovie?.genres?.map((genre) => (
-                    <span key={genre?.id}>
-                      <br />
-                      {genre?.name}
-                    </span>
+                    <span key={genre?.id}> {genre?.name},</span>
                   ))}
                   <br />
                   <br />
@@ -162,14 +158,12 @@ export default function DBMovieDetails(props) {
                 {stars.map((actor) => (
                   <div key={actor?.cast_id} className="actor-map">
                     <h6>{actor?.original_name}</h6>
-                    <hp>
-                      <i>{actor?.character}</i>
-                    </hp>
-                    <img
+                    <i>{actor?.character}</i>
+                    {/* <img
                       className="actorHeadShot"
                       src={`https://image.tmdb.org/t/p/w500/${actor?.profile_path}`}
                       alt={actor?.original_name}
-                    />
+                    /> */}
                   </div>
                 ))}
               </div>
@@ -186,6 +180,25 @@ export default function DBMovieDetails(props) {
           </div>
         </div>
         {/* <SimilarMovies similarMovies={similarMovies} /> */}
+        <h4 className="similarHeader">Similar Movies</h4>
+        <div className="similar-movies">
+          {similarMovies?.map((movie) => (
+            <div className="movies-image-container" key={movie?.id}>
+              <Link to={`/movies/all-movies/${movie?.id}`}>
+                <img
+                  src={`https://image.tmdb.org/t/p/original${movie?.poster_path}`}
+                  alt={movie?.title}
+                  className="movie-page-img"
+                />
+
+                <div className="overlay" key={movie?.id}>
+                  <h6 className="overlay-text">Year: {movie?.release_date}</h6>
+                  <h6 className="overlay-text">{movie?.title}</h6>
+                </div>
+              </Link>
+            </div>
+          ))}
+        </div>
       </div>
       {/* )} */}
     </>
