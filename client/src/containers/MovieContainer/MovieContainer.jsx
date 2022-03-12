@@ -130,6 +130,7 @@ export default function MovieContainer(props) {
           path="/all-movies/:id"
           element={
             <DBMovieDetails
+              currentUser={props.currentUser}
               dbMovie={dbMovie}
               fetchDBMovieDetails={fetchDBMovieDetails}
               streaming={streaming}
@@ -141,6 +142,7 @@ export default function MovieContainer(props) {
               fetchSimilarMovies={fetchSimilarMovies}
               trailers={trailers}
               fetchMovieTrailer={fetchMovieTrailer}
+              addMovieToWatchList={addMovieToWatchList}
             />
           }
         />

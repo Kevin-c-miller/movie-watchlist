@@ -20,6 +20,8 @@ export default function DBMovieDetails(props) {
     fetchSimilarMovies,
     trailers,
     fetchMovieTrailer,
+    addMovieToWatchList,
+    currentUser,
   } = props;
 
   const { id } = useParams();
@@ -29,6 +31,8 @@ export default function DBMovieDetails(props) {
   // const currencyFormat = (num) => {
   //   return '$' + num.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
   // };
+
+  const moviePoster = `https://image.tmdb.org/t/p/original${dbMovie?.poster_path}`;
 
   useEffect(() => {
     try {
@@ -46,12 +50,34 @@ export default function DBMovieDetails(props) {
     <>
       {/* {id && ( */}
       <div className="movieDetails">
-        <button
-          onClick={() => navigate('/movies/all-movies')}
-          className="back-to-movies"
-        >
-          Back to movie list
-        </button>
+        <div className="movieDetailsBtns">
+          <button
+            onClick={() => navigate('/movies/all-movies')}
+            className="back-to-movies"
+          >
+            Back to movie list
+          </button>
+
+          <button
+            className="add-to-watchlist"
+            onClick={() => {
+              const addedMovie = {
+                title: dbMovie.title,
+                poster: moviePoster,
+                rating: dbMovie.Rated,
+                synopsis: dbMovie.overview,
+                director: dbMovie.director,
+                starring: dbMovie.stars,
+                release_year: parseInt(dbMovie.release_date),
+                runtime: dbMovie.runtime,
+                user_id: props.currentUser.id,
+              };
+              addMovieToWatchList(currentUser?.id, addedMovie);
+            }}
+          >
+            Add to watchlist
+          </button>
+        </div>
         <h2 className="movieTitle">{dbMovie.title}</h2>
         <div className="movieDetailsBody">
           <div className="movieDetailsCard">
@@ -59,7 +85,7 @@ export default function DBMovieDetails(props) {
             <Card style={{ width: '30rem' }} className="movie-details-card">
               <Card.Img
                 variant="top"
-                src={`https://image.tmdb.org/t/p/original${dbMovie?.poster_path}`}
+                src={moviePoster}
                 alt={dbMovie?.title}
                 style={{
                   height: '600px',
