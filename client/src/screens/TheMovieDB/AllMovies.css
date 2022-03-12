@@ -1,0 +1,18 @@
+.allMoviesPage {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  background: url('../../assets/images/movie-seats.jpg') no-repeat center
+    center/cover;
+}
+.allMoviesPage > h1 {
+  color: #fff;
+}
+
+.allMoviesPage > h2 {
+  color: #fff;
+  padding: 1rem;
+  margin: 1rem;
+}

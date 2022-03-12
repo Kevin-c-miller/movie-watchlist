@@ -1,6 +1,6 @@
 import React from 'react';
 import { MDBFooter, MDBContainer, MDBIcon } from 'mdb-react-ui-kit';
-import { github, linkedin, google, omdb, tmdb } from '../../assets/index.js';
+import { github, linkedin, google, tmdb } from '../../assets/index.js';
 import './Footer.css';
 
 export default function Footer() {
@@ -60,11 +60,11 @@ export default function Footer() {
         </div>
         <div className="logos">
           <a
-            href="http://omdbapi.com/"
+            href="https://www.themoviedb.org/"
             target="_blank"
             rel="noopener noreferrer"
           >
-            <img src={omdb} alt="omdb api logo" />
+            <img src={tmdb} alt="tmdb logo" />
           </a>
         </div>
       </div>

@@ -131,10 +131,15 @@ export default function DBMovieDetails(props) {
               <h5>
                 <b>Trailer</b>
               </h5>
-              <ReactPlayer
-                url={`https://www.youtube.com/watch?v=${trailers[0]?.key}`}
-                controls={true}
-              />
+              <div className="player-wrapper">
+                <ReactPlayer
+                  url={`https://www.youtube.com/watch?v=${trailers[0]?.key}`}
+                  controls={true}
+                  className="react-player"
+                  width="100%"
+                  height="100%"
+                />
+              </div>
             </div>
           </div>
         </div>

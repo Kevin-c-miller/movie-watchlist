@@ -6,10 +6,9 @@ import {
   searchMovie,
 } from '../../services/apiConfig/theMovieDb';
 import SearchBox from '../../components/SearchBox/SearchBox';
+import './AllMovies.css';
 
 export default function AllMovies(props) {
-  // const [movieDBMovies, setMovieDBMovies] = useState([]);
-  // const [popularMovies, setPopularMovies] = useState([]);
   const [movies, setMovies] = useState([]);
   const [searchValue, setSearchValue] = useState('');
 
@@ -42,8 +41,8 @@ export default function AllMovies(props) {
   }, [searchValue]);
 
   return (
-    <div style={{ minHeight: '100vh' }}>
-      <h1> MovieDB Movies - testing</h1>
+    <div className="allMoviesPage">
+      {/* <h1> MovieDB Movies - testing</h1> */}
       <h2>Search and find movies here!</h2>
       <SearchBox searchValue={searchValue} setSearchValue={setSearchValue} />
 

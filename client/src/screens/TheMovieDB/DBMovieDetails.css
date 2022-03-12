@@ -4,9 +4,9 @@
 
 .movieDetails {
   min-height: 100vh;
-  /* margin: 1rem; */
   background: url('../../assets/images/filmtape.jpg') no-repeat center
     center/cover;
+  width: 100vw;
 }
 
 .back-to-movies {
@@ -44,12 +44,20 @@
   width: 50%;
 }
 
+.movie-details-card {
+  background-color: #ffffff70 !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 20px !important;
+}
+
 .movieDetailsOther {
   background-color: #ffffff70;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border-radius: 20px;
   padding: 1rem;
+  margin: 1rem 2rem 1rem;
 }
 
 .movieDetailsOther .streamAvailability {
@@ -112,6 +120,7 @@
   font-weight: 900;
   margin: 0;
   padding: 5px;
+  text-align: center;
 }
 .director > h6 {
   font-weight: 600;
@@ -153,9 +162,24 @@
   border: 3px solid #000;
 }
 
+.movieTrailer {
+  width: 100%;
+}
+
 .movieTrailer > h5 {
   text-align: center;
   font-size: 30px;
+}
+
+.player-wrapper {
+  position: relative;
+  padding-top: 56.25%; /* Player ratio: 100 / (1280 / 720) */
+}
+
+.react-player {
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 .similarHeader {
@@ -167,4 +191,78 @@
   flex-direction: row;
   justify-content: center;
   overflow-x: auto;
+}
+
+@media screen and (max-width: 1000px) {
+  .movieDetails {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+
+  .movieDetailsBody {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+
+  .movieDetailsOther {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 85%;
+    margin: 2rem;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .movieDetails {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+
+  .movieTitle {
+    font-size: 2rem;
+  }
+
+  .movieDetailsBody {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+
+  .card-title > h2 {
+    font-size: 1rem;
+  }
+
+  .movieDetailsOther {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+
+  .streaming {
+    display: flex;
+    flex-direction: column;
+    width: 95vw;
+  }
+
+  .streamingOptions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+  }
 }

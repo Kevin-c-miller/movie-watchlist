@@ -1,6 +1,6 @@
 export default function Streaming(props) {
   const { streaming } = props;
-  console.log(streaming);
+
   return (
     <div className="streaming">
       <h5 className="streamAvailability">Streaming Availabilty (U.S.)</h5>
