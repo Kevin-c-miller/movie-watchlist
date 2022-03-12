@@ -5,36 +5,40 @@ export default function Streaming(props) {
     <div className="streaming">
       <h5 className="streamAvailability">Streaming Availabilty (U.S.)</h5>
 
-      <b>Streaming Service</b>
+      <h6>Streaming Service</h6>
       {streaming?.flatrate ? (
         <div className="streamingOptions">
           {streaming?.flatrate?.map((option) => (
-            <img
-              key={option?.id}
-              className="streamingIcons"
-              src={`https://image.tmdb.org/t/p/w45${option?.logo_path}`}
-              alt={`${option?.provider_name} logo`}
-            />
+            <>
+              <img
+                key={option?.id}
+                className="streamingIcons"
+                src={`https://image.tmdb.org/t/p/w45${option?.logo_path}`}
+                alt={`${option?.provider_name} logo`}
+              />
+            </>
           ))}
         </div>
       ) : (
-        <h6>No Results Available</h6>
+        <i>No Results Available</i>
       )}
 
-      <b>Rent</b>
+      <h6>Rent</h6>
       {streaming?.rent ? (
         <div className="streamingOptions">
           {streaming?.rent?.map((option) => (
-            <img
-              key={option?.provider_id}
-              className="streamingIcons"
-              src={`https://image.tmdb.org/t/p/w45${option?.logo_path}`}
-              alt={`${option?.provider_name} logo`}
-            />
+            <>
+              <img
+                key={option?.provider_id}
+                className="streamingIcons"
+                src={`https://image.tmdb.org/t/p/w45${option?.logo_path}`}
+                alt={`${option?.provider_name} logo`}
+              />
+            </>
           ))}
         </div>
       ) : (
-        <h6>No Results Available</h6>
+        <i>No Results Available</i>
       )}
     </div>
   );

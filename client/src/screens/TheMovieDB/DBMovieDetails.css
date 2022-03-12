@@ -4,12 +4,27 @@
 
 .movieDetails {
   min-height: 100vh;
+  /* margin: 1rem; */
+  background: url('../../assets/images/filmtape.jpg') no-repeat center
+    center/cover;
+}
+
+.back-to-movies {
+  padding: 5px;
   margin: 1rem;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.back-to-movies:hover {
+  opacity: 0.8;
 }
 
 .movieTitle {
   text-align: center;
   padding: 10px;
+  font-size: 56px;
+  font-weight: bold;
 }
 
 .movieDetailsBody {
@@ -29,6 +44,14 @@
   width: 50%;
 }
 
+.movieDetailsOther {
+  background-color: #ffffff70;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 1rem;
+}
+
 .movieDetailsOther .streamAvailability {
   text-align: center;
   font-weight: bold;
@@ -37,11 +60,24 @@
 .streaming {
   display: flex;
   flex-direction: column;
+  padding: 10px;
+}
+
+.streaming .streamAvailability {
+  margin: 1rem;
+}
+
+.streaming > h5 {
+  text-align: center;
+  padding: 5px;
+  font-weight: bold;
 }
 
 .streaming > h6 {
-  text-align: center;
+  border-bottom: 1px solid #000;
   padding: 5px;
+  font-weight: 900;
+  text-align: center;
 }
 
 .streamingOptions {
@@ -69,9 +105,20 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  /* flex-wrap: wrap; */
 }
-.castHeader,
+
+.director > h5 {
+  border-bottom: 1px solid #000;
+  font-weight: 900;
+  margin: 0;
+  padding: 5px;
+}
+.director > h6 {
+  font-weight: 600;
+  margin: 0;
+  padding: 5px;
+}
+
 .actors-header {
   margin: 10px;
   text-align: center;
@@ -82,28 +129,33 @@
   width: 100%;
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
-  overflow: auto;
-  padding: 5px;
+  justify-content: center;
+  align-items: baseline;
+  flex-wrap: wrap;
 }
 
 .actor-map {
-  margin: 10px;
+  margin: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 10px;
+  padding: 0 0 0 5px;
 }
 
 .actor-map > h6 {
-  font-weight: 800;
+  font-weight: 600;
 }
 .actorHeadShot {
   height: 80px;
   width: 55px;
   border-radius: 50%;
   border: 3px solid #000;
+}
+
+.movieTrailer > h5 {
+  text-align: center;
+  font-size: 30px;
 }
 
 .similarHeader {
