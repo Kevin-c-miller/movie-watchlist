@@ -28,23 +28,25 @@ export default function DBMovieDetails(props) {
 
   console.log(trailers);
   console.log(streaming);
+  console.log(dbMovie);
+  console.log(similarMovies);
 
   // currency format for budget/revenue
   // const currencyFormat = (num) => {
   //   return '$' + num.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
   // };
+
   useEffect(() => {
     try {
       fetchDBMovieDetails(id);
+      fetchMovieTrailer(id);
       fetchStreamingProviders(id);
       fetchMovieCredits(id);
       fetchSimilarMovies(id);
-      fetchMovieTrailer(id);
     } catch (error) {
       console.log(error);
     }
-  }, []);
-  console.log(dbMovie, streaming);
+  }, [id]);
 
   return (
     <>
@@ -87,7 +89,7 @@ export default function DBMovieDetails(props) {
                       <br />
                       <br />
                       <span>
-                        <b>Budget: </b> {dbMovie?.budget}
+                        <b>Budget: </b> $ {dbMovie?.budget}
                         {/* {currencyFormat(dbMovie?.budget)} */}
                       </span>
                     </>
@@ -96,7 +98,7 @@ export default function DBMovieDetails(props) {
                   {dbMovie?.revenue > 0 && (
                     <>
                       <span>
-                        <b>Revenue: </b> {dbMovie?.revenue}
+                        <b>Revenue: </b> $ {dbMovie?.revenue}
                         {/* {currencyFormat(dbMovie?.revenue)} */}
                       </span>
                       <br />
@@ -151,9 +153,9 @@ export default function DBMovieDetails(props) {
           </div>
         </div>
         {/* <SimilarMovies similarMovies={similarMovies} /> */}
-        <h4 className="similarHeader">Similar Movies</h4>
+        {/* <h4 className="similarHeader">Similar Movies</h4>
         <div className="similar-movies">
-          {/* {similarMovies?.map((movie) => (
+          {similarMovies?.map((movie) => (
             <div className="movies-image-container" key={movie?.id}>
               <Link to={`/movies/all-movies/${movie?.id}`}>
                 <img
@@ -168,8 +170,8 @@ export default function DBMovieDetails(props) {
                 </div>
               </Link>
             </div>
-          ))} */}
-        </div>
+          ))}
+        </div> */}
       </div>
       {/* )} */}
     </>

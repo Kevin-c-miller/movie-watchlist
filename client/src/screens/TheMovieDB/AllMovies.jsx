@@ -3,36 +3,52 @@ import { Link } from 'react-router-dom';
 import {
   getTopRatedMovies,
   getPopularMovies,
+  searchMovie,
 } from '../../services/apiConfig/theMovieDb';
+import SearchBox from '../../components/SearchBox/SearchBox';
 
-export default function AllMovies() {
-  const [movieDBMovies, setMovieDBMovies] = useState([]);
-  const [popularMovies, setPopularMovies] = useState([]);
+export default function AllMovies(props) {
+  // const [movieDBMovies, setMovieDBMovies] = useState([]);
+  // const [popularMovies, setPopularMovies] = useState([]);
+  const [movies, setMovies] = useState([]);
+  const [searchValue, setSearchValue] = useState('');
 
   //  top rated movies via imdb (not updated daily)
   const fetchTopRated = async () => {
     const list = await getTopRatedMovies();
-    setMovieDBMovies(list);
+    setMovies(list);
   };
 
   // popular movies (updated daily)
   const fetchPopularMovies = async () => {
     const popMovies = await getPopularMovies();
-    setPopularMovies(popMovies);
+    setMovies(popMovies);
   };
 
   useEffect(() => {
     fetchTopRated();
     fetchPopularMovies();
   }, []);
-  console.log(movieDBMovies);
+  console.log(movies);
+
+  // render movies by user search
+  useEffect(() => {
+    const movieSearch = async () => {
+      const searchedMovies = await searchMovie(searchValue);
+      console.log(searchedMovies);
+      setMovies(searchedMovies);
+    };
+    movieSearch();
+  }, [searchValue]);
 
   return (
     <div style={{ minHeight: '100vh' }}>
       <h1> MovieDB Movies - testing</h1>
+      <h2>Search and find movies here!</h2>
+      <SearchBox searchValue={searchValue} setSearchValue={setSearchValue} />
 
       <div className="all-movies">
-        {popularMovies.map((movie) => (
+        {movies.map((movie) => (
           <div className="movies-image-container" key={movie?.id}>
             <Link to={`/movies/all-movies/${movie?.id}`}>
               <img
@@ -48,7 +64,7 @@ export default function AllMovies() {
             </Link>
           </div>
         ))}
-        {movieDBMovies.map((movie) => (
+        {movies.map((movie) => (
           <div className="movies-image-container" key={movie?.id}>
             <Link to={`/movies/all-movies/${movie?.id}`}>
               <img

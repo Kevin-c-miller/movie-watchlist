@@ -48,7 +48,7 @@ export default function Footer() {
           className="text-center p-3 footer-name"
           style={{ backgroundColor: 'rgba(0, 0, 0, 0.2)' }}
         >
-          © 2020 Copyright:{' '}
+          © 2022 Copyright:{' '}
           <a
             className="text-white portfolio-link"
             href="https://kevin-c-miller.netlify.app/"

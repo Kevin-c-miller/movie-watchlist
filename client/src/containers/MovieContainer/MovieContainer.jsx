@@ -3,7 +3,7 @@ import { Routes, Route, useNavigate, useParams } from 'react-router-dom';
 import { createMovie, getUserMovies } from '../../services/apiConfig/movies';
 import {
   getMovieList,
-  searchMovie,
+  // searchMovie,
   getMovie,
 } from '../../services/apiConfig/omdb';
 import {
@@ -19,14 +19,11 @@ import AllMovies from '../../screens/TheMovieDB/AllMovies';
 import DBMovieDetails from '../../screens/TheMovieDB/DBMovieDetails';
 
 export default function MovieContainer(props) {
-  const [movies, setMovies] = useState([]);
-  const [searchValue, setSearchValue] = useState('');
   const [movie, setMovie] = useState({});
   const [userMovies, setUserMovies] = useState([]);
   const [toggle, setToggle] = useState(false);
   const [dbMovie, setDbMovie] = useState({});
   const [streaming, setStreaming] = useState({});
-  const [movieCredits, setMovieCredits] = useState({});
   const [similarMovies, setSimilarMovies] = useState({});
   const [trailers, setTrailers] = useState({});
   const [stars, setStars] = useState([]);
@@ -34,18 +31,6 @@ export default function MovieContainer(props) {
 
   const navigate = useNavigate();
   const { id } = useParams();
-
-  // get movies from omdb api
-  const getMovieRequest = async () => {
-    const movies = await getMovieList();
-    setMovies(movies.Search);
-  };
-
-  // get single movie based on a user clicking on a movie
-  const fetchMovie = async (title) => {
-    const selectedMovie = await getMovie(title);
-    setMovie(selectedMovie);
-  };
 
   //  get user movies list
   const fetchUserMovieList = async () => {
@@ -107,7 +92,6 @@ export default function MovieContainer(props) {
   useEffect(() => {
     let didCancel = false;
     if (!didCancel) {
-      getMovieRequest();
       fetchUserMovieList();
     }
     return () => {
@@ -117,18 +101,6 @@ export default function MovieContainer(props) {
     // eslint-disable-next-line
   }, []);
 
-  // render movies by user search
-  useEffect(() => {
-    const movieSearch = async () => {
-      const res = await searchMovie(searchValue);
-
-      if (res.Search) {
-        setMovies(res.Search);
-      }
-    };
-    movieSearch();
-  }, [searchValue]);
-
   return (
     <div>
       <Routes>
@@ -136,14 +108,12 @@ export default function MovieContainer(props) {
           path="/"
           element={
             <Movies
-              movies={movies}
+              // movies={movies}
               currentUser={props.currentUser}
-              searchValue={searchValue}
-              setSearchValue={setSearchValue}
             />
           }
         />
-        <Route
+        {/* <Route
           path="/:title"
           element={
             <MovieDetails
@@ -154,7 +124,7 @@ export default function MovieContainer(props) {
               fetchMovie={fetchMovie}
             />
           }
-        />
+        /> */}
         <Route path="/all-movies" element={<AllMovies />} />
         <Route
           path="/all-movies/:id"
