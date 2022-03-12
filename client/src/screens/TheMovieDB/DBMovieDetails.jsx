@@ -9,10 +9,6 @@ import ReactPlayer from 'react-player';
 import './DBMovieDetails.css';
 
 export default function DBMovieDetails(props) {
-  // const [stars, setStars] = useState([]);
-  // const [director, setDirector] = useState([]);
-  const [officialTrailer, setOfficialTrailer] = useState({});
-
   const {
     dbMovie,
     fetchDBMovieDetails,
@@ -30,69 +26,25 @@ export default function DBMovieDetails(props) {
   const { id } = useParams();
   const navigate = useNavigate();
 
-  // const getOfficialTrailer = () => {
-  //   const movieTrailer = trailers?.filter(
-  //     (trailer) =>
-  //       trailer.name === 'Official Trailer' ||
-  //       trailer.name === 'Official Teaser'
-  //   );
-  //   setOfficialTrailer(movieTrailer);
-  // };
   console.log(trailers);
   console.log(streaming);
 
   // currency format for budget/revenue
-  const currencyFormat = (num) => {
-    return '$' + num.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
-  };
-
-  // // grabbing director from api array
-  // const findDirector = () => {
-  //   const directorCredits = movieCredits.crew.find(
-  //     ({ job }) => job === 'Director'
-  //   );
-  //   setDirector(directorCredits);
+  // const currencyFormat = (num) => {
+  //   return '$' + num.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
   // };
-
-  // //  grabbing cast from api array
-  // const movieCast = () => {
-  //   const actors = movieCredits.cast.slice(0, 7);
-  //   setStars(actors);
-  // };
-
-  useEffect(
-    () => {
-      try {
-        fetchDBMovieDetails(id);
-        fetchStreamingProviders(id);
-        fetchMovieCredits(id);
-        fetchSimilarMovies(id);
-        fetchMovieTrailer(id);
-      } catch (error) {
-        console.log(error);
-      }
-    },
-    [
-      // fetchDBMovieDetails,
-      // fetchMovieCredits,
-      // fetchSimilarMovies,
-      // fetchStreamingProviders,
-      // id,
-    ]
-  );
-
-  // useEffect(() => {
-  //   try {
-  //     movieCast();
-  //     findDirector();
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // }, []);
-
+  useEffect(() => {
+    try {
+      fetchDBMovieDetails(id);
+      fetchStreamingProviders(id);
+      fetchMovieCredits(id);
+      fetchSimilarMovies(id);
+      fetchMovieTrailer(id);
+    } catch (error) {
+      console.log(error);
+    }
+  }, []);
   console.log(dbMovie, streaming);
-  // console.log(movieCredits, stars, director);
-  // console.log(similarMovies);
 
   return (
     <>
@@ -126,16 +78,31 @@ export default function DBMovieDetails(props) {
                 <Card.Text>
                   <i>"{dbMovie?.tagline}"</i>
                   <br />
+                  <b>Released: </b>
                   {dbMovie?.release_date}
                   <br />
                   <b> {dbMovie?.runtime} min.</b>
+                  {dbMovie?.budget > 0 && (
+                    <>
+                      <br />
+                      <br />
+                      <span>
+                        <b>Budget: </b> {dbMovie?.budget}
+                        {/* {currencyFormat(dbMovie?.budget)} */}
+                      </span>
+                    </>
+                  )}
                   <br />
-                  <br />
-                  {/* <b>Budget: </b> {currencyFormat(dbMovie?.budget)} */}
-                  <br />
-                  {/* <b>Revenue:</b> {currencyFormat(dbMovie?.revenue)} */}
-                  <br />
-                  <br />
+                  {dbMovie?.revenue > 0 && (
+                    <>
+                      <span>
+                        <b>Revenue: </b> {dbMovie?.revenue}
+                        {/* {currencyFormat(dbMovie?.revenue)} */}
+                      </span>
+                      <br />
+                      <br />
+                    </>
+                  )}
                   <b>Genre:</b>{' '}
                   {dbMovie?.genres?.map((genre) => (
                     <span key={genre?.id}> {genre?.name},</span>
