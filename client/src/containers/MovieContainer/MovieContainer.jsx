@@ -29,6 +29,8 @@ export default function MovieContainer(props) {
   const [movieCredits, setMovieCredits] = useState({});
   const [similarMovies, setSimilarMovies] = useState({});
   const [trailers, setTrailers] = useState({});
+  const [stars, setStars] = useState([]);
+  const [director, setDirector] = useState([]);
 
   const navigate = useNavigate();
   const { id } = useParams();
@@ -72,8 +74,15 @@ export default function MovieContainer(props) {
 
   // get movie credits
   const fetchMovieCredits = async (movie_id) => {
-    const credits = await getMovieCredits(movie_id);
-    setMovieCredits(credits);
+    const movieCredits = await getMovieCredits(movie_id);
+
+    const directorCredits = movieCredits.crew.find(
+      ({ job }) => job === 'Director'
+    );
+    setDirector(directorCredits);
+
+    const actors = movieCredits.cast.slice(0, 7);
+    setStars(actors);
   };
 
   // get similar movies
@@ -85,7 +94,13 @@ export default function MovieContainer(props) {
   // get movie trailer
   const fetchMovieTrailer = async (movie_id) => {
     const movieTrailers = await getMovieTrailer(movie_id);
-    setTrailers(movieTrailers);
+
+    const movieTrailer = movieTrailers?.filter(
+      (trailer) =>
+        trailer.name === 'Official Trailer' ||
+        trailer.name === 'Official Teaser'
+    );
+    setTrailers(movieTrailer);
   };
 
   // render movies on page load
@@ -150,7 +165,8 @@ export default function MovieContainer(props) {
               streaming={streaming}
               fetchStreamingProviders={fetchStreamingProviders}
               fetchMovieCredits={fetchMovieCredits}
-              movieCredits={movieCredits}
+              director={director}
+              stars={stars}
               similarMovies={similarMovies}
               fetchSimilarMovies={fetchSimilarMovies}
               trailers={trailers}

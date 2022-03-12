@@ -9,8 +9,8 @@ import ReactPlayer from 'react-player';
 import './DBMovieDetails.css';
 
 export default function DBMovieDetails(props) {
-  const [stars, setStars] = useState([]);
-  const [director, setDirector] = useState([]);
+  // const [stars, setStars] = useState([]);
+  // const [director, setDirector] = useState([]);
   const [officialTrailer, setOfficialTrailer] = useState({});
 
   const {
@@ -19,7 +19,8 @@ export default function DBMovieDetails(props) {
     streaming,
     fetchStreamingProviders,
     fetchMovieCredits,
-    movieCredits,
+    director,
+    stars,
     similarMovies,
     fetchSimilarMovies,
     trailers,
@@ -29,31 +30,35 @@ export default function DBMovieDetails(props) {
   const { id } = useParams();
   const navigate = useNavigate();
 
-  const getOfficialTrailer = () => {
-    const movieTrailer = trailers?.filter(
-      (trailer) => trailer.name === 'Official Trailer'
-    );
-    setOfficialTrailer(movieTrailer);
-  };
+  // const getOfficialTrailer = () => {
+  //   const movieTrailer = trailers?.filter(
+  //     (trailer) =>
+  //       trailer.name === 'Official Trailer' ||
+  //       trailer.name === 'Official Teaser'
+  //   );
+  //   setOfficialTrailer(movieTrailer);
+  // };
+  console.log(trailers);
+  console.log(streaming);
 
   // currency format for budget/revenue
   const currencyFormat = (num) => {
     return '$' + num.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
   };
 
-  //   grabbing director from api array
-  const findDirector = () => {
-    const directorCredits = movieCredits.crew.find(
-      ({ job }) => job === 'Director'
-    );
-    setDirector(directorCredits);
-  };
+  // // grabbing director from api array
+  // const findDirector = () => {
+  //   const directorCredits = movieCredits.crew.find(
+  //     ({ job }) => job === 'Director'
+  //   );
+  //   setDirector(directorCredits);
+  // };
 
-  //   grabbing cast from api array
-  const movieCast = () => {
-    const actors = movieCredits.cast.slice(0, 7);
-    setStars(actors);
-  };
+  // //  grabbing cast from api array
+  // const movieCast = () => {
+  //   const actors = movieCredits.cast.slice(0, 7);
+  //   setStars(actors);
+  // };
 
   useEffect(
     () => {
@@ -63,7 +68,6 @@ export default function DBMovieDetails(props) {
         fetchMovieCredits(id);
         fetchSimilarMovies(id);
         fetchMovieTrailer(id);
-        getOfficialTrailer();
       } catch (error) {
         console.log(error);
       }
@@ -77,14 +81,14 @@ export default function DBMovieDetails(props) {
     ]
   );
 
-  useEffect(() => {
-    try {
-      movieCast();
-      findDirector();
-    } catch (error) {
-      console.log(error);
-    }
-  }, []);
+  // useEffect(() => {
+  //   try {
+  //     movieCast();
+  //     findDirector();
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // }, []);
 
   console.log(dbMovie, streaming);
   // console.log(movieCredits, stars, director);
@@ -127,9 +131,9 @@ export default function DBMovieDetails(props) {
                   <b> {dbMovie?.runtime} min.</b>
                   <br />
                   <br />
-                  <b>Budget: </b> {currencyFormat(dbMovie?.budget)}
+                  {/* <b>Budget: </b> {currencyFormat(dbMovie?.budget)} */}
                   <br />
-                  <b>Revenue:</b> {currencyFormat(dbMovie?.revenue)}
+                  {/* <b>Revenue:</b> {currencyFormat(dbMovie?.revenue)} */}
                   <br />
                   <br />
                   <b>Genre:</b>{' '}
@@ -173,7 +177,7 @@ export default function DBMovieDetails(props) {
                 <b>Trailer</b>
               </h5>
               <ReactPlayer
-                url={`https://www.youtube.com/watch?v=${officialTrailer[0]?.key}`}
+                url={`https://www.youtube.com/watch?v=${trailers[0]?.key}`}
                 controls={true}
               />
             </div>
@@ -182,7 +186,7 @@ export default function DBMovieDetails(props) {
         {/* <SimilarMovies similarMovies={similarMovies} /> */}
         <h4 className="similarHeader">Similar Movies</h4>
         <div className="similar-movies">
-          {similarMovies?.map((movie) => (
+          {/* {similarMovies?.map((movie) => (
             <div className="movies-image-container" key={movie?.id}>
               <Link to={`/movies/all-movies/${movie?.id}`}>
                 <img
@@ -197,7 +201,7 @@ export default function DBMovieDetails(props) {
                 </div>
               </Link>
             </div>
-          ))}
+          ))} */}
         </div>
       </div>
       {/* )} */}

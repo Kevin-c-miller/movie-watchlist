@@ -11,6 +11,15 @@ export const getTopRatedMovies = async () => {
   }
 };
 
+export const getPopularMovies = async () => {
+  try {
+    const res = await axios.get(`${url}/movie/popular?api_key=${KEY}`);
+    return res.data.results;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
 export const getMovieDBDetails = async (movie_id) => {
   try {
     const res = await axios.get(`${url}/movie/${movie_id}?api_key=${KEY}`);
