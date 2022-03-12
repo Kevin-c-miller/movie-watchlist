@@ -11,6 +11,7 @@ import {
   getSteamingProviders,
   getMovieCredits,
   getSimilarMovies,
+  getMovieTrailer,
 } from '../../services/apiConfig/theMovieDb';
 import Movies from '../../screens/Movies/Movies';
 import MovieDetails from '../../screens/MovieDetail/MovieDetails';
@@ -27,6 +28,7 @@ export default function MovieContainer(props) {
   const [streaming, setStreaming] = useState({});
   const [movieCredits, setMovieCredits] = useState({});
   const [similarMovies, setSimilarMovies] = useState({});
+  const [trailers, setTrailers] = useState({});
 
   const navigate = useNavigate();
   const { id } = useParams();
@@ -78,6 +80,12 @@ export default function MovieContainer(props) {
   const fetchSimilarMovies = async (movie_id) => {
     const similarFilms = await getSimilarMovies(movie_id);
     setSimilarMovies(similarFilms);
+  };
+
+  // get movie trailer
+  const fetchMovieTrailer = async (movie_id) => {
+    const movieTrailers = await getMovieTrailer(movie_id);
+    setTrailers(movieTrailers);
   };
 
   // render movies on page load
@@ -145,6 +153,8 @@ export default function MovieContainer(props) {
               movieCredits={movieCredits}
               similarMovies={similarMovies}
               fetchSimilarMovies={fetchSimilarMovies}
+              trailers={trailers}
+              fetchMovieTrailer={fetchMovieTrailer}
             />
           }
         />

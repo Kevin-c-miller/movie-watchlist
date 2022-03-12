@@ -4,11 +4,14 @@ import { Card } from 'react-bootstrap';
 import Streaming from './Streaming';
 // import CastAndCrew from './CastAndCrew';
 import SimilarMovies from './SimilarMovies';
+import ReactPlayer from 'react-player';
 import './DBMovieDetails.css';
 
 export default function DBMovieDetails(props) {
   const [stars, setStars] = useState([]);
   const [director, setDirector] = useState([]);
+  const [officialTrailer, setOfficialTrailer] = useState({});
+
   const {
     dbMovie,
     fetchDBMovieDetails,
@@ -18,11 +21,22 @@ export default function DBMovieDetails(props) {
     movieCredits,
     similarMovies,
     fetchSimilarMovies,
+    trailers,
+    fetchMovieTrailer,
   } = props;
 
   const { id } = useParams();
   const navigate = useNavigate();
   console.log(id);
+
+  const getOfficialTrailer = () => {
+    const movieTrailer = trailers?.filter(
+      (trailer) => trailer.name === 'Official Trailer'
+    );
+    setOfficialTrailer(movieTrailer);
+  };
+
+  console.log(officialTrailer);
 
   // currency format for budget/revenue
   const currencyFormat = (num) => {
@@ -50,6 +64,8 @@ export default function DBMovieDetails(props) {
         fetchStreamingProviders(id);
         fetchMovieCredits(id);
         fetchSimilarMovies(id);
+        fetchMovieTrailer(id);
+        getOfficialTrailer();
       } catch (error) {
         console.log(error);
       }
@@ -74,7 +90,7 @@ export default function DBMovieDetails(props) {
 
   console.log(dbMovie, streaming);
   console.log(movieCredits, stars, director);
-  console.log(similarMovies);
+  // console.log(similarMovies);
 
   return (
     <>
@@ -158,9 +174,18 @@ export default function DBMovieDetails(props) {
                 ))}
               </div>
             </div>
+            <div className="movieTrailer">
+              <h5>
+                <b>Trailer</b>
+              </h5>
+              <ReactPlayer
+                url={`https://www.youtube.com/watch?v=${officialTrailer[0]?.key}`}
+                controls={true}
+              />
+            </div>
           </div>
         </div>
-        <SimilarMovies similarMovies={similarMovies} />
+        {/* <SimilarMovies similarMovies={similarMovies} /> */}
       </div>
       {/* )} */}
     </>
