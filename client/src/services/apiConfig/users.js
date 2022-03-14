@@ -22,7 +22,6 @@ export const verifyUser = async () => {
   if (token) {
     api.defaults.headers.common.authorization = `Bearer ${token}`;
     const res = await api.get('/auth/verify');
-    console.log(res.data);
     return res.data;
   }
   return false;
