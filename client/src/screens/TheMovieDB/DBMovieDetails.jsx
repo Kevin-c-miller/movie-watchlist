@@ -169,7 +169,7 @@ export default function DBMovieDetails(props) {
             </div>
           </div>
         </div>
-        <SimilarMovies similarMovies={similarMovies} />
+        {/* <SimilarMovies similarMovies={similarMovies} /> */}
       </div>
     </>
   );
