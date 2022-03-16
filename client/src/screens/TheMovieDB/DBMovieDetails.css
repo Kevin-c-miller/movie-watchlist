@@ -199,6 +199,7 @@
   justify-content: flex-start;
   align-items: center;
   overflow-x: auto;
+  margin: 0 1rem;
 }
 
 @media screen and (max-width: 1000px) {
@@ -226,14 +227,12 @@
     width: 85%;
     margin: 2rem;
   }
-
   .similar-movies {
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-    /* width: 100%; */
-    overflow-x: hidden;
+    width: 100%;
+    overflow-x: auto;
   }
 }
 
