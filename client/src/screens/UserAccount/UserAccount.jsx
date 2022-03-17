@@ -10,8 +10,6 @@ export default function UserAccount(props) {
   // converting date format from what is provided from backend
   const dateFormat = currentUser?.created_at.slice(0, 10);
 
-  console.log(dateFormat);
-
   return (
     <div className="user-account">
       <div className="account-container">
