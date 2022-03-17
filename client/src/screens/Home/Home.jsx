@@ -44,7 +44,7 @@ export default function Home() {
             <div className="guest">
               <h6 className="guest-link">
                 Not ready for an account? Check out the site as a{' '}
-                <Link to="/movies">Guest</Link>
+                <Link to="/login">Guest</Link>
               </h6>
             </div>
           </div>

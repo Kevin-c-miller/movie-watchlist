@@ -50,7 +50,22 @@
 }
 
 .register-link {
-  margin: 0.5rem;
+  margin: 1.5rem;
+}
+
+.guestLoginBtn {
+  padding: 2.5px;
+  border-radius: 10px;
+  margin-top: 5px;
+}
+
+.guest-div {
+  padding: 5px;
+  margin: 5px;
+}
+
+.guest-div > ul {
+  list-style: none;
 }
 
 @media screen and (max-width: 600px) {
