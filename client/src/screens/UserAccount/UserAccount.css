@@ -10,16 +10,20 @@
 }
 
 .account-container {
-  background: rgb(207, 207, 207);
-  opacity: 0.8;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   margin-top: 2rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   border-radius: 10px;
-  border: 5px solid #000;
-  /* height: 50%; */
+  border: 8px solid #000;
+  color: rgb(255, 255, 255);
+}
+
+.account-container > h2 {
+  padding: 10px;
 }
 
 .user-acct-info {

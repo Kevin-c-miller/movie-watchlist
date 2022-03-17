@@ -9,26 +9,32 @@ import SearchBox from '../../components/SearchBox/SearchBox';
 import './AllMovies.css';
 
 export default function AllMovies(props) {
+  const [topMovies, setTopMovies] = useState([]);
+  const [popMovies, setPopMovies] = useState([]);
   const [movies, setMovies] = useState([]);
+
   const [searchValue, setSearchValue] = useState('');
 
   //  top rated movies via imdb (not updated daily)
   const fetchTopRated = async () => {
     const list = await getTopRatedMovies();
-    setMovies(list);
+    setTopMovies(list);
+    setMovies([...topMovies]);
   };
 
   // popular movies (updated daily)
   const fetchPopularMovies = async () => {
     const popMovies = await getPopularMovies();
-    setMovies(popMovies);
+    setPopMovies(popMovies);
+    setMovies([...popMovies]);
   };
 
   useEffect(() => {
     fetchTopRated();
     fetchPopularMovies();
+    // setMovies([...popMovies, ...topMovies]);
   }, []);
-  console.log(movies);
+  console.log(topMovies, popMovies, movies);
 
   // render movies by user search
   useEffect(() => {
@@ -63,7 +69,7 @@ export default function AllMovies(props) {
             </Link>
           </div>
         ))}
-        {movies.map((movie) => (
+        {/* {movies.map((movie) => (
           <div className="movies-image-container" key={movie?.id}>
             <Link to={`/movies/all-movies/${movie?.id}`}>
               <img
@@ -78,7 +84,7 @@ export default function AllMovies(props) {
               </div>
             </Link>
           </div>
-        ))}
+        ))} */}
       </div>
     </div>
   );
