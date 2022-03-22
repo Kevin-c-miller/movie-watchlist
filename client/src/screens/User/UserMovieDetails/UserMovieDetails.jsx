@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-
 import { toast } from 'react-toastify';
 import {
   deleteReview,
@@ -13,22 +12,38 @@ import AddReviewForm from '../../../components/ReviewForm/AddReviewForm';
 import Reviews from '../../../components/ReviewList/Reviews.jsx';
 import '../UserMovieList/UserMovies.css';
 import '../../../components/ReviewForm/ReviewForm.css';
+import UserDetailsOther from '../UserDetailsOther/UserDetailsOther.jsx';
 
 export default function UserMovieDetails(props) {
   const [reviews, setReviews] = useState([]);
   const [toggle, setToggle] = useState(false);
   const [show, setShow] = useState(false);
 
-  const { userMovie, removeMovie, currentUser, fetchSelectedMovie } = props;
+  const {
+    userMovie,
+    removeMovie,
+    currentUser,
+    fetchSelectedMovie,
+    streaming,
+    director,
+    stars,
+    trailers,
+    fetchStreamingProviders,
+    fetchMovieCredits,
+    fetchSimilarMovies,
+    fetchMovieTrailer,
+  } = props;
 
   const navigate = useNavigate();
   const { id, movie_id } = useParams();
 
   useEffect(() => {
     fetchSelectedMovie(id, movie_id);
-
-    // eslint-disable-next-line
-  }, []);
+    fetchMovieTrailer(movie_id);
+    fetchStreamingProviders(movie_id);
+    fetchMovieCredits(movie_id);
+    fetchSimilarMovies(movie_id);
+  }, [id, movie_id]);
 
   useEffect(() => {
     // Get Reviews
@@ -64,6 +79,8 @@ export default function UserMovieDetails(props) {
     setShow((prevShow) => !prevShow);
   };
 
+  console.log(userMovie?.poster);
+
   if (!userMovie) {
     return (
       <div>
@@ -89,6 +106,13 @@ export default function UserMovieDetails(props) {
         userMovie={userMovie}
         currentUser={currentUser}
         removieMovie={removeMovie}
+      />
+
+      <UserDetailsOther
+        stars={stars}
+        director={director}
+        streaming={streaming}
+        trailers={trailers}
       />
 
       {show && (

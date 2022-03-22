@@ -45,6 +45,8 @@ export default function DBMovieDetails(props) {
     }
   }, [id]);
 
+  console.log(streaming);
+
   return (
     <>
       <div className="movieDetails">

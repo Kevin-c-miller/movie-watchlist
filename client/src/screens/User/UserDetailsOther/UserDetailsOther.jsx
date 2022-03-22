@@ -2,7 +2,12 @@ import React from 'react';
 import Streaming from '../../TheMovieDB/Streaming/Streaming';
 import ReactPlayer from 'react-player';
 
-export default function UserDetailsOther() {
+export default function UserDetailsOther({
+  stars,
+  director,
+  streaming,
+  trailers,
+}) {
   return (
     <div className="movieDetailsOther">
       <Streaming streaming={streaming} />
