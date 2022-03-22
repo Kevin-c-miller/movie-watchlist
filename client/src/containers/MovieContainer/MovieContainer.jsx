@@ -79,10 +79,8 @@ export default function MovieContainer(props) {
   const fetchMovieTrailer = async (movie_id) => {
     const movieTrailers = await getMovieTrailer(movie_id);
 
-    const movieTrailer = movieTrailers?.filter(
-      (trailer) =>
-        trailer.name === 'Official Trailer' ||
-        trailer.name === 'Official Teaser'
+    const movieTrailer = movieTrailers?.filter((trailer) =>
+      trailer.name.includes('Trailer')
     );
     setTrailers(movieTrailer);
   };

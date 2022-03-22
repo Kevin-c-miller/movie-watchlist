@@ -2,9 +2,9 @@ import { useState } from 'react';
 import { Routes, Route, useNavigate } from 'react-router-dom';
 import { deleteUser, updateUser } from '../../services/apiConfig/users';
 import { toast } from 'react-toastify';
-import UserMovieList from '../../screens/UserMovieList/UserMovieList';
-import UserMovieDetails from '../../screens/UserMovieDetails/UserMovieDetails';
-import UserAccount from '../../screens/UserAccount/UserAccount';
+import UserMovieList from '../../screens/User/UserMovieList/UserMovieList';
+import UserMovieDetails from '../../screens/User/UserMovieDetails/UserMovieDetails';
+import UserAccount from '../../screens/User/UserAccount/UserAccount';
 import UpdateUserForm from '../../components/UpdateUserForm/UpdateUserForm';
 import {
   getUserMovies,

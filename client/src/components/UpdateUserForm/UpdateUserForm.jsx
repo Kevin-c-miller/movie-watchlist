@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Form } from 'react-bootstrap';
 import '../RegisterForm/RegisterForm';
-import '../../screens/UserAccount/UserAccount.css';
+import '../../screens/User/UserAccount/UserAccount.css';
 
 export default function UpdateUserForm(props) {
   const [username, setUsername] = useState('');

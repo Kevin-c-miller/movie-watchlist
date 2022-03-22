@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import DeleteButton from '../../components/Delete/Delete';
+import DeleteButton from '../../../components/Delete/Delete';
 import { Button } from 'react-bootstrap';
 import './UserAccount.css';
 
