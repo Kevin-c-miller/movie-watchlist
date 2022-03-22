@@ -101,30 +101,9 @@ export default function MovieContainer(props) {
   return (
     <div>
       <Routes>
+        <Route path="/" element={<AllMovies />} />
         <Route
-          path="/"
-          element={
-            <Movies
-              // movies={movies}
-              currentUser={props.currentUser}
-            />
-          }
-        />
-        {/* <Route
-          path="/:title"
-          element={
-            <MovieDetails
-              currentUser={props.currentUser}
-              movie={movie}
-              addMovieToWatchList={addMovieToWatchList}
-              userMovies={userMovies}
-              fetchMovie={fetchMovie}
-            />
-          }
-        /> */}
-        <Route path="/all-movies" element={<AllMovies />} />
-        <Route
-          path="/all-movies/:id"
+          path="/:id"
           element={
             <DBMovieDetails
               currentUser={props.currentUser}
