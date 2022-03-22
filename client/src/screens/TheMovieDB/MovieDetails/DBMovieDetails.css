@@ -4,7 +4,7 @@
 
 .movieDetails {
   min-height: 100vh;
-  background: url('../../assets/images/filmtape.jpg') no-repeat center
+  background: url('../../../assets/images/filmtape.jpg') no-repeat center
     center/cover;
   width: 100vw;
 }

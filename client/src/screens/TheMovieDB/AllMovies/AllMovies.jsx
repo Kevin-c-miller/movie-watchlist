@@ -4,8 +4,8 @@ import {
   getTopRatedMovies,
   getPopularMovies,
   searchMovie,
-} from '../../services/apiConfig/theMovieDb';
-import SearchBox from '../../components/SearchBox/SearchBox';
+} from '../../../services/apiConfig/theMovieDb';
+import SearchBox from '../../../components/SearchBox/SearchBox';
 import './AllMovies.css';
 
 export default function AllMovies(props) {

@@ -1,5 +1,5 @@
 import React from 'react';
-import Streaming from '../Streaming';
+import Streaming from '../Streaming/Streaming';
 import ReactPlayer from 'react-player';
 
 export default function MovieDetailsOther({

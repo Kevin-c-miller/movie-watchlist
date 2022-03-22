@@ -14,9 +14,8 @@ import {
   getMovieTrailer,
 } from '../../services/apiConfig/theMovieDb';
 import Movies from '../../screens/Movies/Movies';
-import MovieDetails from '../../screens/MovieDetail/MovieDetails';
-import AllMovies from '../../screens/TheMovieDB/AllMovies';
-import DBMovieDetails from '../../screens/TheMovieDB/DBMovieDetails';
+import AllMovies from '../../screens/TheMovieDB/AllMovies/AllMovies';
+import DBMovieDetails from '../../screens/TheMovieDB/MovieDetails/DBMovieDetails';
 
 export default function MovieContainer(props) {
   const [movie, setMovie] = useState({});

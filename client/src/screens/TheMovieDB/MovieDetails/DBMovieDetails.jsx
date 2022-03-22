@@ -1,10 +1,10 @@
 import { useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-import SimilarMovies from './SimilarMovies';
+import SimilarMovies from '../SimilarMovies/SimilarMovies';
 import './DBMovieDetails.css';
-import MovieCard from './MovieDetailsCard/MovieCard';
-import MovieDetailsOther from './MovieDetailsOther/MovieDetailsOther';
+import MovieCard from '../MovieDetailsCard/MovieCard';
+import MovieDetailsOther from '../MovieDetailsOther/MovieDetailsOther';
 
 export default function DBMovieDetails(props) {
   const {
