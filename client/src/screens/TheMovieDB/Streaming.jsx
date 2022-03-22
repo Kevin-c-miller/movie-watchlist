@@ -9,18 +9,18 @@ export default function Streaming(props) {
       {streaming?.flatrate ? (
         <div className="streamingOptions">
           {streaming?.flatrate?.map((option) => (
-            <>
-              <img
-                key={option?.id}
-                className="streamingIcons"
-                src={`https://image.tmdb.org/t/p/w45${option?.logo_path}`}
-                alt={`${option?.provider_name} logo`}
-              />
-            </>
+            <img
+              key={option?.id}
+              className="streamingIcons"
+              src={`https://image.tmdb.org/t/p/w45${option?.logo_path}`}
+              alt={`${option?.provider_name} logo`}
+            />
           ))}
         </div>
       ) : (
-        <i>No Results Available</i>
+        <div>
+          <i>No Results Available</i>
+        </div>
       )}
 
       <h6>Rent</h6>
