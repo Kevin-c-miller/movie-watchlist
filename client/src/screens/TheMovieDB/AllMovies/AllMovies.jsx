@@ -14,19 +14,28 @@ export default function AllMovies(props) {
 
   //  top rated movies via imdb (not updated daily)
   const fetchMovies = async () => {
-    const topMovies = await getTopRatedMovies();
-    const popMovies = await getPopularMovies();
-    console.log(topMovies, popMovies);
-    setMovies([...topMovies, ...popMovies]);
+    try {
+      const topMovies = await getTopRatedMovies();
+      const popMovies = await getPopularMovies();
+      setMovies([...topMovies, ...popMovies]);
+    } catch (error) {
+      console.error(error);
+    }
   };
+
+  useEffect(() => {
+    fetchMovies();
+  }, []);
 
   // render movies by user search
   useEffect(() => {
-    fetchMovies();
-
     const movieSearch = async () => {
-      const searchedMovies = await searchMovie(searchValue);
-      setMovies(searchedMovies);
+      try {
+        const searchedMovies = await searchMovie(searchValue);
+        setMovies(searchedMovies);
+      } catch (error) {
+        console.error(error);
+      }
     };
     movieSearch();
   }, [searchValue]);
