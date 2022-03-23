@@ -45,14 +45,14 @@ export default function DBMovieDetails(props) {
     }
   }, [id]);
 
-  console.log(streaming);
+  // console.log(streaming);
 
   return (
     <>
       <div className="movieDetails">
         <div className="movieDetailsBtns">
           <button
-            onClick={() => navigate('/movies/all-movies')}
+            onClick={() => navigate('/movies/')}
             className="back-to-movies"
           >
             Back to movie list

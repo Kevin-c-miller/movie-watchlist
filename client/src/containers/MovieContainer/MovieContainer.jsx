@@ -18,9 +18,8 @@ import AllMovies from '../../screens/TheMovieDB/AllMovies/AllMovies';
 import DBMovieDetails from '../../screens/TheMovieDB/MovieDetails/DBMovieDetails';
 
 export default function MovieContainer(props) {
-  const [movie, setMovie] = useState({});
   const [userMovies, setUserMovies] = useState([]);
-  const [toggle, setToggle] = useState(false);
+  // const [toggle, setToggle] = useState(false);
   const [dbMovie, setDbMovie] = useState({});
   const [streaming, setStreaming] = useState({});
   const [similarMovies, setSimilarMovies] = useState({});
@@ -40,7 +39,7 @@ export default function MovieContainer(props) {
   // add movie to a user movie watchlist
   const addMovieToWatchList = async (user_id, movieData) => {
     await createMovie(user_id, movieData);
-    setToggle((prevToggle) => !prevToggle);
+    // setToggle((prevToggle) => !prevToggle);
     navigate(`/users/${id}/movies`);
   };
 
