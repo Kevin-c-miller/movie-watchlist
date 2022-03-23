@@ -55,7 +55,7 @@ export default function AllMovies(props) {
       <div className="all-movies">
         {movies.map((movie) => (
           <div className="movies-image-container" key={movie?.id}>
-            <Link to={`/movies/all-movies/${movie?.id}`}>
+            <Link to={`/movies/${movie?.id}`}>
               <img
                 src={`https://image.tmdb.org/t/p/original${movie?.poster_path}`}
                 alt={movie?.title}

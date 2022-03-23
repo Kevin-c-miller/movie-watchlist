@@ -40,7 +40,7 @@ export default function Nav(props) {
             <ReactBootStrap.Navbar.Collapse id="responsive-navbar-nav">
               <ReactBootStrap.Nav className="me-auto"></ReactBootStrap.Nav>
               <ReactBootStrap.Nav>
-                <ReactBootStrap.Nav.Link href="/movies/all-movies">
+                <ReactBootStrap.Nav.Link href="/movies/">
                   Browse Movies
                 </ReactBootStrap.Nav.Link>
                 <p>|</p>
