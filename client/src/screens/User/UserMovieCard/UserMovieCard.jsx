@@ -1,8 +1,10 @@
 import React from 'react';
+import { useParams } from 'react-router-dom';
 import { Card } from 'react-bootstrap';
 import { X } from '../../../assets/index.js';
 
 export default function UserMovieCard({ userMovie, currentUser, removeMovie }) {
+  const { id, movie_id } = useParams();
   return (
     <div className="movieDetailsCard">
       <Card style={{ width: '30rem' }} className="movie-details-card">

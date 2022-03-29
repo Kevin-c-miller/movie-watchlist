@@ -103,7 +103,7 @@ export default function UserMovieDetails(props) {
       <UserMovieCard
         userMovie={userMovie}
         currentUser={currentUser}
-        removieMovie={removeMovie}
+        removeMovie={removeMovie}
       />
 
       <UserDetailsOther

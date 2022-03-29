@@ -10,6 +10,7 @@ export default function UserDetailsOther({
 }) {
   return (
     <div className="movieDetailsOther">
+      <h3>Coming soon!</h3>
       <Streaming streaming={streaming} />
       <div className="castAndCrew">
         <div className="director">

@@ -8,6 +8,7 @@ export default function MovieDetailsOther({
   streaming,
   trailers,
 }) {
+  console.log(stars);
   return (
     <div className="movieDetailsOther">
       <Streaming streaming={streaming} />

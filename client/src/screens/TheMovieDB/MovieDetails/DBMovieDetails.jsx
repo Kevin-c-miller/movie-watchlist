@@ -33,6 +33,11 @@ export default function DBMovieDetails(props) {
 
   const moviePoster = `https://image.tmdb.org/t/p/original${dbMovie?.poster_path}`;
 
+  const actors = stars?.map((actor) => {
+    return actor.name;
+  });
+  console.log(actors);
+
   useEffect(() => {
     try {
       fetchDBMovieDetails(id);
@@ -62,10 +67,10 @@ export default function DBMovieDetails(props) {
               const addedMovie = {
                 title: dbMovie.title,
                 poster: moviePoster,
-                rating: dbMovie.Rated,
+                // rating: dbMovie.Rated,
                 synopsis: dbMovie.overview,
                 director: dbMovie.director,
-                starring: dbMovie.stars,
+                starring: dbMovie.actors,
                 release_year: parseInt(dbMovie.release_date),
                 runtime: dbMovie.runtime,
                 user_id: props.currentUser.id,
@@ -79,6 +84,7 @@ export default function DBMovieDetails(props) {
         <h2 className="movieTitle">{dbMovie.title}</h2>
         <div className="movieDetailsBody">
           <MovieCard dbMovie={dbMovie} moviePoster={moviePoster} />
+          <h3>Coming soon!</h3>
           <MovieDetailsOther
             stars={stars}
             director={director}
