@@ -1,8 +1,6 @@
 import { useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
-
-// import '../Movies/Movies.css';
-// import './UserMovies.css';
+import '../../Movies/Movies.css';
 
 export default function UserMovieList(props) {
   const { fetchUserMovieList, currentUser, userMovies } = props;
@@ -39,8 +37,6 @@ export default function UserMovieList(props) {
           </div>
         ))}
       </div>
-
-      {/* add watched as a checkbox and add to db */}
     </div>
   );
 }
