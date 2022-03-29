@@ -1,0 +1,299 @@
+* {
+  /* border: 1px solid #000; */
+}
+
+.movieDetails {
+  min-height: 100vh;
+  background: url('../../../assets/images/filmtape.jpg') no-repeat center
+    center/cover;
+  width: 100vw;
+}
+
+.movieDetailsBtns {
+  display: flex;
+  justify-content: space-between;
+}
+
+.back-to-movies,
+.add-to-watchlist {
+  padding: 5px;
+  margin: 1.5rem 4rem;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.back-to-movies:hover {
+  opacity: 0.8;
+}
+
+.movieTitle {
+  text-align: center;
+  padding: 10px;
+  font-size: 56px;
+  font-weight: bold;
+}
+
+.movieDetailsBody {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.movieDetailsCard,
+.movieDetailsOther {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 1.5rem;
+  width: 50%;
+}
+
+.movie-details-card {
+  background-color: #ffffff70 !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 20px !important;
+}
+
+.movie-details-card > img {
+  object-fit: cover;
+}
+
+.movieDetailsOther {
+  background-color: #ffffff70;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 1rem;
+  margin: 1rem 2rem 1rem;
+}
+
+.movieDetailsOther .streamAvailability {
+  text-align: center;
+  font-weight: bold;
+}
+
+.streaming {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.streaming .streamAvailability {
+  margin: 1rem;
+}
+
+.streaming > h5 {
+  text-align: center;
+  padding: 5px;
+  font-weight: bold;
+}
+
+.streaming > h6 {
+  border-bottom: 1px solid #000;
+  padding: 5px;
+  font-weight: 900;
+  text-align: center;
+}
+
+.streamingOptions {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  margin: 0 auto 10px;
+}
+
+.streamingIcons {
+  border-radius: 50%;
+  margin: 2px;
+}
+
+.streamingIcons:hover {
+  opacity: 0.8;
+  transform: scale(1.1);
+}
+
+.castAndCrew {
+  margin: 20px 10px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.director > h5 {
+  border-bottom: 1px solid #000;
+  font-weight: 900;
+  margin: 0;
+  padding: 5px;
+  text-align: center;
+}
+.director > h6 {
+  font-weight: 600;
+  margin: 0;
+  padding: 5px;
+  text-align: center;
+}
+
+.actors-header {
+  margin: 10px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.actors {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: baseline;
+  flex-wrap: wrap;
+}
+
+.actor-map {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0 0 0 5px;
+}
+
+.actor-map > h6 {
+  font-weight: 600;
+}
+.actorHeadShot {
+  height: 80px;
+  width: 55px;
+  border-radius: 50%;
+  border: 3px solid #000;
+}
+
+.movieTrailer {
+  width: 100%;
+}
+
+.movieTrailer > h5 {
+  text-align: center;
+  font-size: 30px;
+}
+
+.player-wrapper {
+  position: relative;
+  padding-top: 56.25%; /* Player ratio: 100 / (1280 / 720) */
+}
+
+.react-player {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.similarHeader {
+  text-align: center;
+  font-weight: 700;
+}
+
+.similar-movies {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  overflow-x: auto;
+  margin: 0 1rem;
+}
+
+@media screen and (max-width: 1000px) {
+  .movieDetails {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+
+  .movieDetailsBody {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+
+  .movieDetailsOther {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 85%;
+    margin: 2rem;
+  }
+  .similar-movies {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    overflow-x: auto;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .back-to-movies,
+  .add-to-watchlist {
+    /* padding: 5px; */
+    font-size: 12px;
+    margin: 1.5rem 4rem;
+    border-radius: 10px;
+    cursor: pointer;
+    width: 90px;
+  }
+
+  .movieDetails {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+
+  .movieTitle {
+    font-size: 2rem;
+  }
+
+  .movieDetailsBody {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+
+  .card-title > h2 {
+    font-size: 1rem;
+  }
+
+  .movieDetailsOther {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+
+  .streaming {
+    display: flex;
+    flex-direction: column;
+    width: 95vw;
+  }
+
+  .streamingOptions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+}

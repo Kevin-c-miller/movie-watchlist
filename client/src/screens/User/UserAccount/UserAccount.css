@@ -1,0 +1,79 @@
+.user-account {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  background: url('../../../assets/images/movie-collage.jpg') no-repeat center
+    center/cover;
+  min-height: 100vh;
+}
+
+.account-container {
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  border: 8px solid #000;
+  color: rgb(255, 255, 255);
+}
+
+.account-container > h2 {
+  padding: 10px;
+}
+
+.user-acct-info {
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.user-acct-info h3,
+h4 {
+  padding: 1rem;
+}
+
+.account-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.account-btn a {
+  margin: 0 15px;
+}
+
+.edit-user-info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: url('../../../assets/images/popcorn.jpg') no-repeat center
+    center/cover;
+  min-height: 100vh;
+}
+
+.edit-user-info h2 {
+  color: #000;
+}
+
+@media screen and (max-width: 600px) {
+  .account-container {
+    margin: 2rem;
+  }
+
+  .account-container h2 {
+    text-align: center;
+    font-size: 20px;
+    margin: 1rem 0.3rem;
+  }
+
+  .user-acct-info {
+    padding: 1rem;
+  }
+}

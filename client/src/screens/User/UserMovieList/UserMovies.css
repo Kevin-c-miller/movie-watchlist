@@ -1,0 +1,66 @@
+.user-movie-list {
+  min-height: 100vh;
+  background: url('../../../assets/images/film.jpg') no-repeat center
+    center/cover;
+}
+
+.movie-details {
+  min-height: 100vh;
+  background: url('../../../assets/images/filmtape.jpg') no-repeat center
+    center/cover;
+}
+
+.user-movie-list h2 {
+  text-align: center;
+  color: #fff;
+  font-weight: bold;
+  padding: 1rem;
+}
+
+.card-title {
+  display: flex;
+  justify-content: space-between;
+}
+
+.overlay img {
+  background: red;
+  height: 15px;
+  width: 15px;
+}
+
+.remove-movie {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  height: 35px;
+}
+.remove-movie > img {
+  height: 30px;
+  width: 30px;
+  background: #ff0800;
+  border-radius: 50%;
+  border: 1px solid #ff0800;
+  cursor: pointer;
+}
+
+.overlay-text {
+  color: #fff;
+}
+
+.back-btn {
+<<<<<<< HEAD:client/src/screens/UserMovieList/UserMovies.css
+  margin: 2rem auto 7rem;
+=======
+  padding: 2rem;
+>>>>>>> kevin-dev:client/src/screens/User/UserMovieList/UserMovies.css
+}
+
+.movie-back-btn {
+  background: #28282b;
+  color: #fff;
+  padding: 6px;
+  border-radius: 10px;
+}
+.movie-back-btn:hover {
+  opacity: 0.7;
+}

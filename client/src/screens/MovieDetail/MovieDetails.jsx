@@ -11,6 +11,7 @@ export default function MovieDetails(props) {
   useEffect(() => {
     // getting movie that was selected
     fetchMovie(title);
+
     // eslint-disable-next-line
   }, []);
 
