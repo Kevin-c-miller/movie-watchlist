@@ -35,7 +35,6 @@ export default function UserContainer(props) {
   // Get User Movies
   const fetchUserMovieList = async (user_id) => {
     const userList = await getUserMovies(user_id);
-    console.log(userList);
     setUserMovies(userList);
   };
 
@@ -56,8 +55,7 @@ export default function UserContainer(props) {
 
   // UpdateUser
   const editUser = async (user_id, updateData) => {
-    const updatedUser = await updateUser(user_id, updateData);
-    console.log(updatedUser);
+    await updateUser(user_id, updateData);
 
     toast.success('User Information Updated');
 
