@@ -84,7 +84,7 @@ export default function DBMovieDetails(props) {
         <h2 className="movieTitle">{dbMovie.title}</h2>
         <div className="movieDetailsBody">
           <MovieCard dbMovie={dbMovie} moviePoster={moviePoster} />
-          <h3>Coming soon!</h3>
+
           <MovieDetailsOther
             stars={stars}
             director={director}
