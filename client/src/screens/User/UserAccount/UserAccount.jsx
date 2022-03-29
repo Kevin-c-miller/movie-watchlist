@@ -7,10 +7,6 @@ export default function UserAccount(props) {
   // const [user, setUser] = useState('');
   const { currentUser, deleteAccount } = props;
 
-<<<<<<< HEAD:client/src/screens/UserAccount/UserAccount.jsx
-  // converting date format from what is provided from backend
-=======
->>>>>>> kevin-dev:client/src/screens/User/UserAccount/UserAccount.jsx
   const dateFormat = currentUser?.created_at.slice(0, 10);
 
   return (

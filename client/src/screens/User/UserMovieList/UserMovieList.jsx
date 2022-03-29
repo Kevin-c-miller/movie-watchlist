@@ -4,10 +4,8 @@ import '../../Movies/Movies.css';
 
 export default function UserMovieList(props) {
   const { fetchUserMovieList, currentUser, userMovies } = props;
-  console.log(currentUser?.id);
 
   const { id } = useParams();
-  console.log(id);
 
   useEffect(() => {
     // checking for token for current user to display their movie list

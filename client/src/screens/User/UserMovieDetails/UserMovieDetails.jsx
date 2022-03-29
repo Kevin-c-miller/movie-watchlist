@@ -77,8 +77,6 @@ export default function UserMovieDetails(props) {
     setShow((prevShow) => !prevShow);
   };
 
-  console.log(userMovie);
-
   if (!userMovie) {
     return (
       <div>

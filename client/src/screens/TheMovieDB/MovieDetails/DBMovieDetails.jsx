@@ -36,7 +36,7 @@ export default function DBMovieDetails(props) {
   const actors = stars?.map((actor) => {
     return actor.name;
   });
-  console.log(actors);
+
 
   useEffect(() => {
     try {
