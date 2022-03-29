@@ -2,24 +2,17 @@ import { useState, useEffect } from 'react';
 import { Routes, Route, useNavigate, useParams } from 'react-router-dom';
 import { createMovie, getUserMovies } from '../../services/apiConfig/movies';
 import {
-  getMovieList,
-  // searchMovie,
-  getMovie,
-} from '../../services/apiConfig/omdb';
-import {
   getMovieDBDetails,
   getSteamingProviders,
   getMovieCredits,
   getSimilarMovies,
   getMovieTrailer,
 } from '../../services/apiConfig/theMovieDb';
-import Movies from '../../screens/Movies/Movies';
 import AllMovies from '../../screens/TheMovieDB/AllMovies/AllMovies';
 import DBMovieDetails from '../../screens/TheMovieDB/MovieDetails/DBMovieDetails';
 
 export default function MovieContainer(props) {
   const [userMovies, setUserMovies] = useState([]);
-  // const [toggle, setToggle] = useState(false);
   const [dbMovie, setDbMovie] = useState({});
   const [streaming, setStreaming] = useState({});
   const [similarMovies, setSimilarMovies] = useState({});
