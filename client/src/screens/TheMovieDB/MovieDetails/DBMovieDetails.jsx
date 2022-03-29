@@ -37,7 +37,6 @@ export default function DBMovieDetails(props) {
     return actor.name;
   });
 
-
   useEffect(() => {
     try {
       fetchDBMovieDetails(id);
