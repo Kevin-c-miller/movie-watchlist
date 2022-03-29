@@ -66,7 +66,7 @@ export default function DBMovieDetails(props) {
               const addedMovie = {
                 title: dbMovie.title,
                 poster: moviePoster,
-                // rating: dbMovie.Rated,
+                rating: dbMovie.Rated,
                 synopsis: dbMovie.overview,
                 director: dbMovie.director,
                 starring: dbMovie.actors,
