@@ -123,7 +123,7 @@
     width: 100%;
   }
   .movie-details-card {
-    width: 16rem !important;
+    /* width: 16rem !important; */
   }
 
   .movieCard-container {
@@ -141,7 +141,6 @@
 
   .card-img-top {
     height: 465px !important;
-    width: 18rem !important;
   }
 
   .movieCard-container .card .face.face1,

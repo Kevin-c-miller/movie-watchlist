@@ -1,7 +1,7 @@
 import { useParams, useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import { Card } from 'react-bootstrap';
-import './MovieDetails.css';
+// import './MovieDetails.css';
 
 export default function MovieDetails(props) {
   const { movie, fetchMovie } = props;
@@ -11,6 +11,7 @@ export default function MovieDetails(props) {
   useEffect(() => {
     // getting movie that was selected
     fetchMovie(title);
+
     // eslint-disable-next-line
   }, []);
 

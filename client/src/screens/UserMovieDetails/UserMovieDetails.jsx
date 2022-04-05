@@ -11,7 +11,7 @@ import {
 } from '../../services/apiConfig/reviews.js';
 import AddReviewForm from '../../components/ReviewForm/AddReviewForm';
 import Reviews from '../../components/ReviewList/Reviews.jsx';
-import '../MovieDetail/MovieDetails.css';
+import '../TheMovieDB/MovieDetails/DBMovieDetails.css';
 import '../UserMovieList/UserMovies.css';
 import '../../components/ReviewForm/ReviewForm.css';
 
@@ -78,7 +78,7 @@ export default function UserMovieDetails(props) {
   }
 
   return (
-    <div className="movie-details">
+    <div className="movieDetails">
       <div className="back-btn">
         <button
           className="movie-back-btn"
@@ -88,61 +88,53 @@ export default function UserMovieDetails(props) {
         </button>
       </div>
 
-      <div className="movieCard-container">
+      <div className="movieDetailsCard">
         <Card className="movie-details-card">
-          <div className="face face1">
-            <div className="content">
-              <Card.Img
-                variant="top"
-                src={userMovie?.poster}
-                alt={userMovie?.title}
-                style={{
-                  height: '600px',
-                  width: '27rem',
-                  borderRadius: '35px',
-                  border: '5px solid #000',
-                }}
-              />
-            </div>
-          </div>
-          <div className="face face2">
-            <div className="content">
-              <Card.Body>
-                <Card.Title>
-                  <h2>
-                    <b>{userMovie?.title}</b>
-                  </h2>
-                  {/* TODO: Add column on movie table for 'movie-watched' */}
+          <Card.Img
+            variant="top"
+            src={userMovie?.poster}
+            alt={userMovie?.title}
+            style={{
+              height: '600px',
+              borderRadius: '35px',
+              border: '5px solid #000',
+            }}
+          />
 
-                  <img
-                    src={X}
-                    alt="x icon"
-                    style={{
-                      height: '25px',
-                      width: '25px',
-                      background: 'red',
-                      borderRadius: '10px',
-                    }}
-                    onClick={() => removeMovie(currentUser?.id, userMovie?.id)}
-                  />
-                </Card.Title>
-                <h6>
-                  {userMovie?.release_year}, <b> {userMovie?.director}</b>
-                </h6>
-                <Card.Text>
-                  <br />
-                  <b> {userMovie?.runtime}</b>
-                  <br />
-                  <b>Starring: </b> {userMovie?.starring}
-                  <br />
-                  <b>Rated:</b> {userMovie?.rating}
-                  <br />
-                  <br />
-                  <b> Synopsis:</b> {userMovie?.synopsis}
-                </Card.Text>
-              </Card.Body>
-            </div>
-          </div>
+          <Card.Body>
+            <Card.Title>
+              <h2>
+                <b>{userMovie?.title}</b>
+              </h2>
+              {/* TODO: Add column on movie table for 'movie-watched' */}
+
+              <img
+                src={X}
+                alt="x icon"
+                style={{
+                  height: '25px',
+                  width: '25px',
+                  background: 'red',
+                  borderRadius: '10px',
+                }}
+                onClick={() => removeMovie(currentUser?.id, userMovie?.id)}
+              />
+            </Card.Title>
+            <h6>
+              {userMovie?.release_year}, <b> {userMovie?.director}</b>
+            </h6>
+            <Card.Text>
+              <br />
+              <b> {userMovie?.runtime}</b>
+              <br />
+              <b>Starring: </b> {userMovie?.starring}
+              <br />
+              <b>Rated:</b> {userMovie?.rating}
+              <br />
+              <br />
+              <b> Synopsis:</b> {userMovie?.synopsis}
+            </Card.Text>
+          </Card.Body>
         </Card>
       </div>
       {show && (

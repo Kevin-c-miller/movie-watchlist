@@ -2,19 +2,28 @@ import { useState } from 'react';
 import { Routes, Route, useNavigate } from 'react-router-dom';
 import { deleteUser, updateUser } from '../../services/apiConfig/users';
 import { toast } from 'react-toastify';
-import UserMovieList from '../../screens/UserMovieList/UserMovieList';
-import UserMovieDetails from '../../screens/UserMovieDetails/UserMovieDetails';
-import UserAccount from '../../screens/UserAccount/UserAccount';
+import UserMovieList from '../../screens/User/UserMovieList/UserMovieList';
+import UserMovieDetails from '../../screens/User/UserMovieDetails/UserMovieDetails';
+import UserAccount from '../../screens/User/UserAccount/UserAccount';
 import UpdateUserForm from '../../components/UpdateUserForm/UpdateUserForm';
 import {
   getUserMovies,
   getOneMovie,
   deleteMovie,
 } from '../../services/apiConfig/movies';
+import {
+  getSteamingProviders,
+  getMovieCredits,
+  getMovieTrailer,
+} from '../../services/apiConfig/theMovieDb';
 
 export default function UserContainer(props) {
   const [userMovies, setUserMovies] = useState([]);
   const [userMovie, setUserMovie] = useState({});
+  const [streaming, setStreaming] = useState({});
+  const [trailers, setTrailers] = useState({});
+  const [stars, setStars] = useState([]);
+  const [director, setDirector] = useState([]);
 
   const navigate = useNavigate();
 
@@ -26,7 +35,6 @@ export default function UserContainer(props) {
   // Get User Movies
   const fetchUserMovieList = async (user_id) => {
     const userList = await getUserMovies(user_id);
-    console.log(userList);
     setUserMovies(userList);
   };
 
@@ -47,8 +55,7 @@ export default function UserContainer(props) {
 
   // UpdateUser
   const editUser = async (user_id, updateData) => {
-    const updatedUser = await updateUser(user_id, updateData);
-    console.log(updatedUser);
+    await updateUser(user_id, updateData);
 
     toast.success('User Information Updated');
 
@@ -66,6 +73,35 @@ export default function UserContainer(props) {
       window.location.reload();
     }, 3000);
     navigate('/');
+  };
+
+  // get streaming providers
+  const fetchStreamingProviders = async (movie_id) => {
+    const streamingProvider = await getSteamingProviders(movie_id);
+    setStreaming(streamingProvider);
+  };
+
+  // get movie credits
+  const fetchMovieCredits = async (movie_id) => {
+    const movieCredits = await getMovieCredits(movie_id);
+
+    const directorCredits = movieCredits.crew.find(
+      ({ job }) => job === 'Director'
+    );
+    setDirector(directorCredits);
+
+    const actors = movieCredits.cast.slice(0, 7);
+    setStars(actors);
+  };
+
+  // get movie trailer
+  const fetchMovieTrailer = async (movie_id) => {
+    const movieTrailers = await getMovieTrailer(movie_id);
+
+    const movieTrailer = movieTrailers?.filter((trailer) =>
+      trailer.name.includes('Trailer')
+    );
+    setTrailers(movieTrailer);
   };
 
   return (
@@ -89,6 +125,13 @@ export default function UserContainer(props) {
               fetchSelectedMovie={fetchSelectedMovie}
               removeMovie={removeMovieFromList}
               currentUser={props.currentUser}
+              streaming={streaming}
+              fetchStreamingProviders={fetchStreamingProviders}
+              fetchMovieCredits={fetchMovieCredits}
+              director={director}
+              stars={stars}
+              trailers={trailers}
+              fetchMovieTrailer={fetchMovieTrailer}
             />
           }
         />

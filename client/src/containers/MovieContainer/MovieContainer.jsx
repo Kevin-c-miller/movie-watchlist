@@ -2,36 +2,26 @@ import { useState, useEffect } from 'react';
 import { Routes, Route, useNavigate, useParams } from 'react-router-dom';
 import { createMovie, getUserMovies } from '../../services/apiConfig/movies';
 import {
-  getMovieList,
-  searchMovie,
-  getMovie,
-} from '../../services/apiConfig/omdb';
-import Movies from '../../screens/Movies/Movies';
-import MovieDetails from '../../screens/MovieDetail/MovieDetails';
+  getMovieDBDetails,
+  getSteamingProviders,
+  getMovieCredits,
+  getSimilarMovies,
+  getMovieTrailer,
+} from '../../services/apiConfig/theMovieDb';
+import AllMovies from '../../screens/TheMovieDB/AllMovies/AllMovies';
+import DBMovieDetails from '../../screens/TheMovieDB/MovieDetails/DBMovieDetails';
 
 export default function MovieContainer(props) {
-  const [movies, setMovies] = useState([]);
-  const [searchValue, setSearchValue] = useState('');
-  const [movie, setMovie] = useState({});
   const [userMovies, setUserMovies] = useState([]);
-  const [toggle, setToggle] = useState(false);
-  // const [currentPage, setCurrentPage] = useState(1);
-  // const [hideButton, setHideButton] = useState(false);
+  const [dbMovie, setDbMovie] = useState({});
+  const [streaming, setStreaming] = useState({});
+  const [similarMovies, setSimilarMovies] = useState({});
+  const [trailers, setTrailers] = useState({});
+  const [stars, setStars] = useState([]);
+  const [director, setDirector] = useState([]);
 
   const navigate = useNavigate();
   const { id } = useParams();
-
-  // get movies from omdb api
-  const getMovieRequest = async () => {
-    const movies = await getMovieList();
-    setMovies(movies.Search);
-  };
-
-  // get single movie based on a user clicking on a movie
-  const fetchMovie = async (title) => {
-    const selectedMovie = await getMovie(title);
-    setMovie(selectedMovie);
-  };
 
   //  get user movies list
   const fetchUserMovieList = async () => {
@@ -42,76 +32,85 @@ export default function MovieContainer(props) {
   // add movie to a user movie watchlist
   const addMovieToWatchList = async (user_id, movieData) => {
     await createMovie(user_id, movieData);
-    setToggle((prevToggle) => !prevToggle);
+    // setToggle((prevToggle) => !prevToggle);
     navigate(`/users/${id}/movies`);
+  };
+
+  // movie details from theMovieDB api
+  const fetchDBMovieDetails = async (movie_id) => {
+    const movieInfo = await getMovieDBDetails(movie_id);
+    setDbMovie(movieInfo);
+  };
+
+  // get streaming providers
+  const fetchStreamingProviders = async (movie_id) => {
+    const streamingProvider = await getSteamingProviders(movie_id);
+    setStreaming(streamingProvider);
+  };
+
+  // get movie credits
+  const fetchMovieCredits = async (movie_id) => {
+    const movieCredits = await getMovieCredits(movie_id);
+
+    const directorCredits = movieCredits.crew.find(
+      ({ job }) => job === 'Director'
+    );
+    setDirector(directorCredits);
+
+    const actors = movieCredits.cast.slice(0, 7);
+    setStars(actors);
+  };
+
+  // get similar movies
+  const fetchSimilarMovies = async (movie_id) => {
+    const similarFilms = await getSimilarMovies(movie_id);
+    setSimilarMovies(similarFilms);
+  };
+
+  // get movie trailer
+  const fetchMovieTrailer = async (movie_id) => {
+    const movieTrailers = await getMovieTrailer(movie_id);
+
+    const movieTrailer = movieTrailers?.filter((trailer) =>
+      trailer.name.includes('Trailer')
+    );
+    setTrailers(movieTrailer);
   };
 
   // render movies on page load
   useEffect(() => {
-    getMovieRequest();
-    fetchUserMovieList();
+    let didCancel = false;
+    if (!didCancel) {
+      fetchUserMovieList();
+    }
+    return () => {
+      didCancel = true;
+    };
+
     // eslint-disable-next-line
   }, []);
-
-  // render movies by user search
-  useEffect(() => {
-    const movieSearch = async () => {
-      const res = await searchMovie(searchValue);
-
-      if (res.Search) {
-        setMovies(res.Search);
-      }
-    };
-    movieSearch();
-  }, [searchValue]);
-
-  // show next page of movie results
-  // const nextPage = (page) => {
-  //   let next = page + 1;
-  //   getMovieRequest(next);
-  //   if (!next) {
-  //     // setHideButton(true);
-  //   }
-  // };
-
-  // show previous page of movie results
-  // const previousPage = (page) => {
-  //   let previous = page--;
-  //   if (page <= 1) {
-  //     // setHideButton(true);
-  //   } else {
-  //     getMovieRequest(previous);
-  //     // setHideButton(false);
-  //   }
-  // };
 
   return (
     <div>
       <Routes>
+        <Route path="/" element={<AllMovies />} />
         <Route
-          path="/"
+          path="/:id"
           element={
-            <Movies
-              movies={movies}
+            <DBMovieDetails
               currentUser={props.currentUser}
-              searchValue={searchValue}
-              setSearchValue={setSearchValue}
-              // currentPage={currentPage}
-              // setCurrentPage={setCurrentPage}
-              // previousPage={previousPage}
-              // nextPage={nextPage}
-            />
-          }
-        />
-        <Route
-          path="/:title"
-          element={
-            <MovieDetails
-              currentUser={props.currentUser}
-              movie={movie}
+              dbMovie={dbMovie}
+              fetchDBMovieDetails={fetchDBMovieDetails}
+              streaming={streaming}
+              fetchStreamingProviders={fetchStreamingProviders}
+              fetchMovieCredits={fetchMovieCredits}
+              director={director}
+              stars={stars}
+              similarMovies={similarMovies}
+              fetchSimilarMovies={fetchSimilarMovies}
+              trailers={trailers}
+              fetchMovieTrailer={fetchMovieTrailer}
               addMovieToWatchList={addMovieToWatchList}
-              userMovies={userMovies}
-              fetchMovie={fetchMovie}
             />
           }
         />
