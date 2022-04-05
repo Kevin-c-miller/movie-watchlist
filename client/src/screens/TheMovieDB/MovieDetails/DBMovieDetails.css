@@ -260,6 +260,10 @@
     width: 100%;
   }
 
+  .movieDetailsCard {
+    width: 90% !important;
+  }
+
   .movieTitle {
     font-size: 2rem;
   }
