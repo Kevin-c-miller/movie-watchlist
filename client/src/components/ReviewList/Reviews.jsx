@@ -12,7 +12,7 @@ export default function Reviews(props) {
           style={{
             fontFamily: 'Permanent Marker, cursive',
             fontSize: '3rem',
-            color: '#fff',
+            color: '#000',
           }}
         >
           Reviews

@@ -1,13 +1,11 @@
-import React from 'react';
+import { useContext } from 'react';
 import Streaming from '../Streaming/Streaming';
 import ReactPlayer from 'react-player';
+import MovieContext from '../../../context/movieContext';
 
-export default function MovieDetailsOther({
-  director,
-  stars,
-  streaming,
-  trailers,
-}) {
+export default function MovieDetailsOther() {
+  const { stars, director, trailers, streaming } = useContext(MovieContext);
+
   return (
     <div className="movieDetailsOther">
       <Streaming streaming={streaming} />
@@ -32,7 +30,7 @@ export default function MovieDetailsOther({
         </h5>
         <div className="player-wrapper">
           <ReactPlayer
-            url={`https://www.youtube.com/watch?v=${trailers[0]?.key}`}
+            url={`https://www.youtube.com/watch?v=${trailers?.key}`}
             controls={true}
             className="react-player"
             width="100%"

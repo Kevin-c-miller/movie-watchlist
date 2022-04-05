@@ -1,17 +1,22 @@
-import React from 'react';
+import { useContext } from 'react';
 import { Card } from 'react-bootstrap';
+import MovieContext from '../../../context/movieContext.js';
 
-export default function MovieCard({ dbMovie, moviePoster }) {
-  //   const moviePoster = `https://image.tmdb.org/t/p/original${dbMovie?.poster_path}`;
+export default function MovieCard({ moviePoster }) {
+  const { movie } = useContext(MovieContext);
+
+  // currency format for budget/revenue
+  const currencyFormat = (num) => {
+    return '$' + num.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+  };
 
   return (
     <div className="movieDetailsCard">
-      {/* TODO: break these sections down into their own component */}
       <Card className="movie-details-card">
         <Card.Img
           variant="top"
           src={moviePoster}
-          alt={dbMovie?.title}
+          alt={movie?.title}
           style={{
             height: '600px',
             borderRadius: '35px',
@@ -21,42 +26,42 @@ export default function MovieCard({ dbMovie, moviePoster }) {
         <Card.Body>
           <Card.Title>
             <h2>
-              <b>{dbMovie.title}</b>
+              <b>{movie?.title}</b>
             </h2>
           </Card.Title>
           <Card.Text>
-            <i>"{dbMovie?.tagline}"</i>
+            <i>"{movie?.tagline}"</i>
             <br />
             <b>Released: </b>
-            {dbMovie?.release_date}
+            {movie?.release_date}
             <br />
-            <b> {dbMovie?.runtime} min.</b>
-            {dbMovie?.budget > 0 && (
+            <b> {movie?.runtime} min.</b>
+            {movie?.budget > 0 && (
               <>
                 <br />
                 <br />
                 <span>
-                  <b>Budget: </b> $ {dbMovie?.budget}
+                  <b>Budget: </b> {currencyFormat(movie?.budget)}
                 </span>
               </>
             )}
             <br />
-            {dbMovie?.revenue > 0 && (
+            {movie?.revenue > 0 && (
               <>
                 <span>
-                  <b>Revenue: </b> $ {dbMovie?.revenue}
+                  <b>Revenue: </b> {currencyFormat(movie?.revenue)}
                 </span>
                 <br />
                 <br />
               </>
             )}
             <b>Genre:</b>{' '}
-            {dbMovie?.genres?.map((genre) => (
+            {movie?.genres?.map((genre) => (
               <span key={genre?.id}> {genre?.name},</span>
             ))}
             <br />
             <br />
-            <b> Synopsis:</b> {dbMovie?.overview}
+            <b> Synopsis:</b> {movie?.overview}
           </Card.Text>
         </Card.Body>
       </Card>

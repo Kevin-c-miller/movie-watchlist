@@ -1,7 +1,9 @@
 import { Link } from 'react-router-dom';
+import { useContext } from 'react';
+import MovieContext from '../../../context/movieContext';
 
-export default function SimilarMovies(props) {
-  const { similarMovies } = props;
+export default function SimilarMovies() {
+  const { similarMovies } = useContext(MovieContext);
   console.log(similarMovies);
   return (
     <>
@@ -9,7 +11,7 @@ export default function SimilarMovies(props) {
       <div className="similar-movies">
         {similarMovies?.map((movie) => (
           <div className="movies-image-container" key={movie?.id}>
-            <Link to={`/movies/all-movies/${movie?.id}`}>
+            <Link to={`/movies/${movie?.id}`}>
               <img
                 src={`https://image.tmdb.org/t/p/original${movie?.poster_path}`}
                 alt={movie?.title}

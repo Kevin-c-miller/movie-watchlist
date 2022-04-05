@@ -1,59 +1,16 @@
-import { useState, useEffect } from 'react';
+import { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import {
-  getTopRatedMovies,
-  getPopularMovies,
-  searchMovie,
-} from '../../../services/apiConfig/theMovieDb';
 import SearchBox from '../../../components/SearchBox/SearchBox';
+import MovieContext from '../../../context/movieContext';
 import './AllMovies.css';
 
-export default function AllMovies(props) {
-  const [movies, setMovies] = useState([]);
-  const [searchValue, setSearchValue] = useState('');
-
-  //  top rated movies via imdb (not updated daily)
-  const fetchMovies = async () => {
-    try {
-      const topMovies = await getTopRatedMovies();
-      const popMovies = await getPopularMovies();
-      setMovies([...topMovies, ...popMovies]);
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
-  // TODO: implement this function for the searchbox
-  const handleTextInput = (e) => {
-    const { id, value } = e.target;
-    console.log(id, value);
-    setSearchValue((prevSearchValue) => ({
-      ...prevSearchValue,
-      [id]: value,
-    }));
-  };
-
-  useEffect(() => {
-    fetchMovies();
-  }, []);
-
-  // render movies by user search
-  useEffect(() => {
-    const movieSearch = async () => {
-      try {
-        const searchedMovies = await searchMovie(searchValue);
-        setMovies(searchedMovies);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-    movieSearch();
-  }, [searchValue]);
+export default function AllMovies() {
+  const { movies } = useContext(MovieContext);
 
   return (
     <div className="allMoviesPage">
       <h2>Search and find movies here!</h2>
-      <SearchBox searchValue={searchValue} setSearchValue={setSearchValue} />
+      <SearchBox />
 
       <div className="all-movies">
         {movies.map((movie) => (
