@@ -1,6 +1,4 @@
-* {
-  /* border: 1px solid #000; */
-}
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
 
 .movieDetails {
   min-height: 100vh;
@@ -59,6 +57,7 @@
   padding: 10px;
   font-size: 56px;
   font-weight: bold;
+  font-family: 'Permanent Marker', cursive;
 }
 
 .movieDetailsBody {
@@ -74,11 +73,12 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 1.5rem;
+  margin: 1rem 2rem 1rem;
   width: 100%;
 }
 
 .movie-details-card {
+  max-width: 630px !important;
   background-color: #ffffff70 !important;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
@@ -91,8 +91,6 @@
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border-radius: 20px;
-  padding: 1rem;
-  margin: 1rem 2rem 1rem;
 }
 
 .movieDetailsOther .streamAvailability {
@@ -221,6 +219,11 @@
 .similarHeader {
   text-align: center;
   font-weight: 700;
+  font-family: 'Permanent Marker', cursive;
+  font-size: 32px;
+  text-decoration: underline;
+  padding: 5px;
+  line-height: 1.6;
 }
 
 .similar-movies {
@@ -355,5 +358,9 @@
 
   .actor-map > h6 {
     font-size: 14px;
+  }
+
+  .similarHeader {
+    font-size: 20px;
   }
 }
