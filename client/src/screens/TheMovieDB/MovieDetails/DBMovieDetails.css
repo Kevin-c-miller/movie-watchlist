@@ -300,7 +300,7 @@
   }
 
   .card-img-top {
-    object-fit: cover !important;
+    object-fit: cover;
     width: 100%;
   }
 
