@@ -288,6 +288,10 @@
   .movieDetailsBody {
     width: 80%;
     margin: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
 
   .movieDetailsCard {
@@ -300,14 +304,6 @@
 
   .card-img-top {
     object-fit: cover !important;
-    width: 100%;
-  }
-
-  .movieDetailsBody {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
     width: 100%;
   }
 
