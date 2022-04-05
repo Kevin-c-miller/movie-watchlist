@@ -92,32 +92,30 @@ export default function MovieContainer(props) {
   }, []);
 
   return (
-    <div>
-      <MovieProvider>
-        <Routes>
-          <Route path="/" element={<AllMovies />} />
-          <Route
-            path="/:id"
-            element={
-              <DBMovieDetails
-                currentUser={props.currentUser}
-                dbMovie={dbMovie}
-                fetchDBMovieDetails={fetchDBMovieDetails}
-                streaming={streaming}
-                fetchStreamingProviders={fetchStreamingProviders}
-                fetchMovieCredits={fetchMovieCredits}
-                director={director}
-                stars={stars}
-                similarMovies={similarMovies}
-                fetchSimilarMovies={fetchSimilarMovies}
-                trailers={trailers}
-                fetchMovieTrailer={fetchMovieTrailer}
-                addMovieToWatchList={addMovieToWatchList}
-              />
-            }
-          />
-        </Routes>
-      </MovieProvider>
-    </div>
+    <MovieProvider>
+      <Routes>
+        <Route path="/" element={<AllMovies />} />
+        <Route
+          path="/:id"
+          element={
+            <DBMovieDetails
+              currentUser={props.currentUser}
+              dbMovie={dbMovie}
+              fetchDBMovieDetails={fetchDBMovieDetails}
+              streaming={streaming}
+              fetchStreamingProviders={fetchStreamingProviders}
+              fetchMovieCredits={fetchMovieCredits}
+              director={director}
+              stars={stars}
+              similarMovies={similarMovies}
+              fetchSimilarMovies={fetchSimilarMovies}
+              trailers={trailers}
+              fetchMovieTrailer={fetchMovieTrailer}
+              addMovieToWatchList={addMovieToWatchList}
+            />
+          }
+        />
+      </Routes>
+    </MovieProvider>
   );
 }
