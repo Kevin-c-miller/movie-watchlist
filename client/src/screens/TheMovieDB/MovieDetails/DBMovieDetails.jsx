@@ -1,41 +1,39 @@
-import { useEffect } from 'react';
+import { useEffect, useContext } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import SimilarMovies from '../SimilarMovies/SimilarMovies';
 import './DBMovieDetails.css';
 import MovieCard from '../MovieDetailsCard/MovieCard';
 import MovieDetailsOther from '../MovieDetailsOther/MovieDetailsOther';
+import MovieContext from '../../../context/movieContext';
+import { getMovieCredits } from '../../../services/apiConfig/theMovieDb';
 
-export default function DBMovieDetails(props) {
+export default function DBMovieDetails({ addMovieToWatchList, currentUser }) {
   const {
-    dbMovie,
+    movie,
+    setStars,
+    setDirector,
     fetchDBMovieDetails,
-    streaming,
-    fetchStreamingProviders,
-    fetchMovieCredits,
-    director,
-    stars,
-    similarMovies,
-    fetchSimilarMovies,
-    trailers,
     fetchMovieTrailer,
-    addMovieToWatchList,
-    currentUser,
-  } = props;
+    fetchStreamingProviders,
+    fetchSimilarMovies,
+  } = useContext(MovieContext);
 
   const { id } = useParams();
   const navigate = useNavigate();
 
-  // currency format for budget/revenue
-  // const currencyFormat = (num) => {
-  //   return '$' + num.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
-  // };
+  // get movie credits
+  const fetchMovieCredits = async (movie_id) => {
+    const movieCredits = await getMovieCredits(movie_id);
 
-  const moviePoster = `https://image.tmdb.org/t/p/original${dbMovie?.poster_path}`;
+    const directorCredits = movieCredits.crew.find(
+      ({ job }) => job === 'Director'
+    );
+    setDirector(directorCredits);
 
-  const actors = stars?.map((actor) => {
-    return actor.name;
-  });
+    const actors = movieCredits.cast.slice(0, 7);
+    setStars(actors);
+  };
 
   useEffect(() => {
     try {
@@ -44,10 +42,13 @@ export default function DBMovieDetails(props) {
       fetchStreamingProviders(id);
       fetchMovieCredits(id);
       fetchSimilarMovies(id);
+      fetchMovieCredits(id);
     } catch (error) {
       console.log(error);
     }
   }, [id]);
+
+  const moviePoster = `https://image.tmdb.org/t/p/original${movie?.poster_path}`;
 
   return (
     <>
@@ -64,15 +65,15 @@ export default function DBMovieDetails(props) {
             className="add-to-watchlist"
             onClick={() => {
               const addedMovie = {
-                title: dbMovie.title,
+                title: movie.title,
                 poster: moviePoster,
-                rating: dbMovie.Rated,
-                synopsis: dbMovie.overview,
-                director: dbMovie.director,
-                starring: dbMovie.actors,
-                release_year: parseInt(dbMovie.release_date),
-                runtime: dbMovie.runtime,
-                user_id: props.currentUser.id,
+                rating: movie.Rated,
+                synopsis: movie.overview,
+                director: movie.director,
+                starring: movie.actors,
+                release_year: parseInt(movie.release_date),
+                runtime: movie.runtime,
+                user_id: currentUser.id,
               };
               addMovieToWatchList(currentUser?.id, addedMovie);
             }}
@@ -80,18 +81,13 @@ export default function DBMovieDetails(props) {
             Add to watchlist
           </button>
         </div>
-        <h2 className="movieTitle">{dbMovie.title}</h2>
+        <h2 className="movieTitle">{movie.title}</h2>
         <div className="movieDetailsBody">
-          <MovieCard dbMovie={dbMovie} moviePoster={moviePoster} />
+          <MovieCard moviePoster={moviePoster} />
 
-          <MovieDetailsOther
-            stars={stars}
-            director={director}
-            streaming={streaming}
-            trailers={trailers}
-          />
+          <MovieDetailsOther />
         </div>
-        {/* <SimilarMovies similarMovies={similarMovies} /> */}
+        <SimilarMovies />
       </div>
     </>
   );

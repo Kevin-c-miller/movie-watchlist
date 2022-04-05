@@ -1,16 +1,10 @@
-import { useState, useEffect, useContext } from 'react';
+import { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import {
-  getTopRatedMovies,
-  getPopularMovies,
-  searchMovie,
-} from '../../../services/apiConfig/theMovieDb';
 import SearchBox from '../../../components/SearchBox/SearchBox';
 import MovieContext from '../../../context/movieContext';
 import './AllMovies.css';
 
 export default function AllMovies() {
-  // useContext
   const { movies } = useContext(MovieContext);
 
   return (

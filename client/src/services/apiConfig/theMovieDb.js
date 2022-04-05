@@ -44,7 +44,7 @@ export const getMovieTrailer = async (movie_id) => {
     );
     return res.data.results;
   } catch (error) {
-    console.lerror(error);
+    console.error(error);
   }
 };
 

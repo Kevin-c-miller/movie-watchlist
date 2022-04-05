@@ -5,8 +5,8 @@ import {
   getMovieDBDetails,
   getSteamingProviders,
   getMovieCredits,
-  getSimilarMovies,
   getMovieTrailer,
+  getSimilarMovies,
 } from '../../services/apiConfig/theMovieDb';
 import AllMovies from '../../screens/TheMovieDB/AllMovies/AllMovies';
 import DBMovieDetails from '../../screens/TheMovieDB/MovieDetails/DBMovieDetails';
@@ -37,46 +37,46 @@ export default function MovieContainer(props) {
     navigate(`/users/${id}/movies`);
   };
 
-  // movie details from theMovieDB api
-  const fetchDBMovieDetails = async (movie_id) => {
-    const movieInfo = await getMovieDBDetails(movie_id);
-    setDbMovie(movieInfo);
-  };
+  // // movie details from theMovieDB api
+  // const fetchDBMovieDetails = async (movie_id) => {
+  //   const movieInfo = await getMovieDBDetails(movie_id);
+  //   setDbMovie(movieInfo);
+  // };
 
-  // get streaming providers
-  const fetchStreamingProviders = async (movie_id) => {
-    const streamingProvider = await getSteamingProviders(movie_id);
-    setStreaming(streamingProvider);
-  };
+  // // get streaming providers
+  // const fetchStreamingProviders = async (movie_id) => {
+  //   const streamingProvider = await getSteamingProviders(movie_id);
+  //   setStreaming(streamingProvider);
+  // };
 
-  // get movie credits
-  const fetchMovieCredits = async (movie_id) => {
-    const movieCredits = await getMovieCredits(movie_id);
+  // // get movie credits
+  // const fetchMovieCredits = async (movie_id) => {
+  //   const movieCredits = await getMovieCredits(movie_id);
 
-    const directorCredits = movieCredits.crew.find(
-      ({ job }) => job === 'Director'
-    );
-    setDirector(directorCredits);
+  //   const directorCredits = movieCredits.crew.find(
+  //     ({ job }) => job === 'Director'
+  //   );
+  //   setDirector(directorCredits);
 
-    const actors = movieCredits.cast.slice(0, 7);
-    setStars(actors);
-  };
+  //   const actors = movieCredits.cast.slice(0, 7);
+  //   setStars(actors);
+  // };
 
-  // get similar movies
-  const fetchSimilarMovies = async (movie_id) => {
-    const similarFilms = await getSimilarMovies(movie_id);
-    setSimilarMovies(similarFilms);
-  };
+  // // get similar movies
+  // const fetchSimilarMovies = async (movie_id) => {
+  //   const similarFilms = await getSimilarMovies(movie_id);
+  //   setSimilarMovies(similarFilms);
+  // };
 
-  // get movie trailer
-  const fetchMovieTrailer = async (movie_id) => {
-    const movieTrailers = await getMovieTrailer(movie_id);
+  // // get movie trailer
+  // const fetchMovieTrailer = async (movie_id) => {
+  //   const movieTrailers = await getMovieTrailer(movie_id);
 
-    const movieTrailer = movieTrailers?.filter((trailer) =>
-      trailer.name.includes('Trailer')
-    );
-    setTrailers(movieTrailer);
-  };
+  //   const movieTrailer = movieTrailers?.filter((trailer) =>
+  //     trailer.name.includes('Trailer')
+  //   );
+  //   setTrailers(movieTrailer);
+  // };
 
   // render movies on page load
   useEffect(() => {
@@ -100,18 +100,18 @@ export default function MovieContainer(props) {
           element={
             <DBMovieDetails
               currentUser={props.currentUser}
-              dbMovie={dbMovie}
-              fetchDBMovieDetails={fetchDBMovieDetails}
-              streaming={streaming}
-              fetchStreamingProviders={fetchStreamingProviders}
-              fetchMovieCredits={fetchMovieCredits}
-              director={director}
-              stars={stars}
-              similarMovies={similarMovies}
-              fetchSimilarMovies={fetchSimilarMovies}
-              trailers={trailers}
-              fetchMovieTrailer={fetchMovieTrailer}
               addMovieToWatchList={addMovieToWatchList}
+              // dbMovie={dbMovie}
+              // fetchDBMovieDetails={fetchDBMovieDetails}
+              // streaming={streaming}
+              // fetchStreamingProviders={fetchStreamingProviders}
+              // fetchMovieCredits={fetchMovieCredits}
+              // director={director}
+              // stars={stars}
+              // similarMovies={similarMovies}
+              // fetchSimilarMovies={fetchSimilarMovies}
+              // trailers={trailers}
+              // fetchMovieTrailer={fetchMovieTrailer}
             />
           }
         />
