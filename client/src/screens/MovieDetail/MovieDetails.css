@@ -17,12 +17,6 @@
   margin: 2rem;
 }
 
-.movie-details-card {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-}
-
 .movieCard-container .card {
   position: relative !important;
   cursor: pointer;

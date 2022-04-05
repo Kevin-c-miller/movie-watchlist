@@ -4,7 +4,7 @@ import MovieContext from '../../../context/movieContext';
 
 export default function SimilarMovies() {
   const { similarMovies } = useContext(MovieContext);
-  console.log(similarMovies);
+
   return (
     <>
       <h4 className="similarHeader">Similar Movies</h4>
