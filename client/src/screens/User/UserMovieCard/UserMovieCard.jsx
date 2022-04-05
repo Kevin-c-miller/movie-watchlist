@@ -7,7 +7,7 @@ export default function UserMovieCard({ userMovie, currentUser, removeMovie }) {
   const { id, movie_id } = useParams();
   return (
     <div className="movieDetailsCard">
-      <Card style={{ width: '30rem' }} className="movie-details-card">
+      <Card className="movie-details-card">
         <Card.Img
           variant="top"
           src={userMovie?.poster}
