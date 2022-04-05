@@ -264,12 +264,21 @@
     font-size: 2rem;
   }
 
+  .card-img-top {
+    object-fit: cover !important;
+    width: 100% !important;
+  }
+
   .movieDetailsBody {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 100%;
+  }
+
+  .card-text {
+    font-size: 14px;
   }
 
   .card-title > h2 {

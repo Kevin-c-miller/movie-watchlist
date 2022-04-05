@@ -23,6 +23,16 @@ export default function AllMovies(props) {
     }
   };
 
+  // TODO: implement this function for the searchbox
+  const handleTextInput = (e) => {
+    const { id, value } = e.target;
+    console.log(id, value);
+    setSearchValue((prevSearchValue) => ({
+      ...prevSearchValue,
+      [id]: value,
+    }));
+  };
+
   useEffect(() => {
     fetchMovies();
   }, []);

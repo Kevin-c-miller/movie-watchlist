@@ -1,7 +1,7 @@
 import { useParams, useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import { Card } from 'react-bootstrap';
-import './MovieDetails.css';
+// import './MovieDetails.css';
 
 export default function MovieDetails(props) {
   const { movie, fetchMovie } = props;
