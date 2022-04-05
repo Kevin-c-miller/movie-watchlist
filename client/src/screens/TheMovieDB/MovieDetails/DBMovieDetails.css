@@ -234,15 +234,15 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 100%;
   }
 
   .movieDetailsBody {
+    width: 80%;
+    margin: 1rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 100%;
   }
 
   .movieDetailsOther {
@@ -250,9 +250,10 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 85%;
-    margin: 2rem;
+    width: 90%;
+    /* margin: 2rem; */
   }
+
   .similar-movies {
     display: flex;
     justify-content: center;
