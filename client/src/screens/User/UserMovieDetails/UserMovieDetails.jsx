@@ -89,7 +89,7 @@ export default function UserMovieDetails(props) {
   }
 
   return (
-    <div className="movie-details">
+    <div className="movieDetails">
       <div className="back-btn">
         <button
           className="movie-back-btn"
@@ -98,18 +98,20 @@ export default function UserMovieDetails(props) {
           Back to my movie list
         </button>
       </div>
-      <UserMovieCard
-        userMovie={userMovie}
-        currentUser={currentUser}
-        removeMovie={removeMovie}
-      />
+      <div className="movieDetailsBody">
+        <UserMovieCard
+          userMovie={userMovie}
+          currentUser={currentUser}
+          removeMovie={removeMovie}
+        />
 
-      <UserDetailsOther
-        stars={stars}
-        director={director}
-        streaming={streaming}
-        trailers={trailers}
-      />
+        <UserDetailsOther
+          stars={stars}
+          director={director}
+          streaming={streaming}
+          trailers={trailers}
+        />
+      </div>
 
       {show && (
         <div className="review-container">
@@ -126,13 +128,15 @@ export default function UserMovieDetails(props) {
         </div>
       )}
       {!show && (
-        <button
-          className="movie-back-btn"
-          onClick={showReviewForm}
-          style={{ marginBottom: '3rem' }}
-        >
-          Leave a review!
-        </button>
+        <div className="showReviewBtn">
+          <button
+            className="movie-back-btn"
+            onClick={showReviewForm}
+            style={{ marginBottom: '3rem' }}
+          >
+            Leave a review!
+          </button>{' '}
+        </div>
       )}
     </div>
   );
