@@ -47,7 +47,7 @@
   justify-content: center;
   align-items: center;
   margin: 1.5rem;
-  width: 50%;
+  width: 100%;
 }
 
 .movie-details-card {
@@ -244,7 +244,6 @@
 @media screen and (max-width: 600px) {
   .back-to-movies,
   .add-to-watchlist {
-    /* padding: 5px; */
     font-size: 12px;
     margin: 1.5rem 4rem;
     border-radius: 10px;
@@ -257,11 +256,16 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 100%;
+    /* width: 80%; */
+  }
+
+  .movieDetailsBody {
+    width: 80%;
+    margin: 1rem;
   }
 
   .movieDetailsCard {
-    width: 90% !important;
+    width: 90%;
   }
 
   .movieTitle {
@@ -270,7 +274,7 @@
 
   .card-img-top {
     object-fit: cover !important;
-    width: 100% !important;
+    width: 100%;
   }
 
   .movieDetailsBody {
@@ -294,13 +298,21 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 100%;
+    width: 80%;
   }
 
   .streaming {
     display: flex;
     flex-direction: column;
-    width: 95vw;
+    width: 100%;
+  }
+
+  .streamAvailability {
+    font-size: 15px;
+  }
+
+  .streamAvailability > h6 {
+    font-size: 18px;
   }
 
   .streamingOptions {
@@ -308,5 +320,18 @@
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
+  }
+
+  .streamingIcons {
+    height: 35px;
+    width: 35px;
+  }
+
+  .actors-header {
+    border-bottom: 1px solid #000;
+  }
+
+  .actor-map > h6 {
+    font-size: 14px;
   }
 }

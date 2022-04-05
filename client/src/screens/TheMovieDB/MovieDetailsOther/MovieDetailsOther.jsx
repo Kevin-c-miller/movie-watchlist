@@ -17,7 +17,8 @@ export default function MovieDetailsOther({
         </div>
 
         <div className="actors">
-          <h5 className="actors-header">Starring: </h5>
+          <h5 className="actors-header">Starring:</h5>
+
           {stars.map((actor) => (
             <div key={actor?.cast_id} className="actor-map">
               <h6>{actor?.original_name}, </h6>

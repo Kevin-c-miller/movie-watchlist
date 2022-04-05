@@ -7,14 +7,13 @@ export default function MovieCard({ dbMovie, moviePoster }) {
   return (
     <div className="movieDetailsCard">
       {/* TODO: break these sections down into their own component */}
-      <Card style={{ width: '30rem' }} className="movie-details-card">
+      <Card className="movie-details-card">
         <Card.Img
           variant="top"
           src={moviePoster}
           alt={dbMovie?.title}
           style={{
             height: '600px',
-            width: '29.5rem',
             borderRadius: '35px',
             border: '5px solid #000',
           }}
