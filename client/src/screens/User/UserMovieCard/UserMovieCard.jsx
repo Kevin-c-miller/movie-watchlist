@@ -14,7 +14,6 @@ export default function UserMovieCard({ userMovie, currentUser, removeMovie }) {
           alt={userMovie?.title}
           style={{
             height: '600px',
-            width: '29.5rem',
             borderRadius: '35px',
             border: '5px solid #000',
           }}

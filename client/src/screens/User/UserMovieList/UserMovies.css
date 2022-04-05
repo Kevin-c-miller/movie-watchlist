@@ -4,12 +4,6 @@
     center/cover;
 }
 
-.movie-details {
-  min-height: 100vh;
-  background: url('../../../assets/images/filmtape.jpg') no-repeat center
-    center/cover;
-}
-
 .user-movie-list h2 {
   text-align: center;
   color: #fff;
@@ -52,10 +46,12 @@
 }
 
 .movie-back-btn {
-  background: #28282b;
+  background: #aeaeff;
   color: #fff;
   padding: 6px;
   border-radius: 10px;
+  color: #000;
+  font-weight: bold;
 }
 .movie-back-btn:hover {
   opacity: 0.7;
