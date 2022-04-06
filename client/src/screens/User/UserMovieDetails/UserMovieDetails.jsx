@@ -66,6 +66,7 @@ export default function UserMovieDetails({
     fetchMovieCredits(id);
     fetchSimilarMovies(id);
   }, [id]);
+  console.log();
 
   useEffect(() => {
     // Get Reviews

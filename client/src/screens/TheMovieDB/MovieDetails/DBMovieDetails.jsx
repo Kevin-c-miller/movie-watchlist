@@ -71,7 +71,14 @@ export default function DBMovieDetails({ addMovieToWatchList, currentUser }) {
                 starring: movie.actors,
                 release_year: parseInt(movie.release_date),
                 runtime: movie.runtime,
+                // tagline: movie.tagline,
+                // genre: movie.genres,
+                // budget: movie.budget,
+                // revenue: movie.revenue,
+                // trailer: movieTrailer,
+                // streaming: movie.streaming,
                 user_id: currentUser.id,
+                // movie_id: id,
               };
               addMovieToWatchList(currentUser?.id, addedMovie);
             }}

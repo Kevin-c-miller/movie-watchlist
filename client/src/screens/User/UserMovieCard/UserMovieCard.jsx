@@ -60,7 +60,7 @@ export default function UserMovieCard({ userMovie, currentUser, removeMovie }) {
                 <br />
                 <br />
                 <span>
-                  <b>Budget: </b> $ {movie?.budget}
+                  <b>Budget: </b> $ {currenyFormat(movie?.budget)}
                 </span>
               </>
             )}
@@ -68,7 +68,7 @@ export default function UserMovieCard({ userMovie, currentUser, removeMovie }) {
             {movie?.revenue > 0 && (
               <>
                 <span>
-                  <b>Revenue: </b> $ {movie?.revenue}
+                  <b>Revenue: </b> {currencyFormat(movie?.revenue)}
                 </span>
                 <br />
                 <br />
