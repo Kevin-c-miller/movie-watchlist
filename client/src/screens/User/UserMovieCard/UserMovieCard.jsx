@@ -1,9 +1,20 @@
+import { useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import { Card } from 'react-bootstrap';
 import { X } from '../../../assets/index.js';
+import MovieContext from '../../../context/movieContext.js';
 
 export default function UserMovieCard({ userMovie, currentUser, removeMovie }) {
+  const { movie } = useContext(MovieContext);
+
   const { id, movie_id } = useParams();
+
+  // currency format for budget/revenue
+  const currencyFormat = (num) => {
+    return '$' + num.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+  };
+
+  console.log(movie, id, movie_id);
 
   return (
     <div className="movieDetailsCard">
@@ -38,26 +49,26 @@ export default function UserMovieCard({ userMovie, currentUser, removeMovie }) {
             </div>
           </Card.Title>
           <Card.Text>
-            {/* <i>"{currentUser?.tagline}"</i> */}
+            <i>"{movie?.tagline}"</i>
             <br />
             <b>Released: </b>
             {userMovie?.release_year}
             <br />
             <b> {userMovie?.runtime} min.</b>
-            {/* {dbMovie?.budget > 0 && (
+            {/* {movie?.budget > 0 && (
               <>
                 <br />
                 <br />
                 <span>
-                  <b>Budget: </b> $ {dbMovie?.budget}
+                  <b>Budget: </b> $ {movie?.budget}
                 </span>
               </>
             )}
             <br />
-            {dbMovie?.revenue > 0 && (
+            {movie?.revenue > 0 && (
               <>
                 <span>
-                  <b>Revenue: </b> $ {dbMovie?.revenue}
+                  <b>Revenue: </b> $ {movie?.revenue}
                 </span>
                 <br />
                 <br />
@@ -65,7 +76,7 @@ export default function UserMovieCard({ userMovie, currentUser, removeMovie }) {
             )} */}
             <br />
             {/* <b>Genre:</b>{' '} */}
-            {/* {dbMovie?.genres?.map((genre) => (
+            {/* {movie?.genres?.map((genre) => (
               <span key={genre?.id}> {genre?.name},</span>
             ))} */}
             <br />

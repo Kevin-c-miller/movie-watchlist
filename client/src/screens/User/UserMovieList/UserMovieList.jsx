@@ -2,9 +2,11 @@ import { useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import '../../Movies/Movies.css';
 
-export default function UserMovieList(props) {
-  const { fetchUserMovieList, currentUser, userMovies } = props;
-
+export default function UserMovieList({
+  fetchUserMovieList,
+  currentUser,
+  userMovies,
+}) {
   const { id } = useParams();
 
   useEffect(() => {

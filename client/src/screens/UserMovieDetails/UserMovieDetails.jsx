@@ -11,26 +11,43 @@ import {
 } from '../../services/apiConfig/reviews.js';
 import AddReviewForm from '../../components/ReviewForm/AddReviewForm';
 import Reviews from '../../components/ReviewList/Reviews.jsx';
+import { getMovieCredits } from '../../services/apiConfig/theMovieDb.js';
 import '../TheMovieDB/MovieDetails/DBMovieDetails.css';
 import '../UserMovieList/UserMovies.css';
 import '../../components/ReviewForm/ReviewForm.css';
 
-export default function UserMovieDetails(props) {
+export default function UserMovieDetails({
+  userMovie,
+  removeMovie,
+  currentUser,
+  fetchSelectedMovie,
+  setStars,
+  setDirector,
+}) {
   const [reviews, setReviews] = useState([]);
   const [toggle, setToggle] = useState(false);
   const [show, setShow] = useState(false);
 
-  const { userMovie, removeMovie, currentUser, fetchSelectedMovie } = props;
-
   const navigate = useNavigate();
   const { id, movie_id } = useParams();
+
+  // get movie credits
+  const fetchMovieCredits = async (movie_id) => {
+    const movieCredits = await getMovieCredits(movie_id);
+
+    const directorCredits = movieCredits.crew.find(
+      ({ job }) => job === 'Director'
+    );
+    setDirector(directorCredits);
+
+    const actors = movieCredits.cast.slice(0, 7);
+    setStars(actors);
+  };
 
   useEffect(() => {
     // selected movie details
     fetchSelectedMovie(id, movie_id);
-
-    // eslint-disable-next-line
-  }, []);
+  }, [id]);
 
   useEffect(() => {
     // Get Reviews
@@ -65,17 +82,6 @@ export default function UserMovieDetails(props) {
   const showReviewForm = () => {
     setShow((prevShow) => !prevShow);
   };
-
-  if (!userMovie) {
-    return (
-      <div>
-        <img
-          src="https://media.giphy.com/media/N256GFy1u6M6Y/giphy.gif"
-          alt="loading"
-        />
-      </div>
-    );
-  }
 
   return (
     <div className="movieDetails">

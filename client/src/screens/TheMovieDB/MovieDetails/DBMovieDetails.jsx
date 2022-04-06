@@ -1,12 +1,11 @@
 import { useEffect, useContext } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { Link } from 'react-router-dom';
 import SimilarMovies from '../SimilarMovies/SimilarMovies';
-import './DBMovieDetails.css';
 import MovieCard from '../MovieDetailsCard/MovieCard';
 import MovieDetailsOther from '../MovieDetailsOther/MovieDetailsOther';
 import MovieContext from '../../../context/movieContext';
 import { getMovieCredits } from '../../../services/apiConfig/theMovieDb';
+import './DBMovieDetails.css';
 
 export default function DBMovieDetails({ addMovieToWatchList, currentUser }) {
   const {
@@ -42,7 +41,6 @@ export default function DBMovieDetails({ addMovieToWatchList, currentUser }) {
       fetchStreamingProviders(id);
       fetchMovieCredits(id);
       fetchSimilarMovies(id);
-      fetchMovieCredits(id);
     } catch (error) {
       console.log(error);
     }

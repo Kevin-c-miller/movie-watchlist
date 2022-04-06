@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { X } from '../../../assets/index.js';
 import { toast } from 'react-toastify';
@@ -13,35 +13,59 @@ import AddReviewForm from '../../../components/ReviewForm/AddReviewForm';
 import Reviews from '../../../components/ReviewList/Reviews.jsx';
 import UserMovieCard from '../UserMovieCard/UserMovieCard';
 import UserDetailsOther from '../UserDetailsOther/UserDetailsOther';
+import MovieContext from '../../../context/movieContext.js';
+import { getMovieCredits } from '../../../services/apiConfig/theMovieDb.js';
 import '../../MovieDetail/MovieDetails.css';
 import '../UserMovieList/UserMovies.css';
 import '../../../components/ReviewForm/ReviewForm.css';
 
-export default function UserMovieDetails(props) {
+export default function UserMovieDetails({
+  userMovie,
+  removeMovie,
+  currentUser,
+  fetchSelectedMovie,
+}) {
   const [reviews, setReviews] = useState([]);
   const [toggle, setToggle] = useState(false);
   const [show, setShow] = useState(false);
 
   const {
-    userMovie,
-    removeMovie,
-    currentUser,
-    fetchSelectedMovie,
-    stars,
-    director,
-    streaming,
-    trailers,
-  } = props;
+    movie,
+    setStars,
+    setDirector,
+    fetchDBMovieDetails,
+    fetchMovieTrailer,
+    fetchStreamingProviders,
+    fetchSimilarMovies,
+  } = useContext(MovieContext);
 
   const navigate = useNavigate();
   const { id, movie_id } = useParams();
+
+  // get movie credits and set the state
+  const fetchMovieCredits = async (movie_id) => {
+    const movieCredits = await getMovieCredits(movie_id);
+
+    const directorCredits = movieCredits.crew.find(
+      ({ job }) => job === 'Director'
+    );
+    setDirector(directorCredits);
+
+    const actors = movieCredits.cast.slice(0, 7);
+    setStars(actors);
+  };
 
   useEffect(() => {
     // selected movie details
     fetchSelectedMovie(id, movie_id);
 
-    // eslint-disable-next-line
-  }, []);
+    // more movie details
+    fetchDBMovieDetails(id);
+    fetchMovieTrailer(id);
+    fetchStreamingProviders(id);
+    fetchMovieCredits(id);
+    fetchSimilarMovies(id);
+  }, [id]);
 
   useEffect(() => {
     // Get Reviews
@@ -98,6 +122,7 @@ export default function UserMovieDetails(props) {
           Back to my movie list
         </button>
       </div>
+      <h2 className="movieTitle">{movie.title}</h2>
       <div className="movieDetailsBody">
         <UserMovieCard
           userMovie={userMovie}
@@ -105,12 +130,7 @@ export default function UserMovieDetails(props) {
           removeMovie={removeMovie}
         />
 
-        <UserDetailsOther
-          stars={stars}
-          director={director}
-          streaming={streaming}
-          trailers={trailers}
-        />
+        <UserDetailsOther />
       </div>
 
       {show && (
