@@ -1,5 +1,5 @@
 import axios from 'axios';
-const KEY = process.env.REACT_APP_IMDB_KEY;
+const KEY = process.env.REACT_APP_IMDB_API_KEY;
 const url = `https://imdb-api.com/en/API`;
 
 export const getMovieTrailer = async (movie_id) => {
