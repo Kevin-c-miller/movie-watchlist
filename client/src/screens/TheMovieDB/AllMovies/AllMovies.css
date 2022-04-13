@@ -1,9 +1,5 @@
 .allMoviesPage {
   min-height: 100vh;
-  /* display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center; */
   background: url('../../../assets/images/movie-seats.jpg') no-repeat center
     center/cover;
 }
@@ -11,10 +7,16 @@
   color: #fff;
 }
 
-.allMoviesPage > h2 {
+.search-container > h2 {
   color: #fff;
   padding: 1rem;
-  /* margin: 1rem; */
+}
+
+.search-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .search {
@@ -23,13 +25,19 @@
   border: 2px solid #fff;
 }
 
+.searched-movies {
+  color: #fff;
+  text-align: center;
+}
+
 .all-movies {
-  /* display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap; */
   margin-left: 20px;
+}
+
+.all-movies > h4 {
+  color: #fff;
+  margin: 0;
+  text-align: center;
 }
 
 .row-posters {
@@ -39,7 +47,7 @@
   align-items: center;
   overflow-y: hidden;
   overflow-x: scroll;
-  padding: 30px;
+  padding: 10px 30px 30px;
 }
 
 .movies-image-container {
