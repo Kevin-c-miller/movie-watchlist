@@ -1,8 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
+
 .allMoviesPage {
   min-height: 100vh;
   background: url('../../../assets/images/movie-seats.jpg') no-repeat center
     center/cover;
+  font-family: 'Permanent Marker', cursive;
 }
+
 .allMoviesPage > h1 {
   color: #fff;
 }

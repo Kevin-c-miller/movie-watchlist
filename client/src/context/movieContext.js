@@ -8,6 +8,7 @@ import {
   getSteamingProviders,
   getMovieTrailer,
   getNowPlayingMovies,
+  getUpcomingMovies,
 } from '../services/apiConfig/theMovieDb';
 
 // set to variable
@@ -25,6 +26,7 @@ export const MovieProvider = ({ children }) => {
   const [stars, setStars] = useState([]);
   const [director, setDirector] = useState([]);
   const [nowPlaying, setNowPlaying] = useState([]);
+  const [upcoming, setUpComing] = useState([]);
 
   //  top rated movies via imdb (not updated daily)
   const fetchMovies = async () => {
@@ -74,9 +76,16 @@ export const MovieProvider = ({ children }) => {
     setNowPlaying(currentlyPlaying);
   };
 
+  //  upcoming movies
+  const upcomingMovies = async () => {
+    const comingSoon = await getUpcomingMovies();
+    setUpComing(comingSoon);
+  };
+
   useEffect(() => {
     fetchMovies();
     nowPlayingMovies();
+    upcomingMovies();
   }, []);
 
   //  set movies state based on user search
@@ -107,6 +116,7 @@ export const MovieProvider = ({ children }) => {
         trailers,
         similarMovies,
         nowPlaying,
+        upcoming,
         setStars,
         setDirector,
         fetchDBMovieDetails,
