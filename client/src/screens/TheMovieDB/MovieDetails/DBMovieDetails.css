@@ -78,12 +78,18 @@
 }
 
 .movie-details-card {
-  max-width: 630px !important;
+  max-width: 575px !important;
   background-color: #ffffff70 !important;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border-radius: 20px !important;
   object-fit: contain;
+}
+
+.movie-details-card > img {
+  height: 825px;
+  border-radius: 35px;
+  border: 5px solid #000;
 }
 
 .movieDetailsOther {

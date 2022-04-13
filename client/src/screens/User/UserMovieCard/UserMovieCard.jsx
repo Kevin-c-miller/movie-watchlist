@@ -12,11 +12,6 @@ export default function UserMovieCard({ userMovie, currentUser, removeMovie }) {
           variant="top"
           src={userMovie?.poster}
           alt={userMovie?.title}
-          style={{
-            height: '600px',
-            borderRadius: '35px',
-            border: '5px solid #000',
-          }}
         />
         <Card.Body>
           <Card.Title>
