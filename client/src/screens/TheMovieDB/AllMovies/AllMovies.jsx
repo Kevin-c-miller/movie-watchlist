@@ -16,9 +16,10 @@ export default function AllMovies() {
       </div>
 
       <div className="all-movies">
-        {searchedMovie !== '' && (
+        {searchedMovie.length !== 0 && (
           <div className="searched-movies">
             <h4>Search Results</h4>
+
             <div className="row-posters">
               {searchedMovie.map((movie) => (
                 <div className="movies-image-container" key={movie?.id}>

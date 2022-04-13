@@ -7,7 +7,9 @@ export default function UserAccount(props) {
   // const [user, setUser] = useState('');
   const { currentUser, deleteAccount } = props;
 
-  const dateFormat = currentUser?.created_at.slice(0, 10);
+  const dateFormat = new Date(currentUser?.created_at).toLocaleDateString(
+    'en-US'
+  );
 
   return (
     <div className="user-account">
@@ -21,7 +23,7 @@ export default function UserAccount(props) {
             <b>Member Since:</b> {dateFormat}
           </h3>
           <h4>
-            <b>email:</b> {currentUser?.email}
+            <b>Email:</b> {currentUser?.email}
           </h4>
         </div>
         <div className="account-btn">
