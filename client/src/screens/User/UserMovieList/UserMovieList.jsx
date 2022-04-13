@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import '../../Movies/Movies.css';
+import '../../TheMovieDB/AllMovies/AllMovies.css';
 
 export default function UserMovieList(props) {
   const { fetchUserMovieList, currentUser, userMovies } = props;

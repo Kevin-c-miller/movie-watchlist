@@ -98,3 +98,12 @@ export const getMovieCredits = async (movie_id) => {
     console.error(error);
   }
 };
+
+export const getLatest = async () => {
+  try {
+    const res = await axios.get(`${url}/movie/latest?api_key=${KEY}`);
+    return res.data;
+  } catch (error) {
+    console.error(error);
+  }
+};
