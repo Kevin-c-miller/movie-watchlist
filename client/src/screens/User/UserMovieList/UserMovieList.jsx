@@ -15,10 +15,10 @@ export default function UserMovieList(props) {
   }, [currentUser?.id]);
 
   return (
-    <div className="user-movie-list">
+    <div className="userMovies">
       <h2>{currentUser?.username}'s movie list</h2>
 
-      <div className="all-movies">
+      <div className="user-movie-list">
         {userMovies.map((movie) => (
           <div className="movies-image-container" key={movie?.id}>
             <Link to={`/users/${currentUser?.id}/movies/${movie?.id}`}>

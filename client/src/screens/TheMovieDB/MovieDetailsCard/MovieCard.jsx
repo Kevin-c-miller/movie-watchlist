@@ -13,16 +13,7 @@ export default function MovieCard({ moviePoster }) {
   return (
     <div className="movieDetailsCard">
       <Card className="movie-details-card">
-        <Card.Img
-          variant="top"
-          src={moviePoster}
-          alt={movie?.title}
-          style={{
-            height: '600px',
-            borderRadius: '35px',
-            border: '5px solid #000',
-          }}
-        />
+        <Card.Img variant="top" src={moviePoster} alt={movie?.title} />
         <Card.Body>
           <Card.Title>
             <h2>
