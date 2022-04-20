@@ -64,7 +64,7 @@ export default function DBMovieDetails({ addMovieToWatchList, currentUser }) {
   // movie poster url
   const moviePoster = `https://image.tmdb.org/t/p/original${movie?.poster_path}`;
 
-  console.log(movie, stars, director);
+  console.log(movieTrailerUrl);
 
   return (
     <>
@@ -89,7 +89,7 @@ export default function DBMovieDetails({ addMovieToWatchList, currentUser }) {
                 director: director.name,
                 starring: actors,
                 runtime: movie.runtime,
-                trailer: movieTrailerUrl,
+                movie_trailer: movieTrailerUrl,
                 tagline: movie.tagline,
                 budget: movie.budget,
                 revenue: movie.revenue,

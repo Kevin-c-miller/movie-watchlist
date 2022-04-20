@@ -19,7 +19,7 @@ export default function UserDetailsOther() {
           <h5 className="actors-header">Starring: </h5>
 
           <div className="actor-map">
-            <h6>{userMovie.starring}, </h6>
+            <h6>{userMovie.starring} </h6>
           </div>
         </div>
       </div>

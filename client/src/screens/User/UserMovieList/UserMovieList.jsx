@@ -1,7 +1,7 @@
 import { useContext, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import UserMovieContext from '../../../context/userMovieContext';
-import '../../Movies/Movies.css';
+import '../../TheMovieDB/AllMovies/AllMovies.css';
 
 export default function UserMovieList({ fetchUserMovieList, currentUser }) {
   const { userMovies, fetchUserMovies } = useContext(UserMovieContext);
