@@ -1,9 +1,20 @@
+import { useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import { Card } from 'react-bootstrap';
 import { X } from '../../../assets/index.js';
+import UserMovieContext from '../../../context/userMovieContext.js';
 
-export default function UserMovieCard({ userMovie, currentUser, removeMovie }) {
+export default function UserMovieCard({ currentUser, removeMovie }) {
+  const { userMovie } = useContext(UserMovieContext);
+
   const { id, movie_id } = useParams();
+
+  // currency format for budget/revenue
+  const currencyFormat = (num) => {
+    return '$' + num.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+  };
+
+  // console.log(userMovie, id, movie_id);
 
   return (
     <div className="movieDetailsCard">
@@ -28,42 +39,39 @@ export default function UserMovieCard({ userMovie, currentUser, removeMovie }) {
                   background: 'red',
                   borderRadius: '10px',
                 }}
-                onClick={() => removeMovie(currentUser?.id, userMovie?.id)}
+                onClick={() => removeMovie(id, movie_id)}
               />
             </div>
           </Card.Title>
           <Card.Text>
-            {/* <i>"{currentUser?.tagline}"</i> */}
+            <i>"{userMovie?.tagline}"</i>
             <br />
             <b>Released: </b>
             {userMovie?.release_year}
             <br />
             <b> {userMovie?.runtime} min.</b>
-            {/* {dbMovie?.budget > 0 && (
+            {userMovie?.budget > 0 && (
               <>
                 <br />
                 <br />
                 <span>
-                  <b>Budget: </b> $ {dbMovie?.budget}
+                  <b>Budget: </b> {currencyFormat(+userMovie?.budget)}
                 </span>
               </>
             )}
             <br />
-            {dbMovie?.revenue > 0 && (
+            {userMovie?.revenue > 0 && (
               <>
                 <span>
-                  <b>Revenue: </b> $ {dbMovie?.revenue}
+                  <b>Revenue: </b> {currencyFormat(+userMovie?.revenue)}
                 </span>
-                <br />
-                <br />
               </>
-            )} */}
+            )}
             <br />
             {/* <b>Genre:</b>{' '} */}
-            {/* {dbMovie?.genres?.map((genre) => (
+            {/* {userMovie?.genres?.map((genre) => (
               <span key={genre?.id}> {genre?.name},</span>
             ))} */}
-            <br />
             <br />
             <b> Synopsis:</b> {userMovie?.synopsis}
           </Card.Text>
