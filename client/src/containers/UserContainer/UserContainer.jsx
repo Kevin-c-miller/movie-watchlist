@@ -11,19 +11,11 @@ import {
   getOneMovie,
   deleteMovie,
 } from '../../services/apiConfig/movies';
-import {
-  getSteamingProviders,
-  getMovieCredits,
-  getMovieTrailer,
-} from '../../services/apiConfig/theMovieDb';
+import { UserMovieProvider } from '../../context/userMovieContext';
 
-export default function UserContainer(props) {
+export default function UserContainer({ currentUser }) {
   const [userMovies, setUserMovies] = useState([]);
   const [userMovie, setUserMovie] = useState({});
-  const [streaming, setStreaming] = useState({});
-  const [trailers, setTrailers] = useState({});
-  const [stars, setStars] = useState([]);
-  const [director, setDirector] = useState([]);
 
   const navigate = useNavigate();
 
@@ -33,16 +25,16 @@ export default function UserContainer(props) {
   };
 
   // Get User Movies
-  const fetchUserMovieList = async (user_id) => {
-    const userList = await getUserMovies(user_id);
-    setUserMovies(userList);
-  };
+  // const fetchUserMovieList = async (user_id) => {
+  //   const userList = await getUserMovies(user_id);
+  //   setUserMovies(userList);
+  // };
 
   //  Get selected movie from user clicking on a movie
-  const fetchSelectedMovie = async (user_id, movie_id) => {
-    const selectedMovie = await getOneMovie(user_id, movie_id);
-    setUserMovie(selectedMovie);
-  };
+  // const fetchSelectedMovie = async (user_id, movie_id) => {
+  //   const selectedMovie = await getOneMovie(user_id, movie_id);
+  //   setUserMovie(selectedMovie);
+  // };
 
   //  Delete movie from user list
   const removeMovieFromList = async (user_id, movie_id) => {
@@ -50,7 +42,7 @@ export default function UserContainer(props) {
 
     toast.success('Movie was removed from your list');
 
-    navigate(`/users/${props.currentUser?.id}/movies`);
+    navigate(`/users/${currentUser?.id}/movies`);
   };
 
   // UpdateUser
@@ -64,7 +56,7 @@ export default function UserContainer(props) {
 
   // delete account
   const deleteAccount = async () => {
-    await deleteUser(props.currentUser.id);
+    await deleteUser(currentUser.id);
 
     removeToken();
     toast.success('User Deleted');
@@ -75,85 +67,48 @@ export default function UserContainer(props) {
     navigate('/');
   };
 
-  // get streaming providers
-  const fetchStreamingProviders = async (movie_id) => {
-    const streamingProvider = await getSteamingProviders(movie_id);
-    setStreaming(streamingProvider);
-  };
-
-  // get movie credits
-  const fetchMovieCredits = async (movie_id) => {
-    const movieCredits = await getMovieCredits(movie_id);
-
-    const directorCredits = movieCredits.crew.find(
-      ({ job }) => job === 'Director'
-    );
-    setDirector(directorCredits);
-
-    const actors = movieCredits.cast.slice(0, 7);
-    setStars(actors);
-  };
-
-  // get movie trailer
-  const fetchMovieTrailer = async (movie_id) => {
-    const movieTrailers = await getMovieTrailer(movie_id);
-
-    const movieTrailer = movieTrailers?.filter((trailer) =>
-      trailer.name.includes('Trailer')
-    );
-    setTrailers(movieTrailer);
-  };
-
   return (
     <div>
-      <Routes>
-        <Route
-          path="/:id/movies"
-          element={
-            <UserMovieList
-              fetchUserMovieList={fetchUserMovieList}
-              currentUser={props.currentUser}
-              userMovies={userMovies}
-            />
-          }
-        />
-        <Route
-          path="/:id/movies/:movie_id"
-          element={
-            <UserMovieDetails
-              userMovie={userMovie}
-              fetchSelectedMovie={fetchSelectedMovie}
-              removeMovie={removeMovieFromList}
-              currentUser={props.currentUser}
-              streaming={streaming}
-              fetchStreamingProviders={fetchStreamingProviders}
-              fetchMovieCredits={fetchMovieCredits}
-              director={director}
-              stars={stars}
-              trailers={trailers}
-              fetchMovieTrailer={fetchMovieTrailer}
-            />
-          }
-        />
-        <Route
-          path="/:id/"
-          element={
-            <UserAccount
-              deleteAccount={deleteAccount}
-              currentUser={props.currentUser}
-            />
-          }
-        />
-        <Route
-          path="/:id/edit"
-          element={
-            <UpdateUserForm
-              editUser={editUser}
-              currentUser={props.currentUser}
-            />
-          }
-        />
-      </Routes>
+      <UserMovieProvider>
+        <Routes>
+          <Route
+            path="/:id/movies"
+            element={
+              <UserMovieList
+                // fetchUserMovieList={fetchUserMovieList}
+                currentUser={currentUser}
+                userMovies={userMovies}
+              />
+            }
+          />
+          <Route
+            path="/:id/movies/:movie_id"
+            element={
+              <UserMovieDetails
+                userMovie={userMovie}
+                // fetchSelectedMovie={fetchSelectedMovie}
+                removeMovie={removeMovieFromList}
+                currentUser={currentUser}
+              />
+            }
+          />
+          <Route
+            path="/:id/"
+            element={
+              <UserAccount
+                deleteAccount={deleteAccount}
+                currentUser={currentUser}
+              />
+            }
+          />
+          <Route
+            path="/:id/edit"
+            element={
+              <UpdateUserForm editUser={editUser} currentUser={currentUser} />
+            }
+          />
+        </Routes>
+      </UserMovieProvider>
     </div>
   );
 }

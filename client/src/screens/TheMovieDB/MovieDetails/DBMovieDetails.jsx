@@ -1,12 +1,11 @@
 import { useEffect, useContext } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { Link } from 'react-router-dom';
 import SimilarMovies from '../SimilarMovies/SimilarMovies';
-import './DBMovieDetails.css';
 import MovieCard from '../MovieDetailsCard/MovieCard';
 import MovieDetailsOther from '../MovieDetailsOther/MovieDetailsOther';
 import MovieContext from '../../../context/movieContext';
 import { getMovieCredits } from '../../../services/apiConfig/theMovieDb';
+import './DBMovieDetails.css';
 
 export default function DBMovieDetails({ addMovieToWatchList, currentUser }) {
   const {
@@ -17,12 +16,17 @@ export default function DBMovieDetails({ addMovieToWatchList, currentUser }) {
     fetchMovieTrailer,
     fetchStreamingProviders,
     fetchSimilarMovies,
+    stars,
+    director,
+    trailers,
+    streaming,
   } = useContext(MovieContext);
 
   const { id } = useParams();
   const navigate = useNavigate();
 
   // get movie credits
+
   const fetchMovieCredits = async (movie_id) => {
     const movieCredits = await getMovieCredits(movie_id);
 
@@ -35,6 +39,13 @@ export default function DBMovieDetails({ addMovieToWatchList, currentUser }) {
     setStars(actors);
   };
 
+  // setting actors in string to be stored in db
+  let actors = ``;
+  stars.forEach((star) => {
+    actors += `${star.name}, `;
+  });
+  console.log(actors);
+
   useEffect(() => {
     try {
       fetchDBMovieDetails(id);
@@ -42,13 +53,18 @@ export default function DBMovieDetails({ addMovieToWatchList, currentUser }) {
       fetchStreamingProviders(id);
       fetchMovieCredits(id);
       fetchSimilarMovies(id);
-      fetchMovieCredits(id);
     } catch (error) {
       console.log(error);
     }
   }, [id]);
 
+  //  trailer url
+  const movieTrailerUrl = `https://www.youtube.com/watch?v=${trailers?.key}`;
+
+  // movie poster url
   const moviePoster = `https://image.tmdb.org/t/p/original${movie?.poster_path}`;
+
+  console.log(movieTrailerUrl);
 
   return (
     <>
@@ -67,13 +83,20 @@ export default function DBMovieDetails({ addMovieToWatchList, currentUser }) {
               const addedMovie = {
                 title: movie.title,
                 poster: moviePoster,
+                release_year: parseInt(movie.release_date),
                 rating: movie.Rated,
                 synopsis: movie.overview,
-                director: movie.director,
-                starring: movie.actors,
-                release_year: parseInt(movie.release_date),
+                director: director.name,
+                starring: actors,
                 runtime: movie.runtime,
-                user_id: currentUser.id,
+                movie_trailer: movieTrailerUrl,
+                tagline: movie.tagline,
+                budget: movie.budget,
+                revenue: movie.revenue,
+                user_id: currentUser?.id,
+                // TODO: add the rest to db
+                // streaming: movie.streaming,
+                // genre: movie.genres,
               };
               addMovieToWatchList(currentUser?.id, addedMovie);
             }}
@@ -85,7 +108,12 @@ export default function DBMovieDetails({ addMovieToWatchList, currentUser }) {
         <div className="movieDetailsBody">
           <MovieCard moviePoster={moviePoster} />
 
-          <MovieDetailsOther />
+          <MovieDetailsOther
+            stars={stars}
+            director={director}
+            trailers={trailers}
+            streaming={streaming}
+          />
         </div>
         <SimilarMovies />
       </div>
