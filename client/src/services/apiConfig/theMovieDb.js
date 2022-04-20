@@ -79,6 +79,7 @@ export const getNowPlayingMovies = async () => {
   }
 };
 
+
 export const getUpcomingMovies = async () => {
   try {
     const res = await axios.get(`${url}/movie/upcoming?api_key=${KEY}`);
@@ -92,6 +93,28 @@ export const getMovieCredits = async (movie_id) => {
   try {
     const res = await axios.get(
       `${url}/movie/${movie_id}/credits?api_key=${KEY}`
+    );
+    return res.data;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+// not currently in use
+export const getLatest = async () => {
+  try {
+    const res = await axios.get(`${url}/movie/latest?api_key=${KEY}`);
+    return res.data;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+// not currently in use
+export const getRecommendations = async (movie_id) => {
+  try {
+    const res = await axios.get(
+      `${url}/movie/${movie_id}/recommendations?api_key=${KEY}`
     );
     return res.data;
   } catch (error) {

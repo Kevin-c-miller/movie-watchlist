@@ -1,20 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
+
 .allMoviesPage {
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
   background: url('../../../assets/images/movie-seats.jpg') no-repeat center
     center/cover;
+  font-family: 'Permanent Marker', cursive;
 }
+
 .allMoviesPage > h1 {
   color: #fff;
 }
 
-.allMoviesPage > h2 {
+.search-container > h2 {
   color: #fff;
   padding: 1rem;
-  margin: 1rem;
+}
+
+.search-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .search {
@@ -23,12 +29,30 @@
   border: 2px solid #fff;
 }
 
+.searched-movies {
+  color: #fff;
+  text-align: center;
+}
+
 .all-movies {
+  margin-left: 20px;
+}
+
+.all-movies > h4 {
+  color: #fff;
+  margin: 0;
+  text-align: center;
+}
+
+.row-posters {
   display: flex;
   flex-direction: row;
+  justify-content: flex-start;
   align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
+  overflow-y: hidden;
+  overflow-x: auto;
+  padding: 10px 30px 30px;
+  margin-right: 20px;
 }
 
 .movies-image-container {
@@ -70,6 +94,25 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+.userMovies {
+  min-height: 100vh;
+  background: url('../../../assets/images/film.jpg') no-repeat center
+    center/cover;
+}
+
+.userMovies > h2 {
+  font-family: 'Permanent Marker', cursive;
+  text-align: center;
+  padding: 15px;
+}
+
+.user-movie-list {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 @media screen and (max-width: 600px) {

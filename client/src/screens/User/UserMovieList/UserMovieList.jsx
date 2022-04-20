@@ -2,6 +2,7 @@ import { useContext, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import UserMovieContext from '../../../context/userMovieContext';
 import '../../TheMovieDB/AllMovies/AllMovies.css';
+ 
 
 export default function UserMovieList({ fetchUserMovieList, currentUser }) {
   const { userMovies, fetchUserMovies } = useContext(UserMovieContext);
@@ -15,10 +16,10 @@ export default function UserMovieList({ fetchUserMovieList, currentUser }) {
   }, [fetchUserMovies, id]);
 
   return (
-    <div className="user-movie-list">
+    <div className="userMovies">
       <h2>{currentUser?.username}'s movie list</h2>
 
-      <div className="all-movies">
+      <div className="user-movie-list">
         {userMovies.map((movie) => (
           <div className="movies-image-container" key={movie?.id}>
             <Link to={`/users/${id}/movies/${movie?.id}`}>

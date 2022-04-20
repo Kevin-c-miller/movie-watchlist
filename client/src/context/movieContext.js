@@ -7,27 +7,35 @@ import {
   getMovieDBDetails,
   getSteamingProviders,
   getMovieTrailer,
+  getNowPlayingMovies,
+  getUpcomingMovies,
 } from '../services/apiConfig/theMovieDb';
 
 // set to variable
 const MovieContext = createContext();
 
 export const MovieProvider = ({ children }) => {
-  const [movies, setMovies] = useState([]);
+  const [popMovies, setPopMovies] = useState([]);
+  const [topMovies, setTopMovies] = useState([]);
   const [searchValue, setSearchValue] = useState('');
+  const [searchedMovie, setSearchedMovie] = useState([]);
   const [movie, setMovie] = useState({});
   const [streaming, setStreaming] = useState({});
   const [similarMovies, setSimilarMovies] = useState([]);
   const [trailers, setTrailers] = useState([]);
   const [stars, setStars] = useState([]);
   const [director, setDirector] = useState([]);
+  const [nowPlaying, setNowPlaying] = useState([]);
+  const [upcoming, setUpComing] = useState([]);
 
   //  top rated movies via imdb (not updated daily)
   const fetchMovies = async () => {
     try {
-      const topMovies = await getTopRatedMovies();
-      const popMovies = await getPopularMovies();
-      setMovies([...topMovies, ...popMovies]);
+      const resTopMovies = await getTopRatedMovies();
+      const resPopMovies = await getPopularMovies();
+
+      setTopMovies(resTopMovies);
+      setPopMovies(resPopMovies);
     } catch (error) {
       console.error(error);
     }
@@ -62,8 +70,22 @@ export const MovieProvider = ({ children }) => {
     setTrailers(movieTrailer);
   };
 
+  // Now playing novies
+  const nowPlayingMovies = async () => {
+    const currentlyPlaying = await getNowPlayingMovies();
+    setNowPlaying(currentlyPlaying);
+  };
+
+  //  upcoming movies
+  const upcomingMovies = async () => {
+    const comingSoon = await getUpcomingMovies();
+    setUpComing(comingSoon);
+  };
+
   useEffect(() => {
     fetchMovies();
+    nowPlayingMovies();
+    upcomingMovies();
   }, []);
 
   //  set movies state based on user search
@@ -71,7 +93,7 @@ export const MovieProvider = ({ children }) => {
     const movieSearch = async () => {
       try {
         const searchedMovies = await searchMovie(searchValue);
-        setMovies(searchedMovies);
+        setSearchedMovie(searchedMovies);
       } catch (error) {
         console.error(error);
       }
@@ -82,15 +104,19 @@ export const MovieProvider = ({ children }) => {
   return (
     <MovieContext.Provider
       value={{
-        movies,
+        topMovies,
+        popMovies,
         searchValue,
         setSearchValue,
+        searchedMovie,
         movie,
         streaming,
         director,
         stars,
         trailers,
         similarMovies,
+        nowPlaying,
+        upcoming,
         setStars,
         setDirector,
         fetchDBMovieDetails,
