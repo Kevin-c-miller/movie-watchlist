@@ -27,14 +27,12 @@ export default function Streaming(props) {
       {streaming?.rent ? (
         <div className="streamingOptions">
           {streaming?.rent?.map((option) => (
-            <>
-              <img
-                key={option?.provider_id}
-                className="streamingIcons"
-                src={`https://image.tmdb.org/t/p/w45${option?.logo_path}`}
-                alt={`${option?.provider_name} logo`}
-              />
-            </>
+            <img
+              key={option?.provider_id}
+              className="streamingIcons"
+              src={`https://image.tmdb.org/t/p/w45${option?.logo_path}`}
+              alt={`${option?.provider_name} logo`}
+            />
           ))}
         </div>
       ) : (

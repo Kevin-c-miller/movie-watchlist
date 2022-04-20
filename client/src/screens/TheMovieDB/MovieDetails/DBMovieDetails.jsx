@@ -26,7 +26,6 @@ export default function DBMovieDetails({ addMovieToWatchList, currentUser }) {
   const navigate = useNavigate();
 
   // get movie credits
-
   const fetchMovieCredits = async (movie_id) => {
     const movieCredits = await getMovieCredits(movie_id);
 
@@ -44,7 +43,6 @@ export default function DBMovieDetails({ addMovieToWatchList, currentUser }) {
   stars.forEach((star) => {
     actors += `${star.name}, `;
   });
-  console.log(actors);
 
   useEffect(() => {
     try {
@@ -64,7 +62,8 @@ export default function DBMovieDetails({ addMovieToWatchList, currentUser }) {
   // movie poster url
   const moviePoster = `https://image.tmdb.org/t/p/original${movie?.poster_path}`;
 
-  console.log(movieTrailerUrl);
+  console.log(movie);
+  console.log(movie.tagline);
 
   return (
     <>
@@ -88,11 +87,11 @@ export default function DBMovieDetails({ addMovieToWatchList, currentUser }) {
                 synopsis: movie.overview,
                 director: director.name,
                 starring: actors,
-                runtime: movie.runtime,
+                runtime: movie.runtime.toString(),
                 movie_trailer: movieTrailerUrl,
                 tagline: movie.tagline,
-                budget: movie.budget,
-                revenue: movie.revenue,
+                budget: movie.budget.toString(),
+                revenue: movie.revenue.toString(),
                 user_id: currentUser?.id,
                 // TODO: add the rest to db
                 // streaming: movie.streaming,
