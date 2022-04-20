@@ -22,21 +22,21 @@ export default function MovieContainer({ currentUser }) {
   const addMovieToWatchList = async (user_id, movieData) => {
     await createMovie(user_id, movieData);
 
-    navigate(`/users/${id}/movies`);
+    navigate(`/users/${currentUser?.id}/movies`);
   };
 
   // render movies on page load
-  useEffect(() => {
-    let didCancel = false;
-    if (!didCancel) {
-      fetchUserMovieList();
-    }
-    return () => {
-      didCancel = true;
-    };
+  // useEffect(() => {
+  //   let didCancel = false;
+  //   if (!didCancel) {
+  //     fetchUserMovieList();
+  //   }
+  //   return () => {
+  //     didCancel = true;
+  //   };
 
-    // eslint-disable-next-line
-  }, []);
+  // eslint-disable-next-line
+  // }, []);
 
   return (
     <MovieProvider>

@@ -14,7 +14,7 @@ export default function UserMovieCard({ currentUser, removeMovie }) {
     return '$' + num.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
   };
 
-  console.log(userMovie, id, movie_id);
+  // console.log(userMovie, id, movie_id);
 
   return (
     <div className="movieDetailsCard">
@@ -55,7 +55,7 @@ export default function UserMovieCard({ currentUser, removeMovie }) {
             {userMovie?.release_year}
             <br />
             <b> {userMovie?.runtime} min.</b>
-            {/* {movie?.budget > 0 && (
+            {/* {userMovie?.budget > 0 && (
               <>
                 <br />
                 <br />

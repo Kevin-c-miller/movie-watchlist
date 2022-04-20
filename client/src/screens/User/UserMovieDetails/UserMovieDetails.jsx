@@ -65,7 +65,8 @@ export default function UserMovieDetails({
     // fetchStreamingProviders(id);
     // fetchMovieCredits(id);
     // fetchSimilarMovies(id);
-  }, [fetchUserMovie, id, movie_id]);
+  }, [id, movie_id]);
+
   console.log(userMovie);
 
   useEffect(() => {
@@ -120,7 +121,7 @@ export default function UserMovieDetails({
           removeMovie={removeMovie}
         />
 
-        {/* <UserDetailsOther /> */}
+        <UserDetailsOther />
       </div>
 
       {show && (

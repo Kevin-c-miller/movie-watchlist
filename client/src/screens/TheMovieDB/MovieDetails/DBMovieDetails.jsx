@@ -26,6 +26,7 @@ export default function DBMovieDetails({ addMovieToWatchList, currentUser }) {
   const navigate = useNavigate();
 
   // get movie credits
+
   const fetchMovieCredits = async (movie_id) => {
     const movieCredits = await getMovieCredits(movie_id);
 
@@ -37,6 +38,13 @@ export default function DBMovieDetails({ addMovieToWatchList, currentUser }) {
     const actors = movieCredits.cast.slice(0, 7);
     setStars(actors);
   };
+
+  // setting actors in string to be stored in db
+  let actors = ``;
+  stars.forEach((star) => {
+    actors += `${star.name}, `;
+  });
+  console.log(actors);
 
   useEffect(() => {
     try {
@@ -56,6 +64,8 @@ export default function DBMovieDetails({ addMovieToWatchList, currentUser }) {
   // movie poster url
   const moviePoster = `https://image.tmdb.org/t/p/original${movie?.poster_path}`;
 
+  console.log(movie, stars, director);
+
   return (
     <>
       <div className="movieDetails">
@@ -73,22 +83,20 @@ export default function DBMovieDetails({ addMovieToWatchList, currentUser }) {
               const addedMovie = {
                 title: movie.title,
                 poster: moviePoster,
+                release_year: parseInt(movie.release_date),
                 rating: movie.Rated,
                 synopsis: movie.overview,
-                director: movie.director,
-                starring: movie.actors,
-                release_year: parseInt(movie.release_date),
+                director: director.name,
+                starring: actors,
                 runtime: movie.runtime,
                 trailer: movieTrailerUrl,
+                tagline: movie.tagline,
+                budget: movie.budget,
+                revenue: movie.revenue,
+                user_id: currentUser?.id,
                 // TODO: add the rest to db
-
                 // streaming: movie.streaming,
-                // tagline: movie.tagline,
                 // genre: movie.genres,
-                // budget: movie.budget,
-                // revenue: movie.revenue,
-                user_id: currentUser.id,
-                // movie_id: id,
               };
               addMovieToWatchList(currentUser?.id, addedMovie);
             }}
