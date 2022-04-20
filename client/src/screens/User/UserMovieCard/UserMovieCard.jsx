@@ -50,31 +50,28 @@ export default function UserMovieCard({ currentUser, removeMovie }) {
             {userMovie?.release_year}
             <br />
             <b> {userMovie?.runtime} min.</b>
-            {/* {userMovie?.budget > 0 && (
+            {userMovie?.budget > 0 && (
               <>
                 <br />
                 <br />
                 <span>
-                  <b>Budget: </b> $ {currenyFormat(userMovie?.budget)}
+                  <b>Budget: </b> {currencyFormat(+userMovie?.budget)}
                 </span>
               </>
             )}
             <br />
-            {movie?.revenue > 0 && (
+            {userMovie?.revenue > 0 && (
               <>
                 <span>
-                  <b>Revenue: </b> {currencyFormat(userMovie?.revenue)}
+                  <b>Revenue: </b> {currencyFormat(+userMovie?.revenue)}
                 </span>
-                <br />
-                <br />
               </>
-            )} */}
+            )}
             <br />
             {/* <b>Genre:</b>{' '} */}
             {/* {userMovie?.genres?.map((genre) => (
               <span key={genre?.id}> {genre?.name},</span>
             ))} */}
-            <br />
             <br />
             <b> Synopsis:</b> {userMovie?.synopsis}
           </Card.Text>

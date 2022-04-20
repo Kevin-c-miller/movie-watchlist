@@ -8,7 +8,6 @@ export default function UserDetailsOther() {
 
   return (
     <div className="movieDetailsOther">
-      <h3>Coming soon!</h3>
       <Streaming streaming={streaming} />
       <div className="castAndCrew">
         <div className="director">
@@ -28,13 +27,13 @@ export default function UserDetailsOther() {
           <b>Trailer</b>
         </h5>
         <div className="player-wrapper">
-          {/* <ReactPlayer
-            url={`https://www.youtube.com/watch?v=${trailers?.key}`}
+          <ReactPlayer
+            url={userMovie?.movie_trailer}
             controls={true}
             className="react-player"
             width="100%"
             height="100%"
-          /> */}
+          />
         </div>
       </div>
     </div>
