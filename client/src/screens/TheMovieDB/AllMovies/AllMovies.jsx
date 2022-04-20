@@ -15,6 +15,7 @@ export default function AllMovies() {
         <SearchBox />
       </div>
 
+      {/* user searched movie(s) */}
       <div className="all-movies">
         {searchedMovie.length !== 0 && (
           <div className="searched-movies">
@@ -42,6 +43,7 @@ export default function AllMovies() {
           </div>
         )}
 
+        {/* now playing */}
         <h4>Now Playing</h4>
         <div className="row-posters">
           {nowPlaying.map((movie) => (
@@ -61,6 +63,7 @@ export default function AllMovies() {
           ))}
         </div>
 
+        {/* top movies */}
         <h4>Top Movies</h4>
         <div className="row-posters">
           {topMovies.map((movie) => (
@@ -80,6 +83,7 @@ export default function AllMovies() {
           ))}
         </div>
 
+        {/* popular movies */}
         <h4>Popular Movies</h4>
         <div className="row-posters">
           {popMovies.map((movie) => (
@@ -99,6 +103,7 @@ export default function AllMovies() {
           ))}
         </div>
 
+        {/* coming soon */}
         <h4>Coming Soon</h4>
         <div className="row-posters">
           {upcoming.map((movie) => (

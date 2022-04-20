@@ -44,6 +44,22 @@ export default function DBMovieDetails({ addMovieToWatchList, currentUser }) {
     actors += `${star.name}, `;
   });
 
+  // streaming url
+  // const streamingURL = `https://image.tmdb.org/t/p/w45${option?.logo_path}`
+  // console.log(streaming.flatrate);
+  // console.log(
+  //   streaming.rent.forEach((movie) => {
+  //     console.log(movie.logo_path);
+  //   })
+  // );
+
+  //  trailer url
+  const movieTrailerUrl = `https://www.youtube.com/watch?v=${trailers?.key}`;
+
+  // movie poster url
+  const moviePoster = `https://image.tmdb.org/t/p/original${movie?.poster_path}`;
+
+  console.log(movie);
   useEffect(() => {
     try {
       fetchDBMovieDetails(id);
@@ -55,15 +71,6 @@ export default function DBMovieDetails({ addMovieToWatchList, currentUser }) {
       console.log(error);
     }
   }, [id]);
-
-  //  trailer url
-  const movieTrailerUrl = `https://www.youtube.com/watch?v=${trailers?.key}`;
-
-  // movie poster url
-  const moviePoster = `https://image.tmdb.org/t/p/original${movie?.poster_path}`;
-
-  console.log(movie);
-  console.log(movie.tagline);
 
   return (
     <>
