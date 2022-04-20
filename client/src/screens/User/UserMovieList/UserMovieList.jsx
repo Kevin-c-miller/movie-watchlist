@@ -2,7 +2,6 @@ import { useContext, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import UserMovieContext from '../../../context/userMovieContext';
 import '../../TheMovieDB/AllMovies/AllMovies.css';
- 
 
 export default function UserMovieList({ fetchUserMovieList, currentUser }) {
   const { userMovies, fetchUserMovies } = useContext(UserMovieContext);
@@ -13,7 +12,7 @@ export default function UserMovieList({ fetchUserMovieList, currentUser }) {
     if (id) {
       fetchUserMovies(id);
     }
-  }, [fetchUserMovies, id]);
+  }, [id]);
 
   return (
     <div className="userMovies">
