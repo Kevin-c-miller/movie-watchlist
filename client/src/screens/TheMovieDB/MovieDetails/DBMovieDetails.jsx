@@ -72,6 +72,8 @@ export default function DBMovieDetails({ addMovieToWatchList, currentUser }) {
     }
   }, [id]);
 
+  console.log(streaming);
+
   return (
     <>
       <div className="movieDetails">

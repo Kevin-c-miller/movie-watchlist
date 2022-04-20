@@ -6,6 +6,10 @@ import UserMovieContext from '../../../context/userMovieContext';
 export default function UserDetailsOther() {
   const { userMovie, streaming } = useContext(UserMovieContext);
 
+  console.log(userMovie);
+
+  console.log(userMovie.movie_trailer);
+
   return (
     <div className="movieDetailsOther">
       <Streaming streaming={streaming} />

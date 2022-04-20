@@ -29,6 +29,7 @@ export default function UserMovieCard({ currentUser, removeMovie }) {
             </h2>
             <div className="remove-movie">
               <img
+                // TODO: add modal to confirm deleting movie from watch-list
                 src={X}
                 alt="x icon"
                 style={{
