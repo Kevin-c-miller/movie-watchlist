@@ -24,18 +24,6 @@ export default function UserContainer({ currentUser }) {
     localStorage.removeItem('authToken');
   };
 
-  // Get User Movies
-  // const fetchUserMovieList = async (user_id) => {
-  //   const userList = await getUserMovies(user_id);
-  //   setUserMovies(userList);
-  // };
-
-  //  Get selected movie from user clicking on a movie
-  // const fetchSelectedMovie = async (user_id, movie_id) => {
-  //   const selectedMovie = await getOneMovie(user_id, movie_id);
-  //   setUserMovie(selectedMovie);
-  // };
-
   //  Delete movie from user list
   const removeMovieFromList = async (user_id, movie_id) => {
     await deleteMovie(user_id, movie_id);
@@ -75,7 +63,6 @@ export default function UserContainer({ currentUser }) {
             path="/:id/movies"
             element={
               <UserMovieList
-                // fetchUserMovieList={fetchUserMovieList}
                 currentUser={currentUser}
                 userMovies={userMovies}
               />
@@ -86,7 +73,6 @@ export default function UserContainer({ currentUser }) {
             element={
               <UserMovieDetails
                 userMovie={userMovie}
-                // fetchSelectedMovie={fetchSelectedMovie}
                 removeMovie={removeMovieFromList}
                 currentUser={currentUser}
               />

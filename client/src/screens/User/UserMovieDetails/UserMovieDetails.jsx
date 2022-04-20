@@ -29,42 +29,14 @@ export default function UserMovieDetails({
   const [toggle, setToggle] = useState(false);
   const [show, setShow] = useState(false);
 
-  const {
-    userMovie,
-    fetchUserMovie,
-    // setStars,
-    // setDirector,
-    // fetchDBMovieDetails,
-    // fetchMovieTrailer,
-    // fetchStreamingProviders,
-  } = useContext(UserMovieContext);
+  const { userMovie, fetchUserMovie } = useContext(UserMovieContext);
 
   const navigate = useNavigate();
   const { id, movie_id } = useParams();
 
-  // get movie credits and set the state
-  // const fetchMovieCredits = async (movie_id) => {
-  //   const movieCredits = await getMovieCredits(movie_id);
-
-  //   const directorCredits = movieCredits.crew.find(
-  //     ({ job }) => job === 'Director'
-  //   );
-  //   setDirector(directorCredits);
-
-  //   const actors = movieCredits.cast.slice(0, 7);
-  //   setStars(actors);
-  // };
-
   useEffect(() => {
     // selected movie details
     fetchUserMovie(id, movie_id);
-
-    // more movie details
-    // fetchDBMovieDetails(id);
-    // fetchMovieTrailer(id);
-    // fetchStreamingProviders(id);
-    // fetchMovieCredits(id);
-    // fetchSimilarMovies(id);
   }, [id, movie_id]);
 
   console.log(userMovie);
@@ -87,8 +59,7 @@ export default function UserMovieDetails({
 
   // Edit Review
   const editReview = async (review_id, reviewData) => {
-    const updatedReview = await updateReview(movie_id, review_id, reviewData);
-    console.log(updatedReview);
+    await updateReview(movie_id, review_id, reviewData);
   };
 
   // Delete Review
@@ -115,11 +86,7 @@ export default function UserMovieDetails({
       </div>
       <h2 className="movieTitle">{userMovie.title}</h2>
       <div className="movieDetailsBody">
-        <UserMovieCard
-          // userMovie={userMovie}
-          currentUser={currentUser}
-          removeMovie={removeMovie}
-        />
+        <UserMovieCard currentUser={currentUser} removeMovie={removeMovie} />
 
         <UserDetailsOther />
       </div>

@@ -14,8 +14,6 @@ export default function UserMovieCard({ currentUser, removeMovie }) {
     return '$' + num.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
   };
 
-  // console.log(userMovie, id, movie_id);
-
   return (
     <div className="movieDetailsCard">
       <Card className="movie-details-card">
@@ -68,6 +66,7 @@ export default function UserMovieCard({ currentUser, removeMovie }) {
               </>
             )}
             <br />
+            {/* TODO: uncomment once added to db */}
             {/* <b>Genre:</b>{' '} */}
             {/* {userMovie?.genres?.map((genre) => (
               <span key={genre?.id}> {genre?.name},</span>
