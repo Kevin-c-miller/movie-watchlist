@@ -11,7 +11,7 @@ import {
   getOneMovie,
   deleteMovie,
 } from '../../services/apiConfig/movies';
-import { MovieProvider } from '../../context/movieContext';
+import { UserMovieProvider } from '../../context/userMovieContext';
 
 export default function UserContainer({ currentUser }) {
   const [userMovies, setUserMovies] = useState([]);
@@ -25,16 +25,16 @@ export default function UserContainer({ currentUser }) {
   };
 
   // Get User Movies
-  const fetchUserMovieList = async (user_id) => {
-    const userList = await getUserMovies(user_id);
-    setUserMovies(userList);
-  };
+  // const fetchUserMovieList = async (user_id) => {
+  //   const userList = await getUserMovies(user_id);
+  //   setUserMovies(userList);
+  // };
 
   //  Get selected movie from user clicking on a movie
-  const fetchSelectedMovie = async (user_id, movie_id) => {
-    const selectedMovie = await getOneMovie(user_id, movie_id);
-    setUserMovie(selectedMovie);
-  };
+  // const fetchSelectedMovie = async (user_id, movie_id) => {
+  //   const selectedMovie = await getOneMovie(user_id, movie_id);
+  //   setUserMovie(selectedMovie);
+  // };
 
   //  Delete movie from user list
   const removeMovieFromList = async (user_id, movie_id) => {
@@ -69,13 +69,13 @@ export default function UserContainer({ currentUser }) {
 
   return (
     <div>
-      <MovieProvider>
+      <UserMovieProvider>
         <Routes>
           <Route
             path="/:id/movies"
             element={
               <UserMovieList
-                fetchUserMovieList={fetchUserMovieList}
+                // fetchUserMovieList={fetchUserMovieList}
                 currentUser={currentUser}
                 userMovies={userMovies}
               />
@@ -86,7 +86,7 @@ export default function UserContainer({ currentUser }) {
             element={
               <UserMovieDetails
                 userMovie={userMovie}
-                fetchSelectedMovie={fetchSelectedMovie}
+                // fetchSelectedMovie={fetchSelectedMovie}
                 removeMovie={removeMovieFromList}
                 currentUser={currentUser}
               />
@@ -108,7 +108,7 @@ export default function UserContainer({ currentUser }) {
             }
           />
         </Routes>
-      </MovieProvider>
+      </UserMovieProvider>
     </div>
   );
 }

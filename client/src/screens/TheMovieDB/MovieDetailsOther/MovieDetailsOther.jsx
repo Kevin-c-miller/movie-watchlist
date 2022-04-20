@@ -1,11 +1,13 @@
 import { useContext } from 'react';
 import Streaming from '../Streaming/Streaming';
 import ReactPlayer from 'react-player';
-import MovieContext from '../../../context/movieContext';
 
-export default function MovieDetailsOther() {
-  const { stars, director, trailers, streaming } = useContext(MovieContext);
-
+export default function MovieDetailsOther({
+  stars,
+  director,
+  trailers,
+  streaming,
+}) {
   console.log(streaming);
   console.log(trailers);
 

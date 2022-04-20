@@ -2,10 +2,10 @@ import { useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import { Card } from 'react-bootstrap';
 import { X } from '../../../assets/index.js';
-import MovieContext from '../../../context/movieContext.js';
+import UserMovieContext from '../../../context/userMovieContext.js';
 
-export default function UserMovieCard({ userMovie, currentUser, removeMovie }) {
-  const { movie } = useContext(MovieContext);
+export default function UserMovieCard({ currentUser, removeMovie }) {
+  const { userMovie } = useContext(UserMovieContext);
 
   const { id, movie_id } = useParams();
 
@@ -14,7 +14,7 @@ export default function UserMovieCard({ userMovie, currentUser, removeMovie }) {
     return '$' + num.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
   };
 
-  console.log(movie, id, movie_id);
+  console.log(userMovie, id, movie_id);
 
   return (
     <div className="movieDetailsCard">
@@ -44,12 +44,12 @@ export default function UserMovieCard({ userMovie, currentUser, removeMovie }) {
                   background: 'red',
                   borderRadius: '10px',
                 }}
-                onClick={() => removeMovie(currentUser?.id, userMovie?.id)}
+                onClick={() => removeMovie(id, movie_id)}
               />
             </div>
           </Card.Title>
           <Card.Text>
-            <i>"{movie?.tagline}"</i>
+            <i>"{userMovie?.tagline}"</i>
             <br />
             <b>Released: </b>
             {userMovie?.release_year}
@@ -60,7 +60,7 @@ export default function UserMovieCard({ userMovie, currentUser, removeMovie }) {
                 <br />
                 <br />
                 <span>
-                  <b>Budget: </b> $ {currenyFormat(movie?.budget)}
+                  <b>Budget: </b> $ {currenyFormat(userMovie?.budget)}
                 </span>
               </>
             )}
@@ -68,7 +68,7 @@ export default function UserMovieCard({ userMovie, currentUser, removeMovie }) {
             {movie?.revenue > 0 && (
               <>
                 <span>
-                  <b>Revenue: </b> {currencyFormat(movie?.revenue)}
+                  <b>Revenue: </b> {currencyFormat(userMovie?.revenue)}
                 </span>
                 <br />
                 <br />
@@ -76,7 +76,7 @@ export default function UserMovieCard({ userMovie, currentUser, removeMovie }) {
             )} */}
             <br />
             {/* <b>Genre:</b>{' '} */}
-            {/* {movie?.genres?.map((genre) => (
+            {/* {userMovie?.genres?.map((genre) => (
               <span key={genre?.id}> {genre?.name},</span>
             ))} */}
             <br />

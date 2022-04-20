@@ -16,6 +16,10 @@ export default function DBMovieDetails({ addMovieToWatchList, currentUser }) {
     fetchMovieTrailer,
     fetchStreamingProviders,
     fetchSimilarMovies,
+    stars,
+    director,
+    trailers,
+    streaming,
   } = useContext(MovieContext);
 
   const { id } = useParams();
@@ -46,6 +50,10 @@ export default function DBMovieDetails({ addMovieToWatchList, currentUser }) {
     }
   }, [id]);
 
+  //  trailer url
+  const movieTrailerUrl = `https://www.youtube.com/watch?v=${trailers?.key}`;
+
+  // movie poster url
   const moviePoster = `https://image.tmdb.org/t/p/original${movie?.poster_path}`;
 
   return (
@@ -71,12 +79,14 @@ export default function DBMovieDetails({ addMovieToWatchList, currentUser }) {
                 starring: movie.actors,
                 release_year: parseInt(movie.release_date),
                 runtime: movie.runtime,
+                trailer: movieTrailerUrl,
+                // TODO: add the rest to db
+
+                // streaming: movie.streaming,
                 // tagline: movie.tagline,
                 // genre: movie.genres,
                 // budget: movie.budget,
                 // revenue: movie.revenue,
-                // trailer: movieTrailer,
-                // streaming: movie.streaming,
                 user_id: currentUser.id,
                 // movie_id: id,
               };
@@ -90,7 +100,12 @@ export default function DBMovieDetails({ addMovieToWatchList, currentUser }) {
         <div className="movieDetailsBody">
           <MovieCard moviePoster={moviePoster} />
 
-          <MovieDetailsOther />
+          <MovieDetailsOther
+            stars={stars}
+            director={director}
+            trailers={trailers}
+            streaming={streaming}
+          />
         </div>
         <SimilarMovies />
       </div>
