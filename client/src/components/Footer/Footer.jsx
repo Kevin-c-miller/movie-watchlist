@@ -1,6 +1,6 @@
 import React from 'react';
 import { MDBFooter, MDBContainer, MDBIcon } from 'mdb-react-ui-kit';
-import { github, linkedin, google, omdb } from '../../assets/index.js';
+import { github, linkedin, google, tmdb } from '../../assets/index.js';
 import './Footer.css';
 
 export default function Footer() {
@@ -29,17 +29,6 @@ export default function Footer() {
             <MDBIcon fab icon="linkedin" />
             <img src={linkedin} alt="linkedin icon" className="social-icon" />
           </a>
-
-          <a
-            className="btn btn-outline-light btn-floating m-1"
-            href="mailto:kevinmiller3791@gmail.com"
-            role="button"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <MDBIcon fab icon="google" />
-            <img src={google} alt="google icon" className="social-icon" />
-          </a>
         </section>
       </MDBContainer>
 
@@ -48,27 +37,23 @@ export default function Footer() {
           className="text-center p-3 footer-name"
           style={{ backgroundColor: 'rgba(0, 0, 0, 0.2)' }}
         >
-          © 2020 Copyright:{' '}
+          © 2022 Copyright:{' '}
           <a
             className="text-white portfolio-link"
             href="https://kevin-c-miller.netlify.app/"
             target="_blank"
             rel="noopener noreferrer"
           >
-<<<<<<< HEAD
-            {/* placeholder for portfolio link */}
-=======
->>>>>>> edab054fe49df654b5ea7a2559077e7466135c67
             Kevin Miller
           </a>
         </div>
         <div className="logos">
           <a
-            href="http://omdbapi.com/"
+            href="https://www.themoviedb.org/"
             target="_blank"
             rel="noopener noreferrer"
           >
-            <img src={omdb} alt="omdb api logo" />
+            <img src={tmdb} alt="tmdb logo" />
           </a>
         </div>
       </div>

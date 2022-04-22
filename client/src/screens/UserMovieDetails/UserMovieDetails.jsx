@@ -11,67 +11,80 @@ import {
 } from '../../services/apiConfig/reviews.js';
 import AddReviewForm from '../../components/ReviewForm/AddReviewForm';
 import Reviews from '../../components/ReviewList/Reviews.jsx';
-import '../MovieDetail/MovieDetails.css';
+import { getMovieCredits } from '../../services/apiConfig/theMovieDb.js';
+import '../TheMovieDB/MovieDetails/DBMovieDetails.css';
 import '../UserMovieList/UserMovies.css';
 import '../../components/ReviewForm/ReviewForm.css';
 
-export default function UserMovieDetails(props) {
+export default function UserMovieDetails({
+  userMovie,
+  removeMovie,
+  currentUser,
+  fetchSelectedMovie,
+  setStars,
+  setDirector,
+}) {
   const [reviews, setReviews] = useState([]);
   const [toggle, setToggle] = useState(false);
-
-  const { userMovie, removeMovie, currentUser, fetchSelectedMovie } = props;
+  const [show, setShow] = useState(false);
 
   const navigate = useNavigate();
-  const { id } = useParams();
+  const { id, movie_id } = useParams();
+
+  // get movie credits
+  const fetchMovieCredits = async (movie_id) => {
+    const movieCredits = await getMovieCredits(movie_id);
+
+    const directorCredits = movieCredits.crew.find(
+      ({ job }) => job === 'Director'
+    );
+    setDirector(directorCredits);
+
+    const actors = movieCredits.cast.slice(0, 7);
+    setStars(actors);
+  };
 
   useEffect(() => {
-    fetchSelectedMovie(id);
-
-    // eslint-disable-next-line
-  }, []);
+    // selected movie details
+    fetchSelectedMovie(id, movie_id);
+  }, [id]);
 
   useEffect(() => {
     // Get Reviews
     const fetchReviews = async () => {
-      const movieReviews = await getMovieReviews(currentUser?.id, id);
+      const movieReviews = await getMovieReviews(currentUser?.id, movie_id);
       setReviews(movieReviews);
     };
     fetchReviews();
-  }, [toggle, currentUser?.id, id]);
+  }, [toggle, currentUser?.id, movie_id]);
 
   // Create Review
   const addReview = async (reviewData) => {
-    await createReview(id, userMovie?.id, reviewData);
+    await createReview(movie_id, userMovie?.id, reviewData);
     setToggle((prevToggle) => !prevToggle);
     toast.success('Review Added!');
   };
 
   // Edit Review
   const editReview = async (review_id, reviewData) => {
-    const updatedReview = await updateReview(id, review_id, reviewData);
+    const updatedReview = await updateReview(movie_id, review_id, reviewData);
     console.log(updatedReview);
   };
 
   // Delete Review
   const removeReview = async (review_id) => {
-    await deleteReview(id, userMovie?.id, review_id);
+    await deleteReview(movie_id, userMovie?.id, review_id);
     setToggle((prevToggle) => !prevToggle);
     toast.success('Review Deleted');
   };
 
-  if (!userMovie) {
-    return (
-      <div>
-        <img
-          src="https://media.giphy.com/media/N256GFy1u6M6Y/giphy.gif"
-          alt="loading"
-        />
-      </div>
-    );
-  }
+  //  show review form
+  const showReviewForm = () => {
+    setShow((prevShow) => !prevShow);
+  };
 
   return (
-    <div className="movie-details">
+    <div className="movieDetails">
       <div className="back-btn">
         <button
           className="movie-back-btn"
@@ -81,24 +94,26 @@ export default function UserMovieDetails(props) {
         </button>
       </div>
 
-      <>
-        <Card style={{ width: '30rem' }} className="movie-details-card">
+      <div className="movieDetailsCard">
+        <Card className="movie-details-card">
           <Card.Img
             variant="top"
-            src={userMovie.poster}
+            src={userMovie?.poster}
             alt={userMovie?.title}
             style={{
               height: '600px',
-              width: '29.5rem',
               borderRadius: '35px',
               border: '5px solid #000',
             }}
           />
+
           <Card.Body>
             <Card.Title>
               <h2>
-                <b>{userMovie.title}</b>
+                <b>{userMovie?.title}</b>
               </h2>
+              {/* TODO: Add column on movie table for 'movie-watched' */}
+
               <img
                 src={X}
                 alt="x icon"
@@ -111,8 +126,10 @@ export default function UserMovieDetails(props) {
                 onClick={() => removeMovie(currentUser?.id, userMovie?.id)}
               />
             </Card.Title>
-            <Card.Text>
+            <h6>
               {userMovie?.release_year}, <b> {userMovie?.director}</b>
+            </h6>
+            <Card.Text>
               <br />
               <b> {userMovie?.runtime}</b>
               <br />
@@ -122,25 +139,30 @@ export default function UserMovieDetails(props) {
               <br />
               <br />
               <b> Synopsis:</b> {userMovie?.synopsis}
-              {/* TODO: add these in once columns added to DB */}
-              {/* <b>Genre: </b> {userMovie?.Genre} */}
-              {/* <b>Box Office:</b> {userMovie?.BoxOffice} */}
-              {/* <b>Written By:</b> {userMovie?.Writer} */}
-              {/* <b>Awards:</b> {userMovie?.Awards} */}
             </Card.Text>
           </Card.Body>
         </Card>
-      </>
-
-      <div className="review-container">
-        <AddReviewForm addReview={addReview} />
-        <Reviews
-          reviews={reviews}
-          currentUser={currentUser}
-          removeReview={removeReview}
-          editReview={editReview}
-        />
       </div>
+      {show && (
+        <div className="review-container">
+          <AddReviewForm addReview={addReview} />
+          <Reviews
+            reviews={reviews}
+            currentUser={currentUser}
+            removeReview={removeReview}
+            editReview={editReview}
+          />
+        </div>
+      )}
+      {!show && (
+        <button
+          className="movie-back-btn"
+          onClick={showReviewForm}
+          style={{ marginBottom: '3rem' }}
+        >
+          Leave a review!
+        </button>
+      )}
     </div>
   );
 }

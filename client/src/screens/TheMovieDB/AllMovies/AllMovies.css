@@ -1,0 +1,122 @@
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
+
+.allMoviesPage {
+  min-height: 100vh;
+  background: url('../../../assets/images/movie-seats.jpg') no-repeat center
+    center/cover;
+  font-family: 'Permanent Marker', cursive;
+}
+
+.allMoviesPage > h1 {
+  color: #fff;
+}
+
+.search-container > h2 {
+  color: #fff;
+  padding: 1rem;
+}
+
+.search-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.search {
+  padding: 4px;
+  margin: 1rem 3rem;
+  border: 2px solid #fff;
+}
+
+.searched-movies {
+  color: #fff;
+  text-align: center;
+}
+
+.all-movies {
+  margin-left: 20px;
+}
+
+.all-movies > h4 {
+  color: #fff;
+  margin: 0;
+  text-align: center;
+}
+
+.row-posters {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  overflow-y: hidden;
+  overflow-x: auto;
+  padding: 10px 30px 30px;
+  margin-right: 20px;
+}
+
+.movies-image-container {
+  width: 12.5rem;
+  position: relative;
+  transition: transform 0.2s;
+  margin: 1.25rem;
+  border: 4px solid #fff;
+}
+
+.movies-image-container .movie-page-img {
+  height: 18rem;
+  width: 12rem;
+}
+.movies-image-container:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+}
+
+.movies-image-container:hover .overlay {
+  opacity: 1;
+}
+
+.overlay {
+  position: absolute;
+  background: rgba(59, 46, 46, 0.8);
+  width: 100%;
+  transition: 0.5s ease;
+  opacity: 0;
+  bottom: 0;
+  font-size: 20px;
+  padding: 20px;
+  text-align: center;
+  color: #fff;
+}
+
+.overlay h6 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.userMovies {
+  min-height: 100vh;
+  background: url('../../../assets/images/film.jpg') no-repeat center
+    center/cover;
+}
+
+.userMovies > h2 {
+  font-family: 'Permanent Marker', cursive;
+  text-align: center;
+  padding: 15px;
+}
+
+.user-movie-list {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+@media screen and (max-width: 600px) {
+  .allMoviesPage h2 {
+    font-size: 22px;
+  }
+}

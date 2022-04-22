@@ -12,6 +12,7 @@ export default function Login(props) {
 
   const navigate = useNavigate('/movies');
 
+  // show/hide password on login/register forms
   const toggleShowPassword = (e) => {
     let x = hidePassword;
     setHidePassword(showPassword);
@@ -25,9 +26,14 @@ export default function Login(props) {
       password,
     };
     const res = await loginUser(user);
-    props.setCurrentUser(res);
+    console.log(res);
 
-    navigate('/movies');
+    if (res.Response === 'unauthorized') {
+      console.log('error, invalid username or password');
+    } else {
+      props.setCurrentUser(res);
+      navigate('/movies');
+    }
   };
 
   return (

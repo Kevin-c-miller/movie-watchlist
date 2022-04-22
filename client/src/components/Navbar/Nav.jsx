@@ -8,6 +8,7 @@ import './Nav.css';
 export default function Nav(props) {
   const navigate = useNavigate();
 
+  // logging user out and removing token from local storage
   const logOutUser = () => {
     localStorage.removeItem('authToken');
     props.setCurrentUser(null);
@@ -17,9 +18,11 @@ export default function Nav(props) {
   };
   const authToken = localStorage.getItem('authToken');
 
+  // show this navbar if no toek in local storage
   if (!authToken) {
     return <PreLoginNav currentUser={props.currentUser} />;
   } else {
+    // show this navbar if there is a token in local storage
     return (
       <div>
         <ReactBootStrap.Navbar
@@ -40,7 +43,7 @@ export default function Nav(props) {
             <ReactBootStrap.Navbar.Collapse id="responsive-navbar-nav">
               <ReactBootStrap.Nav className="me-auto"></ReactBootStrap.Nav>
               <ReactBootStrap.Nav>
-                <ReactBootStrap.Nav.Link href="/movies">
+                <ReactBootStrap.Nav.Link href="/movies/">
                   Browse Movies
                 </ReactBootStrap.Nav.Link>
                 <p>|</p>

@@ -1,7 +1,7 @@
 import { useParams, useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import { Card } from 'react-bootstrap';
-import './MovieDetails.css';
+// import './MovieDetails.css';
 
 export default function MovieDetails(props) {
   const { movie, fetchMovie } = props;
@@ -9,7 +9,9 @@ export default function MovieDetails(props) {
   const navigate = useNavigate();
 
   useEffect(() => {
+    // getting movie that was selected
     fetchMovie(title);
+
     // eslint-disable-next-line
   }, []);
 
@@ -38,47 +40,58 @@ export default function MovieDetails(props) {
               Back to movie list
             </button>
           </div>
-          <>
-            <Card style={{ width: '30rem' }} className="movie-details-card">
-              <Card.Img
-                variant="top"
-                src={movie.Poster}
-                alt={movie.Title}
-                style={{
-                  height: '600px',
-                  width: '29.5',
-                  borderRadius: '35px',
-                  border: '5px solid #000',
-                }}
-              />
-              <Card.Body>
-                <Card.Title>
-                  <h2>
-                    <b>{movie.Title} </b>
-                  </h2>
-                </Card.Title>
-                <Card.Text>
-                  {movie.Year}, <b> {movie.Director}</b>
-                  <br />
-                  <b> {movie.Runtime}</b>
-                  <br />
-                  <b>Starring: </b> {movie.Actors}
-                  <br />
-                  <b>Genre: </b> {movie.Genre}
-                  <br />
-                  <b>Rated:</b> {movie.Rated}
-                  <br />
-                  <b>Box Office:</b> {movie.BoxOffice}
-                  <br />
-                  <b>Written By:</b> {movie.Writer}
-                  <br />
-                  <b>Awards:</b> {movie.Awards}
-                  <br />
-                  <b> Synopsis:</b> {movie.Plot}
-                </Card.Text>
-              </Card.Body>
+          <div className="movieCard-container">
+            <Card className="movie-details-card">
+              <div className="face face1">
+                <div className="content">
+                  <Card.Img
+                    variant="top"
+                    src={movie.Poster}
+                    alt={movie.Title}
+                    style={{
+                      height: '675px',
+                      width: '30rem',
+                      borderRadius: '35px',
+                      border: '5px solid #000',
+                    }}
+                  />
+                </div>
+              </div>
+              <div className="face face2">
+                <div className="content">
+                  <Card.Body>
+                    <Card.Title>
+                      <h3>
+                        <b>{movie.Title} </b>
+                      </h3>
+                    </Card.Title>
+                    <h6>
+                      {movie.Year}, <b> {movie.Director}</b>
+                    </h6>
+                    <Card.Text>
+                      <br />
+                      <b> {movie.Runtime}</b>
+                      <br />
+                      <b>Starring: </b> {movie.Actors}
+                      <br />
+                      <b>Genre: </b> {movie.Genre}
+                      <br />
+                      <b>Rated:</b> {movie.Rated}
+                      <br />
+                      <b>Box Office:</b> {movie.BoxOffice}
+                      <br />
+                      <b>Written By:</b> {movie.Writer}
+                      <br />
+                      <b>Awards:</b> {movie.Awards}
+                      <br />
+                      <br />
+                      <b> Synopsis:</b> {movie.Plot}
+                    </Card.Text>
+                  </Card.Body>
+                </div>
+              </div>
             </Card>
-          </>
+          </div>
           <div className="add-movie-btn-div">
             {props.currentUser && (
               <button

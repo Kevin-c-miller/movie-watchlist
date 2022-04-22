@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Form } from 'react-bootstrap';
 import '../RegisterForm/RegisterForm';
-import '../../screens/UserAccount/UserAccount.css';
+import '../../screens/User/UserAccount/UserAccount.css';
 
 export default function UpdateUserForm(props) {
   const [username, setUsername] = useState('');
@@ -17,6 +17,7 @@ export default function UpdateUserForm(props) {
   };
 
   useEffect(() => {
+    // checking for token in localstorage
     if (props.currentUser) {
       setUsername(props.currentUser.username);
       setEmail(props.currentUser.email);

@@ -13,12 +13,14 @@ export default function Signup(props) {
 
   const navigate = useNavigate('/movies');
 
+  // show/hide passeword on register form
   const toggleShowPassword = (e) => {
     let x = hidePassword;
     setHidePassword(showPassword);
     setShowPassword(x);
   };
 
+  // submit register form to create user
   const handleRegisterSubmit = async (e) => {
     e.preventDefault();
     const user = {

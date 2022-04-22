@@ -1,0 +1,372 @@
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
+
+.movieDetails {
+  min-height: 100vh;
+  background: url('../../../assets/images/filmtape.jpg') no-repeat center
+    center/cover;
+  width: 100vw;
+}
+
+.movieDetailsBtns {
+  display: flex;
+  justify-content: space-between;
+}
+
+.movieDetailsBtns > .back-to-movies {
+  background: rgb(255, 151, 0);
+  background: linear-gradient(
+    90deg,
+    rgba(255, 151, 0, 1) 0%,
+    rgba(255, 251, 0, 1) 100%
+  );
+  font-weight: bold;
+}
+
+.movieDetailsBtns > .add-to-watchlist {
+  background: rgb(255, 151, 0);
+  background: linear-gradient(
+    90deg,
+    rgba(255, 151, 0, 1) 0%,
+    rgba(255, 0, 0, 1) 100%
+  );
+  font-weight: bold;
+}
+
+.back-to-movies,
+.add-to-watchlist {
+  padding: 5px;
+  margin: 1.5rem 4rem;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+/* user-movie back button */
+.back-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.back-to-movies:hover,
+.add-to-watchlist:hover {
+  opacity: 0.7;
+}
+
+.movieTitle {
+  text-align: center;
+  padding: 10px;
+  font-size: 56px;
+  font-weight: bold;
+  font-family: 'Permanent Marker', cursive;
+}
+
+.movieDetailsBody {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.movieDetailsCard,
+.movieDetailsOther {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem 2rem 1rem;
+  width: 100%;
+}
+
+.movie-details-card {
+  max-width: 575px !important;
+  background-color: #ffffff70 !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 20px !important;
+  object-fit: contain;
+}
+
+.movie-details-card > img {
+  height: 825px;
+  border-radius: 35px;
+  border: 5px solid #000;
+}
+
+.movieDetailsOther {
+  background-color: #ffffff70;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 20px;
+}
+
+.movieDetailsOther .streamAvailability {
+  text-align: center;
+  font-weight: bold;
+}
+
+.streaming {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.streaming .streamAvailability {
+  margin: 1rem;
+}
+
+.streaming > h5 {
+  text-align: center;
+  padding: 5px;
+  font-weight: bold;
+}
+
+.streaming > h6 {
+  border-bottom: 1px solid #000;
+  padding: 5px;
+  font-weight: 900;
+  text-align: center;
+}
+
+.streamingOptions {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  margin: 0 auto 10px;
+}
+
+.streamingIcons {
+  border-radius: 50%;
+  margin: 2px;
+}
+
+.streamingIcons:hover {
+  opacity: 0.8;
+  transform: scale(1.1);
+}
+
+.castAndCrew {
+  margin: 20px 10px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.director > h5 {
+  border-bottom: 1px solid #000;
+  font-weight: 900;
+  margin: 0;
+  padding: 5px;
+  text-align: center;
+}
+.director > h6 {
+  font-weight: 600;
+  margin: 0;
+  padding: 5px;
+  text-align: center;
+}
+
+.actors-header {
+  margin: 10px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.actors {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: baseline;
+  flex-wrap: wrap;
+}
+
+.actor-map {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0 0 0 5px;
+}
+
+.actor-map > h6 {
+  font-weight: 600;
+}
+.actorHeadShot {
+  height: 80px;
+  width: 55px;
+  border-radius: 50%;
+  border: 3px solid #000;
+}
+
+.movieTrailer {
+  width: 100%;
+}
+
+.movieTrailer > h5 {
+  text-align: center;
+  font-size: 30px;
+}
+
+.player-wrapper {
+  position: relative;
+  padding-top: 56.25%; /* Player ratio: 100 / (1280 / 720) */
+}
+
+.react-player {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.similarHeader {
+  text-align: center;
+  font-weight: 700;
+  font-family: 'Permanent Marker', cursive;
+  font-size: 32px;
+  text-decoration: underline;
+  padding: 5px;
+  line-height: 1.6;
+}
+
+.similar-movies {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  overflow-x: auto;
+  margin: 0 1rem;
+}
+
+@media screen and (max-width: 1000px) {
+  .movieDetails {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .movieDetailsBody {
+    width: 80%;
+    margin: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .movieDetailsOther {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    /* margin: 2rem; */
+  }
+
+  .similar-movies {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    overflow-x: auto;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .movieDetailsBtns > * {
+    font-size: 12px;
+    margin: 1.5rem 1rem;
+    border-radius: 10px;
+    cursor: pointer;
+    width: 90px;
+    width: 120px;
+    height: 40px;
+  }
+
+  .movieDetails {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* width: 80%; */
+  }
+
+  .movieDetailsBody {
+    width: 80%;
+    margin: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .movieDetailsCard {
+    width: 90%;
+  }
+
+  .movieTitle {
+    font-size: 2rem;
+  }
+
+  .card-img-top {
+    object-fit: cover;
+    width: 100%;
+  }
+
+  .card-text {
+    font-size: 14px;
+  }
+
+  .card-title > h2 {
+    font-size: 1rem;
+  }
+
+  .movieDetailsOther {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+  }
+
+  .streaming {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .streamAvailability {
+    font-size: 15px;
+  }
+
+  .streamAvailability > h6 {
+    font-size: 18px;
+  }
+
+  .streamingOptions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .streamingIcons {
+    height: 35px;
+    width: 35px;
+  }
+
+  .actors-header {
+    border-bottom: 1px solid #000;
+  }
+
+  .actor-map > h6 {
+    font-size: 14px;
+  }
+
+  .similarHeader {
+    font-size: 20px;
+  }
+}
