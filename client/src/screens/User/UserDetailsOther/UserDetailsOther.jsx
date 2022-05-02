@@ -10,7 +10,7 @@ export default function UserDetailsOther() {
 
   return (
     <div className="movieDetailsOther">
-      <Streaming streaming={streaming} />
+      {/* <Streaming streaming={streaming} /> */}
       <div className="castAndCrew">
         <div className="director">
           <h5> Directed By: </h5> <h6>{userMovie?.director}</h6>
