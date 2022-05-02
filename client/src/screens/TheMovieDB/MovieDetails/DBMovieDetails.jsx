@@ -82,33 +82,34 @@ export default function DBMovieDetails({ addMovieToWatchList, currentUser }) {
           >
             Back to movie list
           </button>
-
-          <button
-            className="add-to-watchlist"
-            onClick={() => {
-              const addedMovie = {
-                title: movie.title,
-                poster: moviePoster,
-                release_year: parseInt(movie.release_date),
-                rating: movie.Rated,
-                synopsis: movie.overview,
-                director: director.name,
-                starring: actors,
-                runtime: movie.runtime.toString(),
-                movie_trailer: movieTrailerUrl,
-                tagline: movie.tagline,
-                budget: movie.budget.toString(),
-                revenue: movie.revenue.toString(),
-                user_id: currentUser?.id,
-                // TODO: add the rest to db
-                // streaming: movie.streaming,
-                // genre: movie.genres,
-              };
-              addMovieToWatchList(currentUser?.id, addedMovie);
-            }}
-          >
-            Add to watchlist
-          </button>
+          {currentUser && (
+            <button
+              className="add-to-watchlist"
+              onClick={() => {
+                const addedMovie = {
+                  title: movie.title,
+                  poster: moviePoster,
+                  release_year: parseInt(movie.release_date),
+                  rating: movie.Rated,
+                  synopsis: movie.overview,
+                  director: director.name,
+                  starring: actors,
+                  runtime: movie.runtime.toString(),
+                  movie_trailer: movieTrailerUrl,
+                  tagline: movie.tagline,
+                  budget: movie.budget.toString(),
+                  revenue: movie.revenue.toString(),
+                  user_id: currentUser?.id,
+                  // TODO: add the rest to db
+                  // streaming: movie.streaming,
+                  // genre: movie.genres,
+                };
+                addMovieToWatchList(currentUser?.id, addedMovie);
+              }}
+            >
+              Add to watchlist
+            </button>
+          )}
         </div>
         <h2 className="movieTitle">{movie.title}</h2>
         <div className="movieDetailsBody">
