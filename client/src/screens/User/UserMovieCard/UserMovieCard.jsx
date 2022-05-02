@@ -8,6 +8,7 @@ export default function UserMovieCard({ currentUser, removeMovie }) {
   const { userMovie } = useContext(UserMovieContext);
 
   const { id, movie_id } = useParams();
+  console.log(userMovie);
 
   // currency format for budget/revenue
   const currencyFormat = (num) => {
