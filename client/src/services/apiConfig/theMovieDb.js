@@ -2,8 +2,6 @@ import axios from 'axios';
 const KEY = process.env.REACT_APP_MOVIEDB_KEY;
 const url = `https://api.themoviedb.org/3`;
 
-console.log(KEY);
-
 export const searchMovie = async (searchValue) => {
   const res = await axios.get(
     `${url}/search/movie?api_key=${KEY}&query=${searchValue}`
