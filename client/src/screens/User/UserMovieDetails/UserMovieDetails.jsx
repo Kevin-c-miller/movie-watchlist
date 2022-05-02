@@ -113,7 +113,7 @@ export default function UserMovieDetails({
             style={{ marginBottom: '3rem' }}
           >
             Leave a review!
-          </button>{' '}
+          </button>
         </div>
       )}
     </div>
