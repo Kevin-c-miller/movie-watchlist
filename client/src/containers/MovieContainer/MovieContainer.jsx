@@ -26,17 +26,17 @@ export default function MovieContainer({ currentUser }) {
   };
 
   // render movies on page load
-  // useEffect(() => {
-  //   let didCancel = false;
-  //   if (!didCancel) {
-  //     fetchUserMovieList();
-  //   }
-  //   return () => {
-  //     didCancel = true;
-  //   };
+  useEffect(() => {
+    let didCancel = false;
+    if (!didCancel) {
+      fetchUserMovieList();
+    }
+    return () => {
+      didCancel = true;
+    };
 
-  // eslint-disable-next-line
-  // }, []);
+    // eslint-disable-next-line
+  }, []);
 
   return (
     <MovieProvider>

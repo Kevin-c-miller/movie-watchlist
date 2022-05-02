@@ -79,7 +79,6 @@ export const getNowPlayingMovies = async () => {
   }
 };
 
-
 export const getUpcomingMovies = async () => {
   try {
     const res = await axios.get(`${url}/movie/upcoming?api_key=${KEY}`);
