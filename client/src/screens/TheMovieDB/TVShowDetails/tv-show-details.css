@@ -1,0 +1,66 @@
+.show-details {
+  min-height: 100vh;
+  background: url('../../../assets/images/netflix-dark.jpg') no-repeat center
+    center/cover;
+  width: 100vw;
+  padding: 20px 30px;
+}
+
+.show-detials__description {
+  display: flex;
+  justify-content: space-around;
+}
+
+.show-details__title {
+  text-align: center;
+  padding: 10px;
+  font-size: 56px;
+  font-weight: bold;
+  font-family: 'Permanent Marker', cursive;
+  margin-bottom: 34px;
+  color: white;
+}
+
+.show-details__image {
+  height: 825px;
+  border-radius: 35px;
+  border: 5px solid #000;
+  margin-right: 16px;
+}
+
+.show-details__container {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: space-between;
+  border-radius: 35px;
+  border: 5px solid #000;
+  padding: 20px;
+  width: 100%;
+}
+
+.show-details__about {
+  opacity: 0.7;
+}
+
+.show-details__tagline {
+  font-size: 24px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.show-details__description {
+  padding: 16px;
+  font-size: 16px;
+  font-weight: 500;
+  font-style: italic;
+}
+
+.show-details__season {
+  display: flex;
+  flex-direction: column;
+}
+
+.player-wrapper {
+  margin-top: 30px;
+}

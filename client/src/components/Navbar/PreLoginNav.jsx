@@ -21,17 +21,18 @@ export default function PreLoginNav(props) {
           <ReactBootStrap.Navbar.Collapse id="responsive-navbar-nav">
             <ReactBootStrap.Nav className="me-auto"></ReactBootStrap.Nav>
             <ReactBootStrap.Nav>
-              <ReactBootStrap.Nav.Link href="/login">
+              {/* <ReactBootStrap.Nav.Link href="/login">
                 Login
               </ReactBootStrap.Nav.Link>
               <p>|</p>
               <ReactBootStrap.Nav.Link eventKey={2} href="/register">
                 Register
-              </ReactBootStrap.Nav.Link>
+              </ReactBootStrap.Nav.Link> */}
               <p>|</p>
               <ReactBootStrap.Nav.Link eventKey={3} href="/movies">
                 Browse Movies
               </ReactBootStrap.Nav.Link>
+              <p>|</p>
             </ReactBootStrap.Nav>
           </ReactBootStrap.Navbar.Collapse>
         </ReactBootStrap.Container>

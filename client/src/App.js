@@ -15,37 +15,24 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
 function App() {
-  const [currentUser, setCurrentUser] = useState(null);
+  // const [currentUser, setCurrentUser] = useState(null);
 
-  useEffect(() => {
-    const getUser = async () => {
-      const user = await verifyUser();
-      setCurrentUser(user);
-    };
-    getUser();
-  }, []);
+  // useEffect(() => {
+  //   const getUser = async () => {
+  //     const user = await verifyUser();
+  //     setCurrentUser(user);
+  //   };
+  //   getUser();
+  // }, []);
 
   return (
     <div className="App">
-      <Nav setCurrentUser={setCurrentUser} currentUser={currentUser} />
+      <Nav />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route
-          path="/login"
-          element={<Login setCurrentUser={setCurrentUser} />}
-        />
-        <Route
-          path="/register"
-          element={<Signup setCurrentUser={setCurrentUser} />}
-        />
-        <Route
-          path="/movies/*"
-          element={<MovieContainer currentUser={currentUser} />}
-        />
-        <Route
-          path="/users/*"
-          element={<UserContainer currentUser={currentUser} />}
-        />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Signup />} />
+        <Route path="/movies/*" element={<MovieContainer />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
       <Footer />

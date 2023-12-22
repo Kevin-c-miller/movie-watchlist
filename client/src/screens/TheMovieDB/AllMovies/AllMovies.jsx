@@ -2,6 +2,7 @@ import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import SearchBox from '../../../components/SearchBox/SearchBox';
 import MovieContext from '../../../context/movieContext';
+import { TVShows } from '../../TV-Shows/tv-shows';
 import './AllMovies.css';
 
 export default function AllMovies() {
@@ -31,10 +32,10 @@ export default function AllMovies() {
                       className="movie-page-img"
                     />
                     <div className="overlay" key={movie?.id}>
+                      <h6 className="overlay-text">{movie?.title}</h6>
                       <h6 className="overlay-text">
                         Year: {movie?.release_date}
                       </h6>
-                      <h6 className="overlay-text">{movie?.title}</h6>
                     </div>
                   </Link>
                 </div>
@@ -55,8 +56,8 @@ export default function AllMovies() {
                   className="movie-page-img"
                 />
                 <div className="overlay" key={movie?.id}>
-                  <h6 className="overlay-text">Year: {movie?.release_date}</h6>
                   <h6 className="overlay-text">{movie?.title}</h6>
+                  <h6 className="overlay-text">Year: {movie?.release_date}</h6>
                 </div>
               </Link>
             </div>
@@ -75,8 +76,8 @@ export default function AllMovies() {
                   className="movie-page-img"
                 />
                 <div className="overlay" key={movie?.id}>
-                  <h6 className="overlay-text">Year: {movie?.release_date}</h6>
                   <h6 className="overlay-text">{movie?.title}</h6>
+                  <h6 className="overlay-text">Year: {movie?.release_date}</h6>
                 </div>
               </Link>
             </div>
@@ -95,8 +96,8 @@ export default function AllMovies() {
                   className="movie-page-img"
                 />
                 <div className="overlay" key={movie?.id}>
-                  <h6 className="overlay-text">Year: {movie?.release_date}</h6>
                   <h6 className="overlay-text">{movie?.title}</h6>
+                  <h6 className="overlay-text">Year: {movie?.release_date}</h6>
                 </div>
               </Link>
             </div>
@@ -115,13 +116,16 @@ export default function AllMovies() {
                   className="movie-page-img"
                 />
                 <div className="overlay" key={movie?.id}>
-                  <h6 className="overlay-text">Year: {movie?.release_date}</h6>
                   <h6 className="overlay-text">{movie?.title}</h6>
+                  <h6 className="overlay-text">Year: {movie?.release_date}</h6>
                 </div>
               </Link>
             </div>
           ))}
         </div>
+
+        {/* TV Shows */}
+        <TVShows />
       </div>
     </div>
   );

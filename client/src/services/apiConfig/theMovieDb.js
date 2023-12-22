@@ -1,12 +1,12 @@
 import axios from 'axios';
 const KEY = process.env.REACT_APP_MOVIEDB_KEY;
+const TOKEN = process.env.REACT_APP_API_TOKEN;
 const url = `https://api.themoviedb.org/3`;
 
 export const searchMovie = async (searchValue) => {
   const res = await axios.get(
     `${url}/search/movie?api_key=${KEY}&query=${searchValue}`
   );
-  console.log(res.data);
   return res.data.results;
 };
 
@@ -119,4 +119,56 @@ export const getRecommendations = async (movie_id) => {
   } catch (error) {
     console.error(error);
   }
+};
+
+//  TV SHOWS //
+
+// Top Rated
+export const getPopularTvShows = async () => {
+  const res = await axios.get(`${url}/tv/top_rated`, {
+    method: 'GET',
+    headers: {
+      accept: 'application/json',
+      Authorization: `Bearer ${TOKEN}`,
+    },
+  });
+
+  return res.data.results;
+};
+
+// Trending
+export const getTrendingTvShows = async () => {
+  const res = await axios.get(`${url}/trending/tv/day`, {
+    method: 'GET',
+    headers: {
+      accept: 'application/json',
+      Authorization: `Bearer ${TOKEN}`,
+    },
+  });
+  return res.data.results;
+};
+
+// trailers/videos
+export const getTvShowVideos = async (id) => {
+  const res = await axios.get(`${url}/tv/${id}/videos`, {
+    method: 'GET',
+    headers: {
+      accept: 'application/json',
+      Authorization: `Bearer ${TOKEN}`,
+    },
+  });
+  return res.data.results;
+};
+
+// get show details
+export const getShowDetails = async (show_id) => {
+  const res = await axios.get(`${url}/tv/${show_id}`, {
+    method: 'GET',
+    headers: {
+      accept: 'application/json',
+      Authorization: `Bearer ${TOKEN}`,
+    },
+  });
+  console.log(res.data);
+  return res.data;
 };

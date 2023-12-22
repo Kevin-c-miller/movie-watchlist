@@ -9,6 +9,10 @@ import {
   getMovieTrailer,
   getNowPlayingMovies,
   getUpcomingMovies,
+  getPopularTvShows,
+  getTrendingTvShows,
+  getTvShowVideos,
+  getShowDetails,
 } from '../services/apiConfig/theMovieDb';
 
 // set to variable
@@ -27,6 +31,10 @@ export const MovieProvider = ({ children }) => {
   const [director, setDirector] = useState([]);
   const [nowPlaying, setNowPlaying] = useState([]);
   const [upcoming, setUpComing] = useState([]);
+  const [showDetails, setShowDetails] = useState({});
+  const [topTvShows, setTopTvShows] = useState([]);
+  const [trendingTvShows, setTrendingTvShows] = useState([]);
+  const [showTrailers, setShowTrailers] = useState([]);
 
   //  top rated movies via imdb (not updated daily)
   const fetchMovies = async () => {
@@ -82,10 +90,53 @@ export const MovieProvider = ({ children }) => {
     setUpComing(comingSoon);
   };
 
+  // popular tv shows
+  const fetchPopularTvShows = async () => {
+    try {
+      const popTvShows = await getPopularTvShows();
+      setTopTvShows(popTvShows);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  // trending tv shows
+  const fetchTendingTvShows = async () => {
+    try {
+      const trendingTv = await getTrendingTvShows();
+      setTrendingTvShows(trendingTv);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  // get Show details
+  const fetchTvShowDetails = async (show_id) => {
+    const showInfo = await getShowDetails(show_id);
+    console.log(showInfo);
+    setShowDetails(showInfo);
+  };
+
+  // tv show trailers
+  const fetchTvShowTrailers = async (showId) => {
+    try {
+      const results = await getTvShowVideos(showId);
+      const trailers = results.find((result) => result?.type === 'Trailer');
+
+      console.log(trailers);
+
+      setShowTrailers(trailers);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   useEffect(() => {
     fetchMovies();
     nowPlayingMovies();
     upcomingMovies();
+    fetchPopularTvShows();
+    fetchTendingTvShows();
   }, []);
 
   //  set movies state based on user search
@@ -117,12 +168,18 @@ export const MovieProvider = ({ children }) => {
         similarMovies,
         nowPlaying,
         upcoming,
+        topTvShows,
+        trendingTvShows,
+        showTrailers,
+        showDetails,
         setStars,
         setDirector,
         fetchDBMovieDetails,
         fetchMovieTrailer,
         fetchStreamingProviders,
         fetchSimilarMovies,
+        fetchTvShowTrailers,
+        fetchTvShowDetails,
       }}
     >
       {children}

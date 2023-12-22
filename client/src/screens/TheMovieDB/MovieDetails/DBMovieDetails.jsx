@@ -59,7 +59,6 @@ export default function DBMovieDetails({ addMovieToWatchList, currentUser }) {
   // movie poster url
   const moviePoster = `https://image.tmdb.org/t/p/original${movie?.poster_path}`;
 
-  console.log(movie);
   useEffect(() => {
     try {
       fetchDBMovieDetails(id);
@@ -82,7 +81,7 @@ export default function DBMovieDetails({ addMovieToWatchList, currentUser }) {
           >
             Back to movie list
           </button>
-          {currentUser && (
+          {/* {currentUser && (
             <button
               className="add-to-watchlist"
               onClick={() => {
@@ -109,7 +108,7 @@ export default function DBMovieDetails({ addMovieToWatchList, currentUser }) {
             >
               Add to watchlist
             </button>
-          )}
+          )} */}
         </div>
         <h2 className="movieTitle">{movie.title}</h2>
         <div className="movieDetailsBody">
