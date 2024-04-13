@@ -56,9 +56,15 @@
   font-style: italic;
 }
 
-.show-details__season {
+.show-details__seasons {
   display: flex;
   flex-direction: column;
+}
+
+.show-details__season > .show-details__season-number {
+  border-radius: 4px;
+  background-color: transparent;
+  font-weight: 400;
 }
 
 .player-wrapper {

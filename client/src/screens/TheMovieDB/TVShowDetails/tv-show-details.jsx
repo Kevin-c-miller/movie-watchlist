@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect } from 'react';
 import MovieContext from '../../../context/movieContext';
 import { useNavigate, useParams } from 'react-router-dom';
 
@@ -21,11 +21,6 @@ export const TVShowDetails = () => {
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
-
-  const formatDate = (date) => {
-    const splitDate = date?.split('-');
-    return [`${splitDate[1]}-${splitDate[2]}-${splitDate[0]}`].toString();
-  };
 
   return (
     <div className="show-details">
