@@ -15,8 +15,6 @@ export default function MovieDetails(props) {
     // eslint-disable-next-line
   }, []);
 
-  console.log(movie);
-
   if (!title) {
     return (
       <div>
