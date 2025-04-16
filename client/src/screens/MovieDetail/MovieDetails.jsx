@@ -1,12 +1,28 @@
 import { useParams, useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import { Card } from 'react-bootstrap';
+import { formatDate } from '../../utils/format-date';
 // import './MovieDetails.css';
 
 export default function MovieDetails(props) {
   const { movie, fetchMovie } = props;
   const { title } = useParams();
   const navigate = useNavigate();
+
+  const {
+    Poster,
+    Title,
+    Director,
+    Actors,
+    Genre,
+    Runtime,
+    Rated,
+    BoxOffice,
+    Awards,
+    Plot,
+    Year,
+    Writer,
+  } = movie;
 
   useEffect(() => {
     // getting movie that was selected
@@ -44,8 +60,8 @@ export default function MovieDetails(props) {
                 <div className="content">
                   <Card.Img
                     variant="top"
-                    src={movie.Poster}
-                    alt={movie.Title}
+                    src={Poster}
+                    alt={Title}
                     style={{
                       height: '675px',
                       width: '30rem',
@@ -60,30 +76,30 @@ export default function MovieDetails(props) {
                   <Card.Body>
                     <Card.Title>
                       <h3>
-                        <b>{movie.Title} </b>
+                        <b>{Title} </b>
                       </h3>
                     </Card.Title>
                     <h6>
-                      {movie.Year}, <b> {movie.Director}</b>
+                      {Year}, <b> {Director}</b>
                     </h6>
                     <Card.Text>
                       <br />
-                      <b> {movie.Runtime}</b>
+                      <b> {Runtime}</b>
                       <br />
-                      <b>Starring: </b> {movie.Actors}
+                      <b>Starring: </b> {Actors}
                       <br />
-                      <b>Genre: </b> {movie.Genre}
+                      <b>Genre: </b> {Genre}
                       <br />
-                      <b>Rated:</b> {movie.Rated}
+                      <b>Rated:</b> {Rated}
                       <br />
-                      <b>Box Office:</b> {movie.BoxOffice}
+                      <b>Box Office:</b> {BoxOffice}
                       <br />
-                      <b>Written By:</b> {movie.Writer}
+                      <b>Written By:</b> {Writer}
                       <br />
-                      <b>Awards:</b> {movie.Awards}
+                      <b>Awards:</b> {Awards}
                       <br />
                       <br />
-                      <b> Synopsis:</b> {movie.Plot}
+                      <b> Synopsis:</b> {Plot}
                     </Card.Text>
                   </Card.Body>
                 </div>
@@ -96,14 +112,14 @@ export default function MovieDetails(props) {
                 className="add-movie-btn"
                 onClick={() => {
                   const addedMovie = {
-                    title: movie.Title,
-                    poster: movie.Poster,
-                    rating: movie.Rated,
-                    synopsis: movie.Plot,
-                    director: movie.Director,
-                    starring: movie.Actors,
-                    release_year: parseInt(movie.Year),
-                    runtime: movie.Runtime,
+                    title: Title,
+                    poster: Poster,
+                    rating: Rated,
+                    synopsis: Plot,
+                    director: Director,
+                    starring: Actors,
+                    release_year: parseInt(Year),
+                    runtime: Runtime,
                     user_id: props.currentUser.id,
                   };
                   props.addMovieToWatchList(props.currentUser.id, addedMovie);

@@ -1,10 +1,11 @@
 import React, { useContext, useEffect } from 'react';
 import MovieContext from '../../../context/movieContext';
 import { useNavigate, useParams } from 'react-router-dom';
-
-import './tv-show-details.css';
 import ReactPlayer from 'react-player';
 import { TVShowSeasons } from '../tv-show-seasons/tv-show-seasons';
+import { showCommaSeparator } from '../../../utils/format-comma-separator';
+
+import './tv-show-details.css';
 
 export const TVShowDetails = () => {
   const { id } = useParams();
@@ -12,8 +13,19 @@ export const TVShowDetails = () => {
   const { fetchTvShowTrailers, showTrailers, showDetails, fetchTvShowDetails } =
     useContext(MovieContext);
 
+  const {
+    name,
+    poster_path,
+    tagline,
+    overview,
+    first_air_date,
+    genres,
+    networks,
+    number_of_episodes,
+    number_of_seasons,
+  } = showDetails;
+
   const movieTrailerUrl = `https://www.youtube.com/watch?v=${showTrailers?.key}`;
-  console.log(showDetails);
 
   useEffect(() => {
     fetchTvShowDetails(id);
@@ -29,52 +41,56 @@ export const TVShowDetails = () => {
           Back to list
         </button>
       </div>
-      <h2 className="show-details__title">{showDetails?.name}</h2>
+      <h2 className="show-details__title">{name}</h2>
 
       <div className="show-detials__description">
         <img
-          src={`https://image.tmdb.org/t/p/original${showDetails?.poster_path}`}
+          src={`https://image.tmdb.org/t/p/original${poster_path}`}
           alt="poster"
           className="show-details__image"
         />
 
         <div className="show-details__container">
           <div className="show-details__about">
-            <div className="show-details__tagline">{showDetails?.tagline}</div>
+            <div className="show-details__tagline">{tagline}</div>
 
-            <div className="show-details__description">
-              {showDetails?.overview}
-            </div>
+            <div className="show-details__description">{overview}</div>
             <div className="show-detials__premiere">
               <span>
                 <b>Series Premier: </b>
-                {showDetails?.first_air_date}
+                {first_air_date}
               </span>
             </div>
 
             <div className="show-details__genres">
               <span>
                 <b>Genre: </b>
-                {showDetails?.genres?.map((genre) => `${genre?.name}, `)}
+                {genres?.map(
+                  (genre, index) =>
+                    `${genre?.name}${showCommaSeparator(genres, index)} `
+                )}
               </span>
             </div>
 
             <div className="show-details__networks">
               <span>
                 <b>Networks: </b>
-                {showDetails?.networks?.map((network) => network?.name)}
+                {networks?.map(
+                  (network, index) =>
+                    `${network?.name}${showCommaSeparator(networks, index)} `
+                )}
               </span>
             </div>
 
             <div className="show-details__seasons">
               <span>
-                <b>Seasons: </b> {`${showDetails?.number_of_seasons}`}
+                <b>Seasons: </b> {number_of_seasons}
               </span>
             </div>
 
             <div className="show-details__episodes">
               <span>
-                <b>Total Episodes: </b> {`${showDetails?.number_of_episodes}`}
+                <b>Total Episodes: </b> {number_of_episodes}
               </span>
             </div>
 

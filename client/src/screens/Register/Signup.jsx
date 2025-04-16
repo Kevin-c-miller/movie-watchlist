@@ -29,7 +29,6 @@ export default function Signup(props) {
       email,
     };
     const res = await createUser(user);
-    console.log(res);
     props.setCurrentUser(res);
 
     navigate('/movies');

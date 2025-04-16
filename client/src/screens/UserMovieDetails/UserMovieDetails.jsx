@@ -68,7 +68,6 @@ export default function UserMovieDetails({
   // Edit Review
   const editReview = async (review_id, reviewData) => {
     const updatedReview = await updateReview(movie_id, review_id, reviewData);
-    console.log(updatedReview);
   };
 
   // Delete Review

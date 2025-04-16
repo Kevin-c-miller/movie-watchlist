@@ -26,7 +26,6 @@ export default function Login(props) {
       password,
     };
     const res = await loginUser(user);
-    console.log(res);
 
     if (res.Response === 'unauthorized') {
       console.log('error, invalid username or password');

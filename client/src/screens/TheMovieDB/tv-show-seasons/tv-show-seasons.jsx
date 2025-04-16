@@ -4,11 +4,10 @@ import Modal from 'react-bootstrap/Modal';
 
 export const TVShowSeasons = ({ showDetails }) => {
   const [modalShow, setModalShow] = useState(false);
-  const [selectedSeason, setSelectedSeason] = useState(1);
 
   const hideModal = () => setModalShow(false);
 
-  const tvShowSeasonModal = ({ season, onHide }) => {
+  const tvShowSeasonModal = (season, onHide) => {
     return (
       <Modal size="lg" aria-labelledby="contained-modal-title-vcenter" centered>
         <Modal.Header closeButton>
@@ -18,7 +17,7 @@ export const TVShowSeasons = ({ showDetails }) => {
         </Modal.Header>
         <Modal.Body>
           <span># of Episodes: {season?.episode_count}</span>
-          <p>{season.overview}</p>
+          <p>{season?.overview}</p>
         </Modal.Body>
         <Modal.Footer>
           <Button onClick={onHide}>Close</Button>
@@ -34,12 +33,15 @@ export const TVShowSeasons = ({ showDetails }) => {
           <div className="show-details__season" key={key}>
             <button
               className="show-details__season-number"
-              onClick={() => setSelectedSeason(season?.season_number)}
+              onClick={() => {
+                tvShowSeasonModal(season?.season_number, hideModal());
+              }}
             >
               <b>{season?.name} </b>
             </button>
 
-            {modalShow && tvShowSeasonModal(season, hideModal())}
+            {/* {modalShow &&
+              tvShowSeasonModal(selectedSeason, hideModal())} */}
           </div>
         ))}
     </>

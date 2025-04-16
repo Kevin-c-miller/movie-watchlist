@@ -4,6 +4,7 @@ import SearchBox from '../../../components/SearchBox/SearchBox';
 import MovieContext from '../../../context/movieContext';
 import { TVShows } from '../../TV-Shows/tv-shows';
 import './AllMovies.css';
+import { formatDate } from '../../../utils/format-date';
 
 export default function AllMovies() {
   const { topMovies, popMovies, nowPlaying, searchedMovie, upcoming } =
@@ -34,7 +35,7 @@ export default function AllMovies() {
                     <div className="overlay" key={movie?.id}>
                       <h6 className="overlay-text">{movie?.title}</h6>
                       <h6 className="overlay-text">
-                        Year: {movie?.release_date}
+                        {formatDate(movie?.release_date)}
                       </h6>
                     </div>
                   </Link>
@@ -57,7 +58,9 @@ export default function AllMovies() {
                 />
                 <div className="overlay" key={movie?.id}>
                   <h6 className="overlay-text">{movie?.title}</h6>
-                  <h6 className="overlay-text">Year: {movie?.release_date}</h6>
+                  <h6 className="overlay-text">
+                    {formatDate(movie?.release_date)}
+                  </h6>
                 </div>
               </Link>
             </div>
@@ -77,7 +80,9 @@ export default function AllMovies() {
                 />
                 <div className="overlay" key={movie?.id}>
                   <h6 className="overlay-text">{movie?.title}</h6>
-                  <h6 className="overlay-text">Year: {movie?.release_date}</h6>
+                  <h6 className="overlay-text">
+                    {formatDate(movie?.release_date)}
+                  </h6>
                 </div>
               </Link>
             </div>
@@ -97,7 +102,9 @@ export default function AllMovies() {
                 />
                 <div className="overlay" key={movie?.id}>
                   <h6 className="overlay-text">{movie?.title}</h6>
-                  <h6 className="overlay-text">Year: {movie?.release_date}</h6>
+                  <h6 className="overlay-text">
+                    {formatDate(movie?.release_date)}
+                  </h6>
                 </div>
               </Link>
             </div>
@@ -117,7 +124,9 @@ export default function AllMovies() {
                 />
                 <div className="overlay" key={movie?.id}>
                   <h6 className="overlay-text">{movie?.title}</h6>
-                  <h6 className="overlay-text">Year: {movie?.release_date}</h6>
+                  <h6 className="overlay-text">
+                    {formatDate(movie?.release_date)}
+                  </h6>
                 </div>
               </Link>
             </div>

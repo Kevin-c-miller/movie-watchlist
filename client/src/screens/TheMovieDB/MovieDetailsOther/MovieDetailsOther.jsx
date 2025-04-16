@@ -1,3 +1,4 @@
+import { showCommaSeparator } from '../../../utils/format-comma-separator';
 import Streaming from '../Streaming/Streaming';
 import ReactPlayer from 'react-player';
 
@@ -18,9 +19,12 @@ export default function MovieDetailsOther({
         <div className="actors">
           <h5 className="actors-header">Starring:</h5>
 
-          {stars.map((actor) => (
+          {stars.map((actor, index) => (
             <div key={actor?.cast_id} className="actor-map">
-              <h6>{actor?.original_name}, </h6>
+              <h6>{`${actor?.original_name}${showCommaSeparator(
+                stars,
+                index
+              )} `}</h6>
             </div>
           ))}
         </div>
