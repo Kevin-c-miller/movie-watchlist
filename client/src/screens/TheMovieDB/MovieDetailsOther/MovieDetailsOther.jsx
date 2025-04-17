@@ -23,12 +23,12 @@ export default function MovieDetailsOther({ stars, director, streaming }) {
           <b>Released: </b>
           {formattedDate}
         </div>
-        <div className="runtime  movie-detail">
+        <div className="runtime movie-detail">
           {' '}
           <b>Runtime: </b>
           {runtime} min.
         </div>
-        <div className="budget  movie-detail">
+        <div className="budget movie-detail">
           {budget > 0 && (
             <>
               <span>
@@ -37,7 +37,7 @@ export default function MovieDetailsOther({ stars, director, streaming }) {
             </>
           )}
         </div>
-        <div className="revenue  movie-detail">
+        <div className="revenue movie-detail">
           {movie?.revenue > 0 && (
             <>
               <span>
@@ -46,7 +46,7 @@ export default function MovieDetailsOther({ stars, director, streaming }) {
             </>
           )}
         </div>
-        <div className="genre  movie-detail">
+        <div className="genre movie-detail">
           <b>Genre: </b>{' '}
           {genres?.map((genre, index) => (
             <span key={genre?.id}>
@@ -56,7 +56,7 @@ export default function MovieDetailsOther({ stars, director, streaming }) {
           ))}
         </div>
 
-        <div className="synopsis  movie-detail">
+        <div className="synopsis movie-detail">
           <b> Synopsis:</b> {overview}
         </div>
       </div>
