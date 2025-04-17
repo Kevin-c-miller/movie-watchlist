@@ -169,6 +169,38 @@ export const getShowDetails = async (show_id) => {
       Authorization: `Bearer ${TOKEN}`,
     },
   });
-  console.log(res.data);
   return res.data;
+};
+
+// tv streaming
+export const getTvShowStreaming = async (show_id) => {
+  const res = await axios.get(`${url}/tv/${show_id}/watch/providers`, {
+    method: 'GET',
+    headers: {
+      accept: 'application/json',
+      Authorization: `Bearer ${TOKEN}`,
+    },
+  });
+  return res.data;
+};
+
+// similar tv series
+export const getSimilarTvShows = async (show_id) => {
+  try {
+    const res = await axios.get(`${url}/tv/${show_id}/similar?api_key=${KEY}`);
+    return res.data.results;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+// tv credits
+export const getTvCredits = async (show_id) => {
+  try {
+    const res = await axios.get(`${url}/tv/${show_id}/credits?api_key=${KEY}`);
+
+    return res.data;
+  } catch (error) {
+    console.error(error);
+  }
 };

@@ -1,6 +1,6 @@
 .show-details {
   min-height: 100vh;
-  background: url('../../../assets/images/netflix-dark.jpg') no-repeat center
+  background: url('../../../assets/images/filmtape.jpg') no-repeat center
     center/cover;
   width: 100vw;
   padding: 20px 30px;
@@ -8,35 +8,38 @@
 
 .show-detials__description {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
+  width: 100%;
+  padding-bottom: 40px;
 }
 
 .show-details__title {
   text-align: center;
   padding: 10px;
-  font-size: 56px;
+  font-size: 60px;
   font-weight: bold;
   font-family: 'Permanent Marker', cursive;
   margin-bottom: 34px;
-  color: white;
+  color: black;
 }
 
 .show-details__image {
-  height: 825px;
+  height: 100%;
   border-radius: 35px;
   border: 5px solid #000;
   margin-right: 16px;
+  max-width: 575px;
 }
 
 .show-details__container {
   background-color: white;
   display: flex;
   flex-direction: column;
-  align-items: space-between;
   border-radius: 35px;
   border: 5px solid #000;
   padding: 20px;
-  width: 100%;
+  width: 40%;
+  min-height: 100%;
 }
 
 .show-details__about {
@@ -61,6 +64,10 @@
   flex-direction: column;
 }
 
+.show-details__season {
+  margin: 10px 0;
+}
+
 .show-details__season > .show-details__season-number {
   border-radius: 4px;
   background-color: transparent;
@@ -69,4 +76,9 @@
 
 .player-wrapper {
   margin-top: 30px;
+}
+
+.player-wrapper > .react-player > div > iframe {
+  outline: 10px solid black;
+  border-radius: 10px;
 }

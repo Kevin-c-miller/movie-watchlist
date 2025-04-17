@@ -1,5 +1,6 @@
 export default function Streaming(props) {
   const { streaming } = props;
+  const rentOrBuy = streaming.rent ? streaming.rent : streaming.buy;
 
   return (
     <div className="streaming">
@@ -24,9 +25,9 @@ export default function Streaming(props) {
       )}
 
       <h6>Rent</h6>
-      {streaming?.rent ? (
+      {rentOrBuy ? (
         <div className="streamingOptions">
-          {streaming?.rent?.map((option) => (
+          {rentOrBuy.map((option) => (
             <img
               key={option?.provider_id}
               className="streamingIcons"

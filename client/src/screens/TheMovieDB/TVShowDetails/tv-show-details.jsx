@@ -2,16 +2,41 @@ import React, { useContext, useEffect } from 'react';
 import MovieContext from '../../../context/movieContext';
 import { useNavigate, useParams } from 'react-router-dom';
 import ReactPlayer from 'react-player';
-import { TVShowSeasons } from '../tv-show-seasons/tv-show-seasons';
 import { showCommaSeparator } from '../../../utils/format-comma-separator';
+import Streaming from '../Streaming/Streaming';
+import Similar from '../Similar/Similar';
+import { formatDate } from '../../../utils/format-date';
 
 import './tv-show-details.css';
 
 export const TVShowDetails = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const { fetchTvShowTrailers, showTrailers, showDetails, fetchTvShowDetails } =
-    useContext(MovieContext);
+  const {
+    fetchTvShowTrailers,
+    showTrailers,
+    showDetails,
+    tvCredits,
+    fetchTvShowDetails,
+    fetchTvStreaming,
+    tvStreamingOptions,
+    fetchTvCredits,
+  } = useContext(MovieContext);
+
+  const renderTvCredits = () => {
+    return (
+      <>
+        <b>Starring: </b>
+        {tvCredits.cast.map((credit, index) => {
+          return (
+            <span>
+              {credit?.name} {showCommaSeparator(tvCredits.cast, index)}{' '}
+            </span>
+          );
+        })}
+      </>
+    );
+  };
 
   const {
     name,
@@ -30,6 +55,8 @@ export const TVShowDetails = () => {
   useEffect(() => {
     fetchTvShowDetails(id);
     fetchTvShowTrailers(id);
+    fetchTvStreaming(id);
+    fetchTvCredits(id);
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
@@ -38,7 +65,7 @@ export const TVShowDetails = () => {
     <div className="show-details">
       <div className="movieDetailsBtns">
         <button onClick={() => navigate('/movies')} className="back-to-movies">
-          Back to list
+          Back to List
         </button>
       </div>
       <h2 className="show-details__title">{name}</h2>
@@ -54,11 +81,13 @@ export const TVShowDetails = () => {
           <div className="show-details__about">
             <div className="show-details__tagline">{tagline}</div>
 
-            <div className="show-details__description">{overview}</div>
+            <div className="show-details__description">
+              <b>Synopsis:</b> {overview}
+            </div>
             <div className="show-detials__premiere">
               <span>
                 <b>Series Premier: </b>
-                {first_air_date}
+                {formatDate(first_air_date)}
               </span>
             </div>
 
@@ -94,21 +123,24 @@ export const TVShowDetails = () => {
               </span>
             </div>
 
-            <div className="show-details__seasons">
-              <TVShowSeasons showDetails={showDetails} />
+            <div className="show-details__cast">{renderTvCredits()}</div>
+
+            <div className="show-details__streaming">
+              <Streaming streaming={tvStreamingOptions} />
             </div>
-          </div>
-          <div className="player-wrapper">
-            <ReactPlayer
-              url={movieTrailerUrl}
-              controls={true}
-              className="react-player"
-              width="100%"
-              height="100%"
-            />
           </div>
         </div>
       </div>
+      <div className="player-wrapper">
+        <ReactPlayer
+          url={movieTrailerUrl}
+          controls={true}
+          className="react-player"
+          width="100%"
+          height="100%"
+        />
+      </div>
+      <Similar isTvShow />
     </div>
   );
 };

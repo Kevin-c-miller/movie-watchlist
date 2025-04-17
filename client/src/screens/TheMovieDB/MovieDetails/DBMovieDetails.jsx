@@ -1,10 +1,11 @@
 import { useEffect, useContext } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import SimilarMovies from '../SimilarMovies/SimilarMovies';
 import MovieCard from '../MovieDetailsCard/MovieCard';
 import MovieDetailsOther from '../MovieDetailsOther/MovieDetailsOther';
 import MovieContext from '../../../context/movieContext';
 import { getMovieCredits } from '../../../services/apiConfig/theMovieDb';
+import Similar from '../Similar/Similar';
+
 import './DBMovieDetails.css';
 
 export default function DBMovieDetails({ addMovieToWatchList, currentUser }) {
@@ -95,7 +96,7 @@ export default function DBMovieDetails({ addMovieToWatchList, currentUser }) {
             streaming={streaming}
           />
         </div>
-        <SimilarMovies />
+        <Similar isMovie />
       </div>
     </>
   );

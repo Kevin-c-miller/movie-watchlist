@@ -13,20 +13,19 @@ export default function MovieDetailsOther({
       <Streaming streaming={streaming} />
       <div className="castAndCrew">
         <div className="director">
-          <h5> Directed By: </h5> <h6>{director?.original_name}</h6>
+          <h5> Directed By: </h5> <h6>{director?.name}</h6>
         </div>
 
         <div className="actors">
           <h5 className="actors-header">Starring:</h5>
-
-          {stars.map((actor, index) => (
-            <div key={actor?.cast_id} className="actor-map">
-              <h6>{`${actor?.original_name}${showCommaSeparator(
-                stars,
-                index
-              )} `}</h6>
-            </div>
-          ))}
+          {stars.map((actor, index) => {
+            const { cast_id, name } = actor;
+            return (
+              <div key={cast_id} className="actor-map">
+                <h6>{`${name}${showCommaSeparator(stars, index)} `}</h6>
+              </div>
+            );
+          })}
         </div>
       </div>
       <div className="movieTrailer">

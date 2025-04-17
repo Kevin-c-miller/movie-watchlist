@@ -13,6 +13,9 @@ import {
   getTrendingTvShows,
   getTvShowVideos,
   getShowDetails,
+  getTvShowStreaming,
+  getSimilarTvShows,
+  getTvCredits,
 } from '../services/apiConfig/theMovieDb';
 
 // set to variable
@@ -35,6 +38,9 @@ export const MovieProvider = ({ children }) => {
   const [topTvShows, setTopTvShows] = useState([]);
   const [trendingTvShows, setTrendingTvShows] = useState([]);
   const [showTrailers, setShowTrailers] = useState([]);
+  const [tvStreamingOptions, setTvSteaming] = useState([]);
+  const [similarTvShows, setSimilarShows] = useState([]);
+  const [tvCredits, setTvCredits] = useState([]);
 
   //  top rated movies via imdb (not updated daily)
   const fetchMovies = async () => {
@@ -113,7 +119,6 @@ export const MovieProvider = ({ children }) => {
   // get Show details
   const fetchTvShowDetails = async (show_id) => {
     const showInfo = await getShowDetails(show_id);
-    console.log(showInfo);
     setShowDetails(showInfo);
   };
 
@@ -123,9 +128,38 @@ export const MovieProvider = ({ children }) => {
       const results = await getTvShowVideos(showId);
       const trailers = results.find((result) => result?.type === 'Trailer');
 
-      console.log(trailers);
-
       setShowTrailers(trailers);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  // tv streaming
+  const fetchTvStreaming = async (showId) => {
+    try {
+      const results = await getTvShowStreaming(showId);
+      setTvSteaming(results.results.US);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  // similar TV series
+  const fetchSimilarTvShows = async (showId) => {
+    try {
+      const results = await getSimilarTvShows(showId);
+
+      setSimilarShows(results);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  // tv credits
+  const fetchTvCredits = async (showId) => {
+    try {
+      const results = await getTvCredits(showId);
+      setTvCredits(results);
     } catch (error) {
       console.error(error);
     }
@@ -172,6 +206,9 @@ export const MovieProvider = ({ children }) => {
         trendingTvShows,
         showTrailers,
         showDetails,
+        tvStreamingOptions,
+        similarTvShows,
+        tvCredits,
         setStars,
         setDirector,
         fetchDBMovieDetails,
@@ -180,6 +217,9 @@ export const MovieProvider = ({ children }) => {
         fetchSimilarMovies,
         fetchTvShowTrailers,
         fetchTvShowDetails,
+        fetchTvStreaming,
+        fetchSimilarTvShows,
+        fetchTvCredits,
       }}
     >
       {children}

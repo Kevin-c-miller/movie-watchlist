@@ -13,13 +13,10 @@
 }
 
 .movieDetailsBtns > .back-to-movies {
-  background: rgb(255, 151, 0);
-  background: linear-gradient(
-    90deg,
-    rgba(255, 151, 0, 1) 0%,
-    rgba(255, 251, 0, 1) 100%
-  );
+  background-color: white;
+  color: black;
   font-weight: bold;
+  padding: 8px 16px;
 }
 
 .movieDetailsBtns > .add-to-watchlist {
