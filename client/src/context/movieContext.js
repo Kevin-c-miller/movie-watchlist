@@ -16,6 +16,7 @@ import {
   getTvShowStreaming,
   getSimilarTvShows,
   getTvCredits,
+  searchTvShow,
 } from '../services/apiConfig/theMovieDb';
 
 // set to variable
@@ -25,7 +26,7 @@ export const MovieProvider = ({ children }) => {
   const [popMovies, setPopMovies] = useState([]);
   const [topMovies, setTopMovies] = useState([]);
   const [searchValue, setSearchValue] = useState('');
-  const [searchedMovie, setSearchedMovie] = useState([]);
+  const [userSearch, setUserSearch] = useState([]);
   const [movie, setMovie] = useState({});
   const [streaming, setStreaming] = useState({});
   const [similarMovies, setSimilarMovies] = useState([]);
@@ -175,15 +176,16 @@ export const MovieProvider = ({ children }) => {
 
   //  set movies state based on user search
   useEffect(() => {
-    const movieSearch = async () => {
+    const userSearch = async () => {
       try {
         const searchedMovies = await searchMovie(searchValue);
-        setSearchedMovie(searchedMovies);
+        const searchedTvShow = await searchTvShow(searchValue);
+        setUserSearch([...searchedMovies, ...searchedTvShow]);
       } catch (error) {
         console.error(error);
       }
     };
-    movieSearch();
+    userSearch();
   }, [searchValue]);
 
   return (
@@ -193,7 +195,7 @@ export const MovieProvider = ({ children }) => {
         popMovies,
         searchValue,
         setSearchValue,
-        searchedMovie,
+        userSearch,
         movie,
         streaming,
         director,

@@ -10,6 +10,13 @@ export const searchMovie = async (searchValue) => {
   return res.data.results;
 };
 
+export const searchTvShow = async (searchValue) => {
+  const res = await axios.get(
+    `${url}/search/tv?api_key=${KEY}&query=${searchValue}`
+  );
+  return res.data.results;
+};
+
 export const getTopRatedMovies = async () => {
   try {
     const res = await axios.get(`${url}/movie/top_rated?api_key=${KEY}`);

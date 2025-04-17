@@ -5,6 +5,7 @@
   background: url('../../../assets/images/filmtape.jpg') no-repeat center
     center/cover;
   width: 100vw;
+  padding: 20px 30px;
 }
 
 .movieDetailsBtns {
@@ -64,41 +65,42 @@
   width: 100%;
 }
 
-.movieDetailsCard,
 .movieDetailsOther {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.movieDetailsCard,
+.movieDetailsOther {
   margin: 1rem 2rem 1rem;
   width: 100%;
 }
 
-.movie-details-card {
-  max-width: 575px !important;
-  background-color: #ffffff70 !important;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border-radius: 20px !important;
-  object-fit: contain;
-}
-
-.movie-details-card > img {
-  height: 825px;
-  border-radius: 35px;
-  border: 5px solid #000;
-}
-
 .movieDetailsOther {
-  background-color: #ffffff70;
+  background-color: white;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  border-radius: 20px;
+  border-radius: 35px;
+  border: 5px solid black;
+  padding: 0 12px;
 }
 
 .movieDetailsOther .streamAvailability {
   text-align: center;
   font-weight: bold;
+}
+
+.tagline {
+  font-size: 24px;
+  font-style: italic;
+  text-align: center;
+  margin-top: 12px;
+}
+
+.movie-detail {
+  margin-bottom: 4px;
 }
 
 .streaming {
@@ -140,6 +142,11 @@
 .streamingIcons:hover {
   opacity: 0.8;
   transform: scale(1.1);
+}
+
+.streaming__no-results {
+  padding-top: 12px;
+  text-align: center;
 }
 
 .castAndCrew {
@@ -199,18 +206,10 @@
   border: 3px solid #000;
 }
 
-.movieTrailer {
-  width: 100%;
-}
-
-.movieTrailer > h5 {
-  text-align: center;
-  font-size: 30px;
-}
-
 .player-wrapper {
   position: relative;
   padding-top: 56.25%; /* Player ratio: 100 / (1280 / 720) */
+  margin: 30px 0;
 }
 
 .react-player {

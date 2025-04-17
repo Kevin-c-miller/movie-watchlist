@@ -9,9 +9,9 @@ export default function Streaming(props) {
       <h6>Streaming Service</h6>
       {streaming?.flatrate ? (
         <div className="streamingOptions">
-          {streaming?.flatrate?.map((option) => (
+          {streaming?.flatrate?.map((option, index) => (
             <img
-              key={option?.id}
+              key={index}
               className="streamingIcons"
               src={`https://image.tmdb.org/t/p/w45${option?.logo_path}`}
               alt={`${option?.provider_name} logo`}
@@ -27,9 +27,9 @@ export default function Streaming(props) {
       <h6>Rent</h6>
       {rentOrBuy ? (
         <div className="streamingOptions">
-          {rentOrBuy.map((option) => (
+          {rentOrBuy?.map((option, index) => (
             <img
-              key={option?.provider_id}
+              key={index}
               className="streamingIcons"
               src={`https://image.tmdb.org/t/p/w45${option?.logo_path}`}
               alt={`${option?.provider_name} logo`}
@@ -37,7 +37,9 @@ export default function Streaming(props) {
           ))}
         </div>
       ) : (
-        <i>No Results Available</i>
+        <div className="streaming__no-results">
+          <i>No Results Available</i>
+        </div>
       )}
     </div>
   );

@@ -8,6 +8,7 @@ import Similar from '../Similar/Similar';
 import { formatDate } from '../../../utils/format-date';
 
 import './tv-show-details.css';
+import { isEmpty } from 'lodash-es';
 
 export const TVShowDetails = () => {
   const { id } = useParams();
@@ -23,31 +24,17 @@ export const TVShowDetails = () => {
     fetchTvCredits,
   } = useContext(MovieContext);
 
-  const renderTvCredits = () => {
-    return (
-      <>
-        <b>Starring: </b>
-        {tvCredits.cast.map((credit, index) => {
-          return (
-            <span>
-              {credit?.name} {showCommaSeparator(tvCredits.cast, index)}{' '}
-            </span>
-          );
-        })}
-      </>
-    );
-  };
-
   const {
     name,
     poster_path,
     tagline,
     overview,
-    first_air_date,
     genres,
     networks,
+    first_air_date,
     number_of_episodes,
     number_of_seasons,
+    homepage,
   } = showDetails;
 
   const movieTrailerUrl = `https://www.youtube.com/watch?v=${showTrailers?.key}`;
@@ -61,6 +48,23 @@ export const TVShowDetails = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
 
+  const renderTvCredits = () => {
+    return (
+      <>
+        <b>Starring: </b>
+        {tvCredits?.cast?.map((credit, index) => {
+          console.log(credit);
+          return (
+            <span key={index}>
+              {credit?.name}
+              {showCommaSeparator(tvCredits?.cast, index)}{' '}
+            </span>
+          );
+        })}
+      </>
+    );
+  };
+
   return (
     <div className="show-details">
       <div className="movieDetailsBtns">
@@ -70,7 +74,7 @@ export const TVShowDetails = () => {
       </div>
       <h2 className="show-details__title">{name}</h2>
 
-      <div className="show-detials__description">
+      <div className="show-details__description">
         <img
           src={`https://image.tmdb.org/t/p/original${poster_path}`}
           alt="poster"
@@ -81,8 +85,8 @@ export const TVShowDetails = () => {
           <div className="show-details__about">
             <div className="show-details__tagline">{tagline}</div>
 
-            <div className="show-details__description">
-              <b>Synopsis:</b> {overview}
+            <div className="show-details__description show-details__overview">
+              <div>{overview}</div>
             </div>
             <div className="show-detials__premiere">
               <span>
@@ -94,20 +98,22 @@ export const TVShowDetails = () => {
             <div className="show-details__genres">
               <span>
                 <b>Genre: </b>
-                {genres?.map(
-                  (genre, index) =>
-                    `${genre?.name}${showCommaSeparator(genres, index)} `
-                )}
+                {genres?.map((genre, index) => (
+                  <span key={index}>
+                    {`${genre?.name}${showCommaSeparator(genres, index)} `}
+                  </span>
+                ))}
               </span>
             </div>
 
             <div className="show-details__networks">
               <span>
                 <b>Networks: </b>
-                {networks?.map(
-                  (network, index) =>
-                    `${network?.name}${showCommaSeparator(networks, index)} `
-                )}
+                {networks?.map((network, index) => (
+                  <span key={index}>
+                    {`${network?.name}${showCommaSeparator(networks, index)} `}
+                  </span>
+                ))}
               </span>
             </div>
 
@@ -123,10 +129,10 @@ export const TVShowDetails = () => {
               </span>
             </div>
 
-            <div className="show-details__cast">{renderTvCredits()}</div>
+            {!isEmpty(tvCredits?.cast) && renderTvCredits()}
 
             <div className="show-details__streaming">
-              <Streaming streaming={tvStreamingOptions} />
+              <Streaming streaming={tvStreamingOptions} homepage={homepage} />
             </div>
           </div>
         </div>

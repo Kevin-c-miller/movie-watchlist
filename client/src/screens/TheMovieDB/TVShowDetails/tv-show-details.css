@@ -6,11 +6,15 @@
   padding: 20px 30px;
 }
 
-.show-detials__description {
+.show-details__description {
   display: flex;
   justify-content: space-evenly;
   width: 100%;
   padding-bottom: 40px;
+}
+
+.show-details__overview {
+  padding: 16px 0 !important;
 }
 
 .show-details__title {
@@ -40,10 +44,6 @@
   padding: 20px;
   width: 40%;
   min-height: 100%;
-}
-
-.show-details__about {
-  opacity: 0.7;
 }
 
 .show-details__tagline {

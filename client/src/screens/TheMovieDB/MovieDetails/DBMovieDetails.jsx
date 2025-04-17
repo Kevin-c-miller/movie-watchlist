@@ -1,10 +1,11 @@
 import { useEffect, useContext } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import MovieCard from '../MovieDetailsCard/MovieCard';
 import MovieDetailsOther from '../MovieDetailsOther/MovieDetailsOther';
 import MovieContext from '../../../context/movieContext';
 import { getMovieCredits } from '../../../services/apiConfig/theMovieDb';
 import Similar from '../Similar/Similar';
+import ReactPlayer from 'react-player';
+import { Card } from 'react-bootstrap';
 
 import './DBMovieDetails.css';
 
@@ -39,24 +40,6 @@ export default function DBMovieDetails({ addMovieToWatchList, currentUser }) {
     setStars(actors);
   };
 
-  // setting actors in string to be stored in db
-  let actors = ``;
-  stars.forEach((star) => {
-    actors += `${star.name}, `;
-  });
-
-  // streaming url
-  // const streamingURL = `https://image.tmdb.org/t/p/w45${option?.logo_path}`
-  // console.log(streaming.flatrate);
-  // console.log(
-  //   streaming.rent.forEach((movie) => {
-  //     console.log(movie.logo_path);
-  //   })
-  // );
-
-  //  trailer url
-  const movieTrailerUrl = `https://www.youtube.com/watch?v=${trailers?.key}`;
-
   // movie poster url
   const moviePoster = `https://image.tmdb.org/t/p/original${movie?.poster_path}`;
 
@@ -87,13 +70,29 @@ export default function DBMovieDetails({ addMovieToWatchList, currentUser }) {
         </div>
         <h2 className="movieTitle">{movie.title}</h2>
         <div className="movieDetailsBody">
-          <MovieCard moviePoster={moviePoster} />
+          <div className="movieDetailsCard">
+            <img
+              src={`https://image.tmdb.org/t/p/original${movie?.poster_path}`}
+              alt="poster"
+              className="show-details__image"
+            />
+          </div>
 
           <MovieDetailsOther
             stars={stars}
             director={director}
             trailers={trailers}
             streaming={streaming}
+          />
+        </div>
+
+        <div className="player-wrapper">
+          <ReactPlayer
+            url={`https://www.youtube.com/watch?v=${trailers?.key}`}
+            controls={true}
+            className="react-player"
+            width="100%"
+            height="100%"
           />
         </div>
         <Similar isMovie />

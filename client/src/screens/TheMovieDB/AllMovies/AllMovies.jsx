@@ -7,40 +7,52 @@ import './AllMovies.css';
 import { formatDate } from '../../../utils/format-date';
 
 export default function AllMovies() {
-  const { topMovies, popMovies, nowPlaying, searchedMovie, upcoming } =
+  const { topMovies, popMovies, nowPlaying, userSearch, upcoming } =
     useContext(MovieContext);
+
+  console.log(userSearch);
 
   return (
     <div className="allMoviesPage">
       <div className="search-container">
-        <h2>Search and find movies here!</h2>
+        <h2>Search here!</h2>
         <SearchBox />
       </div>
 
-      {/* user searched movie(s) */}
+      {/* user searched */}
       <div className="all-movies">
-        {searchedMovie.length !== 0 && (
+        {userSearch?.length !== 0 && (
           <div className="searched-movies">
             <h4>Search Results</h4>
 
             <div className="row-posters">
-              {searchedMovie.map((movie) => (
-                <div className="movies-image-container" key={movie?.id}>
-                  <Link to={`/movies/${movie?.id}`}>
-                    <img
-                      src={`https://image.tmdb.org/t/p/original${movie?.poster_path}`}
-                      alt={movie?.title}
-                      className="movie-page-img"
-                    />
-                    <div className="overlay" key={movie?.id}>
-                      <h6 className="overlay-text">{movie?.title}</h6>
-                      <h6 className="overlay-text">
-                        {formatDate(movie?.release_date)}
-                      </h6>
-                    </div>
-                  </Link>
-                </div>
-              ))}
+              {userSearch?.map((item) => {
+                const { id, title, poster_path, release_date } = item;
+                const url =
+                  'first_air_date' in item
+                    ? `/movies/tv/${id}`
+                    : `/movies/${id}`;
+
+                console.log(url);
+
+                return (
+                  <div className="movies-image-container" key={id}>
+                    <Link to={url}>
+                      <img
+                        src={`https://image.tmdb.org/t/p/original${poster_path}`}
+                        alt={title}
+                        className="movie-page-img"
+                      />
+                      <div className="overlay" key={id}>
+                        <h6 className="overlay-text">{title}</h6>
+                        <h6 className="overlay-text">
+                          {formatDate(release_date)}
+                        </h6>
+                      </div>
+                    </Link>
+                  </div>
+                );
+              })}
             </div>
           </div>
         )}
