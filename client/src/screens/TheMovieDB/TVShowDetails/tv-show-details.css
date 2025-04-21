@@ -1,84 +1,115 @@
 .show-details {
-  min-height: 100vh;
-  background: url('../../../assets/images/filmtape.jpg') no-repeat center
-    center/cover;
-  width: 100vw;
-  padding: 20px 30px;
+	min-height: 100vh;
+	background: url('../../../assets/images/filmtape.jpg') no-repeat center
+		center/cover;
+	width: 100vw;
+	padding: 20px 30px;
 }
 
 .show-details__description {
-  display: flex;
-  justify-content: space-evenly;
-  width: 100%;
-  padding-bottom: 40px;
+	display: flex;
+	justify-content: space-evenly;
+	width: 100%;
+	padding-bottom: 40px;
 }
 
 .show-details__overview {
-  padding: 16px 0 !important;
+	padding: 16px 0 !important;
 }
 
 .show-details__title {
-  text-align: center;
-  padding: 10px;
-  font-size: 60px;
-  font-weight: bold;
-  font-family: 'Permanent Marker', cursive;
-  margin-bottom: 34px;
-  color: black;
+	text-align: center;
+	padding: 10px;
+	font-size: 60px;
+	font-weight: bold;
+	font-family: 'Permanent Marker', cursive;
+	margin-bottom: 34px;
+	color: black;
 }
 
 .show-details__image {
-  height: 100%;
-  border-radius: 35px;
-  border: 5px solid #000;
-  margin-right: 16px;
-  max-width: 575px;
+	height: 100%;
+	border-radius: 35px;
+	border: 5px solid #000;
+	margin-right: 16px;
+	max-width: 575px;
 }
 
 .show-details__container {
-  background-color: white;
-  display: flex;
-  flex-direction: column;
-  border-radius: 35px;
-  border: 5px solid #000;
-  padding: 20px;
-  width: 40%;
-  min-height: 100%;
+	background-color: white;
+	display: flex;
+	flex-direction: column;
+	border-radius: 35px;
+	border: 5px solid #000;
+	padding: 20px;
+	width: 40%;
+	min-height: 100%;
 }
 
 .show-details__tagline {
-  font-size: 24px;
-  font-weight: 600;
-  text-align: center;
+	font-size: 24px;
+	font-weight: 600;
+	text-align: center;
 }
 
 .show-details__description {
-  padding: 16px;
-  font-size: 16px;
-  font-weight: 500;
-  font-style: italic;
+	padding: 16px;
+	font-size: 16px;
+	font-weight: 500;
+	font-style: italic;
 }
 
 .show-details__seasons {
-  display: flex;
-  flex-direction: column;
+	display: flex;
+	flex-direction: column;
 }
 
 .show-details__season {
-  margin: 10px 0;
+	margin: 10px 0;
 }
 
 .show-details__season > .show-details__season-number {
-  border-radius: 4px;
-  background-color: transparent;
-  font-weight: 400;
+	border-radius: 4px;
+	background-color: transparent;
+	font-weight: 400;
 }
 
 .player-wrapper {
-  margin-top: 30px;
+	margin-top: 30px;
 }
 
 .player-wrapper > .react-player > div > iframe {
-  outline: 10px solid black;
-  border-radius: 10px;
+	outline: 10px solid black;
+	border-radius: 10px;
+}
+
+@media screen and (max-width: 960px) {
+	.show-details__description {
+		display: flex;
+		flex-direction: column;
+		padding: 0;
+	}
+
+	.show-details__container {
+		width: 100%;
+		margin-bottom: 32px;
+	}
+
+	.show-details__title {
+		font-size: 50px;
+	}
+
+	.show-details__image {
+		width: 100%;
+		margin: 0 0 24px 0;
+	}
+
+	.player-wrapper {
+		margin-top: 0;
+		width: 100%;
+	}
+
+	.player-wrapper > .react-player > div > iframe {
+		outline: 4px solid black;
+	}
 }
