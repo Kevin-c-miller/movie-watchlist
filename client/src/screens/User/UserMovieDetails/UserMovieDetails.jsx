@@ -1,8 +1,6 @@
 import { useState, useEffect, useContext } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { X } from '../../../assets/index.js';
 import { toast } from 'react-toastify';
-import { Card } from 'react-bootstrap';
 import {
 	deleteReview,
 	getMovieReviews,
@@ -14,7 +12,6 @@ import Reviews from '../../../components/ReviewList/Reviews.jsx';
 import UserMovieCard from '../UserMovieCard/UserMovieCard';
 import UserDetailsOther from '../UserDetailsOther/UserDetailsOther';
 import UserMovieContext from '../../../context/userMovieContext.js';
-import { getMovieCredits } from '../../../services/apiConfig/theMovieDb.js';
 import '../../MovieDetail/MovieDetails.css';
 import '../UserMovieList/UserMovies.css';
 import '../../../components/ReviewForm/ReviewForm.css';
