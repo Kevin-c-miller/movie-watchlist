@@ -1,6 +1,6 @@
 export default function Streaming(props) {
 	const { streaming } = props;
-	const rentOrBuy = streaming.rent ? streaming.rent : streaming.buy;
+	const rentOrBuy = streaming?.rent ? streaming?.rent : streaming?.buy;
 
 	return (
 		<div className="streaming">

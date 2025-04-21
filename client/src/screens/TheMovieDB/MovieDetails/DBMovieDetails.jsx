@@ -32,12 +32,12 @@ export default function DBMovieDetails({ addMovieToWatchList, currentUser }) {
 	const fetchMovieCredits = async (movie_id) => {
 		const movieCredits = await getMovieCredits(movie_id);
 
-		const directorCredits = movieCredits.crew.find(
+		const directorCredits = movieCredits?.crew?.find(
 			({ job }) => job === 'Director'
 		);
 		setDirector(directorCredits);
 
-		const actors = movieCredits.cast.slice(0, 7);
+		const actors = movieCredits?.cast?.slice(0, 7);
 		setStars(actors);
 	};
 
@@ -56,45 +56,40 @@ export default function DBMovieDetails({ addMovieToWatchList, currentUser }) {
 	}, [id]);
 
 	return (
-		<>
-			<div className="movieDetails">
-				<div className="movieDetailsBtns">
-					<button
-						onClick={() => navigate('/movies')}
-						className="back-to-movies"
-					>
-						{isMobile ? 'Back' : 'Back to Search'}
-					</button>
-				</div>
-				<h2 className="movieTitle">{movie.title}</h2>
-				<div className="movieDetailsBody">
-					<div className="movieDetailsCard">
-						<img
-							src={`https://image.tmdb.org/t/p/original${movie?.poster_path}`}
-							alt="poster"
-							className="show-details__image"
-						/>
-					</div>
-
-					<MovieDetailsOther
-						stars={stars}
-						director={director}
-						trailers={trailers}
-						streaming={streaming}
-					/>
-				</div>
-
-				<div className="player-wrapper">
-					<ReactPlayer
-						url={`https://www.youtube.com/watch?v=${trailers?.key}`}
-						controls={true}
-						className="react-player"
-						width="100%"
-						height="100%"
-					/>
-				</div>
-				<Similar isMovie />
+		<div className="movieDetails">
+			<div className="movieDetailsBtns">
+				<button onClick={() => navigate('/movies')} className="back-to-movies">
+					{isMobile ? 'Back' : 'Back to Search'}
+				</button>
 			</div>
-		</>
+			<h2 className="movieTitle">{movie.title}</h2>
+			<div className="movieDetailsBody">
+				<div className="movieDetailsCard">
+					<img
+						src={`https://image.tmdb.org/t/p/original${movie?.poster_path}`}
+						alt="poster"
+						className="show-details__image"
+					/>
+				</div>
+
+				<MovieDetailsOther
+					stars={stars}
+					director={director}
+					trailers={trailers}
+					streaming={streaming}
+				/>
+			</div>
+
+			<div className="player-wrapper">
+				<ReactPlayer
+					url={`https://www.youtube.com/watch?v=${trailers?.key}`}
+					controls={true}
+					className="react-player"
+					width="100%"
+					height="100%"
+				/>
+			</div>
+			<Similar isMovie />
+		</div>
 	);
 }

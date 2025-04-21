@@ -1,6 +1,5 @@
 import axios from 'axios';
 const KEY = process.env.REACT_APP_MOVIEDB_KEY;
-const TOKEN = process.env.REACT_APP_API_TOKEN;
 const url = `https://api.themoviedb.org/3`;
 
 export const searchMovie = async (searchValue) => {
