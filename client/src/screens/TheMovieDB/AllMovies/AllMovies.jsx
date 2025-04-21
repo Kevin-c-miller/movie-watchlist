@@ -35,9 +35,7 @@ export default function AllMovies() {
 								} = item;
 
 								const isTvShow = 'first_air_date' in item;
-
 								const url = isTvShow ? `/movies/tv/${id}` : `/movies/${id}`;
-
 								const release = isTvShow ? first_air_date : release_date;
 								const projectName = isTvShow ? name : title;
 
