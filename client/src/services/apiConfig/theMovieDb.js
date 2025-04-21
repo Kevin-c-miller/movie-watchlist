@@ -2,6 +2,14 @@ import axios from 'axios';
 const KEY = process.env.REACT_APP_MOVIEDB_KEY;
 const url = `https://api.themoviedb.org/3`;
 
+// date formatting for movie/tv date range queries
+const formatDate = (date) => {
+	const yyyy = date.getUTCFullYear();
+	const mm = String(date.getUTCMonth() + 1).padStart(2, '0');
+	const dd = String(date.getUTCDate()).padStart(2, '0');
+	return `${yyyy}-${mm}-${dd}`;
+};
+
 export const searchMovie = async (searchValue) => {
 	const res = await axios.get(
 		`${url}/search/movie?api_key=${KEY}&query=${searchValue}`
@@ -60,6 +68,9 @@ export const getSimilarMovies = async (movie_id) => {
 		const res = await axios.get(
 			`${url}/movie/${movie_id}/similar?api_key=${KEY}`
 		);
+
+		console.log(res.data.results);
+
 		return res.data.results;
 	} catch (error) {
 		console.error(error);
@@ -79,7 +90,19 @@ export const getSteamingProviders = async (movie_id) => {
 
 export const getNowPlayingMovies = async () => {
 	try {
-		const res = await axios.get(`${url}/movie/now_playing?api_key=${KEY}`);
+		// one Month ago
+		const date = new Date();
+		date.setUTCDate(date.getUTCDate() - 30);
+		const oneMonthAgo = formatDate(date);
+
+		// today
+		const today = new Date();
+		const todaysDate = formatDate(today);
+
+		const res = await axios.get(
+			`${url}/discover/movie?api_key=${KEY}&include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_release_type=2|3&primary_release_date.gte=${oneMonthAgo}&release_date.lte=${todaysDate}`
+		);
+
 		return res.data.results;
 	} catch (error) {
 		console.error(error);
@@ -88,7 +111,20 @@ export const getNowPlayingMovies = async () => {
 
 export const getUpcomingMovies = async () => {
 	try {
-		const res = await axios.get(`${url}/movie/upcoming?api_key=${KEY}`);
+		const date = new Date();
+
+		// Tomorrow
+		date.setUTCDate(date.getUTCDate() + 1);
+		const tomorrow = formatDate(date);
+
+		// 6 months from today
+		date.setUTCMonth(date.getUTCMonth() + 6);
+		const sixMonthsLater = formatDate(date);
+
+		const res = await axios.get(
+			`${url}/discover/movie?api_key=${KEY}&include_adult=false&language=en-US&page=1&sort_by=popularity.desc&with_release_type=2|3&primary_release_date.gte=${tomorrow}&primary_release_date.lte=${sixMonthsLater}`
+		);
+
 		return res.data.results;
 	} catch (error) {
 		console.error(error);
@@ -177,6 +213,22 @@ export const getSimilarTvShows = async (show_id) => {
 export const getTvCredits = async (show_id) => {
 	try {
 		const res = await axios.get(`${url}/tv/${show_id}/credits?api_key=${KEY}`);
+
+		return res.data;
+	} catch (error) {
+		console.error(error);
+	}
+};
+
+// airing today
+export const getAiringTodayTv = async () => {
+	try {
+		const date = new Date();
+		const todaysDate = formatDate(date);
+
+		const res = await axios.get(
+			`${url}/discover/tv?api_key=${KEY}&include_adult=false&language=en-US&page=1&sort_by=popularity.desc&air_date.lte=${todaysDate}&air_date.gte=${todaysDate}&with_origin_country=US`
+		);
 
 		return res.data;
 	} catch (error) {

@@ -81,6 +81,28 @@ export default function AllMovies() {
 					))}
 				</div>
 
+				{/* coming soon */}
+				<h4>Coming Soon</h4>
+				<div className="row-posters">
+					{upcoming.map((movie) => (
+						<div className="movies-image-container" key={movie?.id}>
+							<Link to={`/movies/${movie?.id}`}>
+								<img
+									src={`https://image.tmdb.org/t/p/original${movie?.poster_path}`}
+									alt={movie?.title}
+									className="movie-page-img"
+								/>
+								<div className="overlay" key={movie?.id}>
+									<h6 className="overlay-text">{movie?.title}</h6>
+									<h6 className="overlay-text">
+										{formatDate(movie?.release_date)}
+									</h6>
+								</div>
+							</Link>
+						</div>
+					))}
+				</div>
+
 				{/* top movies */}
 				<h4>Top Movies</h4>
 				<div className="row-posters">
@@ -107,28 +129,6 @@ export default function AllMovies() {
 				<h4>Popular Movies</h4>
 				<div className="row-posters">
 					{popMovies.map((movie) => (
-						<div className="movies-image-container" key={movie?.id}>
-							<Link to={`/movies/${movie?.id}`}>
-								<img
-									src={`https://image.tmdb.org/t/p/original${movie?.poster_path}`}
-									alt={movie?.title}
-									className="movie-page-img"
-								/>
-								<div className="overlay" key={movie?.id}>
-									<h6 className="overlay-text">{movie?.title}</h6>
-									<h6 className="overlay-text">
-										{formatDate(movie?.release_date)}
-									</h6>
-								</div>
-							</Link>
-						</div>
-					))}
-				</div>
-
-				{/* coming soon */}
-				<h4>Coming Soon</h4>
-				<div className="row-posters">
-					{upcoming.map((movie) => (
 						<div className="movies-image-container" key={movie?.id}>
 							<Link to={`/movies/${movie?.id}`}>
 								<img
