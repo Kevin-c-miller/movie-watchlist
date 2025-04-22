@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
-import MovieContext from '../../context/movieContext';
+import MovieContext from '../../context/movie-context';
 import { Link } from 'react-router-dom';
-import { formatDate } from '../../utils/format-date';
+import { formatDatewithSlashes } from '../../utils/format-date';
 
 import './tv-shows.css';
 
@@ -26,7 +26,7 @@ export const TVShows = () => {
 								<div className="overlay" key={id}>
 									<h6 className="overlay-text">{name}</h6>
 									<h6 className="overlay-text">
-										First Episode: {formatDate(first_air_date)}
+										First Episode: {formatDatewithSlashes(first_air_date)}
 									</h6>
 								</div>
 							</Link>
@@ -52,7 +52,7 @@ export const TVShows = () => {
 								<div className="overlay" key={id}>
 									<h6 className="overlay-text">{name}</h6>
 									<h6 className="overlay-text">
-										First Episode: {formatDate(first_air_date)}
+										First Episode: {formatDatewithSlashes(first_air_date)}
 									</h6>
 								</div>
 							</Link>
@@ -65,7 +65,7 @@ export const TVShows = () => {
 			<h4 className="tv-show-header">TV Airing Today</h4>
 			<div className="row-posters">
 				{airingToday.map((show, index) => {
-					const { id, poster_path, name, first_air_date, original_name } = show;
+					const { id, poster_path, name, original_name } = show;
 
 					return (
 						<div className="movies-image-container" key={index}>
@@ -77,9 +77,6 @@ export const TVShows = () => {
 								/>
 								<div className="overlay" key={id}>
 									<h6 className="overlay-text">{name}</h6>
-									<h6 className="overlay-text">
-										First Episode: {formatDate(first_air_date)}
-									</h6>
 								</div>
 							</Link>
 						</div>

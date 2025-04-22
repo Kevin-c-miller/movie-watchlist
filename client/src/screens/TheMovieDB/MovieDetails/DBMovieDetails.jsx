@@ -2,14 +2,14 @@ import { useEffect, useContext } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useBreakpoint } from '../../../hooks/use-breakpoint';
 import MovieDetailsOther from '../MovieDetailsOther/MovieDetailsOther';
-import MovieContext from '../../../context/movieContext';
+import MovieContext from '../../../context/movie-context';
 import { getMovieCredits } from '../../../services/apiConfig/theMovieDb';
 import Similar from '../Similar/Similar';
 import ReactPlayer from 'react-player';
 
 import './DBMovieDetails.css';
 
-export default function DBMovieDetails({ addMovieToWatchList, currentUser }) {
+export default function DBMovieDetails() {
 	const {
 		movie,
 		setStars,

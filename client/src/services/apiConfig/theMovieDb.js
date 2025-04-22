@@ -1,14 +1,7 @@
 import axios from 'axios';
+import { formatDatewithDashes } from '../../utils/format-date';
 const KEY = process.env.REACT_APP_MOVIEDB_KEY;
 const url = `https://api.themoviedb.org/3`;
-
-// date formatting for movie/tv date range queries
-const formatDate = (date) => {
-	const yyyy = date.getUTCFullYear();
-	const mm = String(date.getUTCMonth() + 1).padStart(2, '0');
-	const dd = String(date.getUTCDate()).padStart(2, '0');
-	return `${yyyy}-${mm}-${dd}`;
-};
 
 export const searchMovie = async (searchValue) => {
 	const res = await axios.get(
@@ -69,8 +62,6 @@ export const getSimilarMovies = async (movie_id) => {
 			`${url}/movie/${movie_id}/similar?api_key=${KEY}`
 		);
 
-		console.log(res.data.results);
-
 		return res.data.results;
 	} catch (error) {
 		console.error(error);
@@ -93,11 +84,11 @@ export const getNowPlayingMovies = async () => {
 		// one Month ago
 		const date = new Date();
 		date.setUTCDate(date.getUTCDate() - 30);
-		const oneMonthAgo = formatDate(date);
+		const oneMonthAgo = formatDatewithDashes(date);
 
 		// today
 		const today = new Date();
-		const todaysDate = formatDate(today);
+		const todaysDate = formatDatewithDashes(today);
 
 		const res = await axios.get(
 			`${url}/discover/movie?api_key=${KEY}&include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_release_type=2|3&primary_release_date.gte=${oneMonthAgo}&release_date.lte=${todaysDate}`
@@ -115,11 +106,11 @@ export const getUpcomingMovies = async () => {
 
 		// Tomorrow
 		date.setUTCDate(date.getUTCDate() + 1);
-		const tomorrow = formatDate(date);
+		const tomorrow = formatDatewithDashes(date);
 
 		// 6 months from today
 		date.setUTCMonth(date.getUTCMonth() + 6);
-		const sixMonthsLater = formatDate(date);
+		const sixMonthsLater = formatDatewithDashes(date);
 
 		const res = await axios.get(
 			`${url}/discover/movie?api_key=${KEY}&include_adult=false&language=en-US&page=1&sort_by=popularity.desc&with_release_type=2|3&primary_release_date.gte=${tomorrow}&primary_release_date.lte=${sixMonthsLater}`
@@ -224,11 +215,26 @@ export const getTvCredits = async (show_id) => {
 export const getAiringTodayTv = async () => {
 	try {
 		const date = new Date();
-		const todaysDate = formatDate(date);
+		const todaysDate = formatDatewithDashes(date);
 
 		const res = await axios.get(
 			`${url}/discover/tv?api_key=${KEY}&include_adult=false&language=en-US&page=1&sort_by=popularity.desc&air_date.lte=${todaysDate}&air_date.gte=${todaysDate}&with_origin_country=US`
 		);
+
+		return res.data;
+	} catch (error) {
+		console.error(error);
+	}
+};
+
+// Person details
+export const getPersonDetails = async (person_id) => {
+	try {
+		const res = await axios.get(
+			`${url}/discover/person/${person_id}?api_key=${KEY}`
+		);
+
+		console.log(res.data);
 
 		return res.data;
 	} catch (error) {

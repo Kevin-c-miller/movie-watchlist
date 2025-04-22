@@ -1,33 +1,41 @@
 import { useContext } from 'react';
 import { showCommaSeparator } from '../../../utils/format-comma-separator';
 import Streaming from '../Streaming/Streaming';
-import MovieContext from '../../../context/movieContext';
-import { formatDate } from '../../../utils/format-date';
+import MovieContext from '../../../context/movie-context';
+import { formatDatewithSlashes } from '../../../utils/format-date';
+import { currencyFormat } from '../../../utils/format-currency';
+import { Link } from 'react-router-dom';
 
 export default function MovieDetailsOther({ stars, director, streaming }) {
 	const { movie } = useContext(MovieContext);
-	const { tagline, release_date, runtime, budget, overview, revenue, genres } =
-		movie;
+	const {
+		tagline,
+		release_date,
+		runtime,
+		budget,
+		overview,
+		revenue,
+		genres,
+		status,
+	} = movie;
 
-	const currencyFormat = (num) => {
-		return '$' + num.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
-	};
-
-	const formattedDate = formatDate(release_date);
+	const formattedDate = formatDatewithSlashes(release_date);
 
 	return (
 		<div className="movieDetailsOther">
 			<div className="movieDetailsOther__info">
-				<div className="tagline movie-detail ">"{tagline}"</div>
+				<div className="tagline">"{tagline}"</div>
 				<div className="release-date  movie-detail">
-					<b>Released: </b>
+					<b>{status === 'Post Production' ? 'Releasing: ' : 'Released: '}</b>
 					{formattedDate}
 				</div>
-				<div className="runtime movie-detail">
-					{' '}
-					<b>Runtime: </b>
-					{runtime} min.
-				</div>
+				{runtime > 0 && (
+					<div className="runtime movie-detail">
+						{' '}
+						<b>Runtime: </b>
+						{runtime} min.
+					</div>
+				)}
 				<div className="budget movie-detail">
 					{budget > 0 && (
 						<>
@@ -70,6 +78,7 @@ export default function MovieDetailsOther({ stars, director, streaming }) {
 					<h5 className="actors-header">Starring:</h5>
 					{stars?.map((actor, index) => {
 						const { cast_id, name } = actor;
+
 						return (
 							<div key={cast_id} className="actor-map">
 								<h6>{`${name}${showCommaSeparator(stars, index)} `}</h6>

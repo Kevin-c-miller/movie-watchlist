@@ -1,11 +1,11 @@
 import React, { useContext, useEffect } from 'react';
-import MovieContext from '../../../context/movieContext';
+import MovieContext from '../../../context/movie-context';
 import { useNavigate, useParams } from 'react-router-dom';
 import ReactPlayer from 'react-player';
 import { showCommaSeparator } from '../../../utils/format-comma-separator';
 import Streaming from '../Streaming/Streaming';
 import Similar from '../Similar/Similar';
-import { formatDate } from '../../../utils/format-date';
+import { formatDatewithSlashes } from '../../../utils/format-date';
 import { isEmpty } from 'lodash-es';
 import { useBreakpoint } from '../../../hooks/use-breakpoint';
 
@@ -92,7 +92,7 @@ export const TVShowDetails = () => {
 						<div className="show-detials__premiere">
 							<span>
 								<b>Series Premier: </b>
-								{formatDate(first_air_date)}
+								{formatDatewithSlashes(first_air_date)}
 							</span>
 						</div>
 
