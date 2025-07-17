@@ -59,7 +59,7 @@ export default function Similar({ isMovie, isTvShow }) {
 
 						return (
 							<div className="movies-image-container" key={id}>
-								<Link to={`/movies/${id}`}>
+								<Link to={`/movies/tv/${id}`}>
 									<img
 										src={`https://image.tmdb.org/t/p/original${poster_path}`}
 										alt={title}

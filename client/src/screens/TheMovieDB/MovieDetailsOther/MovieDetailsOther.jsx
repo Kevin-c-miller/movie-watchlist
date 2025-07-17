@@ -5,6 +5,7 @@ import MovieContext from '../../../context/movie-context';
 import { formatDatewithSlashes } from '../../../utils/format-date';
 import { currencyFormat } from '../../../utils/format-currency';
 import { Link } from 'react-router-dom';
+// import PersonContext from '../../../context/person-context';
 
 export default function MovieDetailsOther({ stars, director, streaming }) {
 	const { movie } = useContext(MovieContext);
@@ -20,6 +21,12 @@ export default function MovieDetailsOther({ stars, director, streaming }) {
 	} = movie;
 
 	const formattedDate = formatDatewithSlashes(release_date);
+
+	const { fetchPersonDetails, personDetails, filmography, fetchFilmography } =
+		useContext(MovieContext);
+
+	console.log(personDetails);
+	console.log(filmography);
 
 	return (
 		<div className="movieDetailsOther">
@@ -77,12 +84,20 @@ export default function MovieDetailsOther({ stars, director, streaming }) {
 				<div className="actors">
 					<h5 className="actors-header">Starring:</h5>
 					{stars?.map((actor, index) => {
-						const { cast_id, name } = actor;
+						const { cast_id, name, id } = actor;
 
 						return (
-							<div key={cast_id} className="actor-map">
-								<h6>{`${name}${showCommaSeparator(stars, index)} `}</h6>
-							</div>
+							// make new page with Actor detials and filmography
+							<button
+								onClick={() => {
+									fetchPersonDetails(id);
+									fetchFilmography(id);
+								}}
+							>
+								<div key={cast_id} className="actor-map">
+									<h6>{`${name}${showCommaSeparator(stars, index)} `}</h6>
+								</div>
+							</button>
 						);
 					})}
 				</div>

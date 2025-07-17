@@ -2,10 +2,19 @@ import axios from 'axios';
 import { formatDatewithDashes } from '../../utils/format-date';
 const KEY = process.env.REACT_APP_MOVIEDB_KEY;
 const url = `https://api.themoviedb.org/3`;
+const options = {
+	method: 'GET',
+	headers: {
+		accept: 'application/json',
+		Authorization:
+			'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJmYTkxNGQ4N2U4MmRhY2Y4ZjJhYTgxZDMyZWQwZTgxNCIsIm5iZiI6MTY0NzYxMzA3OS45MzIsInN1YiI6IjYyMzQ5NDk3ZDdjZDA2MDAxY2RhY2EwMiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.1PPhFhYuE-urpZZwOl7-MI0K1RitynvaXFJjj-8_mfQ',
+	},
+};
 
 export const searchMovie = async (searchValue) => {
 	const res = await axios.get(
-		`${url}/search/movie?api_key=${KEY}&query=${searchValue}`
+		`${url}/search/movie&query=${searchValue}`,
+		options
 	);
 	return res.data.results;
 };
@@ -20,7 +29,10 @@ export const searchTvShow = async (searchValue) => {
 
 export const getTopRatedMovies = async () => {
 	try {
-		const res = await axios.get(`${url}/movie/top_rated?api_key=${KEY}`);
+		const res = await axios.get(
+			`${url}/movie/top_rated?api_key=${KEY}`,
+			options
+		);
 		return res.data.results;
 	} catch (error) {
 		console.error(error);
@@ -230,11 +242,42 @@ export const getAiringTodayTv = async () => {
 // Person details
 export const getPersonDetails = async (person_id) => {
 	try {
+		const options = {
+			method: 'GET',
+			headers: {
+				accept: 'application/json',
+				Authorization:
+					'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJmYTkxNGQ4N2U4MmRhY2Y4ZjJhYTgxZDMyZWQwZTgxNCIsIm5iZiI6MTY0NzYxMzA3OS45MzIsInN1YiI6IjYyMzQ5NDk3ZDdjZDA2MDAxY2RhY2EwMiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.1PPhFhYuE-urpZZwOl7-MI0K1RitynvaXFJjj-8_mfQ',
+			},
+		};
+
 		const res = await axios.get(
-			`${url}/discover/person/${person_id}?api_key=${KEY}`
+			`${url}/person/${person_id}?language=en-US`,
+			options
 		);
 
-		console.log(res.data);
+		return res.data;
+	} catch (error) {
+		console.error(error);
+	}
+};
+
+// Person movie credit
+export const getFilmography = async (person_id) => {
+	try {
+		const options = {
+			method: 'GET',
+			headers: {
+				accept: 'application/json',
+				Authorization:
+					'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJmYTkxNGQ4N2U4MmRhY2Y4ZjJhYTgxZDMyZWQwZTgxNCIsIm5iZiI6MTY0NzYxMzA3OS45MzIsInN1YiI6IjYyMzQ5NDk3ZDdjZDA2MDAxY2RhY2EwMiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.1PPhFhYuE-urpZZwOl7-MI0K1RitynvaXFJjj-8_mfQ',
+			},
+		};
+
+		const res = await axios.get(
+			`${url}/person/${person_id}/movie_credits?language=en-US`,
+			options
+		);
 
 		return res.data;
 	} catch (error) {

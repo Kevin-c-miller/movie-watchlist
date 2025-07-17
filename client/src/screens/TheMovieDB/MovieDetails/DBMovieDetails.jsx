@@ -8,6 +8,7 @@ import Similar from '../Similar/Similar';
 import ReactPlayer from 'react-player';
 
 import './DBMovieDetails.css';
+// import PersonContext from '../../../context/person-context';
 
 export default function DBMovieDetails() {
 	const {
@@ -23,6 +24,8 @@ export default function DBMovieDetails() {
 		trailers,
 		streaming,
 	} = useContext(MovieContext);
+
+	// const {fetchPersonDetails, personDetails} = useContext(PersonContext);
 
 	const { id } = useParams();
 	const navigate = useNavigate();
@@ -40,6 +43,13 @@ export default function DBMovieDetails() {
 		const actors = movieCredits?.cast?.slice(0, 7);
 		setStars(actors);
 	};
+
+	useEffect(() => {
+		window.scrollTo({
+			top: 0,
+			behavior: 'smooth',
+		});
+	}, [id]);
 
 	useEffect(() => {
 		try {

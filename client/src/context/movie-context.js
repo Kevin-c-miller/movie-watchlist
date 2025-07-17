@@ -18,6 +18,8 @@ import {
 	getTvCredits,
 	searchTvShow,
 	getAiringTodayTv,
+	getPersonDetails,
+	getFilmography,
 } from '../services/apiConfig/theMovieDb';
 
 // set to variable
@@ -44,6 +46,8 @@ export const MovieProvider = ({ children }) => {
 	const [similarTvShows, setSimilarShows] = useState([]);
 	const [tvCredits, setTvCredits] = useState([]);
 	const [airingToday, setAiringToday] = useState([]);
+	const [personDetails, setPersonDetails] = useState({});
+	const [filmography, setFilmography] = useState([]);
 
 	//  top rated movies via imdb (not updated daily)
 	const fetchMovies = async () => {
@@ -179,6 +183,30 @@ export const MovieProvider = ({ children }) => {
 		}
 	};
 
+	const fetchPersonDetails = async (id) => {
+		try {
+			const details = await getPersonDetails(id);
+
+			console.log(details);
+
+			setPersonDetails(details);
+		} catch (error) {
+			console.error(error);
+		}
+	};
+
+	const fetchFilmography = async (id) => {
+		try {
+			const details = await getFilmography(id);
+
+			console.log(details);
+
+			setFilmography(details);
+		} catch (error) {
+			console.error(error);
+		}
+	};
+
 	useEffect(() => {
 		fetchMovies();
 		nowPlayingMovies();
@@ -226,6 +254,10 @@ export const MovieProvider = ({ children }) => {
 				similarTvShows,
 				tvCredits,
 				airingToday,
+				personDetails,
+				filmography,
+				fetchFilmography,
+				fetchPersonDetails,
 				setStars,
 				setDirector,
 				fetchDBMovieDetails,

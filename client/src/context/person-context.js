@@ -11,9 +11,9 @@ export const UserMovieProvider = ({ children }) => {
 		try {
 			const details = await getPersonDetails(id);
 
-			setPersonDetails(details);
+			console.log(details);
 
-			return details;
+			setPersonDetails(details);
 		} catch (error) {
 			console.error(error);
 		}

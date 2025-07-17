@@ -50,6 +50,13 @@ export const TVShowDetails = () => {
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [id]);
 
+	useEffect(() => {
+		window.scrollTo({
+			top: 0,
+			behavior: 'smooth',
+		});
+	}, [id]);
+
 	const renderTvCredits = () => {
 		return (
 			<>
