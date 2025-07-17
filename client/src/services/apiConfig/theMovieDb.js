@@ -13,16 +13,14 @@ const options = {
 
 export const searchMovie = async (searchValue) => {
 	const res = await axios.get(
-		`${url}/search/movie&query=${searchValue}`,
+		`${url}/search/movie?query=${searchValue}`,
 		options
 	);
 	return res.data.results;
 };
 
 export const searchTvShow = async (searchValue) => {
-	const res = await axios.get(
-		`${url}/search/tv?api_key=${KEY}&query=${searchValue}`
-	);
+	const res = await axios.get(`${url}/search/tv?query=${searchValue}`, options);
 
 	return res.data.results;
 };

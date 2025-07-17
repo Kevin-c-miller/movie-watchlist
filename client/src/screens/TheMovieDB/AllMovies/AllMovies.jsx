@@ -10,6 +10,8 @@ export default function AllMovies() {
 	const { topMovies, popMovies, nowPlaying, userSearch, upcoming } =
 		useContext(MovieContext);
 
+	console.log(userSearch);
+
 	return (
 		<div className="allMoviesPage">
 			<div className="search-container">
