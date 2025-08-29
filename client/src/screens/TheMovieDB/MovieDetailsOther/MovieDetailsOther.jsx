@@ -31,7 +31,7 @@ export default function MovieDetailsOther({ stars, director, streaming }) {
 	return (
 		<div className="movieDetailsOther">
 			<div className="movieDetailsOther__info">
-				<div className="tagline">"{tagline}"</div>
+				<div className="tagline">{tagline && `"${tagline}"`}</div>
 				<div className="release-date  movie-detail">
 					<b>{status === 'Post Production' ? 'Releasing: ' : 'Released: '}</b>
 					{formattedDate}
