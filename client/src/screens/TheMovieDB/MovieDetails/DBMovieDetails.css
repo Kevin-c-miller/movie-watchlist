@@ -166,6 +166,7 @@
 	padding: 5px;
 	text-align: center;
 }
+
 .director > h6 {
 	font-weight: 600;
 	margin: 0;
@@ -177,6 +178,17 @@
 	margin: 10px;
 	text-align: center;
 	font-weight: bold;
+}
+
+.actors-button,
+.director-button {
+	background-color: transparent;
+	border: none;
+}
+
+.actors-button:hover,
+.director-button:hover {
+	color: blue;
 }
 
 .actors {

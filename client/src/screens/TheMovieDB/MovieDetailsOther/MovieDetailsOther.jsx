@@ -78,7 +78,10 @@ export default function MovieDetailsOther({ stars, director, streaming }) {
 			<Streaming streaming={streaming} />
 			<div className="castAndCrew">
 				<div className="director">
-					<h5> Directed By: </h5> <h6>{director?.name}</h6>
+					<h5> Directed By: </h5>{' '}
+					<button className="director-button">
+						<h6>{director?.name}</h6>
+					</button>
 				</div>
 
 				<div className="actors">
@@ -89,13 +92,15 @@ export default function MovieDetailsOther({ stars, director, streaming }) {
 						return (
 							// make new page with Actor detials and filmography
 							<button
+								className="actors-button"
 								onClick={() => {
 									fetchPersonDetails(id);
 									fetchFilmography(id);
 								}}
 							>
 								<div key={cast_id} className="actor-map">
-									<h6>{`${name}${showCommaSeparator(stars, index)} `}</h6>
+									<h6>{name}</h6>
+									{/* <h6>{`${name}${showCommaSeparator(stars, index)} `}</h6> */}
 								</div>
 							</button>
 						);
