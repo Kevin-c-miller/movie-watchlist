@@ -24,9 +24,9 @@ export default function CastMemberDetailsPage() {
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [id]);
 
-	const directingCredits = filmography.crew.filter(
-		(movie) => movie.job === 'Director',
-	);
+	// const directingCredits = filmography?.crew.filter(
+	// 	(movie) => movie.job === 'Director',
+	// );
 
 	return (
 		id && (
