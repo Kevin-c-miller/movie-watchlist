@@ -85,7 +85,7 @@ export const MovieProvider = ({ children }) => {
 		const movieTrailers = await getMovieTrailer(movie_id);
 
 		const movieTrailer = movieTrailers?.find((trailer) =>
-			trailer.name.includes('Trailer')
+			trailer.name.includes('Trailer'),
 		);
 
 		setTrailers(movieTrailer);
@@ -187,8 +187,6 @@ export const MovieProvider = ({ children }) => {
 		try {
 			const details = await getPersonDetails(id);
 
-			console.log(details);
-
 			setPersonDetails(details);
 		} catch (error) {
 			console.error(error);
@@ -198,8 +196,6 @@ export const MovieProvider = ({ children }) => {
 	const fetchFilmography = async (id) => {
 		try {
 			const details = await getFilmography(id);
-
-			console.log(details);
 
 			setFilmography(details);
 		} catch (error) {

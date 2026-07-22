@@ -9,29 +9,29 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
 function App() {
-  return (
-    <div className="App">
-      <Nav />
-      <Routes>
-        <Route path="/" element={<MovieContainer />} />
-        <Route path="/movies/*" element={<MovieContainer />} />
-        <Route path="*" element={<PageNotFound />} />
-      </Routes>
-      <Footer />
+	return (
+		<div className="App">
+			<Nav />
+			<Routes>
+				<Route path="/*" element={<MovieContainer />} />
+				<Route path="/movies/*" element={<MovieContainer />} />
+				<Route path="*" element={<PageNotFound />} />
+			</Routes>
+			<Footer />
 
-      <ToastContainer
-        position="top-center"
-        autoClose={3500}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-      />
-    </div>
-  );
+			<ToastContainer
+				position="top-center"
+				autoClose={3500}
+				hideProgressBar={false}
+				newestOnTop={false}
+				closeOnClick
+				rtl={false}
+				pauseOnFocusLoss
+				draggable
+				pauseOnHover
+			/>
+		</div>
+	);
 }
 
 export default App;

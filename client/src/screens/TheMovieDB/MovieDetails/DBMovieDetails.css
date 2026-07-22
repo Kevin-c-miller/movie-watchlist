@@ -9,8 +9,6 @@
 }
 
 .movieDetailsBtns {
-	/* display: flex; */
-	/* justify-content: space-between; */
 	margin: auto;
 	width: 100%;
 }
@@ -159,6 +157,13 @@
 	justify-content: center;
 }
 
+.director {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
 .director > h5 {
 	border-bottom: 1px solid #000;
 	font-weight: 900;
@@ -175,7 +180,7 @@
 }
 
 .actors-header {
-	margin: 10px;
+	margin: 3px;
 	text-align: center;
 	font-weight: bold;
 }
@@ -189,6 +194,16 @@
 .actors-button:hover,
 .director-button:hover {
 	color: blue;
+}
+
+.actors-button {
+	color: rgb(28, 27, 27);
+	text-decoration: none;
+	padding: 0 3px;
+}
+
+.director-button {
+	padding-top: 4px;
 }
 
 .actors {

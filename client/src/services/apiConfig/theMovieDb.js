@@ -14,7 +14,7 @@ const options = {
 export const searchMovie = async (searchValue) => {
 	const res = await axios.get(
 		`${url}/search/movie?query=${searchValue}`,
-		options
+		options,
 	);
 	return res.data.results;
 };
@@ -29,7 +29,7 @@ export const getTopRatedMovies = async () => {
 	try {
 		const res = await axios.get(
 			`${url}/movie/top_rated?api_key=${KEY}`,
-			options
+			options,
 		);
 		return res.data.results;
 	} catch (error) {
@@ -58,7 +58,7 @@ export const getMovieDBDetails = async (movie_id) => {
 export const getMovieTrailer = async (movie_id) => {
 	try {
 		const res = await axios.get(
-			`${url}/movie/${movie_id}/videos?api_key=${KEY}`
+			`${url}/movie/${movie_id}/videos?api_key=${KEY}`,
 		);
 		return res.data.results;
 	} catch (error) {
@@ -69,7 +69,7 @@ export const getMovieTrailer = async (movie_id) => {
 export const getSimilarMovies = async (movie_id) => {
 	try {
 		const res = await axios.get(
-			`${url}/movie/${movie_id}/similar?api_key=${KEY}`
+			`${url}/movie/${movie_id}/similar?api_key=${KEY}`,
 		);
 
 		return res.data.results;
@@ -81,7 +81,7 @@ export const getSimilarMovies = async (movie_id) => {
 export const getSteamingProviders = async (movie_id) => {
 	try {
 		const res = await axios.get(
-			`${url}/movie/${movie_id}/watch/providers?api_key=${KEY}`
+			`${url}/movie/${movie_id}/watch/providers?api_key=${KEY}`,
 		);
 		return res.data.results.US;
 	} catch (error) {
@@ -101,7 +101,7 @@ export const getNowPlayingMovies = async () => {
 		const todaysDate = formatDatewithDashes(today);
 
 		const res = await axios.get(
-			`${url}/discover/movie?api_key=${KEY}&include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_release_type=2|3&primary_release_date.gte=${oneMonthAgo}&release_date.lte=${todaysDate}`
+			`${url}/discover/movie?api_key=${KEY}&include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_release_type=2|3&primary_release_date.gte=${oneMonthAgo}&release_date.lte=${todaysDate}`,
 		);
 
 		return res.data.results;
@@ -123,7 +123,7 @@ export const getUpcomingMovies = async () => {
 		const sixMonthsLater = formatDatewithDashes(date);
 
 		const res = await axios.get(
-			`${url}/discover/movie?api_key=${KEY}&include_adult=false&language=en-US&page=1&sort_by=popularity.desc&with_release_type=2|3&primary_release_date.gte=${tomorrow}&primary_release_date.lte=${sixMonthsLater}`
+			`${url}/discover/movie?api_key=${KEY}&include_adult=false&language=en-US&page=1&sort_by=popularity.desc&with_release_type=2|3&primary_release_date.gte=${tomorrow}&primary_release_date.lte=${sixMonthsLater}`,
 		);
 
 		return res.data.results;
@@ -135,7 +135,7 @@ export const getUpcomingMovies = async () => {
 export const getMovieCredits = async (movie_id) => {
 	try {
 		const res = await axios.get(
-			`${url}/movie/${movie_id}/credits?api_key=${KEY}`
+			`${url}/movie/${movie_id}/credits?api_key=${KEY}`,
 		);
 		return res.data;
 	} catch (error) {
@@ -157,7 +157,7 @@ export const getLatest = async () => {
 export const getRecommendations = async (movie_id) => {
 	try {
 		const res = await axios.get(
-			`${url}/movie/${movie_id}/recommendations?api_key=${KEY}`
+			`${url}/movie/${movie_id}/recommendations?api_key=${KEY}`,
 		);
 		return res.data;
 	} catch (error) {
@@ -195,7 +195,7 @@ export const getShowDetails = async (show_id) => {
 // tv streaming
 export const getTvShowStreaming = async (show_id) => {
 	const res = await axios.get(
-		`${url}/tv/${show_id}/watch/providers?api_key=${KEY}`
+		`${url}/tv/${show_id}/watch/providers?api_key=${KEY}`,
 	);
 	return res.data;
 };
@@ -228,7 +228,7 @@ export const getAiringTodayTv = async () => {
 		const todaysDate = formatDatewithDashes(date);
 
 		const res = await axios.get(
-			`${url}/discover/tv?api_key=${KEY}&include_adult=false&language=en-US&page=1&sort_by=popularity.desc&air_date.lte=${todaysDate}&air_date.gte=${todaysDate}&with_origin_country=US`
+			`${url}/discover/tv?api_key=${KEY}&include_adult=false&language=en-US&page=1&sort_by=popularity.desc&air_date.lte=${todaysDate}&air_date.gte=${todaysDate}&with_origin_country=US`,
 		);
 
 		return res.data;
@@ -251,7 +251,7 @@ export const getPersonDetails = async (person_id) => {
 
 		const res = await axios.get(
 			`${url}/person/${person_id}?language=en-US`,
-			options
+			options,
 		);
 
 		return res.data;
@@ -274,7 +274,7 @@ export const getFilmography = async (person_id) => {
 
 		const res = await axios.get(
 			`${url}/person/${person_id}/movie_credits?language=en-US`,
-			options
+			options,
 		);
 
 		return res.data;

@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
+
+.cast-details-page {
+	height: 100vh;
+	width: 100vw;
+	background: url('../../../assets/images/filmtape.jpg') no-repeat center
+		center/cover;
+	padding: 20px 30px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.cast-member-name {
+	font-family: 'Permanent Marker', cursive;
+	font-size: 50px;
+}
+
+.cast-member-life-info {
+	margin: 12px 0 24px;
+}
+
+.cast-member-birthday {
+	margin-bottom: 12px;
+}
+
+.cast-member-birthday-label,
+.cast-member-death-label {
+	font-family: Verdana, Geneva, Tahoma, sans-serif;
+	font-size: 16px;
+	font-weight: 700;
+}
+
+.cast-member-birthday-value,
+.cast-member-death-value {
+	font-family: Verdana, Geneva, Tahoma, sans-serif;
+	font-size: 16px;
+	font-style: italic;
+}
+
+.cast-member-info {
+	display: flex;
+	justify-content: flex-start;
+	align-items: flex-start;
+	gap: 24px;
+}
+
+.cast-member-headshot {
+	height: 100%;
+	width: 17rem;
+	border-radius: 35px;
+	border: 5px solid #000;
+	width: 33.33%;
+}
+
+.cast-member-bio {
+	background-color: white;
+	backdrop-filter: blur(10px);
+	-webkit-backdrop-filter: blur(10px);
+	border-radius: 35px;
+	border: 5px solid black;
+	padding: 16px;
+	width: 66.66%;
+	height: 100%;
+	font-family: Verdana, Geneva, Tahoma, sans-serif;
+	line-height: 24px;
+	letter-spacing: 0.6px;
+}

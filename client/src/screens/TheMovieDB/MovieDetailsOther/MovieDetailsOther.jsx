@@ -5,7 +5,6 @@ import MovieContext from '../../../context/movie-context';
 import { formatDatewithSlashes } from '../../../utils/format-date';
 import { currencyFormat } from '../../../utils/format-currency';
 import { Link } from 'react-router-dom';
-// import PersonContext from '../../../context/person-context';
 
 export default function MovieDetailsOther({ stars, director, streaming }) {
 	const { movie } = useContext(MovieContext);
@@ -21,12 +20,6 @@ export default function MovieDetailsOther({ stars, director, streaming }) {
 	} = movie;
 
 	const formattedDate = formatDatewithSlashes(release_date);
-
-	const { fetchPersonDetails, personDetails, filmography, fetchFilmography } =
-		useContext(MovieContext);
-
-	console.log(personDetails);
-	console.log(filmography);
 
 	return (
 		<div className="movieDetailsOther">
@@ -79,30 +72,23 @@ export default function MovieDetailsOther({ stars, director, streaming }) {
 			<div className="castAndCrew">
 				<div className="director">
 					<h5> Directed By: </h5>{' '}
-					<button className="director-button">
+					<Link className="director-button" to={`/director/${director.id}`}>
 						<h6>{director?.name}</h6>
-					</button>
+					</Link>
 				</div>
 
 				<div className="actors">
 					<h5 className="actors-header">Starring:</h5>
-					{stars?.map((actor, index) => {
-						const { cast_id, name, id } = actor;
+					{stars?.map((actor) => {
+						const { name, id } = actor;
+						const url = `/actor/${id}`;
 
 						return (
-							// make new page with Actor detials and filmography
-							<button
-								className="actors-button"
-								onClick={() => {
-									fetchPersonDetails(id);
-									fetchFilmography(id);
-								}}
-							>
-								<div key={cast_id} className="actor-map">
+							<Link to={url} className="actors-button">
+								<div key={id} className="actor-map">
 									<h6>{name}</h6>
-									{/* <h6>{`${name}${showCommaSeparator(stars, index)} `}</h6> */}
 								</div>
-							</button>
+							</Link>
 						);
 					})}
 				</div>

@@ -1,26 +1,28 @@
 import { createContext, useState } from 'react';
-
-import { getPersonDetails } from '../services/apiConfig/theMovieDb';
+import { getFilmography } from '../services/apiConfig/theMovieDb';
 
 const PersonContext = createContext();
 
 export const UserMovieProvider = ({ children }) => {
-	const [personDetails, setPersonDetails] = useState({});
+	const [filmography, setFilmography] = useState([]);
 
-	const fetchPersonDetails = async (id) => {
+	const fetchFilmography = async (id) => {
 		try {
-			const details = await getPersonDetails(id);
+			const details = await getFilmography(id);
 
-			console.log(details);
-
-			setPersonDetails(details);
+			setFilmography(details);
 		} catch (error) {
 			console.error(error);
 		}
 	};
 
 	return (
-		<PersonContext.Provider value={{ fetchPersonDetails, personDetails }}>
+		<PersonContext.Provider
+			value={{
+				filmography,
+				fetchFilmography,
+			}}
+		>
 			{children}
 		</PersonContext.Provider>
 	);
