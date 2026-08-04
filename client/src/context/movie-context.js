@@ -1,275 +1,289 @@
-import { createContext, useState, useEffect } from 'react';
+import { createContext, useEffect, useState } from "react";
 import {
-	getTopRatedMovies,
-	getPopularMovies,
-	searchMovie,
-	getSimilarMovies,
-	getMovieDBDetails,
-	getSteamingProviders,
-	getMovieTrailer,
-	getNowPlayingMovies,
-	getUpcomingMovies,
-	getPopularTvShows,
-	getTrendingTvShows,
-	getTvShowVideos,
-	getShowDetails,
-	getTvShowStreaming,
-	getSimilarTvShows,
-	getTvCredits,
-	searchTvShow,
-	getAiringTodayTv,
-	getPersonDetails,
-	getFilmography,
-} from '../services/apiConfig/theMovieDb';
+  getAiringTodayTv,
+  getFilmography,
+  getMovieDBDetails,
+  getMovieTrailer,
+  getNowPlayingMovies,
+  getPersonDetails,
+  getPopularMovies,
+  getPopularTvShows,
+  getShowDetails,
+  getSimilarMovies,
+  getSimilarTvShows,
+  getSteamingProviders,
+  getTopRatedMovies,
+  getTrendingTvShows,
+  getTvCredits,
+  getTvFilmography,
+  getTvShowStreaming,
+  getTvShowVideos,
+  getUpcomingMovies,
+  searchMovie,
+  searchTvShow,
+} from "../services/apiConfig/theMovieDb";
 
 // set to variable
 const MovieContext = createContext();
 
 export const MovieProvider = ({ children }) => {
-	const [popMovies, setPopMovies] = useState([]);
-	const [topMovies, setTopMovies] = useState([]);
-	const [searchValue, setSearchValue] = useState('');
-	const [userSearch, setUserSearch] = useState([]);
-	const [movie, setMovie] = useState({});
-	const [streaming, setStreaming] = useState({});
-	const [similarMovies, setSimilarMovies] = useState([]);
-	const [trailers, setTrailers] = useState([]);
-	const [stars, setStars] = useState([]);
-	const [director, setDirector] = useState([]);
-	const [nowPlaying, setNowPlaying] = useState([]);
-	const [upcoming, setUpComing] = useState([]);
-	const [showDetails, setShowDetails] = useState({});
-	const [topTvShows, setTopTvShows] = useState([]);
-	const [trendingTvShows, setTrendingTvShows] = useState([]);
-	const [showTrailers, setShowTrailers] = useState([]);
-	const [tvStreamingOptions, setTvSteaming] = useState([]);
-	const [similarTvShows, setSimilarShows] = useState([]);
-	const [tvCredits, setTvCredits] = useState([]);
-	const [airingToday, setAiringToday] = useState([]);
-	const [personDetails, setPersonDetails] = useState({});
-	const [filmography, setFilmography] = useState([]);
+  const [popMovies, setPopMovies] = useState([]);
+  const [topMovies, setTopMovies] = useState([]);
+  const [searchValue, setSearchValue] = useState("");
+  const [userSearch, setUserSearch] = useState([]);
+  const [movie, setMovie] = useState({});
+  const [streaming, setStreaming] = useState({});
+  const [similarMovies, setSimilarMovies] = useState([]);
+  const [trailers, setTrailers] = useState([]);
+  const [stars, setStars] = useState([]);
+  const [director, setDirector] = useState([]);
+  const [nowPlaying, setNowPlaying] = useState([]);
+  const [upcoming, setUpComing] = useState([]);
+  const [showDetails, setShowDetails] = useState({});
+  const [topTvShows, setTopTvShows] = useState([]);
+  const [trendingTvShows, setTrendingTvShows] = useState([]);
+  const [showTrailers, setShowTrailers] = useState([]);
+  const [tvStreamingOptions, setTvSteaming] = useState([]);
+  const [similarTvShows, setSimilarShows] = useState([]);
+  const [tvCredits, setTvCredits] = useState([]);
+  const [airingToday, setAiringToday] = useState([]);
+  const [personDetails, setPersonDetails] = useState({});
+  const [filmography, setFilmography] = useState([]);
+  const [tvFilmography, setTVFilmography] = useState([]);
 
-	//  top rated movies via imdb (not updated daily)
-	const fetchMovies = async () => {
-		try {
-			const resTopMovies = await getTopRatedMovies();
-			const resPopMovies = await getPopularMovies();
+  //  top rated movies via imdb (not updated daily)
+  const fetchMovies = async () => {
+    try {
+      const resTopMovies = await getTopRatedMovies();
+      const resPopMovies = await getPopularMovies();
 
-			setTopMovies(resTopMovies);
-			setPopMovies(resPopMovies);
-		} catch (error) {
-			console.error(error);
-		}
-	};
+      setTopMovies(resTopMovies);
+      setPopMovies(resPopMovies);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
-	// movie details from theMovieDB api
-	const fetchDBMovieDetails = async (movie_id) => {
-		const movieInfo = await getMovieDBDetails(movie_id);
-		setMovie(movieInfo);
-	};
+  // movie details from theMovieDB api
+  const fetchDBMovieDetails = async (movie_id) => {
+    const movieInfo = await getMovieDBDetails(movie_id);
+    setMovie(movieInfo);
+  };
 
-	// get streaming providers
-	const fetchStreamingProviders = async (movie_id) => {
-		const streamingProvider = await getSteamingProviders(movie_id);
-		setStreaming(streamingProvider);
-	};
+  // get streaming providers
+  const fetchStreamingProviders = async (movie_id) => {
+    const streamingProvider = await getSteamingProviders(movie_id);
+    setStreaming(streamingProvider);
+  };
 
-	// get similar movies
-	const fetchSimilarMovies = async (movie_id) => {
-		const similarFilms = await getSimilarMovies(movie_id);
-		setSimilarMovies(similarFilms);
-	};
+  // get similar movies
+  const fetchSimilarMovies = async (movie_id) => {
+    const similarFilms = await getSimilarMovies(movie_id);
+    setSimilarMovies(similarFilms);
+  };
 
-	// get movie trailer
-	const fetchMovieTrailer = async (movie_id) => {
-		const movieTrailers = await getMovieTrailer(movie_id);
+  // get movie trailer
+  const fetchMovieTrailer = async (movie_id) => {
+    const movieTrailers = await getMovieTrailer(movie_id);
 
-		const movieTrailer = movieTrailers?.find((trailer) =>
-			trailer.name.includes('Trailer'),
-		);
+    const movieTrailer = movieTrailers?.find((trailer) =>
+      trailer.name.includes("Trailer"),
+    );
 
-		setTrailers(movieTrailer);
-	};
+    setTrailers(movieTrailer);
+  };
 
-	// Now playing novies
-	const nowPlayingMovies = async () => {
-		const currentlyPlaying = await getNowPlayingMovies();
-		setNowPlaying(currentlyPlaying);
-	};
+  // Now playing novies
+  const nowPlayingMovies = async () => {
+    const currentlyPlaying = await getNowPlayingMovies();
+    setNowPlaying(currentlyPlaying);
+  };
 
-	//  upcoming movies
-	const upcomingMovies = async () => {
-		const comingSoon = await getUpcomingMovies();
-		setUpComing(comingSoon);
-	};
+  //  upcoming movies
+  const upcomingMovies = async () => {
+    const comingSoon = await getUpcomingMovies();
+    setUpComing(comingSoon);
+  };
 
-	// popular tv shows
-	const fetchPopularTvShows = async () => {
-		try {
-			const popTvShows = await getPopularTvShows();
-			setTopTvShows(popTvShows);
-		} catch (error) {
-			console.error(error);
-		}
-	};
+  // popular tv shows
+  const fetchPopularTvShows = async () => {
+    try {
+      const popTvShows = await getPopularTvShows();
+      setTopTvShows(popTvShows);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
-	// trending tv shows
-	const fetchTendingTvShows = async () => {
-		try {
-			const trendingTv = await getTrendingTvShows();
-			setTrendingTvShows(trendingTv);
-		} catch (error) {
-			console.error(error);
-		}
-	};
+  // trending tv shows
+  const fetchTendingTvShows = async () => {
+    try {
+      const trendingTv = await getTrendingTvShows();
+      setTrendingTvShows(trendingTv);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
-	// get Show details
-	const fetchTvShowDetails = async (show_id) => {
-		const showInfo = await getShowDetails(show_id);
-		setShowDetails(showInfo);
-	};
+  // get Show details
+  const fetchTvShowDetails = async (show_id) => {
+    const showInfo = await getShowDetails(show_id);
+    setShowDetails(showInfo);
+  };
 
-	// tv show trailers
-	const fetchTvShowTrailers = async (showId) => {
-		try {
-			const results = await getTvShowVideos(showId);
-			const trailers = results.find((result) => result?.type === 'Trailer');
+  // tv show trailers
+  const fetchTvShowTrailers = async (showId) => {
+    try {
+      const results = await getTvShowVideos(showId);
+      const trailers = results.find((result) => result?.type === "Trailer");
 
-			setShowTrailers(trailers);
-		} catch (error) {
-			console.error(error);
-		}
-	};
+      setShowTrailers(trailers);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
-	// tv streaming
-	const fetchTvStreaming = async (showId) => {
-		try {
-			const results = await getTvShowStreaming(showId);
-			setTvSteaming(results.results.US);
-		} catch (error) {
-			console.error(error);
-		}
-	};
+  // tv streaming
+  const fetchTvStreaming = async (showId) => {
+    try {
+      const results = await getTvShowStreaming(showId);
+      setTvSteaming(results.results.US);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
-	// similar TV series
-	const fetchSimilarTvShows = async (showId) => {
-		try {
-			const results = await getSimilarTvShows(showId);
+  // similar TV series
+  const fetchSimilarTvShows = async (showId) => {
+    try {
+      const results = await getSimilarTvShows(showId);
 
-			setSimilarShows(results);
-		} catch (error) {
-			console.error(error);
-		}
-	};
+      setSimilarShows(results);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
-	// tv credits
-	const fetchTvCredits = async (showId) => {
-		try {
-			const results = await getTvCredits(showId);
-			setTvCredits(results);
-		} catch (error) {
-			console.error(error);
-		}
-	};
+  // tv credits
+  const fetchTvCredits = async (showId) => {
+    try {
+      const results = await getTvCredits(showId);
+      setTvCredits(results);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
-	// airing today
-	const fetchAiringTodayTv = async () => {
-		try {
-			const results = await getAiringTodayTv();
+  // airing today
+  const fetchAiringTodayTv = async () => {
+    try {
+      const results = await getAiringTodayTv();
 
-			setAiringToday(results.results);
-		} catch (error) {
-			console.error(error);
-		}
-	};
+      setAiringToday(results.results);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
-	const fetchPersonDetails = async (id) => {
-		try {
-			const details = await getPersonDetails(id);
+  const fetchPersonDetails = async (id) => {
+    try {
+      const details = await getPersonDetails(id);
 
-			setPersonDetails(details);
-		} catch (error) {
-			console.error(error);
-		}
-	};
+      setPersonDetails(details);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
-	const fetchFilmography = async (id) => {
-		try {
-			const details = await getFilmography(id);
+  const fetchFilmography = async (id) => {
+    try {
+      const details = await getFilmography(id);
 
-			setFilmography(details);
-		} catch (error) {
-			console.error(error);
-		}
-	};
+      setFilmography(details);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
-	useEffect(() => {
-		fetchMovies();
-		nowPlayingMovies();
-		upcomingMovies();
-		fetchPopularTvShows();
-		fetchTendingTvShows();
-		fetchAiringTodayTv();
-	}, []);
+  const fetchTVFilmography = async (id) => {
+    try {
+      const details = await getTvFilmography(id);
 
-	//  set movies state based on user search
-	useEffect(() => {
-		const userSearch = async () => {
-			try {
-				const searchedMovies = await searchMovie(searchValue);
-				const searchedTvShow = await searchTvShow(searchValue);
-				setUserSearch([...searchedMovies, ...searchedTvShow]);
-			} catch (error) {
-				console.error(error);
-			}
-		};
-		userSearch();
-	}, [searchValue]);
+      setTVFilmography(details);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
-	return (
-		<MovieContext.Provider
-			value={{
-				topMovies,
-				popMovies,
-				searchValue,
-				setSearchValue,
-				userSearch,
-				movie,
-				streaming,
-				director,
-				stars,
-				trailers,
-				similarMovies,
-				nowPlaying,
-				upcoming,
-				topTvShows,
-				trendingTvShows,
-				showTrailers,
-				showDetails,
-				tvStreamingOptions,
-				similarTvShows,
-				tvCredits,
-				airingToday,
-				personDetails,
-				filmography,
-				fetchFilmography,
-				fetchPersonDetails,
-				setStars,
-				setDirector,
-				fetchDBMovieDetails,
-				fetchMovieTrailer,
-				fetchStreamingProviders,
-				fetchSimilarMovies,
-				fetchTvShowTrailers,
-				fetchTvShowDetails,
-				fetchTvStreaming,
-				fetchSimilarTvShows,
-				fetchTvCredits,
-			}}
-		>
-			{children}
-		</MovieContext.Provider>
-	);
+  useEffect(() => {
+    fetchMovies();
+    nowPlayingMovies();
+    upcomingMovies();
+    fetchPopularTvShows();
+    fetchTendingTvShows();
+    fetchAiringTodayTv();
+  }, []);
+
+  //  set movies state based on user search
+  useEffect(() => {
+    const userSearch = async () => {
+      try {
+        const searchedMovies = await searchMovie(searchValue);
+        const searchedTvShow = await searchTvShow(searchValue);
+        setUserSearch([...searchedMovies, ...searchedTvShow]);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    userSearch();
+  }, [searchValue]);
+
+  return (
+    <MovieContext.Provider
+      value={{
+        topMovies,
+        popMovies,
+        searchValue,
+        setSearchValue,
+        userSearch,
+        movie,
+        streaming,
+        director,
+        stars,
+        trailers,
+        similarMovies,
+        nowPlaying,
+        upcoming,
+        topTvShows,
+        trendingTvShows,
+        showTrailers,
+        showDetails,
+        tvStreamingOptions,
+        similarTvShows,
+        tvCredits,
+        airingToday,
+        personDetails,
+        filmography,
+        tvFilmography,
+        fetchFilmography,
+        fetchPersonDetails,
+        setStars,
+        setDirector,
+        fetchDBMovieDetails,
+        fetchMovieTrailer,
+        fetchStreamingProviders,
+        fetchSimilarMovies,
+        fetchTvShowTrailers,
+        fetchTvShowDetails,
+        fetchTvStreaming,
+        fetchSimilarTvShows,
+        fetchTvCredits,
+        fetchTVFilmography,
+      }}
+    >
+      {children}
+    </MovieContext.Provider>
+  );
 };
 
 export default MovieContext;

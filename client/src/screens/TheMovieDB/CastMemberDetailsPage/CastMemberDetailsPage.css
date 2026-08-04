@@ -1,68 +1,163 @@
 @import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
 
 .cast-details-page {
-	height: 100vh;
-	width: 100vw;
-	background: url('../../../assets/images/filmtape.jpg') no-repeat center
-		center/cover;
-	padding: 20px 30px;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
+    min-height: 100vh;
+    width: 100vw;
+    background: url('../../../assets/images/filmtape.jpg') no-repeat center center/cover;
+    padding: 20px 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.cast-details-page__back-btn {
+    position: absolute;
+    top: 30px;
+    left: 40px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 16px;
+    font-style: italic;
+    font-weight: 600;
+    background-color: lightgray;
+    color: black;
+    border-radius: 10px;
+    width: 80px;
+    height: 30px;
+
+}
+
+.cast-details-page__back-btn:hover {
+    transform: scale(1.1);
+    opacity: 0.8
 }
 
 .cast-member-name {
-	font-family: 'Permanent Marker', cursive;
-	font-size: 50px;
+    font-family: 'Permanent Marker', cursive;
+    font-size: 50px;
 }
 
 .cast-member-life-info {
-	margin: 12px 0 24px;
+    margin: 12px 0 24px;
 }
 
 .cast-member-birthday {
-	margin-bottom: 12px;
+    margin-bottom: 12px;
 }
 
 .cast-member-birthday-label,
 .cast-member-death-label {
-	font-family: Verdana, Geneva, Tahoma, sans-serif;
-	font-size: 16px;
-	font-weight: 700;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 16px;
+    font-weight: 700;
 }
 
 .cast-member-birthday-value,
 .cast-member-death-value {
-	font-family: Verdana, Geneva, Tahoma, sans-serif;
-	font-size: 16px;
-	font-style: italic;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 16px;
+    font-style: italic;
 }
 
 .cast-member-info {
-	display: flex;
-	justify-content: flex-start;
-	align-items: flex-start;
-	gap: 24px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 24px;
 }
 
 .cast-member-headshot {
-	height: 100%;
-	width: 17rem;
-	border-radius: 35px;
-	border: 5px solid #000;
-	width: 33.33%;
+    height: 100%;
+    width: 17rem;
+    border-radius: 35px;
+    border: 5px solid #000;
+    width: 33.33%;
 }
 
 .cast-member-bio {
-	background-color: white;
-	backdrop-filter: blur(10px);
-	-webkit-backdrop-filter: blur(10px);
-	border-radius: 35px;
-	border: 5px solid black;
-	padding: 16px;
-	width: 66.66%;
-	height: 100%;
-	font-family: Verdana, Geneva, Tahoma, sans-serif;
-	line-height: 24px;
-	letter-spacing: 0.6px;
+    background-color: white;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 35px;
+    border: 5px solid black;
+    padding: 16px;
+    width: 66.66%;
+    height: 100%;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    line-height: 24px;
+    letter-spacing: 0.6px;
 }
+
+.cast-member-info__filmography {
+    background-color: white;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 35px;
+    border: 3px solid black;
+    padding: 16px;
+    width: 100%;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    line-height: 24px;
+    letter-spacing: 0.6px;
+    margin: 24px 0;
+}
+
+.cast-member-info__filmography-header {
+    font-family: 'Permanent Marker', cursive;
+    font-size: 36px;
+    text-align: center;
+    margin: 20px 0;
+}
+
+
+.cast-member-info__header {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.cast-member-info__credits {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+    width: 100%;
+    box-shadow: 0.6px 0.8px 18px rgba(0, 0, 0, 0.08);
+    padding: 16px;
+}
+
+
+.cast-member-info__header:first-child {
+    border-bottom: 2px solid black;
+}
+
+.cast-member-info__credit {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    padding: 4px 0;
+    border-top: 1px solid gray;
+}
+
+
+.cast-member-info__title, .cast-member-info__role {
+    flex: 0 0 45%;
+}
+
+.cast-member-info__title {
+    text-decoration: none;
+    color: black;
+}
+
+.cast-member-info__title:hover {
+    color: blue;
+    font-weight: bold;
+}
+
+.cast-member-info__date {
+    flex: 0 0 10%;
+
+}
+
